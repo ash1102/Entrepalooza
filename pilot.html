@@ -263,9 +263,79 @@
       .lesson-entry h3{font-size:19px}
     }
 
+  
+    /* Interactive lesson walkthrough */
+    .module-progress{display:flex;align-items:center;gap:10px;padding:2px 2px 4px}
+    .module-progress-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:800;white-space:nowrap}
+    .module-progress-track{height:3px;flex:1;background:var(--line);border-radius:3px;overflow:hidden}
+    .module-progress-fill{height:100%;width:0;background:var(--rule);transition:width .18s ease}
+    .module-kicker{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px;color:var(--muted);font-size:12px}
+    .module-kicker strong{color:var(--teal)}
+    .research-lens{margin:13px 0 16px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .research-lens summary{min-height:44px;display:flex;align-items:center;cursor:pointer;color:var(--teal);font-size:14px;font-weight:750}
+    .research-lens summary::after{content:"+";margin-left:auto;font-size:18px}
+    .research-lens[open] summary::after{content:"−"}
+    .research-copy{padding:0 0 14px;color:var(--muted);font-size:14px}
+    .research-copy p{margin:0 0 8px}
+    .lesson-tabs{display:flex;gap:7px;overflow-x:auto;padding:2px 0 12px;scrollbar-width:thin}
+    .lesson-tab{min-width:42px;min-height:42px;border:1px solid var(--line);border-radius:999px;background:rgba(255,253,248,.65);color:var(--muted);font-weight:800;cursor:pointer}
+    .lesson-tab[aria-current="step"]{background:var(--teal);color:#fff;border-color:var(--teal)}
+    .lesson-stage{min-height:460px}
+    .lesson-card{max-width:760px;padding:16px 0 6px}
+    .js .lesson-card:not(.is-lesson-active){display:none}
+    .lesson-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:9px;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.11em;font-weight:800}
+    .lesson-meta strong{color:var(--teal)}
+    .lesson-card h3{margin:0 0 13px;font-size:clamp(27px,4vw,42px);line-height:1.06;letter-spacing:-.035em}
+    .lesson-purpose{font-size:17px;line-height:1.55;color:#394b47;max-width:690px}
+    .beat{padding:17px 0;border-top:1px solid var(--line)}
+    .beat-label{display:flex;align-items:center;gap:8px;margin-bottom:8px;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:850}
+    .beat-label::before{content:"";width:10px;height:10px;border:1.5px solid currentColor;border-radius:50%}
+    .beat p{margin:0 0 9px;max-width:700px}
+    .beat ul{margin:8px 0 0;padding-left:20px}
+    .beat li{margin:5px 0}
+    .activity{margin:13px 0;padding:15px;border:1px solid var(--line);background:rgba(255,253,248,.65)}
+    .activity-title{margin:0 0 10px;font:19px/1.35 var(--hand);color:var(--accent)}
+    .tap-row,.tile-grid{display:flex;flex-wrap:wrap;gap:8px}
+    .tap-option,.tile-option,.route-option{min-height:44px;border:1px solid #72847c;border-radius:4px;background:var(--paper-light);color:var(--ink);padding:9px 12px;font-weight:650;cursor:pointer;text-align:left}
+    .tap-option:hover,.tile-option:hover,.route-option:hover{background:var(--teal-soft)}
+    .tap-option[aria-pressed="true"],.tile-option[aria-pressed="true"],.route-option[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:white}
+    .activity-message{min-height:24px;margin:9px 0 0;color:var(--teal);font-size:14px;font-weight:750}
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+    .compare-panel{border:1px solid var(--line);background:rgba(255,253,248,.55);padding:13px}
+    .compare-panel h5{margin:0 0 6px;font-size:14px;color:var(--teal)}
+    .example-line{padding:8px 0;border-bottom:1px dotted var(--line)}
+    .example-line:last-child{border-bottom:0}
+    .mini-note{margin:12px 0;padding:11px 13px;background:#f4e4a7;font:15px/1.45 var(--hand);transform:rotate(.2deg)}
+    .private-box{margin-top:12px}
+    .private-box label{display:block;font-weight:700;margin-bottom:5px}
+    .private-box textarea{min-height:82px}
+    .lesson-controls{display:flex;justify-content:space-between;gap:10px;margin-top:20px;padding-top:13px;border-top:1px solid var(--line)}
+    .lesson-controls .button{min-width:110px}
+    .route-panel{margin-top:10px;padding:13px;border-left:3px solid var(--rule);background:var(--accent-soft)}
+    .route-panel[hidden]{display:none}
+    .motivation-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .meter{border:1px solid var(--line);background:rgba(255,253,248,.55);padding:11px}
+    .meter label{display:flex;justify-content:space-between;gap:8px;font-size:13px;font-weight:700}
+    .meter input{width:100%;accent-color:var(--teal)}
+    .motivation-score{margin:9px 0 0;color:var(--teal);font-weight:800}
+    .sequence-map{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:10px 0}
+    .sequence-node{border:1px solid var(--line);background:rgba(255,253,248,.62);padding:10px 6px;text-align:center;font-size:12px;font-weight:750;cursor:pointer}
+    .sequence-node.is-lit{background:var(--gold);border-color:var(--ink)}
+    .decision-chips .chip[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:white}
+    @media(max-width:780px){
+      .lesson-card h3{font-size:30px}
+      .compare,.motivation-grid{grid-template-columns:1fr}
+      .sequence-map{grid-template-columns:1fr}
+      .sequence-node{text-align:left}
+      .lesson-controls{position:sticky;bottom:55px;z-index:4;background:rgba(245,242,233,.97);padding:9px 0}
+      .lesson-controls .button{min-width:94px;padding-inline:10px;font-size:13px}
+      .lesson-stage{min-height:0}
+    }
+
   </style>
 </head>
 <body>
+  <!-- Canonical source pointer supplied by Ashley: https://app.notion.com/p/Module-1-Find-Something-Worth-Exploring-3f1ca793c2c5813498f9c463198e2942?source=copy_link -->
   <!-- FILL: start dates · time commitment · cost · meeting tool · facilitator names · recruitment status -->
   <a class="skip-link" href="#main-content">Skip to walkthrough</a>
   <header class="site-header">
@@ -276,6 +346,7 @@
       </div>
       <div class="header-bottom">
         <nav class="stepper" aria-label="Walkthrough steps">
+          <a href="#cover" data-goto="0" aria-label="Start">Start</a><span class="separator" aria-hidden="true">·</span>
           <a href="#module-0" data-goto="1" aria-label="Module 0">0</a><span class="separator" aria-hidden="true">·</span>
           <a href="#module-1" data-goto="2" aria-label="Module 1">1</a><span class="separator" aria-hidden="true">·</span>
           <a href="#module-1-5" data-goto="3" aria-label="Module 1.5">1.5</a><span class="separator" aria-hidden="true">·</span>
@@ -294,6 +365,10 @@
           <div class="loop-words" aria-hidden="true"><span data-loop-word="notice">Notice</span> → <span data-loop-word="try">Try</span> → <span data-loop-word="reflect">Reflect</span> → <span data-loop-word="decide">Decide</span></div>
         </div>
       </div>
+      <div class="module-progress" aria-hidden="true">
+        <span class="module-progress-label" id="module-progress-label">Start</span>
+        <div class="module-progress-track"><div class="module-progress-fill" id="module-progress-fill"></div></div>
+      </div>
     </div>
   </header>
   <div id="step-announcement" class="sr-only" aria-live="polite" aria-atomic="true">Step 1 of 7: Walk through Pilot 1</div>
@@ -302,7 +377,7 @@
       <div class="cover-layout">
         <div class="cover-note">
           <div class="eyebrow">A guided workbook, one step at a time</div>
-          <h1 tabindex="-1" id="cover-title">Walk through Pilot 1</h1>
+          <h1 tabindex="-1" id="cover-title">Walk through Pilot&nbsp;1</h1>
           <p class="lede">Pilot 1 opens Entrepalooza, a small, human-guided cohort in Houston for adults figuring out what comes next. Here's how it feels, one step at a time.</p>
           <div class="check-in">
             <p class="prompt">Before we start, are you here?</p>
@@ -327,151 +402,217 @@
 
     
     <section class="screen module-screen" id="module-0" data-index="1" aria-labelledby="module-0-title">
-      <div class="module-layout">
-        <aside class="module-rail"><div><div class="module-number" aria-hidden="true">0</div><div class="rail-label">Enter with Agency</div></div><div class="margin-note">Joining and consent are separate choices.</div></aside>
-        <div class="module-content">
-          <header class="module-heading"><div class="eyebrow">Six actual lessons</div><h2 tabindex="-1" id="module-0-title">Enter with Agency</h2></header>
-          <div class="lesson-stack">
-            <article class="lesson-entry" data-loop="notice"><span class="lesson-num">Lesson 0.1</span><h3>Welcome, agency, and participation choices</h3><p>Participation is voluntary. Personal disclosure is not required. Learn the real ways you can take part: respond, pass, observe, keep something private, or use a different format.</p></article>
-            <article class="lesson-entry" data-loop="notice"><span class="lesson-num">Lesson 0.2</span><h3>What Entrepalooza is—and is not</h3><p>Get the educational purpose, the limits, and realistic expectations. Learn the program method: question → bounded experiment → evidence → reflection → next decision.</p></article>
-            <article class="lesson-entry" data-loop="try"><span class="lesson-num">Lesson 0.3</span><h3>Rights, privacy, and separate consent</h3><p>Learn your participation rights, actual privacy limits, correction routes, and why participation, evaluation, recording, story use, and follow-up are separate choices.</p></article>
-            <article class="lesson-entry" data-loop="try"><span class="lesson-num">Lesson 0.4</span><h3>Group Code and permission-based feedback</h3><p>Practice asking before giving feedback. A question, a suggestion, no feedback, accepting, rejecting, or revising are all legitimate responses.</p></article>
-            <article class="lesson-entry" data-loop="reflect"><span class="lesson-num">Lesson 0.5</span><h3>Participation and Support Plan</h3><p>Identify what would make participation workable and name an agreed support or access next step. No diagnostic justification is required.</p></article>
-            <article class="lesson-entry" data-loop="decide"><span class="lesson-num">Lesson 0.6</span><h3>Participation decision and handoff</h3><p>Choose whether to participate, participate with an adjustment, defer, or decline. Declining is a successful agency outcome. Consent stays separate.</p></article>
-          </div>
-          
-          <section class="module-decision" data-loop="decide">
-            <div class="step-label"><span class="ordinal">Next</span> Decide</div>
-            <p class="module-summary">Carry forward only what you choose.</p>
-            <label class="unknown-label" for="unknown-0">Name one unknown. <span class="muted">(optional)</span></label>
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
-            <textarea id="unknown-0" rows="2" placeholder="Optional — leave blank if you prefer"></textarea>
-            <div class="decision-chips" aria-label="Choose a next step">
-              <button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button>
-            </div>
-            <p class="message choice-message" role="status" aria-live="polite"></p>
-          </section>
-        </div>
+    <div class="module-layout">
+      <aside class="module-rail"><div><div class="module-number" aria-hidden="true">0</div><div class="rail-label">Enter with Agency</div></div><div class="margin-note">Passing is part of belonging.</div></aside>
+      <div class="module-content">
+        <header class="module-heading"><div class="module-kicker"><strong>Module 1 of 5</strong><span>5 lessons</span></div><h2 tabindex="-1" id="module-0-title">Enter with Agency</h2></header>
+        <details class="research-lens"><summary>Why this is designed this way</summary><div class="research-copy"><p><strong>Informed by research</strong> on autonomy-supportive participation and consent comprehension. The design uses real choice, plain-language rights, separate permissions, and teach-back rather than treating a signed form as proof of understanding.</p></div></details>
+        <nav class="lesson-tabs" aria-label="Enter with Agency lessons"><button class="lesson-tab" type="button" data-lesson-goto="0" aria-current="step">1</button><button class="lesson-tab" type="button" data-lesson-goto="1" >2</button><button class="lesson-tab" type="button" data-lesson-goto="2" >3</button><button class="lesson-tab" type="button" data-lesson-goto="3" >4</button><button class="lesson-tab" type="button" data-lesson-goto="4" >5</button></nav>
+        <div class="lesson-stage"><article class="lesson-card is-lesson-active" data-lesson-index="0" data-loop="notice">
+    <div class="lesson-meta"><strong>Lesson 1 of 5</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">What this pilot is and isn’t</h3><p class="lesson-purpose">Know what the pilot will and won’t do before choosing anything.</p>
+     <div class="beat"><div class="beat-label">Learn</div><p>You can answer aloud, write privately, observe, or pass. Passing never needs a reason. Entrepalooza is a structured way to notice, try something small, reflect, and decide what comes next. A job, training, a project, a pause, or still looking can all be complete finishes.</p></div>
+     <div class="activity" data-single-select><p class="activity-title">Quick check: part of the pilot, or not?</p><div class="tile-grid">
+       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Yes. Small, bounded experiments are part of the pilot.">Try something small</button>
+       <button class="tile-option" type="button" aria-pressed="false" data-feedback="No. The pilot does not promise jobs or income.">Job or income promise</button>
+       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Yes. Passing is a real participation choice.">Pass without explaining</button>
+       <button class="tile-option" type="button" aria-pressed="false" data-feedback="No. Entrepreneurship is optional.">Required business path</button>
+     </div><p class="activity-message" role="status" aria-live="polite"></p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Cover</button><button class="button button-primary" type="button" data-lesson-next>Lesson 2 →</button></div></article><article class="lesson-card" data-lesson-index="1" data-loop="notice">
+    <div class="lesson-meta"><strong>Lesson 2 of 5</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Rights, privacy, and separate consent</h3><p class="lesson-purpose">Practice the rights before anyone asks you for personal information.</p>
+     <div class="beat"><div class="beat-label">Learn</div><p>Participation, evaluation, recording, story use, and follow-up are separate choices. Saying yes to one does not mean yes to the others. You can pass without defending the choice.</p></div>
+     <div class="activity"><p class="activity-title">Try separate consent</p><p>This is a demonstration only. Nothing is saved.</p>
+       <div class="example-line"><strong>Participation</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Participation: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Participation: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Participation: Not now is a complete choice.">Not now</button></div></div><div class="example-line"><strong>Evaluation</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Evaluation: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Evaluation: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Evaluation: Not now is a complete choice.">Not now</button></div></div><div class="example-line"><strong>Recording</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Recording: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Recording: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Recording: Not now is a complete choice.">Not now</button></div></div><div class="example-line"><strong>Story use</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Story use: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Story use: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Story use: Not now is a complete choice.">Not now</button></div></div><div class="example-line"><strong>Follow-up</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Follow-up: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Follow-up: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Follow-up: Not now is a complete choice.">Not now</button></div></div>
+       <p class="activity-message" role="status" aria-live="polite"></p></div>
+     <div class="beat"><div class="beat-label">Teach-back</div><p>Name one thing the program will not do and one way you could pause or leave. The consent readings support active discussion and teach-back rather than relying on a form alone.</p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 1</button><button class="button button-primary" type="button" data-lesson-next>Lesson 3 →</button></div></article><article class="lesson-card" data-lesson-index="2" data-loop="try">
+    <div class="lesson-meta"><strong>Lesson 3 of 5</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Group Code and permission-based feedback</h3><p class="lesson-purpose">Practice asking before giving feedback, and practice hearing “no” without pushing.</p>
+     <div class="activity" data-single-select><p class="activity-title">You want to comment on someone’s idea. What do you ask first?</p><div class="tap-row">
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Good. The other person chooses the kind of feedback, or none.">Question, suggestion, or no feedback?</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="That skips permission. Ask first.">Here’s what you should change.</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="That pressures the other person to explain.">Why don’t you want feedback?</button>
+     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
+     <div class="mini-note">Ask · Pass · Listen · Bounded feedback. Those are group skills, not personality traits.</div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 2</button><button class="button button-primary" type="button" data-lesson-next>Lesson 4 →</button></div></article><article class="lesson-card" data-lesson-index="3" data-loop="reflect">
+    <div class="lesson-meta"><strong>Lesson 4 of 5</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Participation and Support Plan</h3><p class="lesson-purpose">Notice the setup that makes participation workable without turning support into a diagnosis.</p>
+     <div class="activity" data-multi-select><p class="activity-title">What can count as a participation condition?</p><div class="tile-grid">
+       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Private writing can be a legitimate participation condition.">Private writing</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Paper handouts can be a legitimate participation condition.">Paper handouts</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Breaks can be a legitimate participation condition.">Breaks</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Schedule flexibility can be a legitimate participation condition.">Schedule flexibility</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Phone-friendly materials can be a legitimate participation condition.">Phone-friendly materials</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Reading support can be a legitimate participation condition.">Reading support</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Observe first can be a legitimate participation condition.">Observe first</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="No extra support can be a legitimate participation condition.">No extra support</button>
+     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
+     <div class="mini-note">Needing a different setup is not evidence about someone’s worth or readiness.</div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 3</button><button class="button button-primary" type="button" data-lesson-next>Lesson 5 →</button></div></article><article class="lesson-card" data-lesson-index="4" data-loop="decide">
+    <div class="lesson-meta"><strong>Lesson 5 of 5</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Your participation decision and handoff</h3><p class="lesson-purpose">Make a real participation choice. Joining and consent stay separate.</p>
+     <div class="activity" data-single-select><p class="activity-title">Choose a route for this demonstration</p><div class="tile-grid">
+       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Participate is one valid route.">Participate</button>
+       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Adjustments are a full route, not a lesser one.">Participate with adjustments</button>
+       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Defer is valid.">Defer</button>
+       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Decline is a complete agency outcome.">Decline</button>
+     </div><p class="activity-message" role="status" aria-live="polite"></p></div><div class="beat"><div class="beat-label">Decide</div><p>Choose what fits what you actually saw. All seven choices count.</p><div class="decision-chips" aria-label="Choose a next decision"><button class="chip" type="button" aria-pressed="false">Keep</button><button class="chip" type="button" aria-pressed="false">Change</button><button class="chip" type="button" aria-pressed="false">Test Again</button><button class="chip" type="button" aria-pressed="false">Pause/Park</button><button class="chip" type="button" aria-pressed="false">Stop</button><button class="chip" type="button" aria-pressed="false">Another Direction</button><button class="chip" type="button" aria-pressed="false">Continue Looking</button></div><p class="activity-message choice-message" role="status" aria-live="polite"></p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 4</button><a class="button button-primary" href="#module-1" data-goto="2">Finish Module 0 → Module 1</a></div></article></div>
       </div>
-      <div class="screen-controls"><a class="button" href="#cover" data-goto="0">← Back</a><a class="button button-primary" href="#module-1" data-goto="2">Next →</a></div>
-    </section>
-
+    </div>
+  </section>
 
     <section class="screen module-screen" id="module-1" data-index="2" aria-labelledby="module-1-title">
-      <div class="module-layout">
-        <aside class="module-rail"><div><div class="module-number" aria-hidden="true">1</div><div class="rail-label">Find Something Worth Exploring</div></div><div class="margin-note">“Nothing clear yet” is a real result.</div></aside>
-        <div class="module-content">
-          <header class="module-heading"><div class="eyebrow">Six actual lessons</div><h2 tabindex="-1" id="module-1-title">Find Something Worth Exploring</h2></header>
-          <div class="lesson-stack">
-            <article class="lesson-entry" data-loop="notice"><span class="lesson-num">Lesson 1</span><h3>Notice without forcing an answer</h3><p>Start with a thread, an open question, observation, or a private response. Attention, curiosity, friction, repeated questions, and “I don’t know yet” can all be starting information without becoming commitments.</p></article>
-            <article class="lesson-entry" data-loop="notice"><span class="lesson-num">Lesson 2</span><h3>Obsessive and harmonious passion</h3><p>Learn these as patterns of relating to an activity, not types of people. Notice choice or compulsion, flexibility or rigidity, meaning or pressure, sustainability or depletion. Mixed and unclear are valid.</p></article>
-            <article class="lesson-entry" data-loop="try"><span class="lesson-num">Lesson 3</span><h3>Encounter possibilities</h3><p>Explore possibilities across employment, education, trades, creative work, community contribution, entrepreneurship, hobbies, or another direction you define. Interests can emerge through experience rather than advance certainty.</p></article>
-            <article class="lesson-entry" data-loop="try"><span class="lesson-num">Lesson 4</span><h3>Design a manageable balance experiment</h3><p>Build one small try that is supported, chosen, real, reversible, and paced. Name the question, smallest action, boundary, support, stop or pause rule, evidence to notice, and reflection point.</p></article>
-            <article class="lesson-entry" data-loop="reflect"><span class="lesson-num">Lesson 5</span><h3>Try and collect evidence</h3><p>Notice whether you could begin, stop, or change course; what held attention; what felt meaningful or pressured; what it cost; what conditions helped; what barriers appeared; and what surprised you.</p><p class="lesson-note">A difficult, incomplete, or stopped experiment can still produce useful evidence.</p></article>
-            <article class="lesson-entry" data-loop="decide"><span class="lesson-num">Lesson 6</span><h3>Reflect and decide</h3><p>Separate the experience from a verdict about yourself. Ask what the evidence actually supports, what remains mixed or unclear, and choose a reversible Next Decision.</p></article>
-          </div>
-          
-          <section class="module-decision" data-loop="decide">
-            <div class="step-label"><span class="ordinal">Next</span> Decide</div>
-            <p class="module-summary">Carry forward only what you choose.</p>
-            <label class="unknown-label" for="unknown-1">Name one unknown. <span class="muted">(optional)</span></label>
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
-            <textarea id="unknown-1" rows="2" placeholder="Optional — leave blank if you prefer"></textarea>
-            <div class="decision-chips" aria-label="Choose a next step">
-              <button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button>
-            </div>
-            <p class="message choice-message" role="status" aria-live="polite"></p>
-          </section>
-        </div>
+    <div class="module-layout">
+      <aside class="module-rail"><div><div class="module-number" aria-hidden="true">1</div><div class="rail-label">Find Something Worth Exploring</div></div><div class="margin-note">“Nothing clear yet” is a real result.</div></aside>
+      <div class="module-content">
+        <header class="module-heading"><div class="module-kicker"><strong>Module 2 of 5</strong><span>5 lessons</span></div><h2 tabindex="-1" id="module-1-title">Find Something Worth Exploring</h2></header>
+        <details class="research-lens"><summary>Why this is designed this way</summary><div class="research-copy"><p><strong>Informed by research</strong> on interest development, motivation, belonging, and passion. Interest can develop through experience; harmonious and obsessive patterns are used as flexible descriptions, not labels. The optional motivation rating comes from Kennon Sheldon and is used with permission.</p></div></details>
+        <nav class="lesson-tabs" aria-label="Find Something Worth Exploring lessons"><button class="lesson-tab" type="button" data-lesson-goto="0" aria-current="step">1</button><button class="lesson-tab" type="button" data-lesson-goto="1" >2</button><button class="lesson-tab" type="button" data-lesson-goto="2" >3</button><button class="lesson-tab" type="button" data-lesson-goto="3" >4</button><button class="lesson-tab" type="button" data-lesson-goto="4" >5</button></nav>
+        <div class="lesson-stage"><article class="lesson-card is-lesson-active" data-lesson-index="0" data-loop="notice">
+    <div class="lesson-meta"><strong>Lesson 1 of 5</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Notice without forcing an answer</h3><p class="lesson-purpose">Start with attention, curiosity, friction, or an honest “I don’t know yet.” None of it has to become a commitment.</p>
+     <div class="beat"><div class="beat-label">Learn</div><p>The readings treat interest as something that can develop through experience, confidence, and belonging. The first move is simply to notice.</p></div>
+     <div class="activity" data-single-select><p class="activity-title">Pick an entry route</p><div class="tile-grid">
+       <button class="tile-option" type="button" aria-pressed="false" data-feedback="A thread is enough. You do not need to know where it leads.">A thread already has my attention</button>
+       <button class="tile-option" type="button" aria-pressed="false" data-feedback="An open question is a real starting point.">I don’t know what interests me yet</button>
+       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Observation counts.">Observe the example</button>
+       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Private is a complete route.">Keep it private</button>
+     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
+     <div class="private-box"><label for="m1-private-1">Optional scratch: what keeps catching your attention, if anything?</label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="m1-private-1" rows="3" placeholder="Optional — leave blank if you prefer"></textarea></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Module 0</button><button class="button button-primary" type="button" data-lesson-next>Lesson 2 →</button></div></article><article class="lesson-card" data-lesson-index="1" data-loop="notice">
+    <div class="lesson-meta"><strong>Lesson 2 of 5</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Obsessive and harmonious patterns, not labels</h3><p class="lesson-purpose">Describe how an activity is operating without turning the pattern into a type of person.</p>
+     <div class="compare"><div class="compare-panel"><h5>More chosen / flexible</h5><p>Can pause, adjust, return, and fit the activity beside other responsibilities.</p></div><div class="compare-panel"><h5>More pressured / rigid</h5><p>Hard to stop or adjust, and pressure or self-worth starts controlling the activity.</p></div></div>
+     <div class="activity" data-single-select><p class="activity-title">What do you notice?</p><p>Someone loves making music. This week they can pause for dinner, change the plan when tired, and return tomorrow.</p><div class="tap-row">
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Yes. The example shows flexibility and the ability to pause.">Choice / flexibility</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="There is no evidence of compulsion in the example as written.">Compulsion</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Unclear is always allowed when evidence is thin.">Unclear</button>
+     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
+     <div class="mini-note">The passion research is used as a noticing lens, not a label or diagnosis.</div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 1</button><button class="button button-primary" type="button" data-lesson-next>Lesson 3 →</button></div></article><article class="lesson-card" data-lesson-index="2" data-loop="try">
+    <div class="lesson-meta"><strong>Lesson 3 of 5</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Choose an interest or try something new</h3><p class="lesson-purpose">Choose a thread, a bounded exposure, or a no-clue-yet route and gather one honest piece of evidence.</p>
+     <div class="activity" data-multi-select><p class="activity-title">Browse possibilities without picking a destiny</p><div class="tile-grid">
+       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Workplace exploration is one possible exposure category. No category ranks higher.">Workplace exploration</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Education / certification is one possible exposure category. No category ranks higher.">Education / certification</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Trades / hands-on skills is one possible exposure category. No category ranks higher.">Trades / hands-on skills</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Art / music / design is one possible exposure category. No category ranks higher.">Art / music / design</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Community contribution is one possible exposure category. No category ranks higher.">Community contribution</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Entrepreneurship / freelancing is one possible exposure category. No category ranks higher.">Entrepreneurship / freelancing</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Hobbies / routines is one possible exposure category. No category ranks higher.">Hobbies / routines</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Another direction is one possible exposure category. No category ranks higher.">Another direction</button>
+     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
+     <div class="beat"><div class="beat-label">Build a bounded try</div><p>Question → smallest real action → balance condition → boundary → support → stop/pause rule → evidence → reflection point.</p></div>
+     <div class="activity" data-single-select><p class="activity-title">Which boundary makes a ten-minute try genuinely bounded?</p><div class="tap-row">
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Yes. A time limit makes the try easier to stop and review.">Stop after 10 minutes</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="That turns a small experiment into a performance test.">Keep going until I’m good at it</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="That removes the stop rule.">No stopping point</button>
+     </div><p class="activity-message" role="status" aria-live="polite"></p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 2</button><button class="button button-primary" type="button" data-lesson-next>Lesson 4 →</button></div></article><article class="lesson-card" data-lesson-index="3" data-loop="reflect">
+    <div class="lesson-meta"><strong>Lesson 4 of 5</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Reflection, evidence, conditions, and cost</h3><p class="lesson-purpose">Separate what happened from what you or someone else inferred from it.</p>
+     <div class="activity" data-single-select><p class="activity-title">Sort one line</p><p><strong>“The checklist was completed in order.”</strong></p><div class="tap-row">
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Correct. That is an observation that can be checked.">Observation</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="“The person likes structured work” would be an interpretation.">Interpretation</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="The sentence itself does not describe cost.">Cost</button>
+     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
+     <div class="beat"><div class="beat-label">Evidence check</div><ul><li>What caught attention?</li><li>What actually happened?</li><li>What helped or blocked the try?</li><li>What did it cost?</li><li>Would you return?</li><li>What remains unknown?</li></ul></div>
+     <div class="mini-note">Boredom, friction, no access, no opportunity, and uncertainty are data. They are not character verdicts.</div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 3</button><button class="button button-primary" type="button" data-lesson-next>Lesson 5 →</button></div></article><article class="lesson-card" data-lesson-index="4" data-loop="decide">
+    <div class="lesson-meta"><strong>Lesson 5 of 5</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Review, next decision, and handoff</h3><p class="lesson-purpose">Compare expectation with evidence, keep uncertainty visible, and make a reversible next decision.</p>
+     <div class="activity"><p class="activity-title">Optional: rate the reasons, not the person</p><p>Adapted from Kennon Sheldon’s “Rating Your Motivations,” used with permission. This is optional and not a verdict.</p>
+       <div class="motivation-grid">
+         <div class="meter"><label>Interesting / enjoyable <output id="mi-o">4</output></label><input id="mi" data-mot="plus" type="range" min="1" max="7" value="4"></div>
+         <div class="meter"><label>Meaningful / important <output id="mm-o">4</output></label><input id="mm" data-mot="plus" type="range" min="1" max="7" value="4"></div>
+         <div class="meter"><label>Guilt / inner pressure <output id="mp-o">4</output></label><input id="mp" data-mot="minus" type="range" min="1" max="7" value="4"></div>
+         <div class="meter"><label>Approval / status / money <output id="me-o">4</output></label><input id="me" data-mot="minus" type="range" min="1" max="7" value="4"></div>
+       </div><p class="motivation-score">Demo score: <span id="mot-score">0</span>. Mixed motives are normal.</p></div>
+     <div class="beat"><div class="beat-label">Decide</div><p>Choose what fits what you actually saw. All seven choices count.</p><div class="decision-chips" aria-label="Choose a next decision"><button class="chip" type="button" aria-pressed="false">Keep</button><button class="chip" type="button" aria-pressed="false">Change</button><button class="chip" type="button" aria-pressed="false">Test Again</button><button class="chip" type="button" aria-pressed="false">Pause/Park</button><button class="chip" type="button" aria-pressed="false">Stop</button><button class="chip" type="button" aria-pressed="false">Another Direction</button><button class="chip" type="button" aria-pressed="false">Continue Looking</button></div><p class="activity-message choice-message" role="status" aria-live="polite"></p></div><div class="private-box"><label for="m1-private-5">Optional scratch: what evidence or unknown would you carry forward?</label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="m1-private-5" rows="3" placeholder="Optional — leave blank if you prefer"></textarea></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 4</button><a class="button button-primary" href="#module-1-5" data-goto="3">Finish Module 1 → Module 1.5</a></div></article></div>
       </div>
-      <div class="screen-controls"><a class="button" href="#module-0" data-goto="1">← Back</a><a class="button button-primary" href="#module-1-5" data-goto="3">Next →</a></div>
-    </section>
-
+    </div>
+  </section>
 
     <section class="screen module-screen" id="module-1-5" data-index="3" aria-labelledby="module-1-5-title">
-      <div class="module-layout">
-        <aside class="module-rail"><div><div class="module-number" aria-hidden="true">1.5</div><div class="rail-label">Test How I Operate</div></div><div class="margin-note">A change in conditions is information, not a score.</div></aside>
-        <div class="module-content">
-          <header class="module-heading"><div class="eyebrow">Three actual lessons</div><h2 tabindex="-1" id="module-1-5-title">Test How I Operate</h2></header>
-          <div class="lesson-stack">
-            <article class="lesson-entry" data-loop="notice"><span class="lesson-num">Lesson 1</span><h3>Describe the setup around a task</h3><p>Name one task, one operating condition, and one question or honest unknown. Separate the observation from the interpretation you might attach to it.</p></article>
-            <article class="lesson-entry" data-loop="try"><span class="lesson-num">Lesson 2</span><h3>Run one changed-condition test</h3><p>Keep the task reasonably similar, change one condition, and use a bounded comparison. Planning, attempting, observing, adapting, pausing, or not attempting can all produce information.</p><p class="lesson-note">One attempt can raise a useful question. It cannot prove a permanent preference or cause.</p></article>
-            <article class="lesson-entry" data-loop="reflect"><span class="lesson-num">Lesson 3</span><h3>Review what helped and what it cost</h3><p>Look at the result, effort, fatigue or discomfort, support, after-cost, and uncertainty. Separate result, cost, explanation, and what you still do not know.</p></article>
-          </div>
-          
-          <section class="module-decision" data-loop="decide">
-            <div class="step-label"><span class="ordinal">Next</span> Decide</div>
-            <p class="module-summary">Carry forward only what you choose.</p>
-            <label class="unknown-label" for="unknown-15">Name one unknown. <span class="muted">(optional)</span></label>
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
-            <textarea id="unknown-15" rows="2" placeholder="Optional — leave blank if you prefer"></textarea>
-            <div class="decision-chips" aria-label="Choose a next step">
-              <button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button>
-            </div>
-            <p class="message choice-message" role="status" aria-live="polite"></p>
-          </section>
-        </div>
+    <div class="module-layout">
+      <aside class="module-rail"><div><div class="module-number" aria-hidden="true">1.5</div><div class="rail-label">Test How I Operate</div></div><div class="margin-note">Conditions are information, not a score.</div></aside>
+      <div class="module-content">
+        <header class="module-heading"><div class="module-kicker"><strong>Module 3 of 5</strong><span>3 lessons</span></div><h2 tabindex="-1" id="module-1-5-title">Test How I Operate</h2></header>
+        <details class="research-lens"><summary>Why this is designed this way</summary><div class="research-copy"><p><strong>Informed by research</strong> on learning from small comparisons and by the program’s research brief. One changed condition can raise a useful question, but one attempt cannot prove a permanent preference or a causal explanation.</p></div></details>
+        <nav class="lesson-tabs" aria-label="Test How I Operate lessons"><button class="lesson-tab" type="button" data-lesson-goto="0" aria-current="step">1</button><button class="lesson-tab" type="button" data-lesson-goto="1" >2</button><button class="lesson-tab" type="button" data-lesson-goto="2" >3</button></nav>
+        <div class="lesson-stage"><article class="lesson-card is-lesson-active" data-lesson-index="0" data-loop="notice">
+    <div class="lesson-meta"><strong>Lesson 1 of 3</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Understand the setup around a task</h3><p class="lesson-purpose">Describe one condition around a task without turning it into a personality score.</p>
+     <div class="beat"><div class="beat-label">Learn</div><p>An operating condition can include instruction format, noise, company, choice, time, uncertainty, access, or support. The same task can feel different when one condition changes.</p></div>
+     <div class="activity" data-single-select><p class="activity-title">Same task, different setup</p><p>Task: alphabetize <strong>cup, book, apple</strong>.</p><div class="tap-row">
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Paragraph format selected. The task itself has not changed.">Paragraph instructions</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Checklist format selected. The task itself has not changed.">Checklist instructions</button>
+     </div><div class="compare"><div class="compare-panel"><h5>Paragraph</h5><p>Read the three words, alphabetize them, then check all three are included.</p></div><div class="compare-panel"><h5>Checklist</h5><p>1. Read. 2. Alphabetize. 3. Check all three.</p></div></div><p class="activity-message" role="status" aria-live="polite"></p></div>
+     <div class="mini-note">One attempt can raise a useful question. It cannot prove a permanent preference.</div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Module 1</button><button class="button button-primary" type="button" data-lesson-next>Lesson 2 →</button></div></article><article class="lesson-card" data-lesson-index="1" data-loop="try">
+    <div class="lesson-meta"><strong>Lesson 2 of 3</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Run one changed-condition test</h3><p class="lesson-purpose">Change one part of the setup, keep the task reasonably similar, and notice what actually changes.</p>
+     <div class="activity" data-single-select><p class="activity-title">Pick one condition to change</p><div class="tile-grid">
+       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Instruction format can be tested as one condition while keeping the rest as similar as practical.">Instruction format</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Noise level can be tested as one condition while keeping the rest as similar as practical.">Noise level</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Alone / alongside someone can be tested as one condition while keeping the rest as similar as practical.">Alone / alongside someone</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Pace can be tested as one condition while keeping the rest as similar as practical.">Pace</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Breaks can be tested as one condition while keeping the rest as similar as practical.">Breaks</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Available time can be tested as one condition while keeping the rest as similar as practical.">Available time</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Support can be tested as one condition while keeping the rest as similar as practical.">Support</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Tools can be tested as one condition while keeping the rest as similar as practical.">Tools</button>
+     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
+     <div class="beat"><div class="beat-label">Plan before the try</div><ul><li>What stays the same?</li><li>What one condition changes?</li><li>What time limit and stop rule apply?</li><li>What else could explain the result?</li></ul></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 1</button><button class="button button-primary" type="button" data-lesson-next>Lesson 3 →</button></div></article><article class="lesson-card" data-lesson-index="2" data-loop="decide">
+    <div class="lesson-meta"><strong>Lesson 3 of 3</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Review the cost and hand off evidence</h3><p class="lesson-purpose">Separate result, cost, explanation, and uncertainty, then carry forward only what you choose.</p>
+     <div class="activity" data-single-select><p class="activity-title">Which claim is stronger than the evidence?</p><div class="tap-row">
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="That is a direct observation.">I completed the order.</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Right. This needs a comparison and may still be uncertain.">The checklist definitely makes me work better.</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Unknown is appropriate when you do not have evidence.">I don’t know what caused the difference.</button>
+     </div><p class="activity-message" role="status" aria-live="polite"></p></div><div class="beat"><div class="beat-label">Decide</div><p>Choose what fits what you actually saw. All seven choices count.</p><div class="decision-chips" aria-label="Choose a next decision"><button class="chip" type="button" aria-pressed="false">Keep</button><button class="chip" type="button" aria-pressed="false">Change</button><button class="chip" type="button" aria-pressed="false">Test Again</button><button class="chip" type="button" aria-pressed="false">Pause/Park</button><button class="chip" type="button" aria-pressed="false">Stop</button><button class="chip" type="button" aria-pressed="false">Another Direction</button><button class="chip" type="button" aria-pressed="false">Continue Looking</button></div><p class="activity-message choice-message" role="status" aria-live="polite"></p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 2</button><a class="button button-primary" href="#module-2" data-goto="4">Finish Module 1.5 → Module 2</a></div></article></div>
       </div>
-      <div class="screen-controls"><a class="button" href="#module-1" data-goto="2">← Back</a><a class="button button-primary" href="#module-2" data-goto="4">Next →</a></div>
-    </section>
-
+    </div>
+  </section>
 
     <section class="screen module-screen" id="module-2" data-index="4" aria-labelledby="module-2-title">
-      <div class="module-layout">
-        <aside class="module-rail"><div><div class="module-number" aria-hidden="true">2</div><div class="rail-label">Check the Story</div></div><div class="margin-note">No confession required.</div></aside>
-        <div class="module-content">
-          <header class="module-heading"><div class="eyebrow">Three actual lessons</div><h2 tabindex="-1" id="module-2-title">Check the Story</h2></header>
-          <div class="lesson-stack">
-            <article class="lesson-entry" data-loop="notice"><span class="lesson-num">Lesson 1</span><h3>Separate what happened from what it means</h3><p>Distinguish the event, the story attached to it, the verdict about the person, and what is still uncertain. Responsibility and context can stay visible without turning one event into a permanent judgment.</p></article>
-            <article class="lesson-entry" data-loop="try"><span class="lesson-num">Lesson 2</span><h3>Turn a chosen standard into observable practice</h3><p>Choose a value or standard that actually belongs to you, then turn it into one small action that can be observed. Support, accommodation, and collaboration still count as real evidence.</p></article>
-            <article class="lesson-entry" data-loop="reflect"><span class="lesson-num">Lesson 3</span><h3>Review evidence and revise</h3><p>Review what actually happened, what support mattered, what was difficult or costly, what remains unknown, and revise the wording when the evidence changes. Accuracy matters more than positivity.</p></article>
-          </div>
-          
-          <section class="module-decision" data-loop="decide">
-            <div class="step-label"><span class="ordinal">Next</span> Decide</div>
-            <p class="module-summary">Carry forward only what you choose.</p>
-            <label class="unknown-label" for="unknown-2">Name one unknown. <span class="muted">(optional)</span></label>
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
-            <textarea id="unknown-2" rows="2" placeholder="Optional — leave blank if you prefer"></textarea>
-            <div class="decision-chips" aria-label="Choose a next step">
-              <button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button>
-            </div>
-            <p class="message choice-message" role="status" aria-live="polite"></p>
-          </section>
-        </div>
+    <div class="module-layout">
+      <aside class="module-rail"><div><div class="module-number" aria-hidden="true">2</div><div class="rail-label">Check the Story</div></div><div class="margin-note">Accuracy over forced positivity.</div></aside>
+      <div class="module-content">
+        <header class="module-heading"><div class="module-kicker"><strong>Module 4 of 5</strong><span>3 lessons</span></div><h2 tabindex="-1" id="module-2-title">Check the Story</h2></header>
+        <details class="research-lens"><summary>Why this is designed this way</summary><div class="research-copy"><p><strong>Informed by research</strong> on separating observations from interpretations and translating chosen standards into observable practice. The goal is revisable accuracy, not a positive spin.</p></div></details>
+        <nav class="lesson-tabs" aria-label="Check the Story lessons"><button class="lesson-tab" type="button" data-lesson-goto="0" aria-current="step">1</button><button class="lesson-tab" type="button" data-lesson-goto="1" >2</button><button class="lesson-tab" type="button" data-lesson-goto="2" >3</button></nav>
+        <div class="lesson-stage"><article class="lesson-card is-lesson-active" data-lesson-index="0" data-loop="notice">
+    <div class="lesson-meta"><strong>Lesson 1 of 3</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Separate event, story, and verdict</h3><p class="lesson-purpose">Keep what happened separate from the explanation and from a broad judgment about a person.</p>
+     <div class="activity" data-single-select><p class="activity-title">Sort the sentence</p><p><strong>“They stopped the activity after 20 minutes.”</strong></p><div class="tap-row">
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Correct. It describes an observable event.">Event</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="A story would explain why they stopped.">Story</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="A verdict would turn the event into a broad judgment about who they are.">Verdict</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Uncertainty is what remains unknown, such as why the person stopped.">Uncertainty</button>
+     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
+     <div class="compare"><div class="compare-panel"><h5>Story</h5><p>“They can’t handle difficult things.”</p></div><div class="compare-panel"><h5>Verdict</h5><p>“They never follow through.”</p></div></div>
+     <div class="mini-note">The goal is accuracy, not forced positivity.</div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Module 1.5</button><button class="button button-primary" type="button" data-lesson-next>Lesson 2 →</button></div></article><article class="lesson-card" data-lesson-index="1" data-loop="try">
+    <div class="lesson-meta"><strong>Lesson 2 of 3</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Choose one standard and observable practice</h3><p class="lesson-purpose">Turn a value you choose into one small action you can actually observe.</p>
+     <div class="activity" data-single-select><p class="activity-title">Value → standard → practice</p><p><strong>Value:</strong> respect. Which practice is observable?</p><div class="tap-row">
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Yes. Asking before giving advice is concrete and observable.">Ask before giving advice</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="That is broad, not a specific practice.">Be a respectful person</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="That is a verdict, not a practice.">Prove I’m good</button>
+     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
+     <div class="beat"><div class="beat-label">Capability evidence can look ordinary</div><p>Showing up, asking for help, using support, honoring a boundary, revising a plan, repairing something, or choosing not to continue can all count as evidence.</p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 1</button><button class="button button-primary" type="button" data-lesson-next>Lesson 3 →</button></div></article><article class="lesson-card" data-lesson-index="2" data-loop="decide">
+    <div class="lesson-meta"><strong>Lesson 3 of 3</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Return, revise, and hand off the pressure cue</h3><p class="lesson-purpose">Revise wording when evidence changes. Keep responsibility, context, and uncertainty visible.</p>
+     <div class="activity" data-single-select><p class="activity-title">Which revision is more accurate?</p><p>Original: “The lesson teaches only four terms.”</p><div class="tap-row">
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Correct. It accounts for the four main distinctions and the optional deepeners.">The lesson starts with four main distinctions and offers optional ways to check them.</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="That keeps the inaccurate word “only.”">The lesson definitely teaches only four things.</button>
+     </div><p class="activity-message" role="status" aria-live="polite"></p></div><div class="beat"><div class="beat-label">Decide</div><p>Choose what fits what you actually saw. All seven choices count.</p><div class="decision-chips" aria-label="Choose a next decision"><button class="chip" type="button" aria-pressed="false">Keep</button><button class="chip" type="button" aria-pressed="false">Change</button><button class="chip" type="button" aria-pressed="false">Test Again</button><button class="chip" type="button" aria-pressed="false">Pause/Park</button><button class="chip" type="button" aria-pressed="false">Stop</button><button class="chip" type="button" aria-pressed="false">Another Direction</button><button class="chip" type="button" aria-pressed="false">Continue Looking</button></div><p class="activity-message choice-message" role="status" aria-live="polite"></p></div><div class="private-box"><label for="m2-private-3">Optional scratch: what wording is more accurate now?</label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="m2-private-3" rows="3" placeholder="Optional — leave blank if you prefer"></textarea></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 2</button><a class="button button-primary" href="#module-3" data-goto="5">Finish Module 2 → Module 3</a></div></article></div>
       </div>
-      <div class="screen-controls"><a class="button" href="#module-1-5" data-goto="3">← Back</a><a class="button button-primary" href="#module-3" data-goto="5">Next →</a></div>
-    </section>
-
+    </div>
+  </section>
 
     <section class="screen module-screen" id="module-3" data-index="5" aria-labelledby="module-3-title">
-      <div class="module-layout">
-        <aside class="module-rail"><div><div class="module-number" aria-hidden="true">3</div><div class="rail-label">Navigate Intensity</div></div><div class="margin-note">Pilot 1 ends here.</div></aside>
-        <div class="module-content">
-          <header class="module-heading"><div class="eyebrow">Three actual lessons</div><h2 tabindex="-1" id="module-3-title">Navigate Intensity</h2></header>
-          <div class="lesson-stack">
-            <article class="lesson-entry" data-loop="notice"><span class="lesson-num">Lesson 1</span><h3>Notice signal, story, urge, action, and cost</h3><p>Map what is actually happening without assuming a cause. A signal, story, urge, action, or cost can be present, absent, or unknown. Identify either a condition worth protecting or a point where another choice may be available.</p></article>
-            <article class="lesson-entry" data-loop="try"><span class="lesson-num">Lesson 2</span><h3>Protect what works or try one small response</h3><p>If the activity is working, identify the conditions, supports, or boundaries that keep it chosen and workable. If pressure, cost, or loss of choice appears, plan or try one small response.</p><p class="lesson-note">Continuation and navigation are equal routes. A setback is not required.</p></article>
-            <article class="lesson-entry" data-loop="reflect"><span class="lesson-num">Lesson 3</span><h3>Check intuition, demands, and the next move</h3><p>Treat intuition as a question, not evidence by itself. Compare the impression with available evidence, operating demands, and what would change your mind. Keep one protected boundary and choose the next move.</p></article>
-          </div>
-          
-          <section class="module-decision" data-loop="decide">
-            <div class="step-label"><span class="ordinal">Next</span> Decide</div>
-            <p class="module-summary">Carry forward only what you choose.</p>
-            <label class="unknown-label" for="unknown-3">Name one unknown. <span class="muted">(optional)</span></label>
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
-            <textarea id="unknown-3" rows="2" placeholder="Optional — leave blank if you prefer"></textarea>
-            <div class="decision-chips" aria-label="Choose a next step">
-              <button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button>
-            </div>
-            <p class="message choice-message" role="status" aria-live="polite"></p>
-          </section>
-        </div>
+    <div class="module-layout">
+      <aside class="module-rail"><div><div class="module-number" aria-hidden="true">3</div><div class="rail-label">Navigate Intensity</div></div><div class="margin-note">Pilot 1 ends here.</div></aside>
+      <div class="module-content">
+        <header class="module-heading"><div class="module-kicker"><strong>Module 5 of 5</strong><span>3 lessons</span></div><h2 tabindex="-1" id="module-3-title">Navigate Intensity</h2></header>
+        <details class="research-lens"><summary>Why this is designed this way</summary><div class="research-copy"><p><strong>Informed by research</strong> on autonomy, passion balance, and keeping choice available under intensity. Protecting what already works and navigating a pressured moment are equal routes.</p></div></details>
+        <nav class="lesson-tabs" aria-label="Navigate Intensity lessons"><button class="lesson-tab" type="button" data-lesson-goto="0" aria-current="step">1</button><button class="lesson-tab" type="button" data-lesson-goto="1" >2</button><button class="lesson-tab" type="button" data-lesson-goto="2" >3</button></nav>
+        <div class="lesson-stage"><article class="lesson-card is-lesson-active" data-lesson-index="0" data-loop="notice">
+    <div class="lesson-meta"><strong>Lesson 1 of 3</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Notice signal, story, urge, action, and cost</h3><p class="lesson-purpose">Separate five parts of an ordinary moment so a choice or pause has somewhere to appear.</p>
+     <div class="sequence-map" aria-label="Signal to cost sequence"><button class="sequence-node" type="button" data-sequence="0">Signal</button><button class="sequence-node" type="button" data-sequence="1">Story</button><button class="sequence-node" type="button" data-sequence="2">Urge</button><button class="sequence-node" type="button" data-sequence="3">Action</button><button class="sequence-node" type="button" data-sequence="4">Cost</button></div>
+     <div class="activity"><p class="activity-title">Use the task already in front of you: reading this page</p><p>Tap the map from left to right. A signal does not establish its cause, and any part can be absent or unknown.</p><p class="activity-message" id="sequence-message" role="status" aria-live="polite"></p></div>
+     <div class="mini-note">The goal is choice, not calmness.</div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Module 2</button><button class="button button-primary" type="button" data-lesson-next>Lesson 2 →</button></div></article><article class="lesson-card" data-lesson-index="1" data-loop="try">
+    <div class="lesson-meta"><strong>Lesson 2 of 3</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Protect what works or try one small response</h3><p class="lesson-purpose">Continuation and navigation are equal routes. You do not need a setback to complete this lesson.</p>
+     <div class="activity"><p class="activity-title">Choose a route</p><div class="tap-row">
+       <button class="route-option" type="button" aria-pressed="false" data-route="continue">Protect what works</button>
+       <button class="route-option" type="button" aria-pressed="false" data-route="navigate">Try one small response</button>
+     </div><div class="route-panel" data-route-panel="continue" hidden><strong>Continuation:</strong> What condition is supporting choice and flexibility? What boundary do you want to protect? Continue, deepen, or repeat are all valid.</div><div class="route-panel" data-route-panel="navigate" hidden><strong>Navigation:</strong> Clarify an instruction, reduce scope, add a stopping point, ask for support, change the environment, or stop safely. Useful does not have to mean calm.</div><p class="activity-message" role="status" aria-live="polite"></p></div>
+     <div class="beat"><div class="beat-label">Reflect</div><p>Was the next choice easier, harder, unchanged, or unclear? What effort or after-effect appeared? What else might explain the result?</p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 1</button><button class="button button-primary" type="button" data-lesson-next>Lesson 3 →</button></div></article><article class="lesson-card" data-lesson-index="2" data-loop="decide">
+    <div class="lesson-meta"><strong>Lesson 3 of 3</strong><span>·</span><span>Try it here</span></div>
+    <h3 tabindex="-1">Check intuition and close Pilot 1</h3><p class="lesson-purpose">Turn an impression into a checkable question, then close Pilot 1 with a boundary and a reversible decision.</p>
+     <div class="activity" data-single-select><p class="activity-title">Impression or evidence?</p><p><strong>“A shorter instruction must be easier.”</strong></p><div class="tap-row">
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Correct. That is an impression to test, not evidence by itself.">Impression / intuition</button>
+       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Not yet. You would need an actual comparison to call it evidence.">Evidence</button>
+     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
+     <div class="beat"><div class="beat-label">Close the pilot</div><p>What evidence is worth keeping? What condition or boundary is worth protecting? What support mattered? What is your next decision? What question, if any, remains open?</p></div><div class="beat"><div class="beat-label">Decide</div><p>Choose what fits what you actually saw. All seven choices count.</p><div class="decision-chips" aria-label="Choose a next decision"><button class="chip" type="button" aria-pressed="false">Keep</button><button class="chip" type="button" aria-pressed="false">Change</button><button class="chip" type="button" aria-pressed="false">Test Again</button><button class="chip" type="button" aria-pressed="false">Pause/Park</button><button class="chip" type="button" aria-pressed="false">Stop</button><button class="chip" type="button" aria-pressed="false">Another Direction</button><button class="chip" type="button" aria-pressed="false">Continue Looking</button></div><p class="activity-message choice-message" role="status" aria-live="polite"></p></div><div class="private-box"><label for="m3-private-3">Optional scratch: one boundary or unknown you want to keep</label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="m3-private-3" rows="3" placeholder="Optional — leave blank if you prefer"></textarea></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 2</button><a class="button button-primary" href="#whats-next" data-goto="6">Finish Module 3 → What's next</a></div></article></div>
       </div>
-      <div class="screen-controls"><a class="button" href="#module-2" data-goto="4">← Back</a><a class="button button-primary" href="#whats-next" data-goto="6">What's next →</a></div>
-    </section>
+    </div>
+  </section>
 
-<section class="screen next-screen" id="whats-next" data-index="6" aria-labelledby="next-title">
+    <section class="screen next-screen" id="whats-next" data-index="6" aria-labelledby="next-title">
       <div class="next-content">
       <div class="eyebrow">A later phase of the fuller program · about six months</div>
       <h2 tabindex="-1" id="next-title" style="margin-top:14px">What's next</h2>
@@ -506,119 +647,127 @@
   </aside>
   <div class="announcement" id="toast" aria-live="polite" aria-atomic="true"></div>
 
+  
   <script>
     (() => {
-      const screens = [...document.querySelectorAll('.screen')];
-      const stepLinks = [...document.querySelectorAll('.stepper [data-goto]')];
-      const announce = document.getElementById('step-announcement');
-      const toast = document.getElementById('toast');
-      const stepTitles = ['Walk through Pilot 1', 'Module 0 · Enter with Agency', 'Module 1 · Find Something Worth Exploring', 'Module 1.5 · Test How I Operate', 'Module 2 · Check the Story', 'Module 3 · Navigate Intensity', "What's next"];
-      let current = 0;
-      let toastTimer;
       document.documentElement.classList.add('js');
+      const screens=[...document.querySelectorAll('.screen')];
+      const stepLinks=[...document.querySelectorAll('.stepper [data-goto]')];
+      const announce=document.getElementById('step-announcement');
+      const toast=document.getElementById('toast');
+      const titles=['Walk through Pilot 1','Module 0 · Enter with Agency','Module 1 · Find Something Worth Exploring','Module 1.5 · Test How I Operate','Module 2 · Check the Story','Module 3 · Navigate Intensity',"What's next"];
+      let current=0,toastTimer;
 
-      function updateLoop(key) {
-        document.querySelectorAll('[data-loop-dot]').forEach(dot => dot.classList.toggle('is-active', dot.dataset.loopDot === key));
-        document.querySelectorAll('[data-loop-word]').forEach(word => word.classList.toggle('is-active', word.dataset.loopWord === key));
-        document.querySelectorAll('.work-step, .lesson-entry, .module-decision').forEach(block => block.classList.toggle('is-current', block.dataset.loop === key && block.closest('.screen')?.classList.contains('is-active')));
+      function updateLoop(key){
+        document.querySelectorAll('[data-loop-dot]').forEach(d=>d.classList.toggle('is-active',d.dataset.loopDot===key));
+        document.querySelectorAll('[data-loop-word]').forEach(w=>w.classList.toggle('is-active',w.dataset.loopWord===key));
       }
-      function pressStamps(index) {
-        const reached = {
-          1: { operating: 'Added at Module 0' },
-          2: { discovery: 'Started at Module 1', decision: 'Started at Module 1' },
-          3: { operating: 'Note added at Module 1.5' },
-          4: { discovery: 'Note added at Module 2' },
-          5: { operating: 'Updated at Module 3', decision: 'Updated at Module 3' }
-        }[index] || {};
-        for (const [key, note] of Object.entries(reached)) {
-          const stamp = document.querySelector(`[data-stamp="${key}"]`);
+      function pressStamps(index){
+        const map={1:{operating:'Added at Module 0'},2:{discovery:'Started at Module 1',decision:'Started at Module 1'},3:{operating:'Note added at Module 1.5'},4:{discovery:'Note added at Module 2'},5:{operating:'Updated at Module 3',decision:'Updated at Module 3'}}[index]||{};
+        for(const [k,note] of Object.entries(map)){
+          const stamp=document.querySelector('[data-stamp="'+k+'"]');
+          if(!stamp) continue;
           stamp.classList.add('is-pressed');
-          stamp.querySelector(`[data-stamp-note="${key}"]`).textContent = note;
+          const noteEl=stamp.querySelector('[data-stamp-note="'+k+'"]');
+          if(noteEl) noteEl.textContent=note;
         }
-        const pressed = document.querySelectorAll('.tray-stamp.is-pressed').length;
-        document.getElementById('stamp-count').textContent = `${pressed} / 3 stamps`;
+        const count=document.querySelectorAll('.tray-stamp.is-pressed').length;
+        const countEl=document.getElementById('stamp-count'); if(countEl) countEl.textContent=count+' / 3 stamps';
       }
-      function goTo(index, options = {}) {
-        const next = Math.max(0, Math.min(screens.length - 1, Number(index)));
-        current = next;
-        screens.forEach((screen, i) => {
-          const active = i === current;
-          screen.classList.toggle('is-active', active);
-          if (active) { screen.removeAttribute('aria-hidden'); screen.scrollTop = 0; } else screen.setAttribute('aria-hidden', 'true');
-        });
-        stepLinks.forEach(link => {
-          const active = Number(link.dataset.goto) === current;
-          if (active) link.setAttribute('aria-current', 'step'); else link.removeAttribute('aria-current');
-        });
-        announce.textContent = `Step ${current + 1} of 7: ${stepTitles[current]}`;
+      function showLesson(screen,index,focus=false){
+        if(!screen?.classList.contains('module-screen')) return;
+        const lessons=[...screen.querySelectorAll('.lesson-card')];
+        if(!lessons.length) return;
+        const i=Math.max(0,Math.min(lessons.length-1,Number(index)));
+        screen.dataset.lessonCurrent=String(i);
+        lessons.forEach((l,n)=>l.classList.toggle('is-lesson-active',n===i));
+        screen.querySelectorAll('.lesson-tab').forEach((t,n)=>{if(n===i)t.setAttribute('aria-current','step');else t.removeAttribute('aria-current');});
+        updateLoop(lessons[i].dataset.loop||'');
+        if(focus) lessons[i].querySelector('h3')?.focus();
+        const scroller=screen.querySelector('.module-layout');
+        if(scroller) scroller.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+      }
+      function goTo(index,focus=false){
+        current=Math.max(0,Math.min(screens.length-1,Number(index)));
+        screens.forEach((s,i)=>{const active=i===current;s.classList.toggle('is-active',active);if(active)s.removeAttribute('aria-hidden');else s.setAttribute('aria-hidden','true');});
+        stepLinks.forEach(l=>{if(Number(l.dataset.goto)===current)l.setAttribute('aria-current','step');else l.removeAttribute('aria-current');});
+        if(announce) announce.textContent='Step '+(current+1)+' of 7: '+titles[current];
         pressStamps(current);
-        updateLoop(current === 0 || current === 6 ? '' : 'notice');
-        if (options.focus) screens[current].querySelector('h1, h2')?.focus?.();
-        if (options.scroll !== false) window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+        const labels=['Start','Module 1 of 5','Module 2 of 5','Module 3 of 5','Module 4 of 5','Module 5 of 5','Pilot 1 complete'];
+        const widths=[0,20,40,60,80,100,100];
+        const pl=document.getElementById('module-progress-label'); if(pl) pl.textContent=labels[current];
+        const pf=document.getElementById('module-progress-fill'); if(pf) pf.style.width=widths[current]+'%';
+        if(screens[current].classList.contains('module-screen')) showLesson(screens[current],0,false); else updateLoop('');
+        if(focus) screens[current].querySelector('h1,h2')?.focus();
+        window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
       }
-      document.querySelectorAll('[data-goto]').forEach(control => {
-        control.addEventListener('click', event => {
-          event.preventDefault();
-          goTo(control.dataset.goto, { focus: true });
-        });
-      });
-      document.querySelectorAll('[data-message]').forEach(button => {
-        button.addEventListener('click', () => {
-          const output = button.closest('.work-step, .check-in')?.querySelector('.message');
-          if (output) output.textContent = button.dataset.message;
-        });
-      });
-      document.querySelectorAll('.choice-message').forEach(output => {
-        const chips = output.parentElement.querySelectorAll('.chip');
-        chips.forEach(chip => chip.addEventListener('click', () => { output.textContent = "That's a valid choice. Every exit counts."; }));
-      });
-      function showToast(text) {
-        toast.textContent = text;
-        toast.classList.add('is-visible');
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2200);
+      function showToast(text){
+        if(!toast)return;toast.textContent=text;toast.classList.add('is-visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('is-visible'),1800);
       }
-      window.addEventListener('keydown', event => {
-        if (event.altKey || event.ctrlKey || event.metaKey) return;
-        if (event.target.matches('textarea, input, select, [contenteditable="true"]')) return;
-        if (event.key === 'ArrowRight') { event.preventDefault(); goTo(current + 1, { focus: true }); }
-        if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(current - 1, { focus: true }); }
+
+      document.addEventListener('click',e=>{
+        const goto=e.target.closest('[data-goto]');
+        if(goto){e.preventDefault();goTo(goto.dataset.goto,true);return;}
+        const tab=e.target.closest('[data-lesson-goto]');
+        if(tab){showLesson(tab.closest('.module-screen'),tab.dataset.lessonGoto,true);return;}
+        const next=e.target.closest('[data-lesson-next]');
+        if(next){const s=next.closest('.module-screen');showLesson(s,Number(s.dataset.lessonCurrent||0)+1,true);return;}
+        const prev=e.target.closest('[data-lesson-prev]');
+        if(prev){const s=prev.closest('.module-screen');const i=Number(s.dataset.lessonCurrent||0);if(i>0)showLesson(s,i-1,true);else goTo(Math.max(0,Number(s.dataset.index)-1),true);return;}
+        const opt=e.target.closest('.tap-option,.tile-option');
+        if(opt){
+          const group=opt.closest('[data-single-select],[data-multi-select]')||opt.closest('.activity');
+          const multi=!!opt.closest('[data-multi-select]');
+          if(!multi&&group)group.querySelectorAll('.tap-option,.tile-option').forEach(b=>b.setAttribute('aria-pressed','false'));
+          opt.setAttribute('aria-pressed',multi&&opt.getAttribute('aria-pressed')==='true'?'false':'true');
+          const out=opt.closest('.activity')?.querySelector('.activity-message');if(out&&opt.dataset.feedback)out.textContent=opt.dataset.feedback;
+          if(opt.dataset.feedback)showToast(opt.dataset.feedback);
+          return;
+        }
+        const route=e.target.closest('[data-route]');
+        if(route){
+          const a=route.closest('.activity');a.querySelectorAll('[data-route]').forEach(b=>b.setAttribute('aria-pressed','false'));route.setAttribute('aria-pressed','true');
+          a.querySelectorAll('[data-route-panel]').forEach(p=>p.hidden=p.dataset.routePanel!==route.dataset.route);
+          const msg=route.dataset.route==='continue'?'Protecting what works is a complete route.':'A small response is one option, not an obligation.';
+          const out=a.querySelector('.activity-message');if(out)out.textContent=msg;showToast(msg);return;
+        }
+        const seq=e.target.closest('[data-sequence]');
+        if(seq){
+          const nodes=[...seq.parentElement.querySelectorAll('[data-sequence]')],i=Number(seq.dataset.sequence);
+          nodes.forEach((n,j)=>n.classList.toggle('is-lit',j<=i));
+          const m=['Signal: notice a change without assigning a cause.','Story: notice the meaning you add, or leave it unknown.','Urge: notice a pull to do or avoid something, if present.','Action: notice what you actually do next.','Cost: notice time, effort, energy, or effect on a protected responsibility.'][i];
+          const out=document.getElementById('sequence-message');if(out)out.textContent=m;showToast(m);return;
+        }
+        const chip=e.target.closest('.decision-chips .chip');
+        if(chip){
+          const g=chip.closest('.decision-chips');g.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed','false'));chip.setAttribute('aria-pressed','true');
+          const out=g.parentElement.querySelector('.choice-message');if(out)out.textContent="That's a valid choice. Every exit counts.";showToast("That's a valid choice. Every exit counts.");return;
+        }
+        const msg=e.target.closest('[data-message]');
+        if(msg){const out=msg.closest('.work-step,.check-in')?.querySelector('.message');if(out)out.textContent=msg.dataset.message;showToast(msg.dataset.message);}
       });
-      let touchStart = null;
-      document.addEventListener('touchstart', event => {
-        if (event.touches.length !== 1 || event.target.closest('textarea, input, button, a, summary')) { touchStart = null; return; }
-        touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY };
-      }, { passive: true });
-      document.addEventListener('touchend', event => {
-        if (!touchStart || !event.changedTouches.length) return;
-        const dx = event.changedTouches[0].clientX - touchStart.x;
-        const dy = event.changedTouches[0].clientY - touchStart.y;
-        if (Math.abs(dx) > 65 && Math.abs(dx) > Math.abs(dy) * 1.35) goTo(current + (dx < 0 ? 1 : -1));
-        touchStart = null;
-      }, { passive: true });
-      function updateCurrentLoop() {
-        if (current === 0 || current === 6) { updateLoop(''); return; }
-        const visible = [...screens[current].querySelectorAll('[data-loop]')];
-        const targetY = Math.min(window.innerHeight * .48, 430);
-        const nearest = visible.reduce((best, node) => {
-          const rect = node.getBoundingClientRect();
-          if (rect.bottom < 135 || rect.top > window.innerHeight) return best;
-          const center = Math.max(rect.top, Math.min(targetY, rect.bottom));
-          const distance = Math.abs(center - targetY);
-          return !best || distance < best.distance ? { node, distance } : best;
-        }, null);
-        if (nearest) updateLoop(nearest.node.dataset.loop);
-      }
-      screens.forEach(screen => screen.querySelector(':scope > .module-layout, :scope > .cover-layout, :scope > .next-content')?.addEventListener('scroll', updateCurrentLoop, { passive: true }));
-      window.addEventListener('scroll', updateCurrentLoop, { passive: true });
-      window.addEventListener('resize', updateCurrentLoop, { passive: true });
-      document.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => showToast("That's a valid choice. Every exit counts.")));
-      document.querySelectorAll('[data-message]').forEach(button => button.addEventListener('click', () => showToast(button.dataset.message)));
-      goTo(0, { scroll: false });
-      updateCurrentLoop();
-      const initialHash = location.hash;
-      const initial = screens.findIndex(screen => `#${screen.id}` === initialHash);
-      if (initial > 0) goTo(initial, { scroll: false });
+
+      document.querySelectorAll('input[data-mot]').forEach(input=>input.addEventListener('input',()=>{
+        const o=document.getElementById(input.id+'-o');if(o)o.textContent=input.value;
+        const vals=[...document.querySelectorAll('input[data-mot]')];
+        const score=vals.reduce((s,x)=>s+(x.dataset.mot==='plus'?Number(x.value):-Number(x.value)),0);
+        const so=document.getElementById('mot-score');if(so)so.textContent=String(score);
+      }));
+
+      window.addEventListener('keydown',e=>{
+        if(e.altKey||e.ctrlKey||e.metaKey||e.target.matches('textarea,input,select,[contenteditable="true"]'))return;
+        if(e.key==='ArrowRight'){
+          e.preventDefault();const s=screens[current];
+          if(s.classList.contains('module-screen')){const ls=[...s.querySelectorAll('.lesson-card')],i=Number(s.dataset.lessonCurrent||0);if(i<ls.length-1)showLesson(s,i+1,true);else goTo(current+1,true);}else goTo(current+1,true);
+        }
+        if(e.key==='ArrowLeft'){
+          e.preventDefault();const s=screens[current];
+          if(s.classList.contains('module-screen')){const i=Number(s.dataset.lessonCurrent||0);if(i>0)showLesson(s,i-1,true);else goTo(current-1,true);}else if(current===6){goTo(5,true);const last=screens[5],ls=[...last.querySelectorAll('.lesson-card')];showLesson(last,ls.length-1,false);}else goTo(current-1,true);
+        }
+      });
+
+      goTo(0,false);
+      const initial=screens.findIndex(s=>'#'+s.id===location.hash);if(initial>0)goTo(initial,false);
     })();
   </script>
 </body>
