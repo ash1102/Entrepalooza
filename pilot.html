@@ -787,6 +787,17 @@
 
       .reading-beat{scroll-margin-top:92px}
     @media(max-width:780px){.reading-beat{scroll-margin-top:78px}}
+      .brand{text-decoration:none;color:var(--ink)}
+    .topline-actions{display:flex;align-items:center;gap:7px}
+    .home-link{font-size:14px;font-weight:700;text-decoration:none;color:var(--ink);padding:7px 9px;border-radius:4px}
+    .home-link:hover{background:rgba(255,255,255,.65)}
+    @media(max-width:560px){
+      .topline{gap:8px}
+      .brand{font-size:10px;letter-spacing:.05em}
+      .topline-actions{gap:2px}
+      .home-link,.interest-link{font-size:12px;padding:7px 6px}
+    }
+
   </style>
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -800,8 +811,11 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="topline">
-        <div class="brand">Entrepalooza · Pilot 1 · Pre-pilot</div>
-        <a class="interest-link" href="https://link.jotform.com/EhQXbmRwbk" target="_blank" rel="noopener" data-track-event="Express Interest">Express interest ↗</a>
+        <a class="brand" href="index.html" data-track-event="Back Home">Entrepalooza · Pilot 1 · Pre-pilot</a>
+        <div class="topline-actions">
+          <a class="home-link" href="index.html" data-track-event="Back Home">← Home</a>
+          <a class="interest-link" href="https://link.jotform.com/EhQXbmRwbk" target="_blank" rel="noopener" data-track-event="Express Interest">Express interest ↗</a>
+        </div>
       </div>
       <div class="header-bottom">
         <nav class="stepper" aria-label="Walkthrough steps">
