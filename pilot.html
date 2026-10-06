@@ -407,8 +407,9 @@
     .map-entry input,.map-entry textarea{width:100%;border:1px solid #8a968e;border-radius:4px;background:var(--paper-light);color:var(--ink);padding:10px 11px}
     .map-entry textarea{min-height:70px;resize:vertical}
     .map-entry .privacy-note{margin:6px 0 0!important}
-    .map-entry-tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
-    .map-symbol{min-width:36px;min-height:36px;border:1px solid #87978f;border-radius:999px;background:var(--paper-light);cursor:pointer;font-weight:850}
+    .map-entry-tools{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+    .map-feeling-label{flex-basis:100%;display:block;margin:0 0 2px;font-size:13px;font-weight:800}
+    .map-symbol{min-height:40px;padding:8px 11px;border:1px solid #87978f;border-radius:999px;background:var(--paper-light);cursor:pointer;font-weight:700}
     .map-symbol[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
     .map-add-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
     .map-add-row .button{min-height:42px}
@@ -924,188 +925,180 @@
     </div>
   </article><article class="lesson-card module-item lesson-inline" data-lesson-index="1" data-loop="notice">
     <div class="lesson-meta"><strong>Lesson 2 of 10</strong><span>·</span><span>Do it here</span></div>
-    <h3 tabindex="-1">Map the Life You're Actually Living</h3>
-    <p class="lesson-purpose">Notice what already occupies your time, attention, energy, movement, and relationships before deciding what might be worth exploring.</p>
+    <h3 tabindex="-1">Start with What You're Already Doing</h3>
+    <p class="lesson-purpose">Start with the life you already have: where your time goes, what you do, what you want more of, and what keeps pulling your attention.</p>
 
     <div class="life-map-workspace" id="life-map-workspace">
-      <p class="life-map-note"><strong>Private by design.</strong> Your map answers are not sent anywhere. Your answers stay in this tab unless you choose Save on this device or Download workbook. You can leave anything blank, skip a section, or clear the whole map.</p>
+      <p class="life-map-note"><strong>Private by design.</strong> Your answers are not sent anywhere. They stay in this tab unless you choose Save on this device or Download workbook. You can leave anything blank, skip a section, or clear the activity.</p>
 
       <section class="map-step" aria-labelledby="map-week-title">
-        <div class="map-step-head"><h4 id="map-week-title">1. Sketch your actual week</h4><span>Places + what happens there</span></div>
-        <p class="map-help">Start with HOME in the middle. Add only places you actually want to include. The map does not need to be geographically accurate.</p>
-        <div class="map-canvas" id="life-map-canvas" aria-label="Visual life map preview">
-          <div class="map-home">HOME</div>
-          <div class="map-node map-empty" data-map-node data-slot="0"><strong>Place 1</strong><small>Add a place below</small></div>
-          <div class="map-node map-empty" data-map-node data-slot="1"><strong>Place 2</strong><small>Add a place below</small></div>
-          <div class="map-node map-empty" data-map-node data-slot="2"><strong>Place 3</strong><small>Add a place below</small></div>
-          <div class="map-node map-empty" data-map-node data-slot="3"><strong>Place 4</strong><small>Add a place below</small></div>
-          <div class="map-node map-empty" data-map-node data-slot="4"><strong>Place 5</strong><small>Optional</small></div>
-          <div class="map-node map-empty" data-map-node data-slot="5"><strong>Place 6</strong><small>Optional</small></div>
-        </div>
+        <div class="map-step-head"><h4 id="map-week-title">1. Where do you spend your time?</h4><span>Places + what happens there</span></div>
+        <p class="map-help">Think about the places where you spend a lot of your time. Add only the ones you want to include.</p>
 
         <div class="map-input-grid" id="map-place-grid">
           <div class="map-entry" data-map-entry="0">
-            <label for="map-place-0">Place 1</label>
-            <input id="map-place-0" data-map-place="0" type="text" maxlength="60" placeholder="e.g. work, a friend's place, the gym">
+            <label for="map-place-0">Where do you spend a lot of your time?</label>
+            <input id="map-place-0" data-map-place="0" type="text" maxlength="60" placeholder="Work, home, a friend's house, the gym, school, a garage, somewhere else">
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
             <label for="map-do-0" style="margin-top:10px">What do you usually do there?</label>
             <input id="map-do-0" data-map-do="0" type="text" maxlength="90" placeholder="A few words is enough">
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
-            <div class="map-entry-tools" aria-label="Mark this place">
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="+" data-map-slot="0" title="Gives me energy">+</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="–" data-map-slot="0" title="Drains me">–</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="*" data-map-slot="0" title="I care about this">*</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="?" data-map-slot="0" title="I'm curious about this">?</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="!" data-map-slot="0" title="I get unusually focused here">!</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="X" data-map-slot="0" title="Something gets in the way">X</button>
+            <div class="map-entry-tools" aria-label="How do you usually feel when you're there?">
+              <span class="map-feeling-label">How do you usually feel when you're there?</span>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="I like being there" data-map-slot="0">I like being there</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="It's okay" data-map-slot="0">It's okay</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="I'd rather be somewhere else" data-map-slot="0">I'd rather be somewhere else</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="It depends" data-map-slot="0">It depends</button>
             </div>
           </div><div class="map-entry" data-map-entry="1">
-            <label for="map-place-1">Place 2</label>
-            <input id="map-place-1" data-map-place="1" type="text" maxlength="60" placeholder="e.g. work, a friend's place, the gym">
+            <label for="map-place-1">Where do you spend a lot of your time?</label>
+            <input id="map-place-1" data-map-place="1" type="text" maxlength="60" placeholder="Work, home, a friend's house, the gym, school, a garage, somewhere else">
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
             <label for="map-do-1" style="margin-top:10px">What do you usually do there?</label>
             <input id="map-do-1" data-map-do="1" type="text" maxlength="90" placeholder="A few words is enough">
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
-            <div class="map-entry-tools" aria-label="Mark this place">
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="+" data-map-slot="1" title="Gives me energy">+</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="–" data-map-slot="1" title="Drains me">–</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="*" data-map-slot="1" title="I care about this">*</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="?" data-map-slot="1" title="I'm curious about this">?</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="!" data-map-slot="1" title="I get unusually focused here">!</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="X" data-map-slot="1" title="Something gets in the way">X</button>
+            <div class="map-entry-tools" aria-label="How do you usually feel when you're there?">
+              <span class="map-feeling-label">How do you usually feel when you're there?</span>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="I like being there" data-map-slot="1">I like being there</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="It's okay" data-map-slot="1">It's okay</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="I'd rather be somewhere else" data-map-slot="1">I'd rather be somewhere else</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="It depends" data-map-slot="1">It depends</button>
             </div>
           </div><div class="map-entry" data-map-entry="2">
-            <label for="map-place-2">Place 3</label>
-            <input id="map-place-2" data-map-place="2" type="text" maxlength="60" placeholder="e.g. work, a friend's place, the gym">
+            <label for="map-place-2">Where do you spend a lot of your time?</label>
+            <input id="map-place-2" data-map-place="2" type="text" maxlength="60" placeholder="Work, home, a friend's house, the gym, school, a garage, somewhere else">
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
             <label for="map-do-2" style="margin-top:10px">What do you usually do there?</label>
             <input id="map-do-2" data-map-do="2" type="text" maxlength="90" placeholder="A few words is enough">
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
-            <div class="map-entry-tools" aria-label="Mark this place">
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="+" data-map-slot="2" title="Gives me energy">+</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="–" data-map-slot="2" title="Drains me">–</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="*" data-map-slot="2" title="I care about this">*</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="?" data-map-slot="2" title="I'm curious about this">?</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="!" data-map-slot="2" title="I get unusually focused here">!</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="X" data-map-slot="2" title="Something gets in the way">X</button>
+            <div class="map-entry-tools" aria-label="How do you usually feel when you're there?">
+              <span class="map-feeling-label">How do you usually feel when you're there?</span>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="I like being there" data-map-slot="2">I like being there</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="It's okay" data-map-slot="2">It's okay</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="I'd rather be somewhere else" data-map-slot="2">I'd rather be somewhere else</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="It depends" data-map-slot="2">It depends</button>
             </div>
           </div><div class="map-entry" data-map-entry="3">
-            <label for="map-place-3">Place 4</label>
-            <input id="map-place-3" data-map-place="3" type="text" maxlength="60" placeholder="e.g. work, a friend's place, the gym">
+            <label for="map-place-3">Where do you spend a lot of your time?</label>
+            <input id="map-place-3" data-map-place="3" type="text" maxlength="60" placeholder="Work, home, a friend's house, the gym, school, a garage, somewhere else">
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
             <label for="map-do-3" style="margin-top:10px">What do you usually do there?</label>
             <input id="map-do-3" data-map-do="3" type="text" maxlength="90" placeholder="A few words is enough">
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
-            <div class="map-entry-tools" aria-label="Mark this place">
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="+" data-map-slot="3" title="Gives me energy">+</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="–" data-map-slot="3" title="Drains me">–</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="*" data-map-slot="3" title="I care about this">*</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="?" data-map-slot="3" title="I'm curious about this">?</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="!" data-map-slot="3" title="I get unusually focused here">!</button>
-              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="X" data-map-slot="3" title="Something gets in the way">X</button>
+            <div class="map-entry-tools" aria-label="How do you usually feel when you're there?">
+              <span class="map-feeling-label">How do you usually feel when you're there?</span>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="I like being there" data-map-slot="3">I like being there</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="It's okay" data-map-slot="3">It's okay</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="I'd rather be somewhere else" data-map-slot="3">I'd rather be somewhere else</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="It depends" data-map-slot="3">It depends</button>
             </div>
           </div>
         </div>
         <div class="map-add-row">
           <button class="button" type="button" id="map-add-place">+ Add another place</button>
-          <button class="button map-clear" type="button" id="map-clear-all">Clear this map</button>
+          <button class="button map-clear" type="button" id="map-clear-all">Clear this activity</button>
         </div>
       </section>
 
       <section class="map-step" aria-labelledby="map-anywhere-title">
-        <div class="map-step-head"><h4 id="map-anywhere-title">2. Add things that don't need a place</h4><span>Activities + attention</span></div>
-        <p class="map-help">Some important parts of life happen from a phone, a couch, a garage, or wherever you happen to be.</p>
+        <div class="map-step-head"><h4 id="map-anywhere-title">2. What do you find yourself doing?</h4><span>Activities + attention</span></div>
+        <p class="map-help">Think about things you do often, choose on your own, or keep coming back to.</p>
         <div class="map-tag-bank" id="map-activity-bank">
           <button class="map-tag" type="button" aria-pressed="false" data-map-activity="Researching">Researching</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Fixing / making">Fixing / making</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Creating">Creating</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Learning">Learning</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Organizing">Organizing</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Helping people">Helping people</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Cooking">Cooking</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Gaming">Gaming</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Writing">Writing</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Watching tutorials">Watching tutorials</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Working on projects">Working on projects</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Something else">Something else</button>
         </div>
         <div class="map-entry" style="margin-top:10px">
-          <label for="map-anywhere-custom">Optional: add your own</label>
-          <input id="map-anywhere-custom" data-map-anywhere-custom type="text" maxlength="80" placeholder="Something you do that doesn't need a specific place">
+          <label for="map-anywhere-custom">Anything else you do a lot?</label>
+          <input id="map-anywhere-custom" data-map-anywhere-custom type="text" maxlength="80" placeholder="Something you spend time doing that isn't listed above">
           <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
         </div>
       </section>
 
       <section class="map-step" aria-labelledby="map-missing-title">
-        <div class="map-step-head"><h4 id="map-missing-title">3. Notice what's missing</h4><span>No grading</span></div>
-        <p class="map-help">This is about access and possibility, not blaming yourself for what isn't on the map.</p>
+        <div class="map-step-head"><h4 id="map-missing-title">3. What do you wish you had more of?</h4><span>No grading</span></div>
+        <p class="map-help">Think about things you enjoy, miss, want to try, or don't currently get much chance to do.</p>
         <div class="map-thread-grid">
           <div class="map-entry">
-            <label for="map-miss">Something I miss or would like more access to</label>
-            <textarea id="map-miss" data-map-missing placeholder="Optional"></textarea>
+            <label for="map-miss">What's something you wish you could do more often?</label>
+            <textarea id="map-miss" data-map-missing placeholder="Something you enjoy, miss, or want more of"></textarea>
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
           </div>
           <div class="map-entry">
-            <label for="map-bigger">One part of this map I would willingly make bigger</label>
-            <textarea id="map-bigger" data-map-bigger placeholder="Optional"></textarea>
+            <label for="map-bigger">Is there anything you would like the chance to try?</label>
+            <textarea id="map-bigger" data-map-bigger placeholder="Something you haven't had much chance to try yet"></textarea>
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
           </div>
         </div>
       </section>
 
       <section class="map-step" aria-labelledby="map-thread-title">
-        <div class="map-step-head"><h4 id="map-thread-title">4. Find a thread</h4><span>Patterns, not destiny</span></div>
+        <div class="map-step-head"><h4 id="map-thread-title">4. What keeps showing up?</h4><span>Things you keep returning to</span></div>
         <div class="map-thread-grid">
           <div class="map-entry">
-            <label for="map-thread-1">I keep ending up around…</label>
-            <input id="map-thread-1" data-map-thread type="text" maxlength="100" placeholder="Optional">
+            <label for="map-thread-1">What do you keep coming back to?</label>
+            <input id="map-thread-1" data-map-thread type="text" maxlength="140" placeholder="A topic, activity, problem, kind of work, place, community, idea...">
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
           </div>
           <div class="map-entry">
-            <label for="map-thread-2">I keep researching / learning about…</label>
+            <label for="map-thread-2">What do you keep looking up, watching, reading, or learning about?</label>
             <input id="map-thread-2" data-map-thread type="text" maxlength="100" placeholder="Optional">
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
           </div>
           <div class="map-entry">
-            <label for="map-thread-3">People seem to come to me for…</label>
+            <label for="map-thread-3">What do people usually ask you for help with?</label>
             <input id="map-thread-3" data-map-thread type="text" maxlength="100" placeholder="Optional">
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
           </div>
           <div class="map-entry">
-            <label for="map-thread-4">I get frustrated when…</label>
-            <input id="map-thread-4" data-map-thread type="text" maxlength="100" placeholder="Optional">
+            <label for="map-thread-4">What kinds of problems bother you enough that you want to fix them?</label>
+            <input id="map-thread-4" data-map-thread type="text" maxlength="140" placeholder="A problem, hassle, gap, or situation you keep wanting to improve">
+            <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+          </div>
+          <div class="map-entry">
+            <label for="map-thread-5">What have you tried more than once, even if you didn't stick with it?</label>
+            <input id="map-thread-5" data-map-thread type="text" maxlength="140" placeholder="Something you have returned to more than once">
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
           </div>
         </div>
       </section>
 
       <section class="map-step" aria-labelledby="map-pick-title">
-        <div class="map-step-head"><h4 id="map-pick-title">5. Pick one thing worth another look</h4><span>Not a commitment</span></div>
-        <p class="map-help">You are not choosing a career, business, or permanent direction. You're choosing one thread that deserves a little more information.</p>
+        <div class="map-step-head"><h4 id="map-pick-title">5. Choose something you're curious about</h4><span>Not a commitment</span></div>
+        <p class="map-help">You aren't choosing a career or making a big decision. Just choose one thing you would be interested in learning a little more about.</p>
         <div class="map-final-choice">
           <div class="map-entry">
-            <label for="map-final-thing">One thing I might want to understand better is:</label>
+            <label for="map-final-thing">What are you curious about right now?</label>
             <input id="map-final-thing" data-map-final="thing" type="text" maxlength="120" placeholder="Optional">
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
           </div>
           <div class="map-entry">
-            <label for="map-final-because">I noticed it because:</label>
+            <label for="map-final-because">What made this stand out to you?</label>
             <input id="map-final-because" data-map-final="because" type="text" maxlength="140" placeholder="Optional">
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
           </div>
           <div class="map-entry">
-            <label for="map-final-unknown">I do NOT know yet:</label>
+            <label for="map-final-unknown">What would you want to find out about it?</label>
             <input id="map-final-unknown" data-map-final="unknown" type="text" maxlength="140" placeholder="Optional">
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
           </div>
           <div class="map-entry">
-            <label for="map-final-next">One small way I could learn more about it:</label>
+            <label for="map-final-next">What's one small way you could learn more?</label>
             <input id="map-final-next" data-map-final="next" type="text" maxlength="140" placeholder="Optional">
             <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
           </div>
         </div>
         <div class="map-add-row">
-          <button class="button" type="button" id="map-nothing-yet">Nothing on my map is worth exploring yet</button>
+          <button class="button" type="button" id="map-nothing-yet">Nothing here stands out to me yet</button>
         </div>
 
         <div class="map-summary-card" aria-live="polite">
-          <h4>Your map so far</h4>
+          <h4>A few things you noticed</h4>
           <ul class="map-summary-list" id="map-summary-list">
-            <li class="map-empty">Add anything you want above. This summary stays in this tab unless you choose to save or download your workbook.</li>
+            <li class="map-empty">Things you spend time doing, things you want more of, and anything that caught your attention will show up here as you answer.</li>
           </ul>
         </div>
       </section>
 
-      <p class="life-map-note"><strong>Participant control:</strong> You can keep the whole map private, leave things out, stop and return later, or decide there is nothing worth exploring yet. The map is information, not a grade.</p>
+      <p class="life-map-note"><strong>Participant control:</strong> You can keep your answers private, leave things out, stop and return later, or decide that nothing stands out yet. This activity is information, not a grade.</p>
     </div>
 
     <div class="lesson-controls">
@@ -1927,10 +1920,10 @@
             <p class="privacy-note">Everything here is calculated on this device. Your workbook content is not sent anywhere.</p>
           </div>
           <div class="shape-tabs" role="tablist" aria-label="What’s Taking Shape sections">
-            <button type="button" role="tab" class="shape-tab" data-shape-tab="overview" aria-selected="true">Overview</button><button type="button" role="tab" class="shape-tab" data-shape-tab="threads" aria-selected="false">Threads</button><button type="button" role="tab" class="shape-tab" data-shape-tab="conditions" aria-selected="false">Conditions</button><button type="button" role="tab" class="shape-tab" data-shape-tab="supports" aria-selected="false">Supports</button><button type="button" role="tab" class="shape-tab" data-shape-tab="costs" aria-selected="false">Costs</button><button type="button" role="tab" class="shape-tab" data-shape-tab="unknowns" aria-selected="false">Unknowns</button><button type="button" role="tab" class="shape-tab" data-shape-tab="decisions" aria-selected="false">Decisions</button><button type="button" role="tab" class="shape-tab" data-shape-tab="evidence" aria-selected="false">Evidence</button><button type="button" role="tab" class="shape-tab" data-shape-tab="patterns" aria-selected="false">Patterns</button>
+            <button type="button" role="tab" class="shape-tab" data-shape-tab="overview" aria-selected="true">Overview</button><button type="button" role="tab" class="shape-tab" data-shape-tab="threads" aria-selected="false">Interests</button><button type="button" role="tab" class="shape-tab" data-shape-tab="conditions" aria-selected="false">Conditions</button><button type="button" role="tab" class="shape-tab" data-shape-tab="supports" aria-selected="false">Supports</button><button type="button" role="tab" class="shape-tab" data-shape-tab="costs" aria-selected="false">Costs</button><button type="button" role="tab" class="shape-tab" data-shape-tab="unknowns" aria-selected="false">Unknowns</button><button type="button" role="tab" class="shape-tab" data-shape-tab="decisions" aria-selected="false">Decisions</button><button type="button" role="tab" class="shape-tab" data-shape-tab="evidence" aria-selected="false">Evidence</button><button type="button" role="tab" class="shape-tab" data-shape-tab="patterns" aria-selected="false">Patterns</button>
           </div>
           <div class="shape-content" id="shape-content" role="tabpanel" aria-live="polite"></div>
-          <div class="shape-footnote"><strong>Participant gets the last word.</strong> A possible pattern only becomes part of your working map if you decide it fits.</div>
+          <div class="shape-footnote"><strong>Participant gets the last word.</strong> A possible pattern only becomes part of your notes if you decide it fits.</div>
         </div>
       </section>
       <div class="workbook-save-panel">
@@ -2159,14 +2152,14 @@
         }
 
         const mapMark=e.target.closest('[data-map-mark]');
-        if(mapMark){mapMark.setAttribute('aria-pressed',mapMark.getAttribute('aria-pressed')==='true'?'false':'true');refreshLifeMap();return;}
+        if(mapMark){const group=mapMark.closest('.map-entry-tools');if(group)group.querySelectorAll('[data-map-mark]').forEach(b=>b.setAttribute('aria-pressed','false'));mapMark.setAttribute('aria-pressed','true');refreshLifeMap();return;}
         const mapActivity=e.target.closest('[data-map-activity]');
         if(mapActivity){mapActivity.setAttribute('aria-pressed',mapActivity.getAttribute('aria-pressed')==='true'?'false':'true');refreshLifeMap();return;}
         if(e.target.closest('#map-add-place')){addLifeMapPlace();return;}
         if(e.target.closest('#map-clear-all')){clearLifeMap();return;}
         if(e.target.closest('#map-nothing-yet')){
           const thing=document.querySelector('[data-map-final="thing"]');
-          if(thing) thing.value='Nothing on my map is worth exploring yet';
+          if(thing) thing.value='Nothing here stands out to me yet';
           refreshLifeMap();showToast('That is a complete answer.');return;
         }
 
@@ -2245,18 +2238,18 @@
         const list=document.getElementById('map-summary-list');
         if(!list) return;
         const items=[];
-        data.places.forEach(p=>items.push('Place: '+(p.place||'Unnamed place')+(p.doing?' · '+p.doing:'')+(p.marks.length?' · '+p.marks.join(' '):'')));
-        if(data.activities.length) items.push('Things I do anywhere: '+data.activities.join(', '));
-        if(data.missing) items.push('Something I miss / want more access to: '+data.missing);
-        if(data.bigger) items.push('A part I would willingly make bigger: '+data.bigger);
-        if(data.threads.length) items.push('Threads I noticed: '+data.threads.join(' · '));
-        if(data.finals.thing) items.push('Worth another look: '+data.finals.thing);
-        if(data.finals.because) items.push('I noticed it because: '+data.finals.because);
-        if(data.finals.unknown) items.push('Still unknown: '+data.finals.unknown);
+        data.places.forEach(p=>items.push('Where I spend time: '+(p.place||'Unnamed place')+(p.doing?' · '+p.doing:'')+(p.marks.length?' · '+p.marks.join(' '):'')));
+        if(data.activities.length) items.push('Things I do often: '+data.activities.join(', '));
+        if(data.missing) items.push('Something I want more of: '+data.missing);
+        if(data.bigger) items.push('Something I would like the chance to try: '+data.bigger);
+        if(data.threads.length) items.push('Things that keep showing up: '+data.threads.join(' · '));
+        if(data.finals.thing) items.push('Curious about: '+data.finals.thing);
+        if(data.finals.because) items.push('Why it stood out: '+data.finals.because);
+        if(data.finals.unknown) items.push('What I want to find out: '+data.finals.unknown);
         if(data.finals.next) items.push('One small way to learn more: '+data.finals.next);
         list.innerHTML='';
         if(!items.length){
-          const li=document.createElement('li');li.className='map-empty';li.textContent='Add anything you want above. This summary stays in this tab unless you choose to save or download your workbook.';list.appendChild(li);
+          const li=document.createElement('li');li.className='map-empty';li.textContent='Things you spend time doing, things you want more of, and anything that caught your attention will show up here as you answer.';list.appendChild(li);
         } else {
           items.forEach(text=>{const li=document.createElement('li');li.textContent=text;list.appendChild(li);});
         }
@@ -2265,25 +2258,26 @@
         const grid=document.getElementById('map-place-grid');
         if(!grid) return;
         const count=grid.querySelectorAll('[data-map-entry]').length;
-        if(count>=6){ showToast('You can map up to six places here.'); return; }
+        if(count>=6){ showToast('You can add up to six places here.'); return; }
         const i=count;
         const box=document.createElement('div');
         box.className='map-entry';box.dataset.mapEntry=String(i);
-        box.innerHTML='<label for="map-place-'+i+'">Place '+(i+1)+'</label>'+
-          '<input id="map-place-'+i+'" data-map-place="'+i+'" type="text" maxlength="60" placeholder="Another place in your week">'+
+        box.innerHTML='<label for="map-place-'+i+'">Where do you spend a lot of your time?</label>'+
+          '<input id="map-place-'+i+'" data-map-place="'+i+'" type="text" maxlength="60" placeholder="Work, home, a friend\'s house, the gym, school, a garage, somewhere else">'+
           '<p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>'+
           '<label for="map-do-'+i+'" style="margin-top:10px">What do you usually do there?</label>'+
           '<input id="map-do-'+i+'" data-map-do="'+i+'" type="text" maxlength="90" placeholder="A few words is enough">'+
           '<p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>'+
-          '<div class="map-entry-tools" aria-label="Mark this place">'+
-          ['+','–','*','?','!','X'].map(m=>'<button class="map-symbol" type="button" aria-pressed="false" data-map-mark="'+m+'" data-map-slot="'+i+'">'+m+'</button>').join('')+
+          '<div class="map-entry-tools" aria-label="How do you usually feel when you\'re there?">'+
+          '<span class="map-feeling-label">How do you usually feel when you\'re there?</span>'+
+          ['I like being there',"It's okay","I'd rather be somewhere else",'It depends'].map(m=>'<button class="map-symbol" type="button" aria-pressed="false" data-map-mark="'+m.replace(/"/g,'&quot;')+'" data-map-slot="'+i+'">'+m+'</button>').join('')+
           '</div>';
         grid.appendChild(box);refreshLifeMap();
       }
       function clearLifeMap(){
         document.querySelectorAll('#life-map-workspace input,#life-map-workspace textarea').forEach(el=>el.value='');
         document.querySelectorAll('#life-map-workspace [aria-pressed="true"]').forEach(el=>el.setAttribute('aria-pressed','false'));
-        refreshLifeMap();showToast('Map cleared from this page.');
+        refreshLifeMap();showToast('Activity cleared from this page.');
       }
 
 
@@ -2839,18 +2833,18 @@
             return awShell('Make the participation choice yours','Joining the workbook is separate from the other consent choices.',
               awChoices('Right now I choose','a-m0-participation',['Participate','Participate with adjustments','Defer','Decline'],'single')+
               '<div class="activity-grid">'+
-              awField('a-m0-own-choice','Does this choice feel like mine? What would make it easier to change later?','Optional')+
-              awField('a-m0-one-unknown','One thing I still do not know','Optional','input')+
+              awField('a-m0-own-choice','Is there anything you would want changed before participating?','Different timing, more information, another way to participate, or anything else.')+
+              awField('a-m0-one-unknown','Is there anything you still want to know before deciding?','Anything you still want clarified','input')+
               '</div>','review');
 
           case 'Notice without forcing an answer':
             return awShell('Choose an entry route','You do not need an interest before you begin.',
-              awChoices('Start from','a-m1-entry',['A thread already has my attention','An open question','Observe the example','Keep it private','Nothing clear yet'],'single')+
+              awChoices('Start from','a-m1-entry',['Something already has my attention','A question I keep having','Observe the example','Keep it private','Nothing clear yet'],'single')+
               '<div class="activity-grid">'+
-              awField('a-m1-attention','What keeps catching my attention?','Optional')+
-              awField('a-m1-return','What do I return to voluntarily?','Optional')+
-              awField('a-m1-unknown','What am I unsure about?','Optional')+
-              awField('a-m1-thread','One thread, question, or honest unknown to carry forward','Optional')+
+              awField('a-m1-attention','What keeps catching your attention?','Optional')+
+              awField('a-m1-return','What do you keep coming back to?','Optional')+
+              awField('a-m1-unknown','What would you like to understand better?','Optional')+
+              awField('a-m1-thread','What feels worth another look?','Optional')+
               '</div>','board');
 
           case 'Obsessive and harmonious passion':
@@ -2865,44 +2859,44 @@
           case 'Encounter possibilities':
             return awShell('Build a possibility menu','This is exposure, not commitment. Entrepreneurship is one option among many.',
               awChoices('What would you be willing to look at?','a-m1-possibilities',['Workplace / job','Education / training','Trade / hands-on skill','Art / writing / making','Community contribution','Entrepreneurship / freelancing','Routine / hobby / life-building','Something else'],'multi')+
-              awChoices('What might make a try easier to access?','a-m1-access',['A clearer schedule','Transportation / location','Technology access','Someone to ask a question','A smaller scope','An observe-only option','No change needed yet'],'multi')+
+              awChoices('What would make it easier to try something?','a-m1-access',['A clearer schedule','Transportation / location','Technology access','Someone to ask a question','A smaller scope','An observe-only option','No change needed yet'],'multi')+
               '<div class="activity-grid">'+
-              awField('a-m1-possibility','One possibility I might examine','Optional','input')+
-              awField('a-m1-possibility-question','What would I want to learn about it?','Optional','input')+
+              awField('a-m1-possibility','Something I might want to look into','Optional','input')+
+              awField('a-m1-possibility-question','What would you want to find out about it?','Optional','input')+
               '</div>','mosaic');
 
           case 'Design a manageable balance experiment':
-            return awShell('Build the experiment card','Small + supported + chosen + real + reversible + paced.',
+            return awShell('Plan one manageable try','Keep it small enough to fit your time, energy, and resources.',
               '<div class="activity-grid">'+
-              awField('a-m1-exp-question','Question: what am I trying to learn?','')+
-              awField('a-m1-exp-action','Smallest real action: what can I do or observe?','')+
-              awField('a-m1-exp-balance','Balance condition: what might support choice, flexibility, or sustainability?','')+
-              awField('a-m1-exp-boundary','Boundary: what limit will I set before I start?','Time, energy, spending, disclosure, or another limit')+
-              awField('a-m1-exp-support','Support: what person, tool, accommodation, or information would help?','')+
-              awField('a-m1-exp-stop','Stop / pause rule: what signal means stop, pause, or adjust?','')+
-              awField('a-m1-exp-evidence','Evidence: what will I notice?','')+
-              awField('a-m1-exp-review','Reflection point: when will I review what happened?','')+
+              awField('a-m1-exp-question','What are you trying to find out?','')+
+              awField('a-m1-exp-action','What is one small thing you could do or observe?','')+
+              awField('a-m1-exp-balance','What would make this feel manageable?','')+
+              awField('a-m1-exp-boundary','What limit do you want to set before you start?','Time, energy, spending, sharing personal information, or another limit')+
+              awField('a-m1-exp-support','What person, tool, information, or support would help?','')+
+              awField('a-m1-exp-stop','What would tell you to stop, pause, or change it?','')+
+              awField('a-m1-exp-evidence','What will you pay attention to?','')+
+              awField('a-m1-exp-review','When will you look back at what happened?','')+
               '</div>'+awChoices('Route','a-m1-exp-route',['Real-world try','Private try','Observe only','Supported / adapted','Simulation','Plan only'],'single'),'plan');
 
           case 'Try and collect evidence':
-            return awShell('Record the try without grading yourself','A stopped, incomplete, or disappointing try can still produce useful evidence.',
+            return awShell('Write down what happened','A try does not have to go well to teach you something.',
               awChoices('What did you notice?','a-m1-evidence-signals',['Wanted to begin','Could stop / change course','Attention held','Attention dropped','Felt meaningful','Felt pressured','Energizing','Draining','A practical barrier showed up','Something surprised me'],'multi')+
               '<div class="activity-grid">'+
-              awField('a-m1-evidence-happened','What actually happened?','Describe the try, not a verdict')+
-              awField('a-m1-evidence-conditions','Which conditions helped or interfered?','Optional')+
-              awField('a-m1-evidence-cost','What did it cost in time, effort, energy, or after-effect?','Optional')+
+              awField('a-m1-evidence-happened','What happened?','Describe what you did or noticed, not what it says about you')+
+              awField('a-m1-evidence-conditions','What helped or got in the way?','Optional')+
+              awField('a-m1-evidence-cost','How much time, effort, or energy did it take?','Optional')+
               awField('a-m1-evidence-surprise','What surprised me?','Optional')+
               '</div>','lab');
 
           case 'Reflect and decide':
-            return awShell('Turn the try into usable information','Keep the claim the size of the evidence.',
+            return awShell('Use what happened to choose the next step','Do not make a bigger conclusion than the experience can support.',
               '<div class="activity-grid">'+
               awField('a-m1-reflect-happened','What happened?','')+
-              awField('a-m1-reflect-learned','What did I learn about the activity?','')+
-              awField('a-m1-reflect-conditions','What did I learn about the environment or conditions?','')+
-              awField('a-m1-reflect-story','What story am I tempted to tell about myself?','Optional')+
-              awField('a-m1-reflect-support','What does the evidence actually support?','')+
-              awField('a-m1-reflect-unknown','What is still unknown?','Optional')+
+              awField('a-m1-reflect-learned','What did you learn about what you tried?','')+
+              awField('a-m1-reflect-conditions','What did you learn about when, where, or how you did it?','')+
+              awField('a-m1-reflect-story','What are you tempted to conclude about yourself?','Optional')+
+              awField('a-m1-reflect-support','What does what happened actually support?','')+
+              awField('a-m1-reflect-unknown','What do you still want to find out?','Optional')+
               '</div>'+awChoices('Next Decision','a-m1-next',['Keep','Change','Test Again','Pause/Park','Stop','Another Direction','Continue Looking'],'single'),'review');
 
           case 'Describe the setup around a task':
@@ -3104,10 +3098,10 @@
         const mk=(ids,source)=>shapeValues(ids).map(value=>({value,source}));
         const threads=uniqueShapeItems([
           ...mk(['a-m1-attention','a-m1-return','a-m1-thread','a-m1-possibility','a-m1-possibility-question'],'Module 1'),
-          ...mk(['map-thread-1','map-thread-2','map-thread-3','map-thread-4'],'Life map'),
-          ...(map.activities||[]).map(value=>({value,source:'Life map'})),
-          ...(map.finals?.thing?[{value:map.finals.thing,source:'Life map'}]:[]),
-          ...(map.bigger?[{value:map.bigger,source:'Life map'}]:[])
+          ...mk(['map-thread-1','map-thread-2','map-thread-3','map-thread-4','map-thread-5'],'Module 1 activity'),
+          ...(map.activities||[]).map(value=>({value,source:'Module 1 activity'})),
+          ...(map.finals?.thing?[{value:map.finals.thing,source:'Module 1 activity'}]:[]),
+          ...(map.bigger?[{value:map.bigger,source:'Module 1 activity'}]:[])
         ]);
         const conditions=uniqueShapeItems([...mk(['a-m1-exp-balance','a-m1-exp-boundary'],'Module 1'),...mk(['a-m15-condition','a-m15-test-condition','a-m15-test-balance','a-m15-review-change'],'Module 1.5'),...mk(['a-m2-limit'],'Module 2'),...mk(['a-m3-protect-condition','a-m3-protect-boundary','a-m3-change-limit'],'Module 3')]);
         const supports=uniqueShapeItems([...mk(['a-m0-support','a-m0-access','a-m0-tech','a-m0-logistics'],'Module 0'),...shapeSelected('a-m1-access').map(value=>({value,source:'Module 1'})),...mk(['a-m1-exp-support'],'Module 1'),...mk(['a-m15-test-support'],'Module 1.5'),...mk(['a-m2-support','a-m2-review-support'],'Module 2')]);
@@ -3137,14 +3131,14 @@
       function clearNode(n){while(n.firstChild)n.removeChild(n.firstChild);}
       function shapeEmpty(t){const d=document.createElement('div');d.className='shape-empty';d.textContent=t;return d;}
       function renderShapeList(host,items,note){clearNode(host);if(note){const p=document.createElement('p');p.className='shape-section-note';p.textContent=note;host.appendChild(p);}if(!items.length){host.appendChild(shapeEmpty('Nothing here yet. You can keep moving without filling everything out.'));return;}const ul=document.createElement('ul');ul.className='shape-list';items.forEach(item=>{const li=document.createElement('li');li.className='shape-item';const t=document.createElement('span');t.className='shape-item-text';t.textContent=item.value;li.appendChild(t);if(item.source){const s=document.createElement('span');s.className='shape-item-source';s.textContent=item.source;li.appendChild(s);}ul.appendChild(li);});host.appendChild(ul);}
-      function renderShapeOverview(host,d){clearNode(host);const stats=document.createElement('div');stats.className='shape-stat-grid';[['Threads',d.threads.length],['Conditions',d.conditions.length],['Unknowns',d.unknowns.length],['Decisions',d.decisions.length]].forEach(([l,n])=>{const b=document.createElement('div');b.className='shape-stat';const s=document.createElement('strong');s.textContent=n;const x=document.createElement('span');x.textContent=l;b.append(s,x);stats.appendChild(b);});host.appendChild(stats);const tools=document.createElement('div');tools.className='shape-tool-grid';[
-        ['Builder Discovery Record',d.threads.length+d.evidence.length+d.unknowns.length>0,d.threads.length+' threads · '+d.evidence.length+' evidence notes · '+d.unknowns.length+' open questions'],
+      function renderShapeOverview(host,d){clearNode(host);const stats=document.createElement('div');stats.className='shape-stat-grid';[['Interests',d.threads.length],['Conditions',d.conditions.length],['Unknowns',d.unknowns.length],['Decisions',d.decisions.length]].forEach(([l,n])=>{const b=document.createElement('div');b.className='shape-stat';const s=document.createElement('strong');s.textContent=n;const x=document.createElement('span');x.textContent=l;b.append(s,x);stats.appendChild(b);});host.appendChild(stats);const tools=document.createElement('div');tools.className='shape-tool-grid';[
+        ['Builder Discovery Record',d.threads.length+d.evidence.length+d.unknowns.length>0,d.threads.length+' things noticed · '+d.evidence.length+' notes about what happened · '+d.unknowns.length+' open questions'],
         ['Operating Plan',d.conditions.length+d.supports.length+d.costs.length>0,d.conditions.length+' conditions · '+d.supports.length+' supports · '+d.costs.length+' costs'],
         ['Next Decision',d.decisions.length>0,d.decisions.length?('Latest: '+d.decisions[d.decisions.length-1].value):'No decision recorded yet']
       ].forEach(([title,ready,text])=>{const card=document.createElement('div');card.className='shape-tool';const head=document.createElement('div');head.className='shape-tool-head';const st=document.createElement('strong');st.textContent=title;const status=document.createElement('span');status.className='shape-tool-status';status.textContent=ready?'Building':'Waiting';head.append(st,status);const p=document.createElement('p');p.textContent=text;card.append(head,p);tools.appendChild(card);});host.appendChild(tools);if(d.patterns.length){const p=document.createElement('p');p.className='shape-section-note';p.style.marginTop='11px';p.textContent=d.patterns.length+' possible repetition signal'+(d.patterns.length===1?'':'s')+' found. Open Patterns to decide whether any actually fit.';host.appendChild(p);}}
       function renderShapeDecisions(host,items){clearNode(host);const p=document.createElement('p');p.className='shape-section-note';p.textContent='These are choices you actually made. No option ranks higher than another.';host.appendChild(p);if(!items.length){host.appendChild(shapeEmpty('No Next Decision recorded yet.'));return;}const counts={};items.forEach(i=>counts[i.value]=(counts[i.value]||0)+1);const row=document.createElement('div');row.className='shape-decision-row';Object.entries(counts).forEach(([v,n])=>{const chip=document.createElement('span');chip.className='shape-decision-chip';chip.append(document.createTextNode(v+' · '));const strong=document.createElement('strong');strong.textContent=n;chip.appendChild(strong);row.appendChild(chip);});host.appendChild(row);}
       function renderShapePatterns(host,patterns){clearNode(host);const note=document.createElement('p');note.className='shape-section-note';note.textContent='These are repetition signals only. They are not personality traits, diagnoses, or conclusions. You decide what fits.';host.appendChild(note);const visible=patterns.filter(p=>shapeReviews[p.id]?.status!=='remove');if(!visible.length){host.appendChild(shapeEmpty(patterns.length?'You removed the current suggestions. New ones can appear as your answers change.':'No repeated signal yet. One answer is still useful information.'));return;}const wrap=document.createElement('div');wrap.className='shape-patterns';visible.forEach(p=>{const r=shapeReviews[p.id]||{},card=document.createElement('article');card.className='shape-pattern';card.dataset.shapeStatus=r.status||'';const title=document.createElement('p');title.className='shape-pattern-title';title.textContent=r.custom||p.text;const ev=document.createElement('p');ev.className='shape-pattern-evidence';ev.textContent=p.evidence;const actions=document.createElement('div');actions.className='shape-pattern-actions';[['keep','Keep'],['watch','Keep watching'],['notquite','Not quite'],['remove','Remove']].forEach(([a,l])=>{const b=document.createElement('button');b.type='button';b.className='shape-pattern-action';b.dataset.shapePatternId=p.id;b.dataset.shapeAction=a;b.textContent=l;b.setAttribute('aria-pressed',r.status===a?'true':'false');actions.appendChild(b);});card.append(title,ev,actions);if(r.status==='notquite'){const box=document.createElement('div');box.className='shape-pattern-rewrite';const label=document.createElement('label'),id='shape-rewrite-'+Math.abs([...p.id].reduce((n,ch)=>((n*31)+ch.charCodeAt(0))|0,7));label.htmlFor=id;label.textContent='Rewrite it in your words';const input=document.createElement('input');input.id=id;input.type='text';input.value=r.custom||'';input.dataset.shapeRewriteId=p.id;input.placeholder='What fits better?';const save=document.createElement('button');save.type='button';save.dataset.shapeRewriteSave=p.id;save.textContent='Use my wording';box.append(label,input,save);card.appendChild(box);}wrap.appendChild(card);});host.appendChild(wrap);}
-      function renderShapeView(){const host=document.getElementById('shape-content');if(!host)return;const d=shapeData();syncArtifactStamps(d);const total=d.threads.length+d.conditions.length+d.supports.length+d.costs.length+d.unknowns.length+d.decisions.length+d.evidence.length,b=document.getElementById('shape-count-badge');if(b)b.textContent=total;document.querySelectorAll('[data-shape-tab]').forEach(x=>x.setAttribute('aria-selected',x.dataset.shapeTab===shapeActiveTab?'true':'false'));switch(shapeActiveTab){case'threads':renderShapeList(host,d.threads,'Things you keep noticing, returning to, researching, or wanting to understand.');break;case'conditions':renderShapeList(host,d.conditions,'Parts of the setup that may matter. A condition is information, not a permanent rule.');break;case'supports':renderShapeList(host,d.supports,'People, tools, access, structure, or flexibility you identified as potentially useful.');break;case'costs':renderShapeList(host,d.costs,'Time, effort, energy, friction, or after-effects you actually recorded.');break;case'unknowns':renderShapeList(host,d.unknowns,'Questions that are still open. “I don’t know yet” remains a complete answer.');break;case'decisions':renderShapeDecisions(host,d.decisions);break;case'evidence':renderShapeList(host,d.evidence,'What you recorded as happening, rather than what you predicted or concluded about yourself.');break;case'patterns':renderShapePatterns(host,d.patterns);break;default:renderShapeOverview(host,d);}}
+      function renderShapeView(){const host=document.getElementById('shape-content');if(!host)return;const d=shapeData();syncArtifactStamps(d);const total=d.threads.length+d.conditions.length+d.supports.length+d.costs.length+d.unknowns.length+d.decisions.length+d.evidence.length,b=document.getElementById('shape-count-badge');if(b)b.textContent=total;document.querySelectorAll('[data-shape-tab]').forEach(x=>x.setAttribute('aria-selected',x.dataset.shapeTab===shapeActiveTab?'true':'false'));switch(shapeActiveTab){case'threads':renderShapeList(host,d.threads,'Things you keep noticing, returning to, looking up, or wanting to understand.');break;case'conditions':renderShapeList(host,d.conditions,'Parts of the setup that may matter. A condition is information, not a permanent rule.');break;case'supports':renderShapeList(host,d.supports,'People, tools, access, structure, or flexibility you identified as potentially useful.');break;case'costs':renderShapeList(host,d.costs,'Time, effort, energy, friction, or after-effects you actually recorded.');break;case'unknowns':renderShapeList(host,d.unknowns,'Questions that are still open. “I don’t know yet” remains a complete answer.');break;case'decisions':renderShapeDecisions(host,d.decisions);break;case'evidence':renderShapeList(host,d.evidence,'What you recorded as happening, rather than what you predicted or concluded about yourself.');break;case'patterns':renderShapePatterns(host,d.patterns);break;default:renderShapeOverview(host,d);}}
 
 
       function setWorkbookStatus(message){
@@ -3215,7 +3209,7 @@
         }
         const shape=shapeData();
         lines.push('What’s Taking Shape:');
-        [['Threads',shape.threads],['Conditions',shape.conditions],['Supports',shape.supports],['Costs',shape.costs],['Unknowns',shape.unknowns],['Evidence',shape.evidence]].forEach(([label,items])=>{if(!items.length)return;lines.push(label+':');items.forEach(item=>lines.push('- '+item.value));lines.push('');});
+        [['Interests',shape.threads],['Conditions',shape.conditions],['Supports',shape.supports],['Costs',shape.costs],['Unknowns',shape.unknowns],['Evidence',shape.evidence]].forEach(([label,items])=>{if(!items.length)return;lines.push(label+':');items.forEach(item=>lines.push('- '+item.value));lines.push('');});
         if(shape.decisions.length){lines.push('Decisions:');shape.decisions.forEach(item=>lines.push('- '+item.value+(item.source?' ('+item.source+')':'')));lines.push('');}
         const accepted=shape.patterns.filter(p=>['keep','watch','notquite'].includes(shapeReviews[p.id]?.status));
         if(accepted.length){lines.push('Participant-reviewed possible patterns:');accepted.forEach(p=>{const r=shapeReviews[p.id]||{};lines.push('- '+(r.custom||p.text)+' ['+(r.status||'')+']');});lines.push('');}
