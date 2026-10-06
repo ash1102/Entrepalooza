@@ -439,6 +439,22 @@
       .map-node[data-slot="5"]{left:50%;bottom:21%;transform:translateX(-50%)}
     }
 
+  
+    /* Explicit workbook save / export controls */
+    .workbook-save-panel{border-top:1px solid var(--line);padding:12px 14px 14px}
+    .workbook-save-title{margin:0 0 4px;font-weight:850;font-size:14px}
+    .workbook-save-copy{margin:0 0 10px;color:var(--muted);font-size:11px;line-height:1.45}
+    .workbook-save-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+    .workbook-action{min-height:40px;padding:8px 9px;border:1px solid #788981;border-radius:4px;background:var(--paper-light);color:var(--ink);font:700 11px/1.25 var(--sans);cursor:pointer;text-align:center}
+    .workbook-action:hover{background:var(--teal-soft)}
+    .workbook-action-quiet{grid-column:1 / -1;border-style:dashed;color:var(--muted)}
+    .workbook-save-status{min-height:18px;margin:8px 0 0;color:var(--teal);font-size:11px;font-weight:700}
+    @media(max-width:780px){
+      .workbook-tray details[open]{max-height:min(64svh,480px)}
+      .workbook-save-panel{padding-bottom:18px}
+      .workbook-action{min-height:44px;font-size:12px}
+    }
+
   </style>
 </head>
 <body>
@@ -605,7 +621,7 @@
     <p class="lesson-purpose">Notice what already occupies your time, attention, energy, movement, and relationships before deciding what might be worth exploring.</p>
 
     <div class="life-map-workspace" id="life-map-workspace">
-      <p class="life-map-note"><strong>Private by design.</strong> Everything below stays only on this page while it is open. Nothing you type is saved or sent. You can leave anything blank, skip a section, or clear the whole map.</p>
+      <p class="life-map-note"><strong>Private by design.</strong> Nothing here is sent anywhere. Your answers stay in this tab unless you choose Save on this device or Download workbook. You can leave anything blank, skip a section, or clear the whole map.</p>
 
       <section class="map-step" aria-labelledby="map-week-title">
         <div class="map-step-head"><h4 id="map-week-title">1. Sketch your actual week</h4><span>Places + what happens there</span></div>
@@ -624,10 +640,10 @@
           <div class="map-entry" data-map-entry="0">
             <label for="map-place-0">Place 1</label>
             <input id="map-place-0" data-map-place="0" type="text" maxlength="60" placeholder="e.g. work, a friend's place, the gym">
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
             <label for="map-do-0" style="margin-top:10px">What do you usually do there?</label>
             <input id="map-do-0" data-map-do="0" type="text" maxlength="90" placeholder="A few words is enough">
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
             <div class="map-entry-tools" aria-label="Mark this place">
               <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="+" data-map-slot="0" title="Gives me energy">+</button>
               <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="–" data-map-slot="0" title="Drains me">–</button>
@@ -639,10 +655,10 @@
           </div><div class="map-entry" data-map-entry="1">
             <label for="map-place-1">Place 2</label>
             <input id="map-place-1" data-map-place="1" type="text" maxlength="60" placeholder="e.g. work, a friend's place, the gym">
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
             <label for="map-do-1" style="margin-top:10px">What do you usually do there?</label>
             <input id="map-do-1" data-map-do="1" type="text" maxlength="90" placeholder="A few words is enough">
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
             <div class="map-entry-tools" aria-label="Mark this place">
               <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="+" data-map-slot="1" title="Gives me energy">+</button>
               <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="–" data-map-slot="1" title="Drains me">–</button>
@@ -654,10 +670,10 @@
           </div><div class="map-entry" data-map-entry="2">
             <label for="map-place-2">Place 3</label>
             <input id="map-place-2" data-map-place="2" type="text" maxlength="60" placeholder="e.g. work, a friend's place, the gym">
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
             <label for="map-do-2" style="margin-top:10px">What do you usually do there?</label>
             <input id="map-do-2" data-map-do="2" type="text" maxlength="90" placeholder="A few words is enough">
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
             <div class="map-entry-tools" aria-label="Mark this place">
               <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="+" data-map-slot="2" title="Gives me energy">+</button>
               <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="–" data-map-slot="2" title="Drains me">–</button>
@@ -669,10 +685,10 @@
           </div><div class="map-entry" data-map-entry="3">
             <label for="map-place-3">Place 4</label>
             <input id="map-place-3" data-map-place="3" type="text" maxlength="60" placeholder="e.g. work, a friend's place, the gym">
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
             <label for="map-do-3" style="margin-top:10px">What do you usually do there?</label>
             <input id="map-do-3" data-map-do="3" type="text" maxlength="90" placeholder="A few words is enough">
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
             <div class="map-entry-tools" aria-label="Mark this place">
               <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="+" data-map-slot="3" title="Gives me energy">+</button>
               <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="–" data-map-slot="3" title="Drains me">–</button>
@@ -698,7 +714,7 @@
         <div class="map-entry" style="margin-top:10px">
           <label for="map-anywhere-custom">Optional: add your own</label>
           <input id="map-anywhere-custom" data-map-anywhere-custom type="text" maxlength="80" placeholder="Something you do that doesn't need a specific place">
-          <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+          <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
         </div>
       </section>
 
@@ -709,12 +725,12 @@
           <div class="map-entry">
             <label for="map-miss">Something I miss or would like more access to</label>
             <textarea id="map-miss" data-map-missing placeholder="Optional"></textarea>
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
           </div>
           <div class="map-entry">
             <label for="map-bigger">One part of this map I would willingly make bigger</label>
             <textarea id="map-bigger" data-map-bigger placeholder="Optional"></textarea>
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
           </div>
         </div>
       </section>
@@ -725,22 +741,22 @@
           <div class="map-entry">
             <label for="map-thread-1">I keep ending up around…</label>
             <input id="map-thread-1" data-map-thread type="text" maxlength="100" placeholder="Optional">
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
           </div>
           <div class="map-entry">
             <label for="map-thread-2">I keep researching / learning about…</label>
             <input id="map-thread-2" data-map-thread type="text" maxlength="100" placeholder="Optional">
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
           </div>
           <div class="map-entry">
             <label for="map-thread-3">People seem to come to me for…</label>
             <input id="map-thread-3" data-map-thread type="text" maxlength="100" placeholder="Optional">
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
           </div>
           <div class="map-entry">
             <label for="map-thread-4">I get frustrated when…</label>
             <input id="map-thread-4" data-map-thread type="text" maxlength="100" placeholder="Optional">
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
           </div>
         </div>
       </section>
@@ -752,22 +768,22 @@
           <div class="map-entry">
             <label for="map-final-thing">One thing I might want to understand better is:</label>
             <input id="map-final-thing" data-map-final="thing" type="text" maxlength="120" placeholder="Optional">
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
           </div>
           <div class="map-entry">
             <label for="map-final-because">I noticed it because:</label>
             <input id="map-final-because" data-map-final="because" type="text" maxlength="140" placeholder="Optional">
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
           </div>
           <div class="map-entry">
             <label for="map-final-unknown">I do NOT know yet:</label>
             <input id="map-final-unknown" data-map-final="unknown" type="text" maxlength="140" placeholder="Optional">
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
           </div>
           <div class="map-entry">
             <label for="map-final-next">One small way I could learn more about it:</label>
             <input id="map-final-next" data-map-final="next" type="text" maxlength="140" placeholder="Optional">
-            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>
           </div>
         </div>
         <div class="map-add-row">
@@ -777,7 +793,7 @@
         <div class="map-summary-card" aria-live="polite">
           <h4>Your map so far</h4>
           <ul class="map-summary-list" id="map-summary-list">
-            <li class="map-empty">Add anything you want above. This summary updates only on this page and disappears when you leave.</li>
+            <li class="map-empty">Add anything you want above. This summary stays in this tab unless you choose to save or download your workbook.</li>
           </ul>
         </div>
       </section>
@@ -1570,6 +1586,19 @@
         <li class="tray-stamp" data-stamp="discovery"><span class="stamp-mark" aria-hidden="true">✓</span><span>Builder Discovery Record<span class="stamp-sub" data-stamp-note="discovery">Not reached yet</span></span></li>
         <li class="tray-stamp" data-stamp="decision"><span class="stamp-mark" aria-hidden="true">✓</span><span>Next Decision<span class="stamp-sub" data-stamp-note="decision">Not reached yet</span></span></li>
       </ul>
+      <div class="workbook-save-panel">
+        <p class="workbook-save-title">Keep your work</p>
+        <p class="workbook-save-copy">Nothing is sent anywhere. Saving is optional and stays on your device or in a file you choose.</p>
+        <div class="workbook-save-actions">
+          <button class="workbook-action" type="button" id="workbook-save-device">Save on this device</button>
+          <button class="workbook-action" type="button" id="workbook-download">Download workbook</button>
+          <button class="workbook-action" type="button" id="workbook-download-text">Download readable copy</button>
+          <button class="workbook-action" type="button" id="workbook-upload">Upload saved workbook</button>
+          <button class="workbook-action workbook-action-quiet" type="button" id="workbook-forget">Forget saved copy</button>
+          <input class="sr-only" type="file" id="workbook-upload-input" accept=".json,application/json">
+        </div>
+        <p class="workbook-save-status" id="workbook-save-status" aria-live="polite"></p>
+      </div>
     </details>
   </aside>
   <div class="announcement" id="toast" aria-live="polite" aria-atomic="true"></div>
@@ -1624,7 +1653,7 @@
         const widths=[0,20,40,60,80,100,100];
         const pl=document.getElementById('module-progress-label'); if(pl) pl.textContent=labels[current];
         const pf=document.getElementById('module-progress-fill'); if(pf) pf.style.width=widths[current]+'%';
-        if(screens[current].classList.contains('module-screen')) showLesson(screens[current],0,false); else updateLoop('');
+        if(screens[current].classList.contains('module-screen')) showLesson(screens[current],Number(screens[current].dataset.lessonCurrent||0),false); else updateLoop('');
         if(focus) screens[current].querySelector('h1,h2')?.focus();
         window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
       }
@@ -1633,6 +1662,13 @@
       }
 
       document.addEventListener('click',e=>{
+
+        if(e.target.closest('#workbook-save-device')){saveWorkbookOnDevice();return;}
+        if(e.target.closest('#workbook-download')){downloadWorkbook();return;}
+        if(e.target.closest('#workbook-download-text')){downloadReadableWorkbook();return;}
+        if(e.target.closest('#workbook-upload')){document.getElementById('workbook-upload-input')?.click();return;}
+        if(e.target.closest('#workbook-forget')){forgetWorkbookOnDevice();return;}
+
         const goto=e.target.closest('[data-goto]');
         if(goto){e.preventDefault();goTo(goto.dataset.goto,true);return;}
         const tab=e.target.closest('[data-lesson-goto]');
@@ -1692,6 +1728,13 @@
         if(e.target.closest('#life-map-workspace')) refreshLifeMap();
       });
 
+
+      document.getElementById('workbook-upload-input')?.addEventListener('change',e=>{
+        const file=e.target.files?.[0];
+        uploadWorkbookFile(file);
+        e.target.value='';
+      });
+
       document.querySelectorAll('input[data-mot]').forEach(input=>input.addEventListener('input',()=>{
         const o=document.getElementById(input.id+'-o');if(o)o.textContent=input.value;
         const vals=[...document.querySelectorAll('input[data-mot]')];
@@ -1743,7 +1786,7 @@
         if(data.finals.next) items.push('One small way to learn more: '+data.finals.next);
         list.innerHTML='';
         if(!items.length){
-          const li=document.createElement('li');li.className='map-empty';li.textContent='Add anything you want above. This summary updates only on this page and disappears when you leave.';list.appendChild(li);
+          const li=document.createElement('li');li.className='map-empty';li.textContent='Add anything you want above. This summary stays in this tab unless you choose to save or download your workbook.';list.appendChild(li);
         } else {
           items.forEach(text=>{const li=document.createElement('li');li.textContent=text;list.appendChild(li);});
         }
@@ -1758,10 +1801,10 @@
         box.className='map-entry';box.dataset.mapEntry=String(i);
         box.innerHTML='<label for="map-place-'+i+'">Place '+(i+1)+'</label>'+
           '<input id="map-place-'+i+'" data-map-place="'+i+'" type="text" maxlength="60" placeholder="Another place in your week">'+
-          '<p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>'+
+          '<p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>'+
           '<label for="map-do-'+i+'" style="margin-top:10px">What do you usually do there?</label>'+
           '<input id="map-do-'+i+'" data-map-do="'+i+'" type="text" maxlength="90" placeholder="A few words is enough">'+
-          '<p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>'+
+          '<p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save it.</p>'+
           '<div class="map-entry-tools" aria-label="Mark this place">'+
           ['+','–','*','?','!','X'].map(m=>'<button class="map-symbol" type="button" aria-pressed="false" data-map-mark="'+m+'" data-map-slot="'+i+'">'+m+'</button>').join('')+
           '</div>';
@@ -1771,6 +1814,210 @@
         document.querySelectorAll('#life-map-workspace input,#life-map-workspace textarea').forEach(el=>el.value='');
         document.querySelectorAll('#life-map-workspace [aria-pressed="true"]').forEach(el=>el.setAttribute('aria-pressed','false'));
         refreshLifeMap();showToast('Map cleared from this page.');
+      }
+
+
+      const WORKBOOK_STORAGE_KEY='entrepalooza-pilot1-workbook-v1';
+
+      function stateKeyForButton(button,index){
+        const screen=button.closest('.screen')?.id||'global';
+        const lesson=button.closest('.lesson-card')?.dataset.lessonIndex||'x';
+        const parts=[
+          button.dataset.mapMark||'',
+          button.dataset.mapSlot||'',
+          button.dataset.mapActivity||'',
+          button.dataset.route||'',
+          button.dataset.sequence||'',
+          button.textContent.trim().replace(/\s+/g,' ')
+        ];
+        return screen+'|'+lesson+'|'+parts.join('|')+'|'+index;
+      }
+
+      function collectWorkbookState(){
+        const fields={};
+        document.querySelectorAll('input:not([type="file"]),textarea,select').forEach((el,index)=>{
+          const key=el.id||('field-'+index);
+          if(el.type==='checkbox'||el.type==='radio') fields[key]={type:el.type,checked:el.checked};
+          else fields[key]={type:el.type||el.tagName.toLowerCase(),value:el.value};
+        });
+
+        const pressed={};
+        [...document.querySelectorAll('button[aria-pressed]')].forEach((button,index)=>{
+          pressed[stateKeyForButton(button,index)]=button.getAttribute('aria-pressed')==='true';
+        });
+
+        const openDetails={};
+        [...document.querySelectorAll('details')].forEach((d,index)=>{
+          const key=d.id||('details-'+index);
+          openDetails[key]=d.open;
+        });
+
+        const lessons={};
+        screens.forEach(s=>{
+          if(s.classList.contains('module-screen')) lessons[s.id]=Number(s.dataset.lessonCurrent||0);
+        });
+
+        return {
+          format:'Entrepalooza Pilot 1 workbook',
+          version:1,
+          savedAt:new Date().toISOString(),
+          screen:current,
+          lessons,
+          fields,
+          pressed,
+          openDetails,
+          stamps:[...document.querySelectorAll('.tray-stamp.is-pressed')].map(x=>x.dataset.stamp),
+          mapPlaceCount:document.querySelectorAll('#map-place-grid [data-map-entry]').length
+        };
+      }
+
+      function ensureMapPlaceCount(count){
+        const target=Math.max(4,Math.min(6,Number(count)||4));
+        while(document.querySelectorAll('#map-place-grid [data-map-entry]').length<target) addLifeMapPlace();
+      }
+
+      function applyWorkbookState(state,{navigate=true}={}){
+        if(!state||state.format!=='Entrepalooza Pilot 1 workbook') throw new Error('That file is not an Entrepalooza Pilot 1 workbook.');
+        ensureMapPlaceCount(state.mapPlaceCount);
+
+        if(state.fields){
+          document.querySelectorAll('input:not([type="file"]),textarea,select').forEach((el,index)=>{
+            const key=el.id||('field-'+index);
+            const saved=state.fields[key];
+            if(!saved) return;
+            if(saved.type==='checkbox'||saved.type==='radio') el.checked=!!saved.checked;
+            else if(saved.value!==undefined) el.value=saved.value;
+          });
+        }
+
+        if(state.pressed){
+          [...document.querySelectorAll('button[aria-pressed]')].forEach((button,index)=>{
+            const key=stateKeyForButton(button,index);
+            button.setAttribute('aria-pressed',state.pressed[key]?'true':'false');
+          });
+        }
+
+        if(state.openDetails){
+          [...document.querySelectorAll('details')].forEach((d,index)=>{
+            const key=d.id||('details-'+index);
+            if(Object.prototype.hasOwnProperty.call(state.openDetails,key)) d.open=!!state.openDetails[key];
+          });
+        }
+
+        if(state.lessons){
+          screens.forEach(s=>{
+            if(s.classList.contains('module-screen')&&Object.prototype.hasOwnProperty.call(state.lessons,s.id)){
+              s.dataset.lessonCurrent=String(state.lessons[s.id]);
+            }
+          });
+        }
+
+        if(state.stamps){
+          document.querySelectorAll('.tray-stamp').forEach(x=>x.classList.toggle('is-pressed',state.stamps.includes(x.dataset.stamp)));
+          const count=document.querySelectorAll('.tray-stamp.is-pressed').length;
+          const countEl=document.getElementById('stamp-count');if(countEl)countEl.textContent=count+' / 3 stamps';
+        }
+
+        refreshLifeMap();
+        if(navigate){
+          const screenIndex=Math.max(0,Math.min(screens.length-1,Number(state.screen)||0));
+          goTo(screenIndex,false);
+          const active=screens[screenIndex];
+          if(active?.classList.contains('module-screen')){
+            showLesson(active,Number(active.dataset.lessonCurrent||0),false);
+          }
+        }
+      }
+
+      function setWorkbookStatus(message){
+        const el=document.getElementById('workbook-save-status');if(el)el.textContent=message;
+        showToast(message);
+      }
+
+      function saveWorkbookOnDevice(){
+        try{
+          localStorage.setItem(WORKBOOK_STORAGE_KEY,JSON.stringify(collectWorkbookState()));
+          setWorkbookStatus('Saved on this device.');
+        }catch(err){
+          setWorkbookStatus('This browser could not save the workbook.');
+        }
+      }
+
+      function restoreWorkbookFromDevice(){
+        try{
+          const raw=localStorage.getItem(WORKBOOK_STORAGE_KEY);
+          if(!raw) return false;
+          applyWorkbookState(JSON.parse(raw),{navigate:true});
+          setWorkbookStatus('Restored your saved workbook from this device.');
+          return true;
+        }catch(err){
+          return false;
+        }
+      }
+
+      function forgetWorkbookOnDevice(){
+        try{localStorage.removeItem(WORKBOOK_STORAGE_KEY);}catch(err){}
+        setWorkbookStatus('Saved copy removed from this device. Your current tab is unchanged.');
+      }
+
+      function downloadBlob(filename,type,text){
+        const blob=new Blob([text],{type});
+        const url=URL.createObjectURL(blob);
+        const a=document.createElement('a');
+        a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();
+        setTimeout(()=>URL.revokeObjectURL(url),1000);
+      }
+
+      function downloadWorkbook(){
+        const state=collectWorkbookState();
+        downloadBlob('entrepalooza-pilot1-workbook.json','application/json',JSON.stringify(state,null,2));
+        setWorkbookStatus('Workbook downloaded.');
+      }
+
+      function readableWorkbookText(){
+        const lines=['Entrepalooza · Pilot 1 workbook','Saved: '+new Date().toLocaleString(),''];
+        document.querySelectorAll('input:not([type="file"]),textarea').forEach(el=>{
+          const value=(el.value||'').trim();
+          if(!value) return;
+          let label='';
+          if(el.id){
+            const lab=document.querySelector('label[for="'+CSS.escape(el.id)+'"]');
+            if(lab) label=lab.textContent.trim();
+          }
+          if(!label) label=el.getAttribute('aria-label')||el.placeholder||'Response';
+          lines.push(label+':');
+          lines.push(value);
+          lines.push('');
+        });
+        const selected=[...document.querySelectorAll('button[aria-pressed="true"]')].map(b=>b.textContent.trim().replace(/\s+/g,' ')).filter(Boolean);
+        if(selected.length){
+          lines.push('Selected choices:');
+          selected.forEach(x=>lines.push('- '+x));
+          lines.push('');
+        }
+        lines.push('This copy was created on the participant’s device. It was not sent to Entrepalooza.');
+        return lines.join('\n');
+      }
+
+      function downloadReadableWorkbook(){
+        downloadBlob('entrepalooza-pilot1-answers.txt','text/plain;charset=utf-8',readableWorkbookText());
+        setWorkbookStatus('Readable copy downloaded.');
+      }
+
+      function uploadWorkbookFile(file){
+        if(!file) return;
+        const reader=new FileReader();
+        reader.onload=()=>{
+          try{
+            const state=JSON.parse(String(reader.result||''));
+            applyWorkbookState(state,{navigate:true});
+            setWorkbookStatus('Saved workbook loaded. Nothing was uploaded to a server.');
+          }catch(err){
+            setWorkbookStatus('That file could not be loaded as a Pilot 1 workbook.');
+          }
+        };
+        reader.onerror=()=>setWorkbookStatus('That file could not be read.');
+        reader.readAsText(file);
       }
 
       window.addEventListener('keydown',e=>{
@@ -1786,7 +2033,10 @@
       });
 
       goTo(0,false);
-      const initial=screens.findIndex(s=>'#'+s.id===location.hash);if(initial>0)goTo(initial,false);
+      const restored=restoreWorkbookFromDevice();
+      if(!restored){
+        const initial=screens.findIndex(s=>'#'+s.id===location.hash);if(initial>0)goTo(initial,false);
+      }
     })();
   </script>
 </body>
