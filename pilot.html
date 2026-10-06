@@ -1976,6 +1976,30 @@
       let workbookUnlocked=false;
       let journalEntries=[];
       let journalPrompt='Notice';
+      const EXTERNAL_JOURNAL_KEY='entrepalooza-conversation-journal-v1';
+      const EXTERNAL_JOURNAL_DRAFT_KEY='entrepalooza-conversation-journal-draft-v1';
+
+      function readExternalJournal(){
+        try{
+          const raw=JSON.parse(localStorage.getItem(EXTERNAL_JOURNAL_KEY)||'null');
+          return raw&&Array.isArray(raw.entries)?raw.entries:[];
+        }catch(_){return [];}
+      }
+      function mergeJournalEntries(...groups){
+        const seen=new Set(),out=[];
+        groups.flat().forEach(entry=>{
+          if(!entry||!String(entry.text||'').trim())return;
+          const key=[entry.prompt||'Journal',String(entry.text||'').trim(),entry.at||''].join('|');
+          if(seen.has(key))return;
+          seen.add(key);out.push(entry);
+        });
+        return out;
+      }
+      function syncExternalJournal(){
+        journalEntries=mergeJournalEntries(journalEntries,readExternalJournal());
+        renderJournalEntries();
+        renderShapeView();
+      }
       let shapeReviews={};
       let shapeActiveTab='overview';
 
@@ -2094,6 +2118,25 @@
 
 
 
+
+        const externalJournalCapture=e.target.closest('[data-external-journal-capture]');
+        if(externalJournalCapture){
+          const box=externalJournalCapture.closest('.activity-workbench');
+          if(box){
+            const title=box.closest('.lesson-card')?.querySelector('h3')?.textContent?.trim()||'Activity';
+            const parts=[];
+            box.querySelectorAll('input,textarea').forEach(el=>{
+              const v=String(el.value||'').trim();
+              if(v){
+                const lab=el.id?document.querySelector('label[for="'+CSS.escape(el.id)+'"]'):null;
+                parts.push((lab?.textContent?.trim()||'Response')+': '+v);
+              }
+            });
+            const choices=[...box.querySelectorAll('button[aria-pressed="true"]')].map(b=>b.textContent.trim()).filter(Boolean);
+            if(choices.length)parts.push('Selected: '+choices.join(', '));
+            try{localStorage.setItem(EXTERNAL_JOURNAL_DRAFT_KEY,title+(parts.length?'\n'+parts.join('\n'):'\n'));}catch(_){}
+          }
+        }
 
         const readingPrev=e.target.closest('[data-reading-prev]');
         if(readingPrev){const card=readingPrev.closest('.reading-inline');setReadingPiece(card,Number(card.dataset.readingPiece||0)-1,true);return;}
@@ -2506,7 +2549,7 @@
           });
         }
 
-        journalEntries=Array.isArray(state.journalEntries)?state.journalEntries:[];
+        journalEntries=mergeJournalEntries(Array.isArray(state.journalEntries)?state.journalEntries:[],readExternalJournal());
         setJournalPrompt(state.journalPrompt||'Notice');
         renderJournalEntries();
         shapeReviews=state.shapeReviews&&typeof state.shapeReviews==='object'?state.shapeReviews:{};
@@ -3354,9 +3397,12 @@
       setupParticipantActivities();
       setupReadingDecks();
       setupVariedSlides();
+      journalEntries=mergeJournalEntries(journalEntries,readExternalJournal());
       setJournalPrompt('Notice');
       renderJournalEntries();
       renderShapeView();
+      window.addEventListener('focus',syncExternalJournal);
+      window.addEventListener('storage',e=>{if(e.key===EXTERNAL_JOURNAL_KEY)syncExternalJournal();});
       syncWorkbookGate();
       goTo(0,false);
       restoreWorkbookFromDevice();
