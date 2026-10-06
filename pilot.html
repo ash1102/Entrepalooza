@@ -634,6 +634,48 @@
       .activity-journal-capture{width:100%}
     }
 
+  
+    /* Readings appear in small pieces instead of one wall of text */
+    .reading-deck{margin:16px 0 20px}
+    .reading-deck-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+    .reading-deck-count{font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:850;color:var(--teal)}
+    .reading-deck-progress{height:4px;flex:1;max-width:280px;background:var(--line);border-radius:999px;overflow:hidden}
+    .reading-deck-progress>span{display:block;height:100%;width:0;background:var(--rule);transition:width .18s ease}
+    .reading-beat{position:relative;min-height:260px;padding:clamp(18px,3vw,28px);border:1px solid var(--line);border-radius:14px;background:rgba(255,253,248,.86);box-shadow:0 7px 24px rgba(38,59,57,.06)}
+    .reading-beat[hidden]{display:none!important}
+    .reading-beat::before{content:attr(data-piece);display:block;margin-bottom:10px;color:var(--rule);font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
+    .reading-beat h4{margin:0 0 14px;font-size:clamp(22px,3.1vw,34px);line-height:1.1;letter-spacing:-.025em}
+    .reading-beat-content{font-size:clamp(17px,2vw,20px);line-height:1.62}
+    .reading-beat-content p{margin:0}
+    .reading-beat-content ul,.reading-beat-content ol{margin:2px 0 0;padding-left:1.25em}
+    .reading-beat-content li{margin:.34em 0}
+    .reading-beat[data-tone="soft"]{background:linear-gradient(145deg,rgba(226,235,229,.72),rgba(255,253,248,.92))}
+    .reading-beat[data-tone="warm"]{background:linear-gradient(145deg,rgba(244,228,167,.42),rgba(255,253,248,.94));border-left:4px solid var(--gold)}
+    .reading-beat[data-tone="ink"]{border-left:4px solid var(--teal)}
+    .reading-beat[data-tone="quote"]{background:rgba(239,225,213,.5);border-left:4px solid var(--rule)}
+    .reading-deck-controls{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;margin-top:11px}
+    .reading-deck-button{min-height:44px;padding:8px 13px;border:1px solid var(--teal);border-radius:5px;background:var(--paper-light);color:var(--ink);font-weight:780;cursor:pointer}
+    .reading-deck-button:hover{background:var(--teal-soft)}
+    .reading-deck-button:disabled{opacity:.35;cursor:default}
+    .reading-deck-dots{display:flex;gap:5px;align-items:center;justify-content:center;flex-wrap:wrap}
+    .reading-deck-dot{width:7px;height:7px;border-radius:50%;background:#aab4ad}
+    .reading-deck-dot.is-active{background:var(--rule);transform:scale(1.35)}
+    .js .reading-inline.reading-deck-ready>.module-fold{display:none!important}
+    .js .reading-inline.reading-deck-ready>.presentation-tabs-ui,
+    .js .reading-inline.reading-deck-ready>.presentation-path-wrap,
+    .js .reading-inline.reading-deck-ready>.presentation-mosaic-grid,
+    .js .reading-inline.reading-deck-ready>.presentation-focus-shell{display:none!important}
+    @media(max-width:780px){
+      .reading-beat{min-height:230px;padding:18px}
+      .reading-beat-content{font-size:17px;line-height:1.58}
+      .reading-deck-progress{max-width:none}
+      .reading-deck-top{align-items:flex-start;flex-direction:column;gap:7px}
+      .reading-deck-progress{width:100%}
+      .reading-deck-controls{grid-template-columns:1fr 1fr}
+      .reading-deck-dots{grid-column:1/-1;grid-row:1}
+      .reading-deck-button{width:100%}
+    }
+
   </style>
 </head>
 <body>
@@ -723,7 +765,7 @@
     <div class="lesson-meta"><strong>Lesson 2 of 5</strong><span>·</span><span>Try it here</span></div>
     <h3 tabindex="-1">Rights, privacy, and separate consent</h3><p class="lesson-purpose">Practice the rights before anyone asks you for personal information.</p>
      <div class="beat"><div class="beat-label">Learn</div><p>Participation, evaluation, recording, story use, and follow-up are separate choices. Saying yes to one does not mean yes to the others. You can pass without defending the choice.</p></div>
-     <div class="activity"><p class="activity-title">Try separate consent</p><p>This is a demonstration only. Nothing is saved.</p>
+     <div class="activity"><p class="activity-title">Try separate consent</p><p>This is a demonstration only. Nothing is sent.</p>
        <div class="example-line"><strong>Participation</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Participation: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Participation: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Participation: Not now is a complete choice.">Not now</button></div></div><div class="example-line"><strong>Evaluation</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Evaluation: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Evaluation: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Evaluation: Not now is a complete choice.">Not now</button></div></div><div class="example-line"><strong>Recording</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Recording: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Recording: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Recording: Not now is a complete choice.">Not now</button></div></div><div class="example-line"><strong>Story use</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Story use: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Story use: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Story use: Not now is a complete choice.">Not now</button></div></div><div class="example-line"><strong>Follow-up</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Follow-up: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Follow-up: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Follow-up: Not now is a complete choice.">Not now</button></div></div>
        <p class="activity-message" role="status" aria-live="polite"></p></div>
      <div class="beat"><div class="beat-label">Teach-back</div><p>Name one thing the program will not do and one way you could pause or leave. The consent readings support active discussion and teach-back rather than relying on a form alone.</p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 1</button><button class="button button-primary" type="button" data-lesson-next>Lesson 3 →</button></div></article><article class="lesson-card" data-lesson-index="2" data-loop="try">
@@ -783,10 +825,10 @@
     <div class="reading-pulse" aria-label="Reading reflection">
       <p class="reading-pulse-title">What are you carrying forward?</p>
       <div class="tap-row" data-single-select>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is sent.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is sent.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is sent.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is sent.">Nothing yet</button>
       </div>
       <p class="activity-message" role="status" aria-live="polite"></p>
     </div>
@@ -1028,10 +1070,10 @@
     <div class="reading-pulse" aria-label="Reading reflection">
       <p class="reading-pulse-title">What are you carrying forward?</p>
       <div class="tap-row" data-single-select>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is sent.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is sent.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is sent.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is sent.">Nothing yet</button>
       </div>
       <p class="activity-message" role="status" aria-live="polite"></p>
     </div>
@@ -1113,10 +1155,10 @@
     <div class="reading-pulse" aria-label="Reading reflection">
       <p class="reading-pulse-title">What are you carrying forward?</p>
       <div class="tap-row" data-single-select>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is sent.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is sent.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is sent.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is sent.">Nothing yet</button>
       </div>
       <p class="activity-message" role="status" aria-live="polite"></p>
     </div>
@@ -1215,10 +1257,10 @@
     <div class="reading-pulse" aria-label="Reading reflection">
       <p class="reading-pulse-title">What are you carrying forward?</p>
       <div class="tap-row" data-single-select>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is sent.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is sent.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is sent.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is sent.">Nothing yet</button>
       </div>
       <p class="activity-message" role="status" aria-live="polite"></p>
     </div>
@@ -1279,10 +1321,10 @@
     <div class="reading-pulse" aria-label="Reading reflection">
       <p class="reading-pulse-title">What are you carrying forward?</p>
       <div class="tap-row" data-single-select>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is sent.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is sent.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is sent.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is sent.">Nothing yet</button>
       </div>
       <p class="activity-message" role="status" aria-live="polite"></p>
     </div>
@@ -1343,10 +1385,10 @@
     <div class="reading-pulse" aria-label="Reading reflection">
       <p class="reading-pulse-title">What are you carrying forward?</p>
       <div class="tap-row" data-single-select>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is sent.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is sent.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is sent.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is sent.">Nothing yet</button>
       </div>
       <p class="activity-message" role="status" aria-live="polite"></p>
     </div>
@@ -1540,10 +1582,10 @@
     <div class="reading-pulse" aria-label="Reading reflection">
       <p class="reading-pulse-title">What are you carrying forward?</p>
       <div class="tap-row" data-single-select>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is sent.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is sent.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is sent.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is sent.">Nothing yet</button>
       </div>
       <p class="activity-message" role="status" aria-live="polite"></p>
     </div>
@@ -1610,10 +1652,10 @@
     <div class="reading-pulse" aria-label="Reading reflection">
       <p class="reading-pulse-title">What are you carrying forward?</p>
       <div class="tap-row" data-single-select>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is sent.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is sent.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is sent.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is sent.">Nothing yet</button>
       </div>
       <p class="activity-message" role="status" aria-live="polite"></p>
     </div>
@@ -1689,10 +1731,10 @@
     <div class="reading-pulse" aria-label="Reading reflection">
       <p class="reading-pulse-title">What are you carrying forward?</p>
       <div class="tap-row" data-single-select>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
-        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is sent.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is sent.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is sent.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is sent.">Nothing yet</button>
       </div>
       <p class="activity-message" role="status" aria-live="polite"></p>
     </div>
@@ -1917,6 +1959,12 @@
         if(e.target.closest('#workbook-forget')){forgetWorkbookOnDevice();return;}
 
 
+
+
+        const readingPrev=e.target.closest('[data-reading-prev]');
+        if(readingPrev){const card=readingPrev.closest('.reading-inline');setReadingPiece(card,Number(card.dataset.readingPiece||0)-1,true);return;}
+        const readingNext=e.target.closest('[data-reading-next]');
+        if(readingNext){const card=readingNext.closest('.reading-inline');setReadingPiece(card,Number(card.dataset.readingPiece||0)+1,true);return;}
 
         const awChoice=e.target.closest('[data-activity-choice]');
         if(awChoice){
@@ -2147,6 +2195,13 @@
           if(s.classList.contains('module-screen')) lessons[s.id]=Number(s.dataset.lessonCurrent||0);
         });
 
+        const readingPieces={};
+        document.querySelectorAll('.lesson-card.reading-inline').forEach((card,index)=>{
+          const screen=card.closest('.screen')?.id||'global';
+          const lesson=card.dataset.lessonIndex||String(index);
+          readingPieces[screen+'|'+lesson]=Number(card.dataset.readingPiece||0);
+        });
+
         const presentations={};
         document.querySelectorAll('.lesson-card[data-presentation]').forEach((card,index)=>{
           const screen=card.closest('.screen')?.id||'global';
@@ -2162,6 +2217,7 @@
           savedAt:new Date().toISOString(),
           screen:current,
           lessons,
+          readingPieces,
           presentations,
           journalEntries,
           journalPrompt,
@@ -2213,6 +2269,15 @@
             if(s.classList.contains('module-screen')&&Object.prototype.hasOwnProperty.call(state.lessons,s.id)){
               s.dataset.lessonCurrent=String(state.lessons[s.id]);
             }
+          });
+        }
+
+        if(state.readingPieces){
+          document.querySelectorAll('.lesson-card.reading-inline').forEach((card,index)=>{
+            const screen=card.closest('.screen')?.id||'global';
+            const lesson=card.dataset.lessonIndex||String(index);
+            const key=screen+'|'+lesson;
+            if(Object.prototype.hasOwnProperty.call(state.readingPieces,key)) setReadingPiece(card,state.readingPieces[key],false);
           });
         }
 
@@ -2271,6 +2336,130 @@
         }
       }
 
+
+      function splitSentencesPreservingText(text){
+        const cleaned=String(text||'').replace(/\s+/g,' ').trim();
+        if(!cleaned) return [];
+        const sentences=cleaned.match(/[^.!?]+(?:[.!?]+(?=\s|$)|$)/g)||[cleaned];
+        const chunks=[];let current='';
+        sentences.forEach(sentence=>{
+          const s=sentence.trim();
+          if(!s)return;
+          if(current && (current.length+s.length+1)>560){
+            chunks.push(current.trim());current=s;
+          }else current+=(current?' ':'')+s;
+        });
+        if(current.trim())chunks.push(current.trim());
+        return chunks;
+      }
+
+      function readingBeatParts(fold){
+        const title=fold.querySelector('summary')?.textContent?.trim()||'Keep reading';
+        const copy=fold.querySelector('.fold-copy');
+        if(!copy)return [];
+        const parts=[];
+        [...copy.children].forEach(node=>{
+          const tag=node.tagName?.toLowerCase();
+          if(tag==='p'){
+            splitSentencesPreservingText(node.textContent).forEach(text=>parts.push({title,kind:'p',html:'<p>'+escapeHtml(text)+'</p>'}));
+          }else if(tag==='ul'||tag==='ol'){
+            const items=[...node.children].filter(x=>x.tagName?.toLowerCase()==='li');
+            for(let i=0;i<items.length;i+=4){
+              const subset=items.slice(i,i+4);
+              parts.push({title,kind:'list',html:'<'+tag+'>'+subset.map(li=>'<li>'+li.innerHTML+'</li>').join('')+'</'+tag+'>'});
+            }
+          }else{
+            const text=node.textContent?.trim();
+            if(text)parts.push({title,kind:tag||'other',html:node.outerHTML});
+          }
+        });
+        if(!parts.length && copy.textContent.trim()){
+          splitSentencesPreservingText(copy.textContent).forEach(text=>parts.push({title,kind:'p',html:'<p>'+escapeHtml(text)+'</p>'}));
+        }
+        return parts;
+      }
+
+      function escapeHtml(text){
+        return String(text).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+      }
+
+      function setReadingPiece(card,index,focus=false){
+        const beats=[...card.querySelectorAll('.reading-beat')];
+        if(!beats.length)return;
+        const i=Math.max(0,Math.min(beats.length-1,Number(index)||0));
+        card.dataset.readingPiece=String(i);
+        beats.forEach((beat,n)=>beat.hidden=n!==i);
+        const count=card.querySelector('[data-reading-count]');
+        if(count)count.textContent='Piece '+(i+1)+' of '+beats.length;
+        const bar=card.querySelector('[data-reading-progress]');
+        if(bar)bar.style.width=(((i+1)/beats.length)*100)+'%';
+        card.querySelectorAll('.reading-deck-dot').forEach((dot,n)=>dot.classList.toggle('is-active',n===i));
+        const prev=card.querySelector('[data-reading-prev]');
+        const next=card.querySelector('[data-reading-next]');
+        if(prev)prev.disabled=i===0;
+        if(next){
+          next.disabled=i===beats.length-1;
+          next.textContent=i===beats.length-1?'Reading complete':'Next piece →';
+        }
+        if(focus)beats[i].querySelector('h4')?.focus?.();
+        const scroller=card.closest('.module-layout');
+        if(scroller)scroller.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+      }
+
+      function setupReadingDecks(){
+        document.querySelectorAll('.lesson-card.reading-inline').forEach((card,cardIndex)=>{
+          if(card.classList.contains('reading-deck-ready'))return;
+          const folds=[...card.querySelectorAll(':scope > .module-fold')];
+          if(!folds.length)return;
+
+          const raw=[];
+          folds.forEach(f=>raw.push(...readingBeatParts(f)));
+
+          // Merge very short adjacent paragraph beats under the same section,
+          // but keep the visible amount deliberately small.
+          const beats=[];
+          raw.forEach(part=>{
+            const last=beats[beats.length-1];
+            const textLength=(part.html.replace(/<[^>]+>/g,'').length);
+            const lastLength=last?(last.html.replace(/<[^>]+>/g,'').length):0;
+            if(last && part.kind==='p' && last.kind==='p' && part.title===last.title && lastLength+textLength<430){
+              last.html+=part.html;
+            }else beats.push({...part});
+          });
+
+          const deck=document.createElement('section');
+          deck.className='reading-deck';
+          deck.setAttribute('aria-label','Reading in small pieces');
+
+          const top=document.createElement('div');top.className='reading-deck-top';
+          const count=document.createElement('div');count.className='reading-deck-count';count.dataset.readingCount='';
+          const progress=document.createElement('div');progress.className='reading-deck-progress';progress.setAttribute('aria-hidden','true');
+          const progressFill=document.createElement('span');progressFill.dataset.readingProgress='';progress.appendChild(progressFill);
+          top.append(count,progress);deck.appendChild(top);
+
+          const tones=['ink','soft','warm','quote'];
+          beats.forEach((part,i)=>{
+            const beat=document.createElement('article');beat.className='reading-beat';beat.hidden=i!==0;beat.dataset.tone=tones[(i+cardIndex)%tones.length];beat.dataset.piece='Reading piece '+(i+1);
+            const h=document.createElement('h4');h.tabIndex=-1;h.textContent=part.title;
+            const body=document.createElement('div');body.className='reading-beat-content';body.innerHTML=part.html;
+            beat.append(h,body);deck.appendChild(beat);
+          });
+
+          const controls=document.createElement('div');controls.className='reading-deck-controls';
+          const prev=document.createElement('button');prev.type='button';prev.className='reading-deck-button';prev.dataset.readingPrev='';prev.textContent='← Previous piece';
+          const dots=document.createElement('div');dots.className='reading-deck-dots';dots.setAttribute('aria-hidden','true');
+          beats.forEach((_,i)=>{const d=document.createElement('span');d.className='reading-deck-dot'+(i===0?' is-active':'');dots.appendChild(d);});
+          const next=document.createElement('button');next.type='button';next.className='reading-deck-button';next.dataset.readingNext='';next.textContent='Next piece →';
+          controls.append(prev,dots,next);deck.appendChild(controls);
+
+          const pulse=card.querySelector(':scope > .reading-pulse');
+          if(pulse)pulse.before(deck);else card.querySelector(':scope > .lesson-controls')?.before(deck);
+          card.classList.add('reading-deck-ready');
+          setReadingPiece(card,Number(card.dataset.readingPiece||0),false);
+        });
+      }
+
+
       function setupVariedSlides(){
         const cards=[...document.querySelectorAll('.lesson-card')];
         const rotation=['editorial','tabs','path','mosaic','focus','reveal'];
@@ -2285,10 +2474,14 @@
             card.dataset.presentation='activity';
             return;
           }
-
-          // Offset readings and lessons so adjacent screens do not repeat the same visual grammar.
           const reading=card.classList.contains('reading-inline');
-          const mode=rotation[(globalIndex+(reading?2:0))%rotation.length];
+          if(reading){
+            card.dataset.presentation='reading-deck';
+            return;
+          }
+
+          // Rotate lesson presentation so adjacent activities do not repeat the same visual grammar.
+          const mode=rotation[globalIndex%rotation.length];
           card.dataset.presentation=mode;
           card.classList.add('presentation-'+mode);
 
@@ -2792,6 +2985,7 @@
       });
 
       setupParticipantActivities();
+      setupReadingDecks();
       setupVariedSlides();
       setJournalPrompt('Notice');
       renderJournalEntries();
