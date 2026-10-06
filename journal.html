@@ -99,7 +99,7 @@
     <a class="brand" href="prepilot.html">Build Otherwise · Entrepalooza</a>
     <nav class="nav-links" aria-label="Journal navigation">
       <a href="prepilot.html">New site</a>
-      <a href="pilot-prepilot.html">Pilot walkthrough</a>
+      <a href="pilot-prepilot.html">Return to Pilot</a>
     </nav>
   </div>
 </header>
@@ -136,7 +136,7 @@
           <p class="eyebrow">Write something down</p>
           <h2 id="write-title">Start wherever your head already is.</h2>
         </div>
-        <p class="privacy"><strong>Private on this device.</strong> Entries are stored in this browser unless you download or clear them. They are not sent to Entrepalooza from this page.</p>
+        <p class="privacy"><strong>Private on this device.</strong> Entries are stored in this browser unless you download or clear them. They are not sent to Entrepalooza from this page. When you return to the Pilot, your saved Journal entries can appear in your private workbook summary on this same device.</p>
       </div>
 
       <div class="prompt-row" role="group" aria-label="Choose a journal prompt">
@@ -156,6 +156,9 @@
         <button class="button" type="button" id="download-journal">Download journal</button>
       </div>
       <p class="save-status" id="save-status" role="status" aria-live="polite"></p>
+      <div class="actions" style="margin-top:18px;padding-top:16px;border-top:1px solid var(--line)">
+        <a class="button" href="pilot-prepilot.html">Return to Pilot</a>
+      </div>
     </section>
 
     <section class="entries-section" aria-labelledby="entries-title">
@@ -195,6 +198,12 @@
       if(raw&&typeof raw==='object'){
         state.prompt=prompts[raw.prompt]?raw.prompt:'Notice';
         state.entries=Array.isArray(raw.entries)?raw.entries:[];
+      }
+      if(!state.entries.length){
+        const workbook=JSON.parse(localStorage.getItem('entrepalooza-pilot1-workbook-v1')||'null');
+        if(workbook&&Array.isArray(workbook.journalEntries)&&workbook.journalEntries.length){
+          state.entries=workbook.journalEntries;
+        }
       }
       draft.value=localStorage.getItem(DRAFT_KEY)||'';
     }catch(_){}
