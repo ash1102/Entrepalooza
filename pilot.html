@@ -455,6 +455,110 @@
       .workbook-action{min-height:44px;font-size:12px}
     }
 
+  
+    /* Varied slide choreography: same curriculum, different visual grammar */
+    .lesson-card[data-presentation]{position:relative;isolation:isolate}
+    .lesson-card[data-presentation]::after{content:"";position:absolute;z-index:-1;pointer-events:none;border-radius:999px;opacity:.34}
+    .lesson-card[data-presentation="editorial"]::after{width:180px;height:180px;right:-70px;top:30px;background:radial-gradient(circle,var(--gold) 0 28%,transparent 29%)}
+    .lesson-card[data-presentation="path"]::after{width:220px;height:220px;left:-120px;bottom:40px;background:radial-gradient(circle,var(--teal-soft) 0 35%,transparent 36%)}
+    .lesson-card[data-presentation="mosaic"]::after{width:160px;height:160px;right:-60px;bottom:10%;background:radial-gradient(circle,var(--accent-soft) 0 34%,transparent 35%)}
+    .presentation-mode-badge{display:inline-flex;align-items:center;gap:7px;margin:0 0 12px;padding:5px 9px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.11em;font-weight:850;background:rgba(255,253,248,.68)}
+    .presentation-mode-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:10px 0 0 var(--teal),20px 0 0 var(--rule);margin-right:19px}
+
+    /* 1. Editorial spread: open, airy, numbered sections */
+    .presentation-editorial .module-fold{display:block!important;border:0!important;background:transparent!important;margin:0!important;padding:20px 0 24px 62px!important;position:relative;border-top:1px solid var(--line)!important}
+    .presentation-editorial .module-fold:first-of-type{border-top:0!important}
+    .presentation-editorial .module-fold[open] summary{border-bottom:0!important}
+    .presentation-editorial .module-fold summary{pointer-events:none;padding:0!important;min-height:0!important;font-size:clamp(20px,2.6vw,29px)!important;line-height:1.15!important;color:var(--ink)!important}
+    .presentation-editorial .module-fold summary::after{display:none!important}
+    .presentation-editorial .module-fold summary::before{content:attr(data-seq);position:absolute;left:-52px;top:-4px;font-size:34px;line-height:1;color:var(--rule);font-weight:850;letter-spacing:-.05em}
+    .presentation-editorial .fold-copy{padding:12px 0 0!important;max-width:680px}
+    .presentation-editorial .module-fold:nth-of-type(even) .fold-copy{padding-left:24px!important;border-left:2px solid var(--gold)}
+    .presentation-editorial .module-fold:nth-of-type(3n) summary{color:var(--teal)!important}
+
+    /* 2. Connected path: all content visible but physically sequenced */
+    .presentation-path .presentation-path-wrap{position:relative;margin:10px 0 18px;padding-left:30px}
+    .presentation-path .presentation-path-wrap::before{content:"";position:absolute;left:10px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--rule),var(--gold),var(--teal))}
+    .presentation-path .module-fold{display:block!important;position:relative;border:0!important;background:transparent!important;margin:0 0 18px!important;padding:0 0 0 22px!important}
+    .presentation-path .module-fold::before{content:attr(data-seq);position:absolute;left:-29px;top:0;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--paper-light);border:2px solid var(--teal);color:var(--ink);font-size:10px;font-weight:850}
+    .presentation-path .module-fold summary{pointer-events:none;padding:2px 0 5px!important;min-height:0!important;font-size:18px!important;color:var(--ink)!important}
+    .presentation-path .module-fold summary::after{display:none!important}
+    .presentation-path .fold-copy{padding:7px 0 0!important}
+    .presentation-path .module-fold:nth-child(even){margin-left:24px!important}
+    .presentation-path .module-fold:nth-child(3n)::before{background:var(--gold)}
+
+    /* 3. Mosaic: visual scan instead of vertical sameness */
+    .presentation-mosaic .presentation-mosaic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:12px 0 18px}
+    .presentation-mosaic .module-fold{display:block!important;margin:0!important;border:1px solid var(--line)!important;border-radius:10px!important;background:rgba(255,253,248,.76)!important;overflow:hidden}
+    .presentation-mosaic .module-fold:nth-child(3n+1){grid-column:span 2;background:var(--teal-soft)!important}
+    .presentation-mosaic .module-fold:nth-child(4n){background:var(--accent-soft)!important}
+    .presentation-mosaic .module-fold:nth-child(5n){background:#f4e4a7!important}
+    .presentation-mosaic .module-fold summary{pointer-events:none;padding:15px!important;color:var(--ink)!important;font-size:17px!important}
+    .presentation-mosaic .module-fold summary::after{display:none!important}
+    .presentation-mosaic .fold-copy{padding:0 15px 15px!important;border-top:0!important}
+    .presentation-mosaic .module-fold::before{content:attr(data-seq);display:block;padding:12px 15px 0;color:var(--rule);font-size:11px;font-weight:850;letter-spacing:.12em}
+
+    /* 4. Tabs: headings become choices, content becomes one clean canvas */
+    .presentation-tabs-ui{display:flex;gap:7px;overflow-x:auto;padding:2px 1px 11px;margin:8px 0 6px;scrollbar-width:thin}
+    .presentation-tab-button{flex:0 0 auto;min-height:42px;max-width:230px;padding:8px 12px;border:1px solid #81928a;border-radius:999px;background:rgba(255,253,248,.72);color:var(--ink);font-weight:750;font-size:12px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .presentation-tab-button[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:white}
+    .presentation-tabs .module-fold{display:none!important;border:0!important;background:transparent!important;margin:0!important}
+    .presentation-tabs .module-fold.is-presentation-active{display:block!important}
+    .presentation-tabs .module-fold>summary{display:none!important}
+    .presentation-tabs .fold-copy{padding:19px 0 8px!important;font-size:17px;line-height:1.62}
+    .presentation-tabs .module-fold.is-presentation-active::before{content:attr(data-title);display:block;margin:4px 0 8px;font-size:clamp(22px,3vw,32px);line-height:1.12;font-weight:820;color:var(--ink)}
+
+    /* 5. Focus mode: one section, large stage, internal previous/next */
+    .presentation-focus-shell{margin:10px 0 18px;padding:18px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,rgba(255,253,248,.9),rgba(226,235,229,.55));box-shadow:0 8px 28px rgba(38,59,57,.07)}
+    .presentation-focus-count{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:850}
+    .presentation-focus .module-fold{display:none!important;border:0!important;background:transparent!important;margin:0!important}
+    .presentation-focus .module-fold.is-presentation-active{display:block!important}
+    .presentation-focus .module-fold>summary{pointer-events:none;padding:0!important;min-height:0!important;font-size:clamp(23px,3.2vw,34px)!important;line-height:1.12!important;color:var(--ink)!important}
+    .presentation-focus .module-fold>summary::after{display:none!important}
+    .presentation-focus .fold-copy{padding:14px 0 0!important;font-size:17px;line-height:1.62}
+    .presentation-focus-controls{display:flex;align-items:center;justify-content:space-between;gap:9px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+    .presentation-focus-button{min-height:42px;padding:8px 12px;border:1px solid var(--teal);border-radius:5px;background:var(--paper-light);color:var(--ink);font-weight:750;cursor:pointer}
+    .presentation-focus-button:disabled{opacity:.38;cursor:default}
+    .presentation-focus-dots{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}
+    .presentation-focus-dot{width:8px;height:8px;border:0;border-radius:50%;background:#aeb7b0;padding:0}
+    .presentation-focus-dot.is-active{background:var(--rule);transform:scale(1.3)}
+
+    /* 6. Reveal cards: the occasional disclosure pattern, not every screen */
+    .presentation-reveal .module-fold{margin:9px 0!important;border:0!important;border-radius:9px!important;overflow:hidden;background:transparent!important}
+    .presentation-reveal .module-fold summary{min-height:58px!important;padding:14px 16px!important;border:1px solid var(--line)!important;border-radius:9px!important;background:linear-gradient(110deg,rgba(255,253,248,.9),rgba(226,235,229,.62));color:var(--ink)!important;font-size:17px!important}
+    .presentation-reveal .module-fold summary::after{content:"↘"!important;font-size:18px!important;color:var(--rule)}
+    .presentation-reveal .module-fold[open] summary{border-radius:9px 9px 0 0!important;background:var(--teal)!important;color:white!important}
+    .presentation-reveal .module-fold[open] summary::after{content:"↖"!important;color:white}
+    .presentation-reveal .fold-copy{padding:16px 18px!important;border:1px solid var(--line);border-top:0;border-radius:0 0 9px 9px;background:rgba(255,253,248,.76)}
+
+    /* Slide-specific polish */
+    .lesson-card.presentation-editorial>h3{max-width:620px;font-size:clamp(34px,5vw,58px)}
+    .lesson-card.presentation-path>h3{max-width:620px}
+    .lesson-card.presentation-mosaic>h3{max-width:620px}
+    .lesson-card.presentation-focus>h3{max-width:620px}
+    .lesson-card.presentation-tabs>h3{max-width:620px}
+    .lesson-card.presentation-reveal>h3{max-width:620px}
+    .lesson-card[data-presentation] .reading-pulse{border-radius:10px;background:rgba(255,253,248,.56)}
+    .lesson-card[data-presentation] .activity{border-radius:10px}
+    .lesson-card[data-presentation] .mini-note{box-shadow:0 5px 16px rgba(38,59,57,.07)}
+    @media(max-width:780px){
+      .presentation-editorial .module-fold{padding-left:42px!important}
+      .presentation-editorial .module-fold summary::before{left:-37px;font-size:25px}
+      .presentation-editorial .module-fold:nth-of-type(even) .fold-copy{padding-left:12px!important}
+      .presentation-path .module-fold:nth-child(even){margin-left:0!important}
+      .presentation-mosaic .presentation-mosaic-grid{grid-template-columns:1fr}
+      .presentation-mosaic .module-fold:nth-child(3n+1){grid-column:span 1}
+      .presentation-focus-shell{padding:14px}
+      .presentation-tabs .fold-copy,.presentation-focus .fold-copy{font-size:16px}
+      .presentation-mode-badge{margin-bottom:9px}
+    }
+
+  
+    @media(min-width:781px){
+      .module-content{padding-bottom:130px}
+      .next-content{padding-bottom:120px}
+    }
+
   </style>
 </head>
 <body>
@@ -1669,6 +1773,14 @@
         if(e.target.closest('#workbook-upload')){document.getElementById('workbook-upload-input')?.click();return;}
         if(e.target.closest('#workbook-forget')){forgetWorkbookOnDevice();return;}
 
+
+        const pTab=e.target.closest('[data-presentation-tab]');
+        if(pTab){const card=pTab.closest('.lesson-card');setPresentationIndex(card,Number(pTab.dataset.presentationTab),true);return;}
+        const pPrev=e.target.closest('[data-presentation-prev]');
+        if(pPrev){const card=pPrev.closest('.lesson-card');setPresentationIndex(card,Number(card.dataset.presentationCurrent||0)-1,true);return;}
+        const pNext=e.target.closest('[data-presentation-next]');
+        if(pNext){const card=pNext.closest('.lesson-card');setPresentationIndex(card,Number(card.dataset.presentationCurrent||0)+1,true);return;}
+
         const goto=e.target.closest('[data-goto]');
         if(goto){e.preventDefault();goTo(goto.dataset.goto,true);return;}
         const tab=e.target.closest('[data-lesson-goto]');
@@ -1857,12 +1969,20 @@
           if(s.classList.contains('module-screen')) lessons[s.id]=Number(s.dataset.lessonCurrent||0);
         });
 
+        const presentations={};
+        document.querySelectorAll('.lesson-card[data-presentation]').forEach((card,index)=>{
+          const screen=card.closest('.screen')?.id||'global';
+          const lesson=card.dataset.lessonIndex||String(index);
+          presentations[screen+'|'+lesson]=Number(card.dataset.presentationCurrent||0);
+        });
+
         return {
           format:'Entrepalooza Pilot 1 workbook',
           version:1,
           savedAt:new Date().toISOString(),
           screen:current,
           lessons,
+          presentations,
           fields,
           pressed,
           openDetails,
@@ -1912,6 +2032,15 @@
           });
         }
 
+        if(state.presentations){
+          document.querySelectorAll('.lesson-card[data-presentation]').forEach((card,index)=>{
+            const screen=card.closest('.screen')?.id||'global';
+            const lesson=card.dataset.lessonIndex||String(index);
+            const key=screen+'|'+lesson;
+            if(Object.prototype.hasOwnProperty.call(state.presentations,key)) setPresentationIndex(card,state.presentations[key],false);
+          });
+        }
+
         if(state.stamps){
           document.querySelectorAll('.tray-stamp').forEach(x=>x.classList.toggle('is-pressed',state.stamps.includes(x.dataset.stamp)));
           const count=document.querySelectorAll('.tray-stamp.is-pressed').length;
@@ -1928,6 +2057,127 @@
           }
         }
       }
+
+
+      function setPresentationIndex(card,index,focus=false){
+        const folds=[...card.querySelectorAll('.module-fold')];
+        if(!folds.length) return;
+        const i=Math.max(0,Math.min(folds.length-1,Number(index)||0));
+        card.dataset.presentationCurrent=String(i);
+        folds.forEach((fold,n)=>{
+          const active=n===i;
+          fold.classList.toggle('is-presentation-active',active);
+          if(card.dataset.presentation==='tabs'||card.dataset.presentation==='focus') fold.open=active;
+        });
+        card.querySelectorAll('[data-presentation-tab]').forEach((button,n)=>button.setAttribute('aria-pressed',n===i?'true':'false'));
+        card.querySelectorAll('.presentation-focus-dot').forEach((dot,n)=>dot.classList.toggle('is-active',n===i));
+        const count=card.querySelector('[data-presentation-count]');
+        if(count) count.textContent=(i+1)+' of '+folds.length;
+        const prev=card.querySelector('[data-presentation-prev]');
+        const next=card.querySelector('[data-presentation-next]');
+        if(prev) prev.disabled=i===0;
+        if(next) next.disabled=i===folds.length-1;
+        if(focus){
+          const target=folds[i].querySelector('summary')||folds[i];
+          target?.focus?.();
+        }
+      }
+
+      function setupVariedSlides(){
+        const cards=[...document.querySelectorAll('.lesson-card')];
+        const rotation=['editorial','tabs','path','mosaic','focus','reveal'];
+        cards.forEach((card,globalIndex)=>{
+          const title=card.querySelector('h3')?.textContent?.trim()||'';
+          if(title==="Map the Life You're Actually Living"){
+            card.dataset.presentation='map';
+            return;
+          }
+          const folds=[...card.querySelectorAll('.module-fold')];
+          if(!folds.length){
+            card.dataset.presentation='activity';
+            return;
+          }
+
+          // Offset readings and lessons so adjacent screens do not repeat the same visual grammar.
+          const reading=card.classList.contains('reading-inline');
+          const mode=rotation[(globalIndex+(reading?2:0))%rotation.length];
+          card.dataset.presentation=mode;
+          card.classList.add('presentation-'+mode);
+
+          const badge=document.createElement('div');
+          badge.className='presentation-mode-badge';
+          badge.setAttribute('aria-hidden','true');
+          badge.textContent=reading?'Reading moment':'Workbook moment';
+          card.querySelector('h3')?.before(badge);
+
+          folds.forEach((fold,i)=>{
+            const seq=String(i+1).padStart(2,'0');
+            fold.dataset.seq=seq;
+            const summary=fold.querySelector('summary');
+            if(summary){
+              summary.dataset.seq=seq;
+              fold.dataset.title=summary.textContent.trim();
+            }
+          });
+
+          if(mode==='editorial'){
+            folds.forEach(f=>f.open=true);
+          }
+
+          if(mode==='path'){
+            folds.forEach(f=>f.open=true);
+            const first=folds[0],last=folds[folds.length-1];
+            if(first&&last){
+              const wrap=document.createElement('div');wrap.className='presentation-path-wrap';
+              first.before(wrap);
+              folds.forEach(f=>wrap.appendChild(f));
+            }
+          }
+
+          if(mode==='mosaic'){
+            folds.forEach(f=>f.open=true);
+            const first=folds[0];
+            if(first){
+              const grid=document.createElement('div');grid.className='presentation-mosaic-grid';
+              first.before(grid);
+              folds.forEach(f=>grid.appendChild(f));
+            }
+          }
+
+          if(mode==='tabs'){
+            const tabs=document.createElement('div');tabs.className='presentation-tabs-ui';tabs.setAttribute('role','group');tabs.setAttribute('aria-label','Choose a section');
+            folds.forEach((fold,i)=>{
+              const button=document.createElement('button');button.type='button';button.className='presentation-tab-button';button.dataset.presentationTab=String(i);
+              button.setAttribute('aria-pressed',i===0?'true':'false');
+              button.textContent=fold.dataset.title||('Section '+(i+1));
+              tabs.appendChild(button);
+            });
+            folds[0]?.before(tabs);
+            setPresentationIndex(card,0,false);
+          }
+
+          if(mode==='focus'){
+            const shell=document.createElement('div');shell.className='presentation-focus-shell';
+            const count=document.createElement('div');count.className='presentation-focus-count';
+            count.innerHTML='<span>One idea at a time</span><span data-presentation-count>1 of '+folds.length+'</span>';
+            shell.appendChild(count);
+            folds[0]?.before(shell);
+            folds.forEach(f=>shell.appendChild(f));
+            const controls=document.createElement('div');controls.className='presentation-focus-controls';
+            const prev=document.createElement('button');prev.type='button';prev.className='presentation-focus-button';prev.dataset.presentationPrev='';prev.textContent='← Previous idea';
+            const dots=document.createElement('div');dots.className='presentation-focus-dots';dots.setAttribute('aria-hidden','true');
+            folds.forEach((_,i)=>{const dot=document.createElement('span');dot.className='presentation-focus-dot'+(i===0?' is-active':'');dots.appendChild(dot);});
+            const next=document.createElement('button');next.type='button';next.className='presentation-focus-button';next.dataset.presentationNext='';next.textContent='Next idea →';
+            controls.append(prev,dots,next);shell.appendChild(controls);
+            setPresentationIndex(card,0,false);
+          }
+
+          if(mode==='reveal'){
+            folds.forEach((f,i)=>f.open=i===0);
+          }
+        });
+      }
+
 
       function setWorkbookStatus(message){
         const el=document.getElementById('workbook-save-status');if(el)el.textContent=message;
@@ -2032,6 +2282,7 @@
         }
       });
 
+      setupVariedSlides();
       goTo(0,false);
       const restored=restoreWorkbookFromDevice();
       if(!restored){
