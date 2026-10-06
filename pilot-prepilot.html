@@ -828,7 +828,7 @@
           <div class="journal-start-card">
             <strong>Before the modules: the Conversation Journal</strong>
             <p>The Journal is a separate place to catch questions, rough thoughts, ideas, reactions, and things you want to remember as you move through the pilot. It is not homework, it is not scored, and you do not have to use it every time. A sentence, a question, or “I don't know yet” is enough.</p>
-            <a href="journal.html">Open the Conversation Journal and see how it works →</a>
+            <a href="journal.html" target="_blank" rel="noopener">Open the Conversation Journal and see how it works →</a>
           </div>
           <div class="check-in">
             <p class="prompt">Before we start, are you here?</p>
@@ -1920,7 +1920,7 @@
       <section class="conversation-journal-link" aria-label="Conversation Journal">
         <strong>Conversation Journal</strong>
         <p>Use the separate Journal page whenever you want to capture a thought that does not fit neatly inside a module question.</p>
-        <a href="journal.html">Open Conversation Journal →</a>
+        <a href="journal.html" target="_blank" rel="noopener">Open Conversation Journal →</a>
       </section>
       <section class="shape-view" aria-labelledby="shape-title">
         <button class="shape-toggle" type="button" id="shape-toggle" aria-expanded="false" aria-controls="shape-panel">
@@ -1970,6 +1970,30 @@
       let workbookUnlocked=false;
       let journalEntries=[];
       let journalPrompt='Notice';
+      const EXTERNAL_JOURNAL_KEY='entrepalooza-conversation-journal-v1';
+      const EXTERNAL_JOURNAL_DRAFT_KEY='entrepalooza-conversation-journal-draft-v1';
+
+      function readExternalJournal(){
+        try{
+          const raw=JSON.parse(localStorage.getItem(EXTERNAL_JOURNAL_KEY)||'null');
+          return raw&&Array.isArray(raw.entries)?raw.entries:[];
+        }catch(_){return [];}
+      }
+      function mergeJournalEntries(...groups){
+        const seen=new Set(),out=[];
+        groups.flat().forEach(entry=>{
+          if(!entry||!String(entry.text||'').trim())return;
+          const key=[entry.prompt||'Journal',String(entry.text||'').trim(),entry.at||''].join('|');
+          if(seen.has(key))return;
+          seen.add(key);out.push(entry);
+        });
+        return out;
+      }
+      function syncExternalJournal(){
+        journalEntries=mergeJournalEntries(journalEntries,readExternalJournal());
+        renderJournalEntries();
+        renderShapeView();
+      }
       let shapeReviews={};
       let shapeActiveTab='overview';
 
@@ -2088,6 +2112,25 @@
 
 
 
+
+        const externalJournalCapture=e.target.closest('[data-external-journal-capture]');
+        if(externalJournalCapture){
+          const box=externalJournalCapture.closest('.activity-workbench');
+          if(box){
+            const title=box.closest('.lesson-card')?.querySelector('h3')?.textContent?.trim()||'Activity';
+            const parts=[];
+            box.querySelectorAll('input,textarea').forEach(el=>{
+              const v=String(el.value||'').trim();
+              if(v){
+                const lab=el.id?document.querySelector('label[for="'+CSS.escape(el.id)+'"]'):null;
+                parts.push((lab?.textContent?.trim()||'Response')+': '+v);
+              }
+            });
+            const choices=[...box.querySelectorAll('button[aria-pressed="true"]')].map(b=>b.textContent.trim()).filter(Boolean);
+            if(choices.length)parts.push('Selected: '+choices.join(', '));
+            try{localStorage.setItem(EXTERNAL_JOURNAL_DRAFT_KEY,title+(parts.length?'\n'+parts.join('\n'):'\n'));}catch(_){}
+          }
+        }
 
         const readingPrev=e.target.closest('[data-reading-prev]');
         if(readingPrev){const card=readingPrev.closest('.reading-inline');setReadingPiece(card,Number(card.dataset.readingPiece||0)-1,true);return;}
@@ -2500,7 +2543,7 @@
           });
         }
 
-        journalEntries=Array.isArray(state.journalEntries)?state.journalEntries:[];
+        journalEntries=mergeJournalEntries(Array.isArray(state.journalEntries)?state.journalEntries:[],readExternalJournal());
         setJournalPrompt(state.journalPrompt||'Notice');
         renderJournalEntries();
         shapeReviews=state.shapeReviews&&typeof state.shapeReviews==='object'?state.shapeReviews:{};
@@ -2876,7 +2919,7 @@
       }
 
       function awShell(title,intro,body,style='board'){
-        return '<section class="activity-workbench" data-activity-style="'+style+'"><div class="activity-workbench-head"><div><p class="activity-workbench-kicker">Do it here</p><h4>'+title+'</h4><p class="activity-workbench-intro">'+intro+'</p></div></div>'+body+'<div class="activity-footer"><p>Skip anything you do not want to answer.</p><a class="activity-journal-capture" href="journal.html">Open Conversation Journal</a></div></section>';
+        return '<section class="activity-workbench" data-activity-style="'+style+'"><div class="activity-workbench-head"><div><p class="activity-workbench-kicker">Do it here</p><h4>'+title+'</h4><p class="activity-workbench-intro">'+intro+'</p></div></div>'+body+'<div class="activity-footer"><p>Skip anything you do not want to answer.</p><a class="activity-journal-capture" href="journal.html" target="_blank" rel="noopener">Open Conversation Journal</a></div></section>';
       }
 
       function participantActivityMarkup(title){
@@ -3348,9 +3391,12 @@
       setupParticipantActivities();
       setupReadingDecks();
       setupVariedSlides();
+      journalEntries=mergeJournalEntries(journalEntries,readExternalJournal());
       setJournalPrompt('Notice');
       renderJournalEntries();
       renderShapeView();
+      window.addEventListener('focus',syncExternalJournal);
+      window.addEventListener('storage',e=>{if(e.key===EXTERNAL_JOURNAL_KEY)syncExternalJournal();});
       syncWorkbookGate();
       goTo(0,false);
       restoreWorkbookFromDevice();
