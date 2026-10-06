@@ -13,11 +13,15 @@
     @media(max-width:720px){nav ul{display:none}.mobile-menu{display:block}.hero{padding-top:3.5rem}section{padding:3.5rem 0}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
 <header>
-  <div class="wrap nav"><a class="brand" href="#top">Build Otherwise</a><nav aria-label="Primary"><ul><li><a href="#how">How it works</a></li><li><a href="pilot.html">The Pilot</a></li><li><a href="#participation">Participation</a></li><li><a href="#partners">Partners</a></li><li><a href="#faq">FAQ</a></li><li><a href="#interest">Interest</a></li></ul></nav><details class="mobile-menu"><summary>Menu</summary><div class="mobile-links" role="navigation" aria-label="Mobile primary"><a href="#how">How it works</a><a href="pilot.html">The Pilot</a><a href="#participation">Participation</a><a href="#partners">Partners</a><a href="#faq">FAQ</a><a href="#interest">Interest</a></div></details></div>
+  <div class="wrap nav"><a class="brand" href="#top">Build Otherwise</a><nav aria-label="Primary"><ul><li><a href="#how">How it works</a></li><li><a href="pilot.html" data-track-event="Open Pilot">The Pilot</a></li><li><a href="#participation">Participation</a></li><li><a href="#partners">Partners</a></li><li><a href="#faq">FAQ</a></li><li><a href="#interest">Interest</a></li></ul></nav><details class="mobile-menu"><summary>Menu</summary><div class="mobile-links" role="navigation" aria-label="Mobile primary"><a href="#how">How it works</a><a href="pilot.html" data-track-event="Open Pilot">The Pilot</a><a href="#participation">Participation</a><a href="#partners">Partners</a><a href="#faq">FAQ</a><a href="#interest">Interest</a></div></details></div>
 </header>
 <main id="main">
   <section class="hero" id="top"><div class="wrap">
@@ -25,7 +29,7 @@
     <p class="status">Pre-pilot / early development · Interest only</p>
     <h1>You can be interested without having the whole plan.</h1>
     <p class="lead">Entrepalooza is a practical cohort experience for adults in Houston who want a clearer next step. You do not need a business idea, a permanent passion, or a personal story you are willing to share.</p>
-    <div class="actions"><a class="btn primary role-link" data-role="Participant" href="https://docs.google.com/forms/d/e/1FAIpQLSdOH41Zi0ZPOqB_0YU8wB6UsZciY-t2shX04lzEQ3iABhIF7g/viewform" target="_blank" rel="noopener noreferrer" aria-label="Help shape the first pilot — opens Google Form in a new tab">Help shape the first pilot</a><a class="btn secondary role-link" data-role="Partner/advisor" href="https://docs.google.com/forms/d/e/1FAIpQLSdOH41Zi0ZPOqB_0YU8wB6UsZciY-t2shX04lzEQ3iABhIF7g/viewform" target="_blank" rel="noopener noreferrer" aria-label="Partner or advisor interest — opens Google Form in a new tab">Partner or advisor interest</a></div><p class="small">These links open the Google interest form in a new tab.</p><p class="small"><a href="pilot.html"><strong>See what Pilot 1 looks like →</strong></a></p>
+    <div class="actions"><a class="btn primary role-link" data-role="Participant" href="https://docs.google.com/forms/d/e/1FAIpQLSdOH41Zi0ZPOqB_0YU8wB6UsZciY-t2shX04lzEQ3iABhIF7g/viewform" target="_blank" rel="noopener noreferrer" aria-label="Help shape the first pilot — opens Google Form in a new tab">Help shape the first pilot</a><a class="btn secondary role-link" data-role="Partner/advisor" href="https://docs.google.com/forms/d/e/1FAIpQLSdOH41Zi0ZPOqB_0YU8wB6UsZciY-t2shX04lzEQ3iABhIF7g/viewform" target="_blank" rel="noopener noreferrer" aria-label="Partner or advisor interest — opens Google Form in a new tab">Partner or advisor interest</a></div><p class="small">These links open the Google interest form in a new tab.</p><p class="small"><a href="pilot.html" data-track-event="Open Pilot"><strong>See what Pilot 1 looks like →</strong></a></p>
   </div></section>
 
   <section class="tint" id="about"><div class="wrap">
@@ -102,7 +106,17 @@
 <li><code>[FILL: time commitment — session length + overall duration]</code></li><li><code>[FILL: tuition / cost statement]</code></li><li><code>[FILL: facilitator names if public]</code></li><li><code>[FILL: any confirmed public partner names — else leave none]</code></li><li><code>[FILL: crisis/referral line text if you want it on-site — or omit]</code></li><li><code>[FILL: logo / wordmark file if any]</code></li><li><code>[FILL: custom domain if any]</code></li><li><code>[FILL: Module 4 public title preference: Yourself vs Your Head]</code></li><li><code>[FILL: whether Scars to Strategy appears on the public page]</code></li>
   </ol></div></section>
 </main>
-<footer><div class="wrap"><strong>Build Otherwise</strong><p>Entrepalooza is an educational, human-guided program in development.</p><p class="small">Design choices are informed by research on interest development, motivation, and belonging. This pilot does not claim proven outcomes.</p></div></footer>
+<footer><div class="wrap"><strong>Build Otherwise</strong><p>Entrepalooza is an educational, human-guided program in development.</p><p class="small">Design choices are informed by research on interest development, motivation, and belonging. This pilot does not claim proven outcomes.</p></div><p style="font-size:.78rem;color:#5d625e;max-width:760px">Anonymous site-use analytics count visits and navigation. No workbook responses or journal content are included.</p>
+</footer>
 
+  <script>
+    document.addEventListener('click', function (event) {
+      const target = event.target.closest('[data-track-event]');
+      if (!target) return;
+      try {
+        window.va('event', { name: target.dataset.trackEvent });
+      } catch (_) {}
+    });
+  </script>
 </body>
 </html>
