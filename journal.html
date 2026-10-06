@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Entrepalooza Conversation Journal is a private place to notice questions, rough thoughts, small tries, reflections, and next choices as you move through the pilot.">
+  <meta name="theme-color" content="#f5f2e9">
+  <title>Conversation Journal · Entrepalooza</title>
+  <style>
+    :root{
+      --paper:#f5f2e9;--paper-light:#fbf9f2;--ink:#263b39;--muted:#586762;
+      --line:#d8d6c9;--rule:#bd7357;--accent:#9b533b;--accent-soft:#efe1d5;
+      --teal:#3e6963;--teal-soft:#e2ebe5;--gold:#e4bd64;--white:#fffdf8;
+      --focus:#174d88;--max:980px;--sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      --serif:Georgia,"Times New Roman",serif;
+    }
+    *{box-sizing:border-box}
+    html{background:var(--paper)}
+    body{
+      margin:0;color:var(--ink);
+      background-color:var(--paper);
+      background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,rgba(62,105,99,.075) 32px,transparent 33px);
+      font:16px/1.6 var(--sans)
+    }
+    a{color:inherit;text-underline-offset:4px}
+    :focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+    .wrap{width:min(calc(100% - 32px),var(--max));margin:auto}
+    header{border-bottom:1px solid var(--line);background:rgba(245,242,233,.96);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px)}
+    .nav{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{font-size:12px;letter-spacing:.09em;text-transform:uppercase;font-weight:800;text-decoration:none}
+    .nav-links{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+    .nav-links a{font-size:13px;font-weight:700}
+    main{padding:56px 0 90px}
+    .eyebrow{margin:0 0 10px;color:var(--teal);text-transform:uppercase;letter-spacing:.13em;font-size:12px;font-weight:800}
+    h1,h2,h3{font-family:var(--serif);line-height:1.08;margin:0}
+    h1{font-size:clamp(3rem,8vw,6.2rem);letter-spacing:-.05em;max-width:850px}
+    h2{font-size:clamp(2rem,4.5vw,3.4rem);letter-spacing:-.035em}
+    h3{font-size:1.35rem}
+    .lede{max-width:750px;margin:20px 0 0;font-size:clamp(18px,2.2vw,22px);color:#394b47}
+    .plain{max-width:760px;color:#46534f}
+    .intro-card{
+      margin:34px 0 0;padding:22px;border:1px solid var(--line);border-left:5px solid var(--rule);
+      border-radius:12px;background:rgba(255,253,248,.78)
+    }
+    .intro-card strong{font-size:18px}
+    .intro-card p{margin:8px 0 0}
+    .explain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:34px 0 46px}
+    .explain-card{padding:20px;border:1px solid var(--line);border-radius:12px;background:rgba(255,253,248,.7)}
+    .explain-card h3{margin-bottom:9px}
+    .explain-card p{margin:0;color:var(--muted)}
+    .journal-shell{padding:clamp(20px,4vw,34px);border:1px solid var(--line);border-top:5px solid var(--teal);border-radius:16px;background:rgba(255,253,248,.88)}
+    .journal-head{display:flex;justify-content:space-between;gap:20px;align-items:start;margin-bottom:24px}
+    .privacy{font-size:13px;color:var(--muted);max-width:610px}
+    .prompt-row{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+    .prompt-button{
+      min-height:42px;padding:8px 13px;border:1px solid #83948c;border-radius:999px;
+      background:var(--paper-light);color:var(--ink);font-weight:750;cursor:pointer
+    }
+    .prompt-button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:white}
+    .current-prompt{margin:18px 0 9px;color:var(--accent);font:700 clamp(20px,3vw,27px)/1.35 var(--serif)}
+    label{display:block;margin-bottom:7px;font-weight:800}
+    textarea{
+      width:100%;min-height:170px;resize:vertical;padding:14px;border:1px solid #87958e;border-radius:8px;
+      background-color:rgba(251,249,242,.75);
+      background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,rgba(62,105,99,.15) 32px,transparent 33px);
+      color:var(--ink);font:16px/2 var(--sans)
+    }
+    .actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+    .button{
+      min-height:46px;padding:10px 15px;border:1px solid var(--teal);border-radius:6px;
+      background:var(--paper-light);color:var(--teal);font-weight:800;cursor:pointer;text-decoration:none;
+      display:inline-flex;align-items:center;justify-content:center
+    }
+    .button.primary{background:var(--teal);color:#fff}
+    .button.danger{border-color:var(--rule);color:var(--accent)}
+    .save-status{min-height:22px;margin:9px 0 0;color:var(--teal);font-size:13px;font-weight:700}
+    .entries-section{margin-top:46px}
+    .entries-head{display:flex;align-items:end;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding-bottom:12px}
+    .entry-list{display:grid;gap:12px;margin-top:16px}
+    .entry{padding:17px;border:1px solid var(--line);border-radius:10px;background:rgba(255,253,248,.7)}
+    .entry-head{display:flex;justify-content:space-between;gap:15px;margin-bottom:7px}
+    .entry-head strong{color:var(--teal);font-size:12px;text-transform:uppercase;letter-spacing:.09em}
+    .entry-head button{border:0;background:transparent;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+    .entry p{margin:0;white-space:pre-wrap}
+    .entry time{display:block;margin-top:9px;color:var(--muted);font-size:11px}
+    .empty{padding:18px 0;color:var(--muted);font-style:italic}
+    .bottom-note{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+    @media(max-width:760px){
+      .explain-grid{grid-template-columns:1fr}
+      .journal-head,.entries-head{display:block}
+      .nav-links a:first-child{display:none}
+      main{padding-top:38px}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="prepilot.html">Build Otherwise · Entrepalooza</a>
+    <nav class="nav-links" aria-label="Journal navigation">
+      <a href="prepilot.html">New site</a>
+      <a href="pilot-prepilot.html">Pilot walkthrough</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">Before the modules</p>
+    <h1>Conversation Journal</h1>
+    <p class="lede">This is a place to catch what you are thinking while you move through Entrepalooza, especially the thoughts that do not fit neatly inside a workbook question.</p>
+
+    <div class="intro-card">
+      <strong>You do not need to journal well.</strong>
+      <p>A sentence is enough. A question is enough. “I don't know yet” is enough. You can use this page often, once, or not at all.</p>
+    </div>
+
+    <section class="explain-grid" aria-label="How the Conversation Journal works">
+      <article class="explain-card">
+        <h3>What it is</h3>
+        <p>A running place for questions, observations, ideas, reactions, things you want to try, and choices you are considering.</p>
+      </article>
+      <article class="explain-card">
+        <h3>What it isn't</h3>
+        <p>It is not homework, a diary you have to maintain, a test, therapy, or something the program scores or interprets for you.</p>
+      </article>
+      <article class="explain-card">
+        <h3>How to use it</h3>
+        <p>Write when something feels worth remembering. You can come here from any module, add a rough note, then go back to what you were doing.</p>
+      </article>
+    </section>
+
+    <section class="journal-shell" aria-labelledby="write-title">
+      <div class="journal-head">
+        <div>
+          <p class="eyebrow">Write something down</p>
+          <h2 id="write-title">Start wherever your head already is.</h2>
+        </div>
+        <p class="privacy"><strong>Private on this device.</strong> Entries are stored in this browser unless you download or clear them. They are not sent to Entrepalooza from this page.</p>
+      </div>
+
+      <div class="prompt-row" role="group" aria-label="Choose a journal prompt">
+        <button class="prompt-button" type="button" data-prompt="Notice" aria-pressed="true">Notice</button>
+        <button class="prompt-button" type="button" data-prompt="Question" aria-pressed="false">Question</button>
+        <button class="prompt-button" type="button" data-prompt="Try" aria-pressed="false">Try</button>
+        <button class="prompt-button" type="button" data-prompt="Reflect" aria-pressed="false">Reflect</button>
+        <button class="prompt-button" type="button" data-prompt="Decide" aria-pressed="false">Decide</button>
+      </div>
+
+      <p class="current-prompt" id="current-prompt">What are you noticing right now?</p>
+      <label for="journal-draft">Write here</label>
+      <textarea id="journal-draft" placeholder="A sentence, a question, a rough thought, or “I don't know yet.”"></textarea>
+      <div class="actions">
+        <button class="button primary" type="button" id="keep-entry">Keep this entry</button>
+        <button class="button" type="button" id="clear-draft">Clear draft</button>
+        <button class="button" type="button" id="download-journal">Download journal</button>
+      </div>
+      <p class="save-status" id="save-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="entries-section" aria-labelledby="entries-title">
+      <div class="entries-head">
+        <div>
+          <p class="eyebrow">Your notes</p>
+          <h2 id="entries-title">Entries you kept</h2>
+        </div>
+        <button class="button danger" type="button" id="clear-all">Clear all entries</button>
+      </div>
+      <div class="entry-list" id="entry-list" aria-live="polite"></div>
+    </section>
+
+    <p class="bottom-note">The Conversation Journal is separate from the module questions on purpose. You do not need to turn every thought into an answer, and you do not need to make every answer part of the journal.</p>
+  </div>
+</main>
+
+<script>
+(() => {
+  const KEY='entrepalooza-conversation-journal-v1';
+  const DRAFT_KEY='entrepalooza-conversation-journal-draft-v1';
+  const prompts={
+    Notice:'What are you noticing right now?',
+    Question:'What question is still open?',
+    Try:'What is one small thing you might try or observe?',
+    Reflect:'What happened, and what did it teach you?',
+    Decide:'What feels like the next choice right now?'
+  };
+  let state={prompt:'Notice',entries:[]};
+  const draft=document.getElementById('journal-draft');
+  const status=document.getElementById('save-status');
+  const list=document.getElementById('entry-list');
+
+  function load(){
+    try{
+      const raw=JSON.parse(localStorage.getItem(KEY)||'null');
+      if(raw&&typeof raw==='object'){
+        state.prompt=prompts[raw.prompt]?raw.prompt:'Notice';
+        state.entries=Array.isArray(raw.entries)?raw.entries:[];
+      }
+      draft.value=localStorage.getItem(DRAFT_KEY)||'';
+    }catch(_){}
+    setPrompt(state.prompt);
+    render();
+  }
+  function save(message){
+    try{
+      localStorage.setItem(KEY,JSON.stringify(state));
+      if(message) status.textContent=message;
+    }catch(_){ status.textContent='This browser could not save the journal.'; }
+  }
+  function setPrompt(name){
+    state.prompt=prompts[name]?name:'Notice';
+    document.querySelectorAll('[data-prompt]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.prompt===state.prompt?'true':'false'));
+    document.getElementById('current-prompt').textContent=prompts[state.prompt];
+    save();
+  }
+  function render(){
+    list.innerHTML='';
+    if(!state.entries.length){
+      const p=document.createElement('p');p.className='empty';p.textContent='No entries yet. A rough thought is enough.';list.appendChild(p);return;
+    }
+    [...state.entries].reverse().forEach((entry,reverseIndex)=>{
+      const index=state.entries.length-1-reverseIndex;
+      const article=document.createElement('article');article.className='entry';
+      const head=document.createElement('div');head.className='entry-head';
+      const strong=document.createElement('strong');strong.textContent=entry.prompt||'Journal';
+      const remove=document.createElement('button');remove.type='button';remove.dataset.remove=String(index);remove.textContent='Remove';
+      head.append(strong,remove);
+      const p=document.createElement('p');p.textContent=entry.text||'';
+      const time=document.createElement('time');
+      const d=new Date(entry.at||Date.now());time.dateTime=d.toISOString();time.textContent=d.toLocaleString();
+      article.append(head,p,time);list.appendChild(article);
+    });
+  }
+
+  document.addEventListener('click',e=>{
+    const prompt=e.target.closest('[data-prompt]');
+    if(prompt){setPrompt(prompt.dataset.prompt);return;}
+    if(e.target.closest('#keep-entry')){
+      const text=draft.value.trim();
+      if(!text){status.textContent='Nothing to save yet. You can also leave it blank and keep moving.';return;}
+      state.entries.push({prompt:state.prompt,text,at:new Date().toISOString()});
+      draft.value='';localStorage.removeItem(DRAFT_KEY);save('Entry kept on this device.');render();return;
+    }
+    if(e.target.closest('#clear-draft')){draft.value='';localStorage.removeItem(DRAFT_KEY);status.textContent='Draft cleared.';return;}
+    const remove=e.target.closest('[data-remove]');
+    if(remove){state.entries.splice(Number(remove.dataset.remove),1);save('Entry removed.');render();return;}
+    if(e.target.closest('#clear-all')){
+      if(confirm('Clear every Conversation Journal entry stored in this browser?')){state.entries=[];save('All journal entries cleared from this browser.');render();}
+      return;
+    }
+    if(e.target.closest('#download-journal')){
+      const lines=['Entrepalooza Conversation Journal','Downloaded: '+new Date().toLocaleString(),''];
+      state.entries.forEach(entry=>{lines.push('['+(entry.prompt||'Journal')+']');lines.push(entry.text||'');lines.push('');});
+      const blob=new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'});
+      const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='entrepalooza-conversation-journal.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);status.textContent='Journal downloaded.';return;
+    }
+  });
+  draft.addEventListener('input',()=>{try{localStorage.setItem(DRAFT_KEY,draft.value)}catch(_){}});
+  load();
+})();
+</script>
+</body>
+</html>
