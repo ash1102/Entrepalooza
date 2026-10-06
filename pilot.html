@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Walk through Pilot 1 of Entrepalooza, Build Otherwise's practical, human-guided cohort in Houston for adults figuring out what comes next.">
+  <title>Walk through Pilot 1 | Build Otherwise · Entrepalooza</title>
+  <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+  <style>
+    :root{
+      --bone:#f4f0e7;
+      --paper:#fffdf8;
+      --charcoal:#242725;
+      --muted:#5d625e;
+      --teal:#174f4c;
+      --teal2:#0f3f3c;
+      --copper:#a65737;
+      --stone:#d9d2c5;
+      --line:#c9c2b6;
+      --focus:#7b321d;
+      --paper-line:rgba(23,79,76,.085);
+      --max:1080px;
+      --header-h:66px;
+      --stepper-h:56px;
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bone);color:var(--charcoal);font-family:Arial,Helvetica,sans-serif;line-height:1.58;font-size:17px}
+    button,textarea,a{font:inherit}
+    a{color:var(--teal2);text-underline-offset:3px}
+    a:focus-visible,button:focus-visible,textarea:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+    .skip{position:absolute;left:-999px;top:8px;background:var(--charcoal);color:#fff;padding:.7rem 1rem;z-index:1000}.skip:focus{left:8px}
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin:auto}
+
+    header{position:sticky;top:0;z-index:60;background:rgba(244,240,231,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(9px)}
+    .nav{min-height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:1.16rem;text-decoration:none;color:var(--charcoal)}
+    .header-actions{display:flex;align-items:center;gap:.65rem}
+    .home-link{font-size:.88rem;font-weight:800;text-decoration:none}
+    .interest-link{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:.55rem .82rem;border:1.5px solid var(--teal);border-radius:999px;background:var(--teal);color:#fff;font-size:.85rem;font-weight:800;text-decoration:none}
+
+    .stepper-wrap{position:sticky;top:var(--header-h);z-index:55;background:rgba(255,253,248,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(9px)}
+    .stepper{min-height:var(--stepper-h);display:flex;align-items:center;gap:.32rem;overflow-x:auto;padding:.45rem 0;scrollbar-width:thin}
+    .stepper button{border:1px solid transparent;background:transparent;color:var(--muted);min-height:38px;padding:.42rem .62rem;border-radius:999px;font-size:.82rem;font-weight:900;white-space:nowrap;cursor:pointer}
+    .stepper button:hover{background:var(--bone);color:var(--charcoal)}
+    .stepper button[aria-current="step"]{background:var(--teal);color:#fff;border-color:var(--teal)}
+    .progress-track{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--stone);overflow:hidden}
+    .progress-fill{height:100%;width:0;background:var(--teal);transition:width .2s ease}
+
+    main{position:relative}
+    .screen{position:relative;min-height:calc(100svh - var(--header-h) - var(--stepper-h));padding:clamp(2.3rem,6vw,5.6rem) 0 6.5rem;overflow:hidden}
+    .screen:nth-of-type(even){background:rgba(255,253,248,.46)}
+    .screen::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,var(--paper-line) 32px,transparent 33px);opacity:.72}
+    .screen::after{content:"";position:absolute;top:0;bottom:0;left:max(1.1rem,calc((100% - var(--max))/2 + 2rem));width:1px;background:rgba(166,87,55,.26);pointer-events:none}
+    .sheet{position:relative;z-index:1;padding-left:clamp(1.3rem,4vw,4rem);padding-right:clamp(.1rem,2vw,1rem)}
+    .page-mark{font-size:.76rem;text-transform:uppercase;letter-spacing:.13em;font-weight:900;color:var(--copper);margin:0 0 .65rem}
+    h1,h2,h3{font-family:Georgia,'Times New Roman',serif;line-height:1.08;margin-top:0}
+    h1{font-size:clamp(2.7rem,8vw,5.8rem);letter-spacing:-.04em;max-width:850px;margin-bottom:1.1rem}
+    .nowrap{white-space:nowrap}
+    h2{font-size:clamp(2.2rem,6vw,4rem);letter-spacing:-.025em;margin-bottom:1rem}
+    h3{font-size:clamp(1.25rem,3vw,1.7rem);margin-bottom:.45rem}
+    .lead{font-size:clamp(1.08rem,2.3vw,1.3rem);max-width:760px;color:#3f4440}
+    .intro-copy{max-width:760px}
+    .prompt{font-family:"Segoe Print","Bradley Hand","Comic Sans MS",cursive;font-size:1.05rem;font-weight:700;color:var(--teal2)}
+    .sticky-note{max-width:520px;margin:1.6rem 0;padding:1rem 1.15rem;background:#f3e6b8;border:1px solid #d5c27b;box-shadow:3px 5px 0 rgba(36,39,37,.08);transform:rotate(-.5deg)}
+    .margin-note{max-width:360px;margin:1.1rem 0 1.1rem auto;border-left:3px solid var(--copper);padding:.4rem 0 .4rem .85rem;color:var(--muted);font-size:.92rem}
+
+    .choice-row,.nav-row,.checkin-row{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}
+    .nav-row{justify-content:space-between;margin-top:2.1rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:.7rem 1rem;border:1.5px solid var(--teal);border-radius:999px;background:var(--paper);color:var(--teal2);font-weight:900;text-decoration:none;cursor:pointer}
+    .button.primary{background:var(--teal);color:#fff}
+    .button.quiet{border-color:var(--line);color:var(--charcoal)}
+    .button:hover{box-shadow:0 6px 16px rgba(36,39,37,.1);transform:translateY(-1px)}
+    .feedback{min-height:1.6em;margin:.7rem 0 0;font-weight:800;color:var(--teal2)}
+
+    .module-grid{display:grid;gap:1.2rem;margin-top:1.4rem}
+    .loop-block{position:relative;padding:1.05rem 1rem 1.15rem 1.1rem;border-left:3px solid var(--line);background:rgba(255,253,248,.62)}
+    .loop-block[data-loop="notice"]{border-left-color:var(--teal)}
+    .loop-block h3{display:flex;align-items:center;gap:.55rem}
+    .loop-number{display:inline-grid;place-items:center;width:1.8rem;height:1.8rem;border-radius:50%;border:1px solid var(--teal);color:var(--teal2);font:900 .78rem/1 Arial,Helvetica,sans-serif;flex:0 0 auto}
+    .reflect-box{margin-top:.8rem}
+    .optional-note{display:block;font-size:.76rem;font-weight:900;color:var(--copper);margin:.25rem 0 .12rem}.privacy-label{display:block;font-size:.78rem;font-weight:800;color:var(--muted);margin:.15rem 0 .45rem}
+    textarea{width:100%;min-height:82px;resize:vertical;border:1px solid #767c77;border-radius:10px;padding:.8rem;background:rgba(255,255,255,.9);color:var(--charcoal)}
+    .decision-chips{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:.8rem}
+    .decision-chip{min-height:42px;padding:.55rem .75rem;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--charcoal);font-weight:850;cursor:pointer}
+    .decision-chip:hover,.decision-chip:focus-visible{border-color:var(--teal);background:#f0f5f3}
+    .decision-chip[aria-pressed="true"]{border-color:var(--teal);background:#e2efec;color:var(--teal2);box-shadow:inset 0 0 0 1px var(--teal)}
+    .decision-result{min-height:1.5em;margin:.75rem 0 0;font-weight:800;color:var(--teal2)}
+
+    .stamp-callout{display:inline-flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin:1.05rem 0 .25rem;padding:.62rem .8rem;border:2px solid var(--teal);border-radius:8px;color:var(--teal2);font-size:.86rem;font-weight:900;text-transform:uppercase;letter-spacing:.035em;transform:rotate(-.4deg);background:rgba(255,253,248,.72)}
+    .stamp-callout.secondary{border-style:dashed;border-color:var(--copper);color:var(--copper)}
+
+    .later-path{list-style:none;padding:0;margin:1.4rem 0 2rem;max-width:760px}
+    .later-path li{position:relative;padding:.72rem 0 .72rem 2rem;border-left:2px dotted var(--line)}
+    .later-path li::before{content:"";position:absolute;left:-6px;top:1.05rem;width:10px;height:10px;border-radius:50%;background:var(--bone);border:2px solid var(--copper)}
+    .later-path strong{font-family:Georgia,'Times New Roman',serif}
+    blockquote{margin:2.2rem 0;padding:0;max-width:800px;font:700 clamp(1.8rem,5vw,3.2rem)/1.13 Georgia,'Times New Roman',serif;color:var(--teal2)}
+    .logistics-line{margin:1.5rem 0;font-weight:900}
+    .small-print{max-width:800px;font-size:.86rem;color:var(--muted)}
+
+    .loop-dial{position:fixed;right:.8rem;top:calc(var(--header-h) + var(--stepper-h) + .75rem);z-index:45;width:118px;height:118px;border-radius:50%;background:rgba(255,253,248,.96);border:1px solid var(--line);box-shadow:0 8px 24px rgba(36,39,37,.1);pointer-events:none}
+    .loop-dial::before{content:"";position:absolute;inset:26px;border:2px solid var(--stone);border-radius:50%}
+    .loop-word{position:absolute;font-size:.62rem;font-weight:900;color:var(--muted);padding:.18rem .28rem;border-radius:5px;background:var(--paper)}
+    .loop-word.active{background:var(--teal);color:#fff}
+    .loop-word.notice{top:6px;left:50%;transform:translateX(-50%)}
+    .loop-word.try{right:2px;top:50%;transform:translateY(-50%)}
+    .loop-word.reflect{bottom:6px;left:50%;transform:translateX(-50%)}
+    .loop-word.decide{left:0;top:50%;transform:translateY(-50%)}
+    .loop-arrow{position:absolute;inset:14px;border:1px dashed rgba(166,87,55,.38);border-radius:50%}
+
+    .workbook-tray{position:fixed;z-index:50;right:1rem;bottom:1rem;width:min(280px,calc(100% - 2rem));background:rgba(36,39,37,.96);color:#fff;border:1px solid #424744;border-radius:14px;padding:.8rem;box-shadow:0 12px 28px rgba(36,39,37,.24)}
+    .tray-title{display:flex;justify-content:space-between;gap:.5rem;align-items:center;margin-bottom:.5rem;font-weight:900;font-size:.82rem;letter-spacing:.04em}
+    .tray-title span:last-child{font-weight:700;color:#d9d2c5;font-size:.7rem}
+    .stamps{display:grid;grid-template-columns:1fr 1fr;gap:.45rem}
+    .stamp{min-height:54px;display:flex;flex-direction:column;justify-content:center;border:1px dashed #8a918c;border-radius:8px;padding:.4rem .5rem;color:#bfc4c0;font-size:.7rem;font-weight:900;line-height:1.15;background:rgba(255,255,255,.02);transition:transform .22s ease,box-shadow .22s ease,background .22s ease,color .22s ease}
+    .stamp small{font-size:.62rem;font-weight:700;opacity:.8;margin-top:.18rem}
+    .stamp.earned{color:#fff2e6;border:2px solid #d7835f;background:rgba(166,87,55,.22);box-shadow:inset 0 0 0 2px rgba(0,0,0,.2);transform:scale(.985) rotate(-.7deg)}
+    .stamp.later{border-style:dotted;color:#aeb4af}
+
+    footer{padding:2rem 0 8rem;border-top:1px solid var(--line);background:var(--bone)}
+    footer p{margin:.35rem 0}.small{font-size:.86rem;color:var(--muted)}
+
+    .js .screen{display:none}
+    .js .screen.active{display:block}
+    .js .no-js-note{display:none}
+    .no-js .interactive-only{display:none!important}
+    .no-js .screen{display:block;min-height:auto;border-bottom:1px solid var(--line)}
+    .no-js .loop-dial,.no-js .workbook-tray,.no-js .stepper-wrap{display:none}
+
+    @media(min-width:800px){
+      .module-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+      .loop-block[data-loop="notice"],.loop-block[data-loop="decide"]{grid-column:1/-1}
+      .screen{padding-right:330px}
+      .screen .wrap{width:min(calc(100% - 2rem),820px);margin-left:max(1rem,calc((100vw - var(--max))/2))}
+      .screen::after{left:max(1.1rem,calc((100% - var(--max))/2 + 2rem))}
+    }
+    @media(max-width:799px){
+      :root{--header-h:62px;--stepper-h:54px}
+      .home-link{display:none}
+      .interest-link{min-height:40px;padding:.5rem .72rem}
+      .screen{padding:2.2rem 0 9.4rem}
+      .sheet{padding-left:1.45rem;padding-right:.15rem}
+      .screen::after{left:1.45rem}
+      .loop-dial{top:calc(var(--header-h) + var(--stepper-h) + .45rem);right:.4rem;width:98px;height:98px;opacity:.93}
+      .loop-dial::before{inset:23px}.loop-arrow{inset:12px}.loop-word{font-size:.54rem}
+      .workbook-tray{left:.5rem;right:.5rem;bottom:.5rem;width:auto;border-radius:12px;padding:.55rem .65rem}
+      .tray-title{margin:0 0 .35rem}.stamps{grid-template-columns:repeat(4,1fr)}
+      .stamp{min-height:45px;padding:.28rem .34rem;font-size:.58rem}.stamp small{display:none}
+      footer{padding-bottom:7.8rem}
+    }
+    @media(max-width:460px){
+      .stamps{gap:.28rem}.stamp{font-size:.52rem}.page-mark{font-size:.7rem}.stepper button{font-size:.76rem;padding:.4rem .54rem}
+      .loop-dial{transform:scale(.88);transform-origin:top right}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+      .button:hover{transform:none}
+    }
+  </style>
+</head>
+<body>
+<a class="skip" href="#walkthrough">Skip to walkthrough</a>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">Build Otherwise <span aria-hidden="true">·</span> Entrepalooza</a>
+    <div class="header-actions">
+      <a class="home-link" href="index.html">Home</a>
+      <a class="interest-link" href="https://link.jotform.com/EhQXbmRwbk" target="_blank" rel="noopener">Express interest</a>
+    </div>
+  </div>
+</header>
+
+<div class="stepper-wrap interactive-only" aria-label="Pilot 1 steps">
+  <div class="wrap stepper">
+    <button type="button" data-goto="0" aria-label="Go to Start">Start</button>
+    <button type="button" data-goto="1" aria-label="Go to Module 0">0</button>
+    <button type="button" data-goto="2" aria-label="Go to Module 1">1</button>
+    <button type="button" data-goto="3" aria-label="Go to Module 1.5">1.5</button>
+    <button type="button" data-goto="4" aria-label="Go to Module 2">2</button>
+    <button type="button" data-goto="5" aria-label="Go to Module 3">3</button>
+    <button type="button" data-goto="6" aria-label="Go to What's next">What's next</button>
+  </div>
+  <div class="progress-track" role="progressbar" aria-label="Pilot 1 module progress" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><div class="progress-fill"></div></div>
+</div>
+
+<p class="sr-only" id="step-announcer" aria-live="polite" aria-atomic="true"></p>
+<p class="sr-only" id="action-announcer" aria-live="polite" aria-atomic="true"></p>
+
+<aside class="loop-dial interactive-only" aria-label="Notice, Try, Reflect, Decide loop">
+  <span class="loop-arrow" aria-hidden="true"></span>
+  <span class="loop-word notice active" data-loop-word="notice">Notice</span>
+  <span class="loop-word try" data-loop-word="try">Try</span>
+  <span class="loop-word reflect" data-loop-word="reflect">Reflect</span>
+  <span class="loop-word decide" data-loop-word="decide">Decide</span>
+</aside>
+
+<aside class="workbook-tray interactive-only" aria-label="My workbook tools collected during this walkthrough">
+  <div class="tray-title"><span>My workbook</span><span>this visit only</span></div>
+  <div class="stamps">
+    <div class="stamp" data-stamp="operating"><span>Operating Plan</span><small>not reached yet</small></div>
+    <div class="stamp" data-stamp="discovery"><span>Builder Discovery Record</span><small>not reached yet</small></div>
+    <div class="stamp" data-stamp="decision"><span>Next Decision</span><small>not reached yet</small></div>
+    <div class="stamp later" data-stamp="final"><span>Final Next Direction Map</span><small>later</small></div>
+  </div>
+</aside>
+
+<main id="walkthrough">
+  <p class="no-js-note wrap"><strong>JavaScript is off.</strong> The walkthrough is shown as one readable page below.</p>
+
+  <section class="screen active" data-step="0" data-title="Walk through Pilot 1">
+    <div class="wrap sheet">
+      <p class="page-mark">Status: pre-pilot</p>
+      <h1>Walk through <span class="nowrap">Pilot 1</span></h1>
+      <p class="lead intro-copy">Pilot 1 opens Entrepalooza, a small, human-guided cohort in Houston for adults figuring out what comes next. Here's how it feels, one step at a time.</p>
+
+      <div class="sticky-note">Every module follows the same loop: Notice → Try → Reflect → Decide.</div>
+
+      <div class="checkin" aria-labelledby="checkin-prompt">
+        <p class="prompt" id="checkin-prompt">Before we start, are you here?</p>
+        <div class="checkin-row">
+          <button class="button quiet" type="button" data-checkin="here">Here</button>
+          <button class="button quiet" type="button" data-checkin="pass">Pass</button>
+        </div>
+        <p class="feedback" id="checkin-result" aria-live="polite"></p>
+      </div>
+
+      <div class="nav-row">
+        <span></span>
+        <button class="button primary interactive-only" type="button" data-next>Start</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" data-step="1" data-title="Module 0 · Enter with Agency">
+    <div class="wrap sheet">
+      <p class="page-mark">Module 1 of 5</p>
+      <h2>Module 0 · Enter with Agency</h2>
+      <div class="module-grid">
+        <article class="loop-block" data-loop="notice">
+          <h3><span class="loop-number">1</span>Notice</h3>
+          <p>Ground rules come first: what this is and isn't, your privacy, and your right to pass or leave.</p>
+          <p class="margin-note">Joining and consent are separate choices.</p>
+        </article>
+        <article class="loop-block" data-loop="try">
+          <h3><span class="loop-number">2</span>Try</h3>
+          <p>Practice feedback with permission. In a made-up scenario, a peer asks, "Do you want a question, a suggestion, or no feedback?" You decide, and you can say no.</p>
+        </article>
+        <article class="loop-block" data-loop="reflect">
+          <h3><span class="loop-number">3</span>Reflect</h3>
+          <p class="prompt">What would make taking part workable for you?</p>
+          <span class="optional-note">Optional.</span><label class="privacy-label" for="reflect-0">Just for you. Nothing you type is saved or sent.</label>
+          <textarea id="reflect-0"></textarea>
+          <div class="stamp-callout" aria-label="Workbook stamp: Operating Plan">Workbook stamp · Operating Plan</div>
+        </article>
+        <article class="loop-block" data-loop="decide">
+          <h3><span class="loop-number">4</span>Decide</h3>
+          <p class="prompt">Name one unknown.</p>
+          <span class="optional-note">Optional.</span><label class="privacy-label" for="unknown-0">Just for you. Nothing you type is saved or sent.</label>
+          <textarea id="unknown-0"></textarea>
+          <div class="decision-chips" aria-label="Choose a next decision">
+            <button class="decision-chip" type="button">Keep</button><button class="decision-chip" type="button">Change</button><button class="decision-chip" type="button">Test Again</button><button class="decision-chip" type="button">Pause/Park</button><button class="decision-chip" type="button">Stop</button><button class="decision-chip" type="button">Another Direction</button><button class="decision-chip" type="button">Continue Looking</button>
+          </div>
+          <p class="decision-result" aria-live="polite"></p>
+        </article>
+      </div>
+      <div class="nav-row interactive-only"><button class="button quiet" type="button" data-back>← Back</button><button class="button primary" type="button" data-next>Finish Module 0 → Module 1</button></div>
+    </div>
+  </section>
+
+  <section class="screen" data-step="2" data-title="Module 1 · Find Something Worth Exploring">
+    <div class="wrap sheet">
+      <p class="page-mark">Module 2 of 5</p>
+      <h2>Module 1 · Find Something Worth Exploring</h2>
+      <div class="module-grid">
+        <article class="loop-block" data-loop="notice"><h3><span class="loop-number">1</span>Notice</h3><p>Notice what holds your attention, or start with "I don't know yet." You don't need a passion or a business idea.</p><div class="sticky-note">"Nothing clear yet" is a real result.</div></article>
+        <article class="loop-block" data-loop="try"><h3><span class="loop-number">2</span>Try</h3><p>Pick an interest you already have, or something new. Design one small try with a limit and a stop rule.</p></article>
+        <article class="loop-block" data-loop="reflect"><h3><span class="loop-number">3</span>Reflect</h3><p class="prompt">What caught your attention? What did it cost? Would you go back to it?</p><span class="optional-note">Optional.</span><label class="privacy-label" for="reflect-1">Just for you. Nothing you type is saved or sent.</label><textarea id="reflect-1"></textarea><div class="stamp-callout" aria-label="Workbook stamps: Builder Discovery Record and Next Decision">Workbook stamps · Builder Discovery Record · Next Decision</div></article>
+        <article class="loop-block" data-loop="decide"><h3><span class="loop-number">4</span>Decide</h3><p class="prompt">Name one unknown.</p><span class="optional-note">Optional.</span><label class="privacy-label" for="unknown-1">Just for you. Nothing you type is saved or sent.</label><textarea id="unknown-1"></textarea><div class="decision-chips" aria-label="Choose a next decision"><button class="decision-chip" type="button">Keep</button><button class="decision-chip" type="button">Change</button><button class="decision-chip" type="button">Test Again</button><button class="decision-chip" type="button">Pause/Park</button><button class="decision-chip" type="button">Stop</button><button class="decision-chip" type="button">Another Direction</button><button class="decision-chip" type="button">Continue Looking</button></div><p class="decision-result" aria-live="polite"></p></article>
+      </div>
+      <div class="nav-row interactive-only"><button class="button quiet" type="button" data-back>← Back</button><button class="button primary" type="button" data-next>Finish Module 1 → Module 1.5</button></div>
+    </div>
+  </section>
+
+  <section class="screen" data-step="3" data-title="Module 1.5 · Test How I Operate">
+    <div class="wrap sheet">
+      <p class="page-mark">Module 3 of 5</p>
+      <h2>Module 1.5 · Test How I Operate</h2>
+      <div class="module-grid">
+        <article class="loop-block" data-loop="notice"><h3><span class="loop-number">1</span>Notice</h3><p>Look at how you work, not who you "are." No personality scores.</p></article>
+        <article class="loop-block" data-loop="try"><h3><span class="loop-number">2</span>Try</h3><p>Take an ordinary task and change one condition, like time of day, working alone or with people, or quiet or busy.</p></article>
+        <article class="loop-block" data-loop="reflect"><h3><span class="loop-number">3</span>Reflect</h3><p class="prompt">What changed? What did it cost? What's still uncertain?</p><span class="optional-note">Optional.</span><label class="privacy-label" for="reflect-15">Just for you. Nothing you type is saved or sent.</label><textarea id="reflect-15"></textarea><div class="stamp-callout" aria-label="Workbook stamp: Operating Plan, adds a note">Workbook stamp · Operating Plan · adds a note</div></article>
+        <article class="loop-block" data-loop="decide"><h3><span class="loop-number">4</span>Decide</h3><p class="prompt">Name one unknown.</p><span class="optional-note">Optional.</span><label class="privacy-label" for="unknown-15">Just for you. Nothing you type is saved or sent.</label><textarea id="unknown-15"></textarea><div class="decision-chips" aria-label="Choose a next decision"><button class="decision-chip" type="button">Keep</button><button class="decision-chip" type="button">Change</button><button class="decision-chip" type="button">Test Again</button><button class="decision-chip" type="button">Pause/Park</button><button class="decision-chip" type="button">Stop</button><button class="decision-chip" type="button">Another Direction</button><button class="decision-chip" type="button">Continue Looking</button></div><p class="decision-result" aria-live="polite"></p></article>
+      </div>
+      <div class="nav-row interactive-only"><button class="button quiet" type="button" data-back>← Back</button><button class="button primary" type="button" data-next>Finish Module 1.5 → Module 2</button></div>
+    </div>
+  </section>
+
+  <section class="screen" data-step="4" data-title="Module 2 · Check the Story">
+    <div class="wrap sheet">
+      <p class="page-mark">Module 4 of 5</p>
+      <h2>Module 2 · Check the Story</h2>
+      <div class="module-grid">
+        <article class="loop-block" data-loop="notice"><h3><span class="loop-number">1</span>Notice</h3><p>Separate what happened from the story about it, and from any verdict about yourself.</p><p class="margin-note">No confession required.</p></article>
+        <article class="loop-block" data-loop="try"><h3><span class="loop-number">2</span>Try</h3><p>With a made-up example, sort three things: the event, the story, and the verdict.</p></article>
+        <article class="loop-block" data-loop="reflect"><h3><span class="loop-number">3</span>Reflect</h3><p class="prompt">Is there a wording that's more accurate, not just more positive?</p><span class="optional-note">Optional.</span><label class="privacy-label" for="reflect-2">Just for you. Nothing you type is saved or sent.</label><textarea id="reflect-2"></textarea><div class="stamp-callout" aria-label="Workbook stamp: Builder Discovery Record, adds a note">Workbook stamp · Builder Discovery Record · adds a note</div></article>
+        <article class="loop-block" data-loop="decide"><h3><span class="loop-number">4</span>Decide</h3><p class="prompt">Name one unknown.</p><span class="optional-note">Optional.</span><label class="privacy-label" for="unknown-2">Just for you. Nothing you type is saved or sent.</label><textarea id="unknown-2"></textarea><div class="decision-chips" aria-label="Choose a next decision"><button class="decision-chip" type="button">Keep</button><button class="decision-chip" type="button">Change</button><button class="decision-chip" type="button">Test Again</button><button class="decision-chip" type="button">Pause/Park</button><button class="decision-chip" type="button">Stop</button><button class="decision-chip" type="button">Another Direction</button><button class="decision-chip" type="button">Continue Looking</button></div><p class="decision-result" aria-live="polite"></p></article>
+      </div>
+      <div class="nav-row interactive-only"><button class="button quiet" type="button" data-back>← Back</button><button class="button primary" type="button" data-next>Finish Module 2 → Module 3</button></div>
+    </div>
+  </section>
+
+  <section class="screen" data-step="5" data-title="Module 3 · Navigate Intensity">
+    <div class="wrap sheet">
+      <p class="page-mark">Module 5 of 5</p>
+      <h2>Module 3 · Navigate Intensity</h2>
+      <div class="module-grid">
+        <article class="loop-block" data-loop="notice"><h3><span class="loop-number">1</span>Notice</h3><p>Sometimes effort spikes, stalls, or costs too much. Sometimes something is already working.</p></article>
+        <article class="loop-block" data-loop="try"><h3><span class="loop-number">2</span>Try</h3><p>Choose a route. Both are equal: protect one condition that's working, or try one small, low-risk response during an ordinary task.</p><div class="sticky-note">Pilot 1 ends here.</div></article>
+        <article class="loop-block" data-loop="reflect"><h3><span class="loop-number">3</span>Reflect</h3><p class="prompt">What's one limit you choose to keep?</p><span class="optional-note">Optional.</span><label class="privacy-label" for="reflect-3">Just for you. Nothing you type is saved or sent.</label><textarea id="reflect-3"></textarea><div class="stamp-callout" aria-label="Workbook stamps: Operating Plan and Next Decision">Workbook stamps · Operating Plan · Next Decision</div></article>
+        <article class="loop-block" data-loop="decide"><h3><span class="loop-number">4</span>Decide</h3><p class="prompt">Name one unknown.</p><span class="optional-note">Optional.</span><label class="privacy-label" for="unknown-3">Just for you. Nothing you type is saved or sent.</label><textarea id="unknown-3"></textarea><div class="decision-chips" aria-label="Choose a next decision"><button class="decision-chip" type="button">Keep</button><button class="decision-chip" type="button">Change</button><button class="decision-chip" type="button">Test Again</button><button class="decision-chip" type="button">Pause/Park</button><button class="decision-chip" type="button">Stop</button><button class="decision-chip" type="button">Another Direction</button><button class="decision-chip" type="button">Continue Looking</button></div><p class="decision-result" aria-live="polite"></p></article>
+      </div>
+      <div class="nav-row interactive-only"><button class="button quiet" type="button" data-back>← Back</button><button class="button primary" type="button" data-next>Finish Module 3 → What's next</button></div>
+    </div>
+  </section>
+
+  <section class="screen" data-step="6" data-title="What's next">
+    <div class="wrap sheet">
+      <h2>What's next</h2>
+      <p class="lead">Later phases of the fuller program (about six months):</p>
+      <ol class="later-path">
+        <li><strong>4 · Check Reality Outside Yourself:</strong> gather outside evidence <!-- FILL: confirm Module 4 title: Yourself vs Your Head --></li>
+        <li><strong>5 · Name / Do / Notice the Try:</strong> one manageable try</li>
+        <li><strong>6 · Check What This Costs:</strong> money, time, and real limits, including $0</li>
+        <li><strong>7 · Choose a Direction That Fits Capacity:</strong> work, training, a project, or a pause</li>
+        <li><strong>8 · Build the Tribe:</strong> how you stay connected</li>
+      </ol>
+
+      <div class="stamp-callout secondary">Later · Final Next Direction Map</div>
+      <blockquote>"You're still of this tribe if you want to be."</blockquote>
+      <p class="lead">Starting a business is one possible path. A job, training, a project, a pause, or still looking are all complete finishes.</p>
+      <p class="logistics-line">Dates, time commitment, and cost: coming soon.</p>
+      <!-- FILL: start dates · time commitment · cost · meeting tool · facilitator names · recruitment status -->
+
+      <p><a class="button primary" href="https://link.jotform.com/EhQXbmRwbk" target="_blank" rel="noopener">Express interest</a></p>
+      <p class="small-print">Entrepalooza is educational and nonclinical. It is not therapy, treatment, or crisis care. Design choices are informed by research on interest development, motivation, and belonging. This pilot does not claim proven outcomes. Expressing interest is not enrollment.</p>
+
+      <div class="nav-row interactive-only"><button class="button quiet" type="button" data-back>← Back</button><span></span></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>Build Otherwise</strong>
+    <p>Entrepalooza is an educational, human-guided program in development.</p>
+    <p class="small">Design choices are informed by research on interest development, motivation, and belonging. This pilot does not claim proven outcomes.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  var screens=Array.prototype.slice.call(document.querySelectorAll('.screen'));
+  var stepButtons=Array.prototype.slice.call(document.querySelectorAll('[data-goto]'));
+  var stepAnnouncer=document.getElementById('step-announcer');
+  var actionAnnouncer=document.getElementById('action-announcer');
+  var loopWords=Array.prototype.slice.call(document.querySelectorAll('[data-loop-word]'));
+  var progressTrack=document.querySelector('.progress-track');
+  var progressFill=document.querySelector('.progress-fill');
+  var current=0;
+  var visited=new Set();
+  var stampNotes={operating:0,discovery:0,decision:0};
+  var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function announceAction(message){
+    actionAnnouncer.textContent='';
+    window.setTimeout(function(){actionAnnouncer.textContent=message;},10);
+  }
+
+  function setLoop(name){
+    loopWords.forEach(function(word){word.classList.toggle('active',word.getAttribute('data-loop-word')===name);});
+  }
+
+  function earnStamp(name,note){
+    var el=document.querySelector('[data-stamp="'+name+'"]');
+    if(!el){return;}
+    el.classList.add('earned');
+    stampNotes[name]=(stampNotes[name]||0)+1;
+    var small=el.querySelector('small');
+    if(small){
+      if(note){small.textContent=stampNotes[name]>1 ? stampNotes[name]+' marks added' : 'note added';}
+      else{small.textContent='pressed in';}
+    }
+  }
+
+  function collectForStep(index){
+    if(visited.has(index)){return;}
+    visited.add(index);
+    if(index===1){earnStamp('operating',false);}
+    if(index===2){earnStamp('discovery',false);earnStamp('decision',false);}
+    if(index===3){earnStamp('operating',true);}
+    if(index===4){earnStamp('discovery',true);}
+    if(index===5){earnStamp('operating',true);earnStamp('decision',true);}
+  }
+
+  function updateStepper(index){
+    stepButtons.forEach(function(btn){
+      var active=Number(btn.getAttribute('data-goto'))===index;
+      if(active){btn.setAttribute('aria-current','step');}
+      else{btn.removeAttribute('aria-current');}
+    });
+  }
+
+  function updateProgress(index){
+    var completed=0;
+    if(index>=1&&index<=5){completed=index;}
+    else if(index===6){completed=5;}
+    if(progressTrack){progressTrack.setAttribute('aria-valuenow',String(completed));}
+    if(progressFill){progressFill.style.width=(completed/5*100)+'%';}
+  }
+
+  function show(index,focusHeading){
+    if(index<0||index>=screens.length){return;}
+    current=index;
+    screens.forEach(function(screen,i){
+      screen.classList.toggle('active',i===index);
+      screen.setAttribute('aria-hidden',i===index?'false':'true');
+    });
+    updateStepper(index);
+    updateProgress(index);
+    collectForStep(index);
+    setLoop('notice');
+    var title=screens[index].getAttribute('data-title')||'';
+    stepAnnouncer.textContent='Step '+(index+1)+' of 7: '+title;
+    window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+    if(focusHeading){
+      var heading=screens[index].querySelector('h1,h2');
+      if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});}
+    }
+    observeLoopBlocks();
+  }
+
+  function go(delta){show(current+delta,true);}
+
+  document.querySelectorAll('[data-next]').forEach(function(btn){btn.addEventListener('click',function(){go(1);});});
+  document.querySelectorAll('[data-back]').forEach(function(btn){btn.addEventListener('click',function(){go(-1);});});
+  stepButtons.forEach(function(btn){btn.addEventListener('click',function(){show(Number(btn.getAttribute('data-goto')),true);});});
+
+  document.querySelectorAll('[data-checkin]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var result=document.getElementById('checkin-result');
+      var message=btn.getAttribute('data-checkin')==='here' ? "Glad you're here." : "Pass counts. You're still welcome to look around.";
+      result.textContent=message;
+      announceAction(message);
+    });
+  });
+
+  document.querySelectorAll('.decision-chip').forEach(function(btn){
+    btn.setAttribute('aria-pressed','false');
+    btn.addEventListener('click',function(){
+      var block=btn.closest('.loop-block');
+      block.querySelectorAll('.decision-chip').forEach(function(chip){chip.setAttribute('aria-pressed','false');});
+      btn.setAttribute('aria-pressed','true');
+      var result=block.querySelector('.decision-result');
+      var message="That's a valid choice. Every exit counts.";
+      result.textContent=message;
+      announceAction(message);
+    });
+  });
+
+  document.addEventListener('keydown',function(event){
+    var tag=(event.target&&event.target.tagName||'').toLowerCase();
+    if(tag==='textarea'||tag==='input'||tag==='select'||event.target.isContentEditable){return;}
+    if(event.key==='ArrowRight'){event.preventDefault();go(1);}
+    if(event.key==='ArrowLeft'){event.preventDefault();go(-1);}
+  });
+
+  var loopObserver=null;
+  function observeLoopBlocks(){
+    if(loopObserver){loopObserver.disconnect();loopObserver=null;}
+    var blocks=Array.prototype.slice.call(screens[current].querySelectorAll('.loop-block'));
+    if(!blocks.length){setLoop('notice');return;}
+    if(!('IntersectionObserver' in window)){setLoop('notice');return;}
+    loopObserver=new IntersectionObserver(function(entries){
+      var visible=entries.filter(function(e){return e.isIntersecting;}).sort(function(a,b){return b.intersectionRatio-a.intersectionRatio;});
+      if(visible.length){setLoop(visible[0].target.getAttribute('data-loop'));}
+    },{threshold:[.25,.5,.75],rootMargin:'-15% 0px -35% 0px'});
+    blocks.forEach(function(block){loopObserver.observe(block);});
+  }
+
+  screens.forEach(function(screen,i){screen.setAttribute('aria-hidden',i===0?'false':'true');});
+  show(0,false);
+})();
+</script>
+</body>
+</html>
