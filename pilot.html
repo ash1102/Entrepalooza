@@ -579,6 +579,61 @@
       .workbook-doorway p{text-align:left}
     }
 
+  
+    /* Participant activities live on the page */
+    .activity-workbench{margin:18px 0 22px;padding:18px;border:1px solid var(--line);border-radius:14px;background:rgba(255,253,248,.82)}
+    .activity-workbench[data-activity-style="lab"]{background:linear-gradient(145deg,rgba(226,235,229,.72),rgba(255,253,248,.9))}
+    .activity-workbench[data-activity-style="board"]{border-left:4px solid var(--gold)}
+    .activity-workbench[data-activity-style="sort"]{border-left:4px solid var(--rule);background:rgba(239,225,213,.58)}
+    .activity-workbench[data-activity-style="plan"]{border-top:4px solid var(--teal)}
+    .activity-workbench[data-activity-style="review"]{background:linear-gradient(150deg,rgba(255,253,248,.94),rgba(244,228,167,.34))}
+    .activity-workbench[data-activity-style="route"]{border:2px solid rgba(62,105,99,.35)}
+    .activity-workbench-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:14px}
+    .activity-workbench-kicker{margin:0 0 4px;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:850}
+    .activity-workbench h4{margin:0;font-size:clamp(20px,2.7vw,28px);line-height:1.15}
+    .activity-workbench-intro{margin:7px 0 0;color:var(--muted);font-size:14px;max-width:650px}
+    .activity-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+    .activity-field{min-width:0}
+    .activity-field.full{grid-column:1/-1}
+    .activity-field label,.activity-group legend{display:block;margin:0 0 6px;font-size:13px;font-weight:800;color:var(--ink)}
+    .activity-field input,.activity-field textarea,.activity-field select{width:100%;border:1px solid #87958e;border-radius:6px;background:var(--paper-light);color:var(--ink);padding:11px 12px;font-size:16px}
+    .activity-field textarea{min-height:88px;resize:vertical;line-height:1.5}
+    .activity-privacy{display:block;margin-top:4px;color:var(--muted);font-size:11px;line-height:1.35}
+    .activity-group{border:0;margin:0 0 14px;padding:0}
+    .activity-choice-row{display:flex;flex-wrap:wrap;gap:7px}
+    .activity-choice{min-height:44px;padding:9px 12px;border:1px solid #7f9188;border-radius:999px;background:var(--paper-light);color:var(--ink);font-weight:700;cursor:pointer}
+    .activity-choice[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:white}
+    .activity-route-panels{margin-top:12px}
+    .activity-route-panel{padding:14px;border-left:3px solid var(--gold);background:rgba(255,255,255,.45)}
+    .activity-footer{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-top:15px;padding-top:13px;border-top:1px solid var(--line)}
+    .activity-footer p{margin:0;color:var(--muted);font-size:12px}
+    .activity-journal-capture{min-height:42px;border:1px solid var(--teal);border-radius:5px;background:transparent;color:var(--teal);padding:8px 11px;font-weight:750;cursor:pointer}
+    .activity-journal-capture:hover{background:var(--teal-soft)}
+    .conversation-journal{border-top:1px solid var(--line)}
+    .conversation-journal-toggle{width:100%;min-height:54px;border:0;background:transparent;color:var(--ink);padding:11px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;cursor:pointer}
+    .conversation-journal-toggle strong{display:block;font-size:14px}
+    .conversation-journal-toggle small{display:block;color:var(--muted);font-size:11px;font-weight:500;margin-top:2px}
+    .conversation-journal-panel{padding:0 14px 15px}
+    .journal-intro{margin:0 0 7px;font-size:12px;line-height:1.45;color:var(--muted)}
+    .journal-prompt-row{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+    .journal-prompt{min-height:38px;padding:7px 10px;border:1px solid #83948c;border-radius:999px;background:var(--paper-light);color:var(--ink);font-size:11px;font-weight:750;cursor:pointer}
+    .journal-prompt[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:white}
+    .journal-current-prompt{margin:8px 0;color:var(--accent);font-weight:800;font-size:13px}
+    .journal-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+    .journal-entry-list{display:grid;gap:8px;margin-top:12px}
+    .journal-entry{padding:10px;border:1px solid var(--line);border-radius:6px;background:rgba(255,253,248,.72)}
+    .journal-entry-head{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:5px}
+    .journal-entry-head strong{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--teal)}
+    .journal-entry-head button{border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:12px;text-decoration:underline;text-underline-offset:2px}
+    .journal-entry p{margin:0;font-size:12px;line-height:1.45;white-space:pre-wrap}
+    @media(max-width:780px){
+      .activity-workbench{padding:14px}
+      .activity-grid{grid-template-columns:1fr}
+      .activity-field.full{grid-column:auto}
+      .activity-footer{align-items:stretch;flex-direction:column}
+      .activity-journal-capture{width:100%}
+    }
+
   </style>
 </head>
 <body>
@@ -998,7 +1053,7 @@
       <div class="fold-copy"><ul><li>Choice or compulsion</li><li>Flexibility or rigidity</li><li>Meaning or pressure</li><li>Sustainable energy or depletion</li><li>Ability or inability to pause</li><li>Fit or conflict with the rest of life</li><li>Supportive or harmful environmental conditions</li></ul></div>
     </details><details class="module-fold  action-fold" >
       <summary>Try—or pass</summary>
-      <div class="fold-copy"><p>Participants examine a fictional example, a low-stakes personal interest, or a facilitator-provided scenario. They may choose <strong>mixed</strong> or <strong>unclear</strong> rather than forcing a category. Mixed and unclear are complete answers.</p></div>
+      <div class="fold-copy"><p>You can examine a fictional example, a low-stakes personal interest, or a provided scenario. They may choose <strong>mixed</strong> or <strong>unclear</strong> rather than forcing a category. Mixed and unclear are complete answers.</p></div>
     </details><details class="module-fold carry-fold " >
       <summary>Carry forward</summary>
       <div class="fold-copy"><p>One sign to watch during the experiment. No score, type, cutoff, permanent conclusion, or OP→HP conversion claim.</p></div>
@@ -1019,7 +1074,7 @@
       <div class="fold-copy"><p>Use a cohort-accessible menu developed before delivery. Categories may include:</p><ul><li>Employment and workplace exploration</li><li>Education, certification, or specialized study</li><li>Trades, technical skills, crafts, or hands-on work</li><li>Art, music, writing, design, and making</li><li>Volunteering, mentoring, peer support, or community contribution</li><li>Entrepreneurship, freelancing, self-employment, or testing an idea</li><li>Health, relationships, finances, routines, hobbies, and community life</li><li>Another participant-defined possibility</li></ul></div>
     </details><details class="module-fold  action-fold" >
       <summary>Try—or pass</summary>
-      <div class="fold-copy"><p>A participant may sample, observe, compare, research, ask someone a question, attend an accessible activity, or choose a supported simulation. No one must select entrepreneurship.</p></div>
+      <div class="fold-copy"><p>You can sample, observe, compare, research, ask someone a question, attend an accessible activity, or choose a supported simulation. No one must select entrepreneurship.</p></div>
     </details><details class="module-fold  " >
       <summary>Barrier check</summary>
       <div class="fold-copy"><p>Before choosing, consider transportation, money, schedules, childcare, technology, housing instability, accessibility, energy, and available support. Name practical barriers as practical barriers.</p></div>
@@ -1092,10 +1147,7 @@
     <h3 tabindex="-1">Try and collect evidence</h3>
     <details class="module-fold  " open>
       <summary>Evidence to notice</summary>
-      <div class="fold-copy"><ul><li>Did I want to begin?</li><li>Could I stop or change course?</li><li>What drew or lost my attention?</li><li>What felt meaningful, pressured, energizing, or draining?</li><li>What happened to sleep, health, relationships, responsibilities, rest, or support?</li><li>Which environmental conditions helped or interfered?</li><li>What practical barrier appeared?</li><li>What surprised me?</li></ul><p>Participants record only what they choose. A difficult, incomplete, or stopped experiment can still produce useful evidence.</p></div>
-    </details><details class="module-fold  " >
-      <summary>Facilitator guardrail</summary>
-      <div class="fold-copy"><p>Do not praise overwork, intensity, emotional disclosure, or completion at the expense of boundaries. Do not interpret a participant’s behavior as a diagnosis or proof of readiness.</p></div>
+      <div class="fold-copy"><ul><li>Did I want to begin?</li><li>Could I stop or change course?</li><li>What drew or lost my attention?</li><li>What felt meaningful, pressured, energizing, or draining?</li><li>What happened to sleep, health, relationships, responsibilities, rest, or support?</li><li>Which environmental conditions helped or interfered?</li><li>What practical barrier appeared?</li><li>What surprised me?</li></ul><p>Record only what you choose. A difficult, incomplete, or stopped experiment can still produce useful evidence.</p></div>
     </details>
     
     <div class="lesson-controls">
@@ -1513,7 +1565,7 @@
       <div class="fold-copy"><p>Use an ordinary reading, planning, or organizing task. Notice whether pace or attention changes; identify any story or urge; record the actual action; and note only observed cost. Do not assume an emotional response.</p></div>
     </details><details class="module-fold  action-fold" >
       <summary>Try—or pass</summary>
-      <div class="fold-copy"><p>Participants may use:</p><ul><li>An activity that is going well</li><li>A moment of pressure or difficulty</li><li>A neutral task</li><li>An observe-only or private route</li><li>An honest unknown</li></ul><p>Prompts:</p><ul><li>What signal, if any, appeared?</li><li>What story or meaning was added?</li><li>What urge appeared, if any?</li><li>What action followed?</li><li>What cost or stable condition did I actually observe?</li><li>What external condition or barrier mattered?</li></ul></div>
+      <div class="fold-copy"><p>You can use:</p><ul><li>An activity that is going well</li><li>A moment of pressure or difficulty</li><li>A neutral task</li><li>An observe-only or private route</li><li>An honest unknown</li></ul><p>Prompts:</p><ul><li>What signal, if any, appeared?</li><li>What story or meaning was added?</li><li>What urge appeared, if any?</li><li>What action followed?</li><li>What cost or stable condition did I actually observe?</li><li>What external condition or barrier mattered?</li></ul></div>
     </details><details class="module-fold  action-fold" >
       <summary>Choose a route</summary>
       <div class="fold-copy"><ul><li><strong>Continuation:</strong> Nothing needs correction; identify what is supporting choice and balance.</li><li><strong>Navigation:</strong> Identify one point where a pause, boundary, support, or different response could be available.</li></ul></div>
@@ -1577,7 +1629,7 @@
       <div class="fold-copy"></div>
     </details><details class="module-fold  " >
       <summary>Why this matters</summary>
-      <div class="fold-copy"><p>When engagement is working, the learning task is to understand why and protect the conditions that keep it workable and chosen (facilitator language: protect what works).</p></div>
+      <div class="fold-copy"><p>When engagement is working, the learning task is to understand why and protect the conditions that keep it workable and chosen.</p></div>
     </details><details class="module-fold  " >
       <summary>Reflect</summary>
       <div class="fold-copy"><ul><li>What is supporting choice and flexibility?</li><li>Can I stop, adjust, and return when needed?</li><li>How does this fit with health, relationships, responsibilities, rest, and support?</li><li>What boundary or condition should I protect?</li><li>Do I want to continue, deepen, or repeat?</li></ul></div>
@@ -1710,6 +1762,32 @@
         <li class="tray-stamp" data-stamp="discovery"><span class="stamp-mark" aria-hidden="true">✓</span><span>Builder Discovery Record<span class="stamp-sub" data-stamp-note="discovery">Not reached yet</span></span></li>
         <li class="tray-stamp" data-stamp="decision"><span class="stamp-mark" aria-hidden="true">✓</span><span>Next Decision<span class="stamp-sub" data-stamp-note="decision">Not reached yet</span></span></li>
       </ul>
+      <section class="conversation-journal" aria-labelledby="conversation-journal-title">
+        <button class="conversation-journal-toggle" type="button" id="conversation-journal-toggle" aria-expanded="false" aria-controls="conversation-journal-panel">
+          <span><strong id="conversation-journal-title">Conversation Journal</strong><small>Think it through in your own words</small></span>
+          <span aria-hidden="true">＋</span>
+        </button>
+        <div class="conversation-journal-panel" id="conversation-journal-panel" hidden>
+          <p class="journal-intro">A private participant workspace for the questions, observations, experiments, and decisions that show up as you move through the workbook.</p>
+          <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save or download your workbook.</p>
+          <div class="journal-prompt-row" role="group" aria-label="Choose a journal prompt">
+            <button type="button" class="journal-prompt" data-journal-prompt="Notice" aria-pressed="true">Notice</button>
+            <button type="button" class="journal-prompt" data-journal-prompt="Question" aria-pressed="false">Question</button>
+            <button type="button" class="journal-prompt" data-journal-prompt="Try" aria-pressed="false">Try</button>
+            <button type="button" class="journal-prompt" data-journal-prompt="Reflect" aria-pressed="false">Reflect</button>
+            <button type="button" class="journal-prompt" data-journal-prompt="Decide" aria-pressed="false">Decide</button>
+          </div>
+          <p class="journal-current-prompt" id="journal-current-prompt">What are you noticing right now?</p>
+          <label class="unknown-label" for="conversation-journal-draft">Write here</label>
+          <textarea id="conversation-journal-draft" rows="4" placeholder="A sentence, a question, a rough thought, or 'I don't know yet.'"></textarea>
+          <p class="privacy-note">Just for you. Nothing is sent. It stays in this tab unless you choose to save or download your workbook.</p>
+          <div class="journal-actions">
+            <button class="button button-primary" type="button" id="conversation-journal-add">Keep this entry</button>
+            <button class="button" type="button" id="conversation-journal-clear">Clear draft</button>
+          </div>
+          <div class="journal-entry-list" id="conversation-journal-entries" aria-live="polite"></div>
+        </div>
+      </section>
       <div class="workbook-save-panel">
         <p class="workbook-save-title">Keep your work</p>
         <p class="workbook-save-copy">Nothing is sent anywhere. Saving is optional and stays on your device or in a file you choose.</p>
@@ -1739,6 +1817,8 @@
       let current=0,toastTimer;
       let preflightEntered=false;
       let workbookUnlocked=false;
+      let journalEntries=[];
+      let journalPrompt='Notice';
 
 
       function syncWorkbookGate(){
@@ -1836,6 +1916,41 @@
         if(e.target.closest('#workbook-upload')){document.getElementById('workbook-upload-input')?.click();return;}
         if(e.target.closest('#workbook-forget')){forgetWorkbookOnDevice();return;}
 
+
+
+        const awChoice=e.target.closest('[data-activity-choice]');
+        if(awChoice){
+          const group=awChoice.closest('[data-activity-choice-group]');
+          const single=group?.dataset.choiceMode!=='multi';
+          if(single&&group)group.querySelectorAll('[data-activity-choice]').forEach(b=>b.setAttribute('aria-pressed','false'));
+          awChoice.setAttribute('aria-pressed',single?'true':(awChoice.getAttribute('aria-pressed')==='true'?'false':'true'));
+          return;
+        }
+        const awRoute=e.target.closest('[data-activity-route]');
+        if(awRoute){
+          const box=awRoute.closest('.activity-workbench');
+          box?.querySelectorAll('[data-activity-route]').forEach(b=>b.setAttribute('aria-pressed','false'));
+          awRoute.setAttribute('aria-pressed','true');
+          box?.querySelectorAll('[data-activity-route-panel]').forEach(p=>p.hidden=p.dataset.activityRoutePanel!==awRoute.dataset.activityRoute);
+          return;
+        }
+        const journalToggle=e.target.closest('#conversation-journal-toggle');
+        if(journalToggle){
+          const panel=document.getElementById('conversation-journal-panel');
+          const opening=panel?.hidden!==false;
+          if(panel)panel.hidden=!opening;
+          journalToggle.setAttribute('aria-expanded',opening?'true':'false');
+          const icon=journalToggle.lastElementChild;if(icon)icon.textContent=opening?'−':'＋';
+          return;
+        }
+        const journalPromptButton=e.target.closest('[data-journal-prompt]');
+        if(journalPromptButton){setJournalPrompt(journalPromptButton.dataset.journalPrompt);return;}
+        if(e.target.closest('#conversation-journal-add')){addJournalEntry(document.getElementById('conversation-journal-draft')?.value||'');return;}
+        if(e.target.closest('#conversation-journal-clear')){const d=document.getElementById('conversation-journal-draft');if(d)d.value='';return;}
+        const journalDelete=e.target.closest('[data-journal-delete]');
+        if(journalDelete){journalEntries.splice(Number(journalDelete.dataset.journalDelete),1);renderJournalEntries();return;}
+        const journalCapture=e.target.closest('[data-journal-capture]');
+        if(journalCapture){captureActivityToJournal(journalCapture);return;}
 
         const pTab=e.target.closest('[data-presentation-tab]');
         if(pTab){const card=pTab.closest('.lesson-card');setPresentationIndex(card,Number(pTab.dataset.presentationTab),true);return;}
@@ -2048,6 +2163,8 @@
           screen:current,
           lessons,
           presentations,
+          journalEntries,
+          journalPrompt,
           fields,
           pressed,
           openDetails,
@@ -2107,6 +2224,10 @@
             if(Object.prototype.hasOwnProperty.call(state.presentations,key)) setPresentationIndex(card,state.presentations[key],false);
           });
         }
+
+        journalEntries=Array.isArray(state.journalEntries)?state.journalEntries:[];
+        setJournalPrompt(state.journalPrompt||'Notice');
+        renderJournalEntries();
 
         if(state.stamps){
           document.querySelectorAll('.tray-stamp').forEach(x=>x.classList.toggle('is-pressed',state.stamps.includes(x.dataset.stamp)));
@@ -2174,7 +2295,7 @@
           const badge=document.createElement('div');
           badge.className='presentation-mode-badge';
           badge.setAttribute('aria-hidden','true');
-          badge.textContent=reading?'Reading moment':'Workbook moment';
+          badge.textContent=reading?'Read + react':'Do it here';
           card.querySelector('h3')?.before(badge);
 
           folds.forEach((fold,i)=>{
@@ -2246,6 +2367,319 @@
       }
 
 
+
+      const activityPrivacy='Just for you. Nothing is sent. It stays in this tab unless you choose to save or download your workbook.';
+
+      function awField(id,label,placeholder='',kind='textarea',full=false){
+        const control=kind==='input'
+          ? '<input id="'+id+'" type="text" maxlength="220" placeholder="'+placeholder+'">'
+          : '<textarea id="'+id+'" rows="3" placeholder="'+placeholder+'"></textarea>';
+        return '<div class="activity-field'+(full?' full':'')+'"><label for="'+id+'">'+label+'</label>'+control+'<span class="activity-privacy">'+activityPrivacy+'</span></div>';
+      }
+
+      function awChoices(label,id,choices,mode='single'){
+        return '<fieldset class="activity-group" data-activity-choice-group data-choice-mode="'+mode+'" id="'+id+'"><legend>'+label+'</legend><div class="activity-choice-row">'+choices.map(x=>'<button class="activity-choice" type="button" aria-pressed="false" data-activity-choice>'+x+'</button>').join('')+'</div></fieldset>';
+      }
+
+      function awShell(title,intro,body,style='board'){
+        return '<section class="activity-workbench" data-activity-style="'+style+'"><div class="activity-workbench-head"><div><p class="activity-workbench-kicker">Do it here</p><h4>'+title+'</h4><p class="activity-workbench-intro">'+intro+'</p></div></div>'+body+'<div class="activity-footer"><p>Skip anything you do not want to answer.</p><button class="activity-journal-capture" type="button" data-journal-capture>Add a note to Conversation Journal</button></div></section>';
+      }
+
+      function participantActivityMarkup(title){
+        switch(title){
+          case 'What this pilot is and isn’t':
+            return awShell('Make sure the deal is clear','Use your own words. Passing is still a complete option.',
+              '<div class="activity-grid">'+
+              awField('a-m0-clear-not','One thing this pilot will not do','Example: promise a job or require a business idea','input')+
+              awField('a-m0-clear-question','One thing I still want to ask','Optional','input')+
+              '</div>','board');
+
+          case 'Rights, privacy, and separate consent':
+            return awShell('Teach it back to yourself','The point is understanding, not checking the right box.',
+              '<div class="activity-grid">'+
+              awField('a-m0-rights-not','One thing participation does NOT automatically give permission for','Optional','input')+
+              awField('a-m0-rights-leave','How could I pause or leave?','In your own words','input')+
+              '</div>','sort');
+
+          case 'Group Code and permission-based feedback':
+            return awShell('Practice the boundary','Use the fictional supply-shelf example, not a personal story.',
+              awChoices('If someone wants to comment on your idea, what do you want first?','a-m0-feedback-choice',['A question','A suggestion','No feedback right now'],'single')+
+              '<div class="activity-grid">'+
+              awField('a-m0-pressure','What would pressure have looked like in that exchange?','Optional')+
+              awField('a-m0-code-question','One Group Code line I want clarified','Optional')+
+              '</div>','lab');
+
+          case 'Participation and Support Plan':
+            return awShell('Build your Participation and Support Plan','Every line is optional. This asks about the setup, not your diagnosis or history.',
+              awChoices('How I like to take part','a-m0-takepart',['Aloud','In writing','Privately','Observing'],'multi')+
+              '<div class="activity-grid">'+
+              awField('a-m0-access','What would make the material easier to use?','Examples: breaks, paper, larger text, schedule flexibility')+
+              awField('a-m0-tech','Any technology limit you want the program to plan around?','Optional')+
+              awField('a-m0-logistics','Any scheduling or access issue you want considered?','Optional')+
+              awField('a-m0-support','What kind of support would you want, if any?','“None for now” is a complete answer')+
+              awField('a-m0-concern','Concern route','Not yet confirmed','input')+
+              awField('a-m0-start-question','Optional starting question','“I don’t know yet” is welcome','input')+
+              '</div>','plan');
+
+          case 'Your participation decision and handoff':
+            return awShell('Make the participation choice yours','Joining the workbook is separate from the other consent choices.',
+              awChoices('Right now I choose','a-m0-participation',['Participate','Participate with adjustments','Defer','Decline'],'single')+
+              '<div class="activity-grid">'+
+              awField('a-m0-own-choice','Does this choice feel like mine? What would make it easier to change later?','Optional')+
+              awField('a-m0-one-unknown','One thing I still do not know','Optional','input')+
+              '</div>','review');
+
+          case 'Notice without forcing an answer':
+            return awShell('Choose an entry route','You do not need an interest before you begin.',
+              awChoices('Start from','a-m1-entry',['A thread already has my attention','An open question','Observe the example','Keep it private','Nothing clear yet'],'single')+
+              '<div class="activity-grid">'+
+              awField('a-m1-attention','What keeps catching my attention?','Optional')+
+              awField('a-m1-return','What do I return to voluntarily?','Optional')+
+              awField('a-m1-unknown','What am I unsure about?','Optional')+
+              awField('a-m1-thread','One thread, question, or honest unknown to carry forward','Optional')+
+              '</div>','board');
+
+          case 'Obsessive and harmonious passion':
+            return awShell('Sort the pattern, not the person','Use the fictional examples. Mixed and unclear are valid answers.',
+              awChoices('Example A: music matters, the person can pause and adjust, and other parts of life remain intact.','a-m1-pattern-a',['More chosen / flexible','More pressured / rigid','Mixed','Unclear'],'single')+
+              awChoices('Example B: stopping feels like failure, interruptions feel threatening, and important needs get pushed out.','a-m1-pattern-b',['More chosen / flexible','More pressured / rigid','Mixed','Unclear'],'single')+
+              '<div class="activity-grid">'+
+              awField('a-m1-pattern-watch','One pattern I would want to notice in an activity','Optional','input')+
+              awField('a-m1-pattern-unknown','What would I need more information about?','Optional','input')+
+              '</div>','sort');
+
+          case 'Encounter possibilities':
+            return awShell('Build a possibility menu','This is exposure, not commitment. Entrepreneurship is one option among many.',
+              awChoices('What would you be willing to look at?','a-m1-possibilities',['Workplace / job','Education / training','Trade / hands-on skill','Art / writing / making','Community contribution','Entrepreneurship / freelancing','Routine / hobby / life-building','Something else'],'multi')+
+              awChoices('What might make a try easier to access?','a-m1-access',['A clearer schedule','Transportation / location','Technology access','Someone to ask a question','A smaller scope','An observe-only option','No change needed yet'],'multi')+
+              '<div class="activity-grid">'+
+              awField('a-m1-possibility','One possibility I might examine','Optional','input')+
+              awField('a-m1-possibility-question','What would I want to learn about it?','Optional','input')+
+              '</div>','mosaic');
+
+          case 'Design a manageable balance experiment':
+            return awShell('Build the experiment card','Small + supported + chosen + real + reversible + paced.',
+              '<div class="activity-grid">'+
+              awField('a-m1-exp-question','Question: what am I trying to learn?','')+
+              awField('a-m1-exp-action','Smallest real action: what can I do or observe?','')+
+              awField('a-m1-exp-balance','Balance condition: what might support choice, flexibility, or sustainability?','')+
+              awField('a-m1-exp-boundary','Boundary: what limit will I set before I start?','Time, energy, spending, disclosure, or another limit')+
+              awField('a-m1-exp-support','Support: what person, tool, accommodation, or information would help?','')+
+              awField('a-m1-exp-stop','Stop / pause rule: what signal means stop, pause, or adjust?','')+
+              awField('a-m1-exp-evidence','Evidence: what will I notice?','')+
+              awField('a-m1-exp-review','Reflection point: when will I review what happened?','')+
+              '</div>'+awChoices('Route','a-m1-exp-route',['Real-world try','Private try','Observe only','Supported / adapted','Simulation','Plan only'],'single'),'plan');
+
+          case 'Try and collect evidence':
+            return awShell('Record the try without grading yourself','A stopped, incomplete, or disappointing try can still produce useful evidence.',
+              awChoices('What did you notice?','a-m1-evidence-signals',['Wanted to begin','Could stop / change course','Attention held','Attention dropped','Felt meaningful','Felt pressured','Energizing','Draining','A practical barrier showed up','Something surprised me'],'multi')+
+              '<div class="activity-grid">'+
+              awField('a-m1-evidence-happened','What actually happened?','Describe the try, not a verdict')+
+              awField('a-m1-evidence-conditions','Which conditions helped or interfered?','Optional')+
+              awField('a-m1-evidence-cost','What did it cost in time, effort, energy, or after-effect?','Optional')+
+              awField('a-m1-evidence-surprise','What surprised me?','Optional')+
+              '</div>','lab');
+
+          case 'Reflect and decide':
+            return awShell('Turn the try into usable information','Keep the claim the size of the evidence.',
+              '<div class="activity-grid">'+
+              awField('a-m1-reflect-happened','What happened?','')+
+              awField('a-m1-reflect-learned','What did I learn about the activity?','')+
+              awField('a-m1-reflect-conditions','What did I learn about the environment or conditions?','')+
+              awField('a-m1-reflect-story','What story am I tempted to tell about myself?','Optional')+
+              awField('a-m1-reflect-support','What does the evidence actually support?','')+
+              awField('a-m1-reflect-unknown','What is still unknown?','Optional')+
+              '</div>'+awChoices('Next Decision','a-m1-next',['Keep','Change','Test Again','Pause/Park','Stop','Another Direction','Continue Looking'],'single'),'review');
+
+          case 'Describe the setup around a task':
+            return awShell('Separate setup from self-judgment','Choose one ordinary task or the neutral example.',
+              '<div class="activity-grid">'+
+              awField('a-m15-task','Task','What task or example are you looking at?','input')+
+              awField('a-m15-condition','One condition in the setup','Examples: clarity, noise, time, working alone / with others','input')+
+              awField('a-m15-observation','Observation: what happened that you could check?','')+
+              awField('a-m15-interpretation','Interpretation: what explanation are you tempted to add?','Optional')+
+              awField('a-m15-question','What do you want to test instead of turning it into a rule about yourself?','')+
+              '</div>','sort');
+
+          case 'Run one changed-condition test':
+            return awShell('Plan one changed-condition test','One task + one changed condition + one bounded comparison.',
+              '<div class="activity-grid">'+
+              awField('a-m15-test-question','Question','What happens if I change one part of the setup?')+
+              awField('a-m15-test-task','Task','Keep it as similar as practical','input')+
+              awField('a-m15-test-condition','Condition I will change','One condition only','input')+
+              awField('a-m15-test-balance','Balance signal','What would tell me the setup is more workable?')+
+              awField('a-m15-test-limit','Limit','What boundary keeps this bounded?')+
+              awField('a-m15-test-support','Support','Optional')+
+              awField('a-m15-test-stop','Stop / pause rule','')+
+              awField('a-m15-test-other','Other explanations to keep in mind','Time of day, familiarity, interruptions, practice, etc.')+
+              '</div>'+awChoices('How will you participate?','a-m15-route',['Attempt it','Plan only','Observe','Supported / adapted','Simulation','Pause / stop'],'single'),'plan');
+
+          case 'Review what helped and what it cost':
+            return awShell('Review the changed condition','One result is a clue, not a personality.',
+              '<div class="activity-grid">'+
+              awField('a-m15-review-result','Result: what happened?','')+
+              awField('a-m15-review-change','What did the condition appear to change?','')+
+              awField('a-m15-review-other','What else was different?','Optional')+
+              awField('a-m15-review-cost','What effort or after-effect did it have?','Optional')+
+              awField('a-m15-review-unknown','What remains unknown?','')+
+              awField('a-m15-review-revise','What evidence would make me revise this conclusion?','Optional')+
+              '</div>'+awChoices('Next Decision','a-m15-next',['Keep','Change','Test Again','Pause/Park','Stop','Another Direction','Continue Looking'],'single'),'review');
+
+          case 'Separate what happened from what it means':
+            return awShell('Sort event, story, verdict, uncertainty','Accuracy matters more than forced positivity.',
+              '<div class="activity-grid">'+
+              awField('a-m2-event','Event: what happened that could be observed or checked?','')+
+              awField('a-m2-story','Story: what meaning or explanation got attached?','')+
+              awField('a-m2-verdict','Verdict: what broad judgment showed up?','Optional')+
+              awField('a-m2-uncertainty','Uncertainty: what remains unknown?','')+
+              awField('a-m2-revision','More accurate, revisable wording','Not nicer. More accurate.', 'textarea', true)+
+              '</div>','sort');
+
+          case 'Turn a chosen standard into observable practice':
+            return awShell('Turn a standard into something observable','The value has to be yours. The action should be small enough to see.',
+              '<div class="activity-grid">'+
+              awField('a-m2-value','Value or standard','What matters here?','input')+
+              awField('a-m2-cue','Natural cue','When would this come up?','input')+
+              awField('a-m2-usual','Usual action','What usually happens?')+
+              awField('a-m2-small','Smallest observable action','What could you actually do?')+
+              awField('a-m2-support','Support','Optional')+
+              awField('a-m2-limit','Limit / stop rule','Optional')+
+              awField('a-m2-evidence','How will you know what happened?','')+
+              awField('a-m2-no-opportunity','If no opportunity appears','What will count instead?')+
+              '</div>','plan');
+
+          case 'Review evidence and revise':
+            return awShell('Revise the claim','Use what happened. Keep uncertainty visible.',
+              '<div class="activity-grid">'+
+              awField('a-m2-review-happened','What happened?','')+
+              awField('a-m2-review-evidence','What evidence do I actually have?','')+
+              awField('a-m2-review-support','What support or condition mattered?','Optional')+
+              awField('a-m2-review-cost','What did it cost in effort or after-effect?','Optional')+
+              awField('a-m2-review-unknown','What is still unknown?','')+
+              awField('a-m2-review-wording','What wording is more accurate now?','Not just more positive')+
+              '</div>'+awChoices('Next Decision','a-m2-next',['Keep','Change','Test Again','Pause/Park','Stop','Another Direction','Continue Looking'],'single'),'review');
+
+          case 'Notice signal, story, urge, action, and cost':
+            return awShell('Map the sequence','Any piece can be absent or unknown. A signal does not prove its cause.',
+              '<div class="activity-grid">'+
+              awField('a-m3-signal','Signal: what changed in attention, pace, or energy?','Optional')+
+              awField('a-m3-story','Story: what meaning got added?','Optional')+
+              awField('a-m3-urge','Urge: what did you feel pulled to do or avoid?','Optional')+
+              awField('a-m3-action','Action: what actually happened next?','')+
+              awField('a-m3-cost','Cost: time, effort, energy, after-effect, or impact on something you chose to protect','Optional')+
+              '</div>'+awChoices('Route','a-m3-sequence-route',['Something is working','A moment of pressure / difficulty','Neutral task','Observe only','Honest unknown'],'single'),'lab');
+
+          case 'Protect what works or try one small response':
+            return awShell('Choose the route that fits','Protecting what works and changing something are equal routes.',
+              '<fieldset class="activity-group"><legend>Choose a route</legend><div class="activity-choice-row">'+
+              '<button class="activity-choice" type="button" aria-pressed="false" data-activity-route="protect">Protect what works</button>'+
+              '<button class="activity-choice" type="button" aria-pressed="false" data-activity-route="change">Try one small response</button>'+
+              '</div></fieldset>'+
+              '<div class="activity-route-panels">'+
+              '<div class="activity-route-panel" data-activity-route-panel="protect" hidden><div class="activity-grid">'+
+              awField('a-m3-protect-condition','What is helping this stay workable?','')+
+              awField('a-m3-protect-boundary','What boundary or condition do I want to protect?','')+
+              awField('a-m3-protect-decision','Continue, deepen, repeat, or leave it alone?','Optional','input')+
+              '</div></div>'+
+              '<div class="activity-route-panel" data-activity-route-panel="change" hidden><div class="activity-grid">'+
+              awField('a-m3-change-response','One small response I could try','Clarify, reduce scope, add a stop point, ask for support, change environment, pause, etc.')+
+              awField('a-m3-change-limit','Duration / support / stop rule','')+
+              awField('a-m3-change-useful','What would a useful next choice look like?','')+
+              '</div></div></div>','route');
+
+          case 'Check intuition, demands, and the next move':
+            return awShell('Treat the hunch as a question','An impression can start an inquiry. It does not finish one.',
+              '<div class="activity-grid">'+
+              awField('a-m3-hunch','What impression or assumption am I examining?','')+
+              awField('a-m3-supports','What evidence supports it?','')+
+              awField('a-m3-challenges','What evidence challenges it?','')+
+              awField('a-m3-unknown','What remains unknown?','')+
+              awField('a-m3-demands','Which operating demands matter here?','Time, attention, decisions, uncertainty, interaction, resources, effort')+
+              awField('a-m3-change-mind','What information would change my mind?','')+
+              awField('a-m3-boundary','One boundary I choose to keep','', 'input')+
+              '</div>'+awChoices('Next Decision','a-m3-next',['Keep','Change','Test Again','Pause/Park','Stop','Another Direction','Continue Looking'],'single'),'review');
+        }
+        return '';
+      }
+
+      function setupParticipantActivities(){
+        document.querySelectorAll('.lesson-card .module-fold').forEach(fold=>{
+          const label=fold.querySelector('summary')?.textContent?.trim()||'';
+          if(/^Facilitator/i.test(label)) fold.remove();
+        });
+        document.querySelectorAll('.lesson-card').forEach(card=>{
+          const title=card.querySelector('h3')?.textContent?.trim()||'';
+          if(title==="Map the Life You're Actually Living") return;
+          if(card.querySelector('.activity-workbench')) return;
+          const html=participantActivityMarkup(title);
+          if(!html) return;
+          const controls=card.querySelector('.lesson-controls');
+          if(controls) controls.insertAdjacentHTML('beforebegin',html);
+        });
+      }
+
+      const journalPrompts={
+        Notice:'What are you noticing right now?',
+        Question:'What question is still open?',
+        Try:'What is one small thing you might try or observe?',
+        Reflect:'What happened, and what did it teach you?',
+        Decide:'What feels like the next choice right now?'
+      };
+
+      function setJournalPrompt(prompt){
+        journalPrompt=journalPrompts[prompt]?prompt:'Notice';
+        document.querySelectorAll('[data-journal-prompt]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.journalPrompt===journalPrompt?'true':'false'));
+        const p=document.getElementById('journal-current-prompt');if(p)p.textContent=journalPrompts[journalPrompt];
+      }
+
+      function renderJournalEntries(){
+        const host=document.getElementById('conversation-journal-entries');if(!host)return;
+        host.innerHTML='';
+        if(!journalEntries.length){
+          const p=document.createElement('p');p.className='journal-intro';p.textContent='No entries yet. A rough thought is enough.';host.appendChild(p);return;
+        }
+        journalEntries.forEach((entry,index)=>{
+          const article=document.createElement('article');article.className='journal-entry';
+          const head=document.createElement('div');head.className='journal-entry-head';
+          const strong=document.createElement('strong');strong.textContent=entry.prompt||'Journal';
+          const button=document.createElement('button');button.type='button';button.dataset.journalDelete=String(index);button.textContent='Remove';
+          head.append(strong,button);
+          const p=document.createElement('p');p.textContent=entry.text||'';
+          article.append(head,p);host.appendChild(article);
+        });
+      }
+
+      function addJournalEntry(text,prompt=journalPrompt){
+        const value=String(text||'').trim();if(!value){showToast('Write something first, or leave it blank and keep moving.');return;}
+        journalEntries.push({prompt:prompt||'Journal',text:value,at:new Date().toISOString()});
+        const draft=document.getElementById('conversation-journal-draft');if(draft)draft.value='';
+        renderJournalEntries();
+        showToast('Added to your Conversation Journal.');
+      }
+
+      function openConversationJournal(){
+        const tray=document.getElementById('workbook-tray');if(tray)tray.open=true;
+        const panel=document.getElementById('conversation-journal-panel');
+        const toggle=document.getElementById('conversation-journal-toggle');
+        if(panel)panel.hidden=false;
+        if(toggle){toggle.setAttribute('aria-expanded','true');const icon=toggle.lastElementChild;if(icon)icon.textContent='−';}
+      }
+
+      function captureActivityToJournal(button){
+        const box=button.closest('.activity-workbench');if(!box)return;
+        const title=box.closest('.lesson-card')?.querySelector('h3')?.textContent?.trim()||'Activity';
+        const parts=[];
+        box.querySelectorAll('input,textarea').forEach(el=>{const v=el.value.trim();if(v){const lab=el.id?document.querySelector('label[for="'+CSS.escape(el.id)+'"]'):null;parts.push((lab?.textContent?.trim()||'Response')+': '+v);}});
+        const choices=[...box.querySelectorAll('button[aria-pressed="true"]')].filter(b=>b.dataset.activityChoice!==undefined||b.dataset.activityRoute!==undefined).map(b=>b.textContent.trim());
+        if(choices.length)parts.push('Selected: '+choices.join(', '));
+        openConversationJournal();
+        const draft=document.getElementById('conversation-journal-draft');
+        if(draft){draft.value=(parts.length?title+'\n'+parts.join('\n'):title+'\n');draft.focus();}
+        setJournalPrompt('Reflect');
+        showToast('Activity note moved into the journal draft. Nothing was sent.');
+      }
+
+
       function setWorkbookStatus(message){
         const el=document.getElementById('workbook-save-status');if(el)el.textContent=message;
         showToast(message);
@@ -2312,6 +2746,14 @@
           selected.forEach(x=>lines.push('- '+x));
           lines.push('');
         }
+        if(journalEntries.length){
+          lines.push('Conversation Journal:');
+          journalEntries.forEach(entry=>{
+            lines.push('['+(entry.prompt||'Journal')+']');
+            lines.push(entry.text||'');
+            lines.push('');
+          });
+        }
         lines.push('This copy was created on the participant’s device. It was not sent to Entrepalooza.');
         return lines.join('\n');
       }
@@ -2349,7 +2791,10 @@
         }
       });
 
+      setupParticipantActivities();
       setupVariedSlides();
+      setJournalPrompt('Notice');
+      renderJournalEntries();
       syncWorkbookGate();
       goTo(0,false);
       restoreWorkbookFromDevice();
