@@ -243,6 +243,26 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     }
+  
+    /* Canonical lesson walkthrough: actual Notion lessons are the module content. */
+    .lesson-stack{display:grid;gap:0;margin-top:8px}
+    .lesson-entry{position:relative;padding:20px 0 22px 38px;border-bottom:1px solid var(--line);scroll-margin-top:calc(var(--header-height) + 20px)}
+    .lesson-entry::before{content:"";position:absolute;top:27px;left:1px;width:17px;height:17px;border:1.5px solid var(--teal);border-radius:50%;background:var(--paper)}
+    .lesson-entry.is-current::before{background:var(--gold);border-color:var(--ink)}
+    .lesson-num{display:block;margin-bottom:5px;color:var(--teal);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:800}
+    .lesson-entry h3{margin:0 0 8px;font-size:clamp(18px,2.4vw,23px);line-height:1.25}
+    .lesson-entry p{max-width:690px;margin:0;color:#394b47}
+    .lesson-note{margin-top:10px!important;padding-left:12px;border-left:2px dotted var(--rule);color:var(--muted)!important;font-size:14px}
+    .module-decision{padding:22px 0 4px 38px;position:relative}
+    .module-decision::before{content:"";position:absolute;top:29px;left:1px;width:17px;height:17px;border:1.5px solid var(--teal);border-radius:50%;background:var(--paper)}
+    .module-decision.is-current::before{background:var(--gold);border-color:var(--ink)}
+    .module-decision .step-label{margin-bottom:10px}
+    .module-summary{margin:0 0 8px;color:var(--muted);font-size:14px}
+    @media(max-width:780px){
+      .lesson-entry,.module-decision{padding-left:29px}
+      .lesson-entry h3{font-size:19px}
+    }
+
   </style>
 </head>
 <body>
@@ -305,77 +325,153 @@
       </svg>
     </section>
 
+    
     <section class="screen module-screen" id="module-0" data-index="1" aria-labelledby="module-0-title">
       <div class="module-layout">
         <aside class="module-rail"><div><div class="module-number" aria-hidden="true">0</div><div class="rail-label">Enter with Agency</div></div><div class="margin-note">Joining and consent are separate choices.</div></aside>
         <div class="module-content">
-          <header class="module-heading"><div class="eyebrow">First, make room to choose</div><h2 tabindex="-1" id="module-0-title">Enter with Agency</h2></header>
-          <section class="work-step" data-loop="notice"><div class="step-label"><span class="ordinal">01</span> Notice</div><p>Ground rules come first: what this is and isn't, your privacy, and your right to pass or leave.</p><details class="lesson-path"><summary>See the 6 lessons</summary><ol><li><strong>0.1 · Welcome, agency, and participation choices</strong> Participation is voluntary; personal disclosure is not required.</li><li><strong>0.2 · What Entrepalooza is—and is not</strong> Understand the educational purpose, the routes through the program, its limits, and realistic expectations.</li><li><strong>0.3 · Rights, privacy, and separate consent</strong> Identify participation rights, actual privacy limits, correction routes, and separate consent choices.</li><li><strong>0.4 · Group Code (Builder’s Code) and permission-based feedback</strong> Practice giving, receiving, declining, and revising feedback without pressure.</li><li><strong>0.5 · Participation and Support Plan</strong> Identify what would make participation workable and name an agreed support or access next step.</li><li><strong>0.6 · Participation decision and handoff</strong> Choose whether to participate, request an adjustment, defer, or decline; consent remains separate.</li></ol></details></section>
-          <section class="work-step" data-loop="try"><div class="step-label"><span class="ordinal">02</span> Try</div><p>Practice feedback with permission. In a made-up scenario, a peer asks, “Do you want a question, a suggestion, or no feedback?” You decide, and you can say no.</p><div class="button-row inline-choices" aria-label="Choose a response in the made-up scenario"><button class="choice-button" type="button" data-message="You can ask for a question, a suggestion, or no feedback—and change your mind.">A question</button><button class="choice-button" type="button" data-message="You can ask for a question, a suggestion, or no feedback—and change your mind.">A suggestion</button><button class="choice-button" type="button" data-message="No feedback is a complete answer.">No feedback</button></div><p class="message" role="status" aria-live="polite"></p></section>
-          <section class="work-step" data-loop="reflect"><div class="step-label"><span class="ordinal">03</span> Reflect</div><p class="reflection-prompt">What would make taking part workable for you?</p></section>
-          <section class="work-step" data-loop="decide"><div class="step-label"><span class="ordinal">04</span> Decide</div><label class="unknown-label" for="unknown-0">Name one unknown. <span class="muted">(optional)</span></label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="unknown-0" rows="2" placeholder="Optional — leave blank if you prefer"></textarea><div class="decision-chips" aria-label="Choose a next step"><button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button></div><p class="message choice-message" role="status" aria-live="polite"></p></section>
+          <header class="module-heading"><div class="eyebrow">Six actual lessons</div><h2 tabindex="-1" id="module-0-title">Enter with Agency</h2></header>
+          <div class="lesson-stack">
+            <article class="lesson-entry" data-loop="notice"><span class="lesson-num">Lesson 0.1</span><h3>Welcome, agency, and participation choices</h3><p>Participation is voluntary. Personal disclosure is not required. Learn the real ways you can take part: respond, pass, observe, keep something private, or use a different format.</p></article>
+            <article class="lesson-entry" data-loop="notice"><span class="lesson-num">Lesson 0.2</span><h3>What Entrepalooza is—and is not</h3><p>Get the educational purpose, the limits, and realistic expectations. Learn the program method: question → bounded experiment → evidence → reflection → next decision.</p></article>
+            <article class="lesson-entry" data-loop="try"><span class="lesson-num">Lesson 0.3</span><h3>Rights, privacy, and separate consent</h3><p>Learn your participation rights, actual privacy limits, correction routes, and why participation, evaluation, recording, story use, and follow-up are separate choices.</p></article>
+            <article class="lesson-entry" data-loop="try"><span class="lesson-num">Lesson 0.4</span><h3>Group Code and permission-based feedback</h3><p>Practice asking before giving feedback. A question, a suggestion, no feedback, accepting, rejecting, or revising are all legitimate responses.</p></article>
+            <article class="lesson-entry" data-loop="reflect"><span class="lesson-num">Lesson 0.5</span><h3>Participation and Support Plan</h3><p>Identify what would make participation workable and name an agreed support or access next step. No diagnostic justification is required.</p></article>
+            <article class="lesson-entry" data-loop="decide"><span class="lesson-num">Lesson 0.6</span><h3>Participation decision and handoff</h3><p>Choose whether to participate, participate with an adjustment, defer, or decline. Declining is a successful agency outcome. Consent stays separate.</p></article>
+          </div>
+          
+          <section class="module-decision" data-loop="decide">
+            <div class="step-label"><span class="ordinal">Next</span> Decide</div>
+            <p class="module-summary">Carry forward only what you choose.</p>
+            <label class="unknown-label" for="unknown-0">Name one unknown. <span class="muted">(optional)</span></label>
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <textarea id="unknown-0" rows="2" placeholder="Optional — leave blank if you prefer"></textarea>
+            <div class="decision-chips" aria-label="Choose a next step">
+              <button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button>
+            </div>
+            <p class="message choice-message" role="status" aria-live="polite"></p>
+          </section>
         </div>
       </div>
       <div class="screen-controls"><a class="button" href="#cover" data-goto="0">← Back</a><a class="button button-primary" href="#module-1" data-goto="2">Next →</a></div>
     </section>
 
+
     <section class="screen module-screen" id="module-1" data-index="2" aria-labelledby="module-1-title">
       <div class="module-layout">
         <aside class="module-rail"><div><div class="module-number" aria-hidden="true">1</div><div class="rail-label">Find Something Worth Exploring</div></div><div class="margin-note">“Nothing clear yet” is a real result.</div></aside>
         <div class="module-content">
-          <header class="module-heading"><div class="eyebrow">Curiosity can start small</div><h2 tabindex="-1" id="module-1-title">Find Something Worth Exploring</h2></header>
-          <section class="work-step" data-loop="notice"><div class="step-label"><span class="ordinal">01</span> Notice</div><p>Notice what holds your attention, or start with “I don't know yet.” You don't need a passion or a business idea.</p><details class="lesson-path"><summary>See the 6 lessons</summary><ol><li><strong>1 · Notice without forcing an answer</strong> Use attention, curiosity, friction, repeated questions, or an honest unknown as starting information without turning any of it into a commitment.</li><li><strong>2 · Obsessive and harmonious passion</strong> Learn these as patterns of relating to an activity, not labels for people: rigid or pressured on one end, chosen and flexible on the other, with mixed and unclear also valid.</li><li><strong>3 · Encounter possibilities</strong> Explore possibilities across work, education, trades, art, community contribution, entrepreneurship, hobbies, or another participant-defined direction. Interests can emerge through experience.</li><li><strong>4 · Design a manageable balance experiment</strong> Build one small, supported, chosen, real, reversible, paced try with a boundary, support, stop rule, evidence to notice, and a reflection point.</li><li><strong>5 · Try and collect evidence</strong> Notice choice, attention, meaning, pressure, energy, cost, conditions, barriers, and surprises. An incomplete or stopped try can still produce useful evidence.</li><li><strong>6 · Reflect and decide</strong> Separate the experience from a verdict about yourself, then make a reversible Next Decision.</li></ol></details></section>
-          <section class="work-step" data-loop="try"><div class="step-label"><span class="ordinal">02</span> Try</div><p>Pick an interest you already have, or something new. Design one small try with a limit and a stop rule.</p></section>
-          <section class="work-step" data-loop="reflect"><div class="step-label"><span class="ordinal">03</span> Reflect</div><p class="reflection-prompt">What caught your attention? What did it cost? Would you go back to it?</p></section>
-          <section class="work-step" data-loop="decide"><div class="step-label"><span class="ordinal">04</span> Decide</div><label class="unknown-label" for="unknown-1">Name one unknown. <span class="muted">(optional)</span></label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="unknown-1" rows="2" placeholder="Optional — leave blank if you prefer"></textarea><div class="decision-chips" aria-label="Choose a next step"><button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button></div><p class="message choice-message" role="status" aria-live="polite"></p></section>
+          <header class="module-heading"><div class="eyebrow">Six actual lessons</div><h2 tabindex="-1" id="module-1-title">Find Something Worth Exploring</h2></header>
+          <div class="lesson-stack">
+            <article class="lesson-entry" data-loop="notice"><span class="lesson-num">Lesson 1</span><h3>Notice without forcing an answer</h3><p>Start with a thread, an open question, observation, or a private response. Attention, curiosity, friction, repeated questions, and “I don’t know yet” can all be starting information without becoming commitments.</p></article>
+            <article class="lesson-entry" data-loop="notice"><span class="lesson-num">Lesson 2</span><h3>Obsessive and harmonious passion</h3><p>Learn these as patterns of relating to an activity, not types of people. Notice choice or compulsion, flexibility or rigidity, meaning or pressure, sustainability or depletion. Mixed and unclear are valid.</p></article>
+            <article class="lesson-entry" data-loop="try"><span class="lesson-num">Lesson 3</span><h3>Encounter possibilities</h3><p>Explore possibilities across employment, education, trades, creative work, community contribution, entrepreneurship, hobbies, or another direction you define. Interests can emerge through experience rather than advance certainty.</p></article>
+            <article class="lesson-entry" data-loop="try"><span class="lesson-num">Lesson 4</span><h3>Design a manageable balance experiment</h3><p>Build one small try that is supported, chosen, real, reversible, and paced. Name the question, smallest action, boundary, support, stop or pause rule, evidence to notice, and reflection point.</p></article>
+            <article class="lesson-entry" data-loop="reflect"><span class="lesson-num">Lesson 5</span><h3>Try and collect evidence</h3><p>Notice whether you could begin, stop, or change course; what held attention; what felt meaningful or pressured; what it cost; what conditions helped; what barriers appeared; and what surprised you.</p><p class="lesson-note">A difficult, incomplete, or stopped experiment can still produce useful evidence.</p></article>
+            <article class="lesson-entry" data-loop="decide"><span class="lesson-num">Lesson 6</span><h3>Reflect and decide</h3><p>Separate the experience from a verdict about yourself. Ask what the evidence actually supports, what remains mixed or unclear, and choose a reversible Next Decision.</p></article>
+          </div>
+          
+          <section class="module-decision" data-loop="decide">
+            <div class="step-label"><span class="ordinal">Next</span> Decide</div>
+            <p class="module-summary">Carry forward only what you choose.</p>
+            <label class="unknown-label" for="unknown-1">Name one unknown. <span class="muted">(optional)</span></label>
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <textarea id="unknown-1" rows="2" placeholder="Optional — leave blank if you prefer"></textarea>
+            <div class="decision-chips" aria-label="Choose a next step">
+              <button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button>
+            </div>
+            <p class="message choice-message" role="status" aria-live="polite"></p>
+          </section>
         </div>
       </div>
       <div class="screen-controls"><a class="button" href="#module-0" data-goto="1">← Back</a><a class="button button-primary" href="#module-1-5" data-goto="3">Next →</a></div>
     </section>
 
+
     <section class="screen module-screen" id="module-1-5" data-index="3" aria-labelledby="module-1-5-title">
       <div class="module-layout">
         <aside class="module-rail"><div><div class="module-number" aria-hidden="true">1.5</div><div class="rail-label">Test How I Operate</div></div><div class="margin-note">A change in conditions is information, not a score.</div></aside>
         <div class="module-content">
-          <header class="module-heading"><div class="eyebrow">Change a condition, not your identity</div><h2 tabindex="-1" id="module-1-5-title">Test How I Operate</h2></header>
-          <section class="work-step" data-loop="notice"><div class="step-label"><span class="ordinal">01</span> Notice</div><p>Look at how you work, not who you “are.” No personality scores.</p><details class="lesson-path"><summary>See the 3 lessons</summary><ol><li><strong>1 · Describe the setup around a task</strong> Name one task, one operating condition, and one question or honest unknown; separate observation from interpretation.</li><li><strong>2 · Run one changed-condition test</strong> Keep the task reasonably similar, change one condition, and use a bounded comparison. Planning, attempting, observing, adapting, pausing, or not attempting can all produce information.</li><li><strong>3 · Review what helped and what it cost</strong> Separate result, cost, explanation, and uncertainty, then choose a Next Decision.</li></ol></details></section>
-          <section class="work-step" data-loop="try"><div class="step-label"><span class="ordinal">02</span> Try</div><p>Take an ordinary task and change one condition, like time of day, working alone or with people, or quiet or busy.</p><div class="button-row inline-choices" aria-label="Examples of one condition to change"><button class="choice-button" type="button" data-message="One condition at a time is enough. No type or score is attached.">Time of day</button><button class="choice-button" type="button" data-message="One condition at a time is enough. No type or score is attached.">Alone or with people</button><button class="choice-button" type="button" data-message="One condition at a time is enough. No type or score is attached.">Quiet or busy</button></div><p class="message" role="status" aria-live="polite"></p></section>
-          <section class="work-step" data-loop="reflect"><div class="step-label"><span class="ordinal">03</span> Reflect</div><p class="reflection-prompt">What changed? What did it cost? What's still uncertain?</p></section>
-          <section class="work-step" data-loop="decide"><div class="step-label"><span class="ordinal">04</span> Decide</div><label class="unknown-label" for="unknown-15">Name one unknown. <span class="muted">(optional)</span></label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="unknown-15" rows="2" placeholder="Optional — leave blank if you prefer"></textarea><div class="decision-chips" aria-label="Choose a next step"><button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button></div><p class="message choice-message" role="status" aria-live="polite"></p></section>
+          <header class="module-heading"><div class="eyebrow">Three actual lessons</div><h2 tabindex="-1" id="module-1-5-title">Test How I Operate</h2></header>
+          <div class="lesson-stack">
+            <article class="lesson-entry" data-loop="notice"><span class="lesson-num">Lesson 1</span><h3>Describe the setup around a task</h3><p>Name one task, one operating condition, and one question or honest unknown. Separate the observation from the interpretation you might attach to it.</p></article>
+            <article class="lesson-entry" data-loop="try"><span class="lesson-num">Lesson 2</span><h3>Run one changed-condition test</h3><p>Keep the task reasonably similar, change one condition, and use a bounded comparison. Planning, attempting, observing, adapting, pausing, or not attempting can all produce information.</p><p class="lesson-note">One attempt can raise a useful question. It cannot prove a permanent preference or cause.</p></article>
+            <article class="lesson-entry" data-loop="reflect"><span class="lesson-num">Lesson 3</span><h3>Review what helped and what it cost</h3><p>Look at the result, effort, fatigue or discomfort, support, after-cost, and uncertainty. Separate result, cost, explanation, and what you still do not know.</p></article>
+          </div>
+          
+          <section class="module-decision" data-loop="decide">
+            <div class="step-label"><span class="ordinal">Next</span> Decide</div>
+            <p class="module-summary">Carry forward only what you choose.</p>
+            <label class="unknown-label" for="unknown-15">Name one unknown. <span class="muted">(optional)</span></label>
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <textarea id="unknown-15" rows="2" placeholder="Optional — leave blank if you prefer"></textarea>
+            <div class="decision-chips" aria-label="Choose a next step">
+              <button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button>
+            </div>
+            <p class="message choice-message" role="status" aria-live="polite"></p>
+          </section>
         </div>
       </div>
       <div class="screen-controls"><a class="button" href="#module-1" data-goto="2">← Back</a><a class="button button-primary" href="#module-2" data-goto="4">Next →</a></div>
     </section>
 
+
     <section class="screen module-screen" id="module-2" data-index="4" aria-labelledby="module-2-title">
       <div class="module-layout">
         <aside class="module-rail"><div><div class="module-number" aria-hidden="true">2</div><div class="rail-label">Check the Story</div></div><div class="margin-note">No confession required.</div></aside>
         <div class="module-content">
-          <header class="module-heading"><div class="eyebrow">Make room between event and verdict</div><h2 tabindex="-1" id="module-2-title">Check the Story</h2></header>
-          <section class="work-step" data-loop="notice"><div class="step-label"><span class="ordinal">01</span> Notice</div><p>Separate what happened from the story about it, and from any verdict about yourself.</p><details class="lesson-path"><summary>See the 3 lessons</summary><ol><li><strong>1 · Separate what happened from what it means</strong> Distinguish the event, the story attached to it, the verdict about the person, and what is still uncertain.</li><li><strong>2 · Turn a chosen standard into observable practice</strong> Pick a personally meaningful value or standard and translate it into one small action that can actually be observed.</li><li><strong>3 · Review evidence and revise</strong> Look at what happened, what support mattered, what was difficult or costly, and revise the wording when the evidence changes.</li></ol></details></section>
-          <section class="work-step" data-loop="try"><div class="step-label"><span class="ordinal">02</span> Try</div><p>With a made-up example, sort three things: the event, the story, and the verdict.</p><div class="example-sort"><p><strong>Event:</strong> A person shared a sketch with a peer; there was no reply that day.</p><p><strong>Story:</strong> “They didn't like it.”</p><p><strong>Verdict:</strong> “I'm not capable.”</p></div></section>
-          <section class="work-step" data-loop="reflect"><div class="step-label"><span class="ordinal">03</span> Reflect</div><p class="reflection-prompt">Is there a wording that's more accurate, not just more positive?</p></section>
-          <section class="work-step" data-loop="decide"><div class="step-label"><span class="ordinal">04</span> Decide</div><label class="unknown-label" for="unknown-2">Name one unknown. <span class="muted">(optional)</span></label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="unknown-2" rows="2" placeholder="Optional — leave blank if you prefer"></textarea><div class="decision-chips" aria-label="Choose a next step"><button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button></div><p class="message choice-message" role="status" aria-live="polite"></p></section>
+          <header class="module-heading"><div class="eyebrow">Three actual lessons</div><h2 tabindex="-1" id="module-2-title">Check the Story</h2></header>
+          <div class="lesson-stack">
+            <article class="lesson-entry" data-loop="notice"><span class="lesson-num">Lesson 1</span><h3>Separate what happened from what it means</h3><p>Distinguish the event, the story attached to it, the verdict about the person, and what is still uncertain. Responsibility and context can stay visible without turning one event into a permanent judgment.</p></article>
+            <article class="lesson-entry" data-loop="try"><span class="lesson-num">Lesson 2</span><h3>Turn a chosen standard into observable practice</h3><p>Choose a value or standard that actually belongs to you, then turn it into one small action that can be observed. Support, accommodation, and collaboration still count as real evidence.</p></article>
+            <article class="lesson-entry" data-loop="reflect"><span class="lesson-num">Lesson 3</span><h3>Review evidence and revise</h3><p>Review what actually happened, what support mattered, what was difficult or costly, what remains unknown, and revise the wording when the evidence changes. Accuracy matters more than positivity.</p></article>
+          </div>
+          
+          <section class="module-decision" data-loop="decide">
+            <div class="step-label"><span class="ordinal">Next</span> Decide</div>
+            <p class="module-summary">Carry forward only what you choose.</p>
+            <label class="unknown-label" for="unknown-2">Name one unknown. <span class="muted">(optional)</span></label>
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <textarea id="unknown-2" rows="2" placeholder="Optional — leave blank if you prefer"></textarea>
+            <div class="decision-chips" aria-label="Choose a next step">
+              <button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button>
+            </div>
+            <p class="message choice-message" role="status" aria-live="polite"></p>
+          </section>
         </div>
       </div>
       <div class="screen-controls"><a class="button" href="#module-1-5" data-goto="3">← Back</a><a class="button button-primary" href="#module-3" data-goto="5">Next →</a></div>
     </section>
 
+
     <section class="screen module-screen" id="module-3" data-index="5" aria-labelledby="module-3-title">
       <div class="module-layout">
         <aside class="module-rail"><div><div class="module-number" aria-hidden="true">3</div><div class="rail-label">Navigate Intensity</div></div><div class="margin-note">Pilot 1 ends here.</div></aside>
         <div class="module-content">
-          <header class="module-heading"><div class="eyebrow">Keep your limits in the picture</div><h2 tabindex="-1" id="module-3-title">Navigate Intensity</h2></header>
-          <section class="work-step" data-loop="notice"><div class="step-label"><span class="ordinal">01</span> Notice</div><p>Sometimes effort spikes, stalls, or costs too much. Sometimes something is already working.</p><details class="lesson-path"><summary>See the 3 lessons</summary><ol><li><strong>1 · Notice signal, story, urge, action, and cost</strong> Map what is actually happening and identify either a condition worth protecting or a point where another choice may be available.</li><li><strong>2 · Protect what works or try one small response</strong> If the activity is working, protect the conditions that keep it chosen and workable. If pressure or cost is rising, plan or try one low-risk response.</li><li><strong>3 · Check intuition, demands, and the next move</strong> Treat intuition as a question, compare it with evidence and operating demands, protect one boundary, and make a reversible Next Decision.</li></ol></details></section>
-          <section class="work-step" data-loop="try"><div class="step-label"><span class="ordinal">02</span> Try</div><p>Choose a route. Both are equal: protect one condition that's working, or try one small, low-risk response during an ordinary task.</p><div class="button-row inline-choices" aria-label="Choose either route"><button class="choice-button" type="button" data-message="Protecting what works is a complete route.">Protect what works</button><button class="choice-button" type="button" data-message="A small, low-risk response is one option—not an obligation.">Try a small response</button></div><p class="message" role="status" aria-live="polite"></p></section>
-          <section class="work-step" data-loop="reflect"><div class="step-label"><span class="ordinal">03</span> Reflect</div><p class="reflection-prompt">What's one limit you choose to keep?</p></section>
-          <section class="work-step" data-loop="decide"><div class="step-label"><span class="ordinal">04</span> Decide</div><label class="unknown-label" for="unknown-3">Name one unknown. <span class="muted">(optional)</span></label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="unknown-3" rows="2" placeholder="Optional — leave blank if you prefer"></textarea><div class="decision-chips" aria-label="Choose a next step"><button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button></div><p class="message choice-message" role="status" aria-live="polite"></p></section>
+          <header class="module-heading"><div class="eyebrow">Three actual lessons</div><h2 tabindex="-1" id="module-3-title">Navigate Intensity</h2></header>
+          <div class="lesson-stack">
+            <article class="lesson-entry" data-loop="notice"><span class="lesson-num">Lesson 1</span><h3>Notice signal, story, urge, action, and cost</h3><p>Map what is actually happening without assuming a cause. A signal, story, urge, action, or cost can be present, absent, or unknown. Identify either a condition worth protecting or a point where another choice may be available.</p></article>
+            <article class="lesson-entry" data-loop="try"><span class="lesson-num">Lesson 2</span><h3>Protect what works or try one small response</h3><p>If the activity is working, identify the conditions, supports, or boundaries that keep it chosen and workable. If pressure, cost, or loss of choice appears, plan or try one small response.</p><p class="lesson-note">Continuation and navigation are equal routes. A setback is not required.</p></article>
+            <article class="lesson-entry" data-loop="reflect"><span class="lesson-num">Lesson 3</span><h3>Check intuition, demands, and the next move</h3><p>Treat intuition as a question, not evidence by itself. Compare the impression with available evidence, operating demands, and what would change your mind. Keep one protected boundary and choose the next move.</p></article>
+          </div>
+          
+          <section class="module-decision" data-loop="decide">
+            <div class="step-label"><span class="ordinal">Next</span> Decide</div>
+            <p class="module-summary">Carry forward only what you choose.</p>
+            <label class="unknown-label" for="unknown-3">Name one unknown. <span class="muted">(optional)</span></label>
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <textarea id="unknown-3" rows="2" placeholder="Optional — leave blank if you prefer"></textarea>
+            <div class="decision-chips" aria-label="Choose a next step">
+              <button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button>
+            </div>
+            <p class="message choice-message" role="status" aria-live="polite"></p>
+          </section>
         </div>
       </div>
       <div class="screen-controls"><a class="button" href="#module-2" data-goto="4">← Back</a><a class="button button-primary" href="#whats-next" data-goto="6">What's next →</a></div>
     </section>
 
-    <section class="screen next-screen" id="whats-next" data-index="6" aria-labelledby="next-title">
+<section class="screen next-screen" id="whats-next" data-index="6" aria-labelledby="next-title">
       <div class="next-content">
       <div class="eyebrow">A later phase of the fuller program · about six months</div>
       <h2 tabindex="-1" id="next-title" style="margin-top:14px">What's next</h2>
@@ -424,7 +520,7 @@
       function updateLoop(key) {
         document.querySelectorAll('[data-loop-dot]').forEach(dot => dot.classList.toggle('is-active', dot.dataset.loopDot === key));
         document.querySelectorAll('[data-loop-word]').forEach(word => word.classList.toggle('is-active', word.dataset.loopWord === key));
-        document.querySelectorAll('.work-step').forEach(block => block.classList.toggle('is-current', block.dataset.loop === key && block.closest('.screen')?.classList.contains('is-active')));
+        document.querySelectorAll('.work-step, .lesson-entry, .module-decision').forEach(block => block.classList.toggle('is-current', block.dataset.loop === key && block.closest('.screen')?.classList.contains('is-active')));
       }
       function pressStamps(index) {
         const reached = {
