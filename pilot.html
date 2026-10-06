@@ -725,6 +725,39 @@
       .reading-inline[data-reading-format="field-notes"] .reading-beat{padding-left:20px}
     }
 
+  
+    /* Living evidence map: What's Taking Shape */
+    .shape-view{border-top:1px solid var(--line)}
+    .shape-toggle{width:100%;min-height:58px;border:0;background:transparent;color:var(--ink);padding:11px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;cursor:pointer}
+    .shape-toggle strong{display:block;font-size:14px}.shape-toggle small{display:block;color:var(--muted);font-size:11px;font-weight:500;margin-top:2px}
+    .shape-count-badge{min-width:28px;height:28px;padding:0 7px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background:var(--teal-soft);border:1px solid rgba(62,105,99,.28);color:var(--teal);font-size:11px;font-weight:850}
+    .shape-panel{padding:0 14px 15px}.shape-intro{padding:11px 12px;margin-bottom:10px;border-left:3px solid var(--gold);background:rgba(244,228,167,.28)}
+    .shape-intro p{margin:0 0 5px;font-size:12px;line-height:1.45}.shape-intro p:last-child{margin-bottom:0}
+    .shape-tabs{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:thin}
+    .shape-tab{flex:0 0 auto;min-height:39px;padding:7px 10px;border:1px solid #83948c;border-radius:999px;background:var(--paper-light);color:var(--ink);font-size:11px;font-weight:780;cursor:pointer}
+    .shape-tab[aria-selected="true"]{background:var(--teal);border-color:var(--teal);color:#fff}.shape-content{min-height:145px}
+    .shape-empty{padding:18px 14px;border:1px dashed #9aa79f;border-radius:8px;color:var(--muted);font-size:12px;line-height:1.45;text-align:center}
+    .shape-stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-bottom:11px}
+    .shape-stat{padding:10px 7px;border:1px solid var(--line);border-radius:7px;background:rgba(255,253,248,.74);text-align:center}
+    .shape-stat strong{display:block;font-size:19px;line-height:1;color:var(--teal)}.shape-stat span{display:block;margin-top:4px;font-size:9px;line-height:1.2;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:800}
+    .shape-tool-grid{display:grid;gap:8px}.shape-tool{padding:11px;border:1px solid var(--line);border-radius:8px;background:rgba(255,253,248,.68)}
+    .shape-tool-head{display:flex;justify-content:space-between;gap:9px;align-items:center;margin-bottom:6px}.shape-tool-head strong{font-size:12px;color:var(--ink)}
+    .shape-tool-status{font-size:9px;text-transform:uppercase;letter-spacing:.07em;font-weight:850;color:var(--teal)}.shape-tool p{margin:0;font-size:11px;line-height:1.4;color:var(--muted)}
+    .shape-list{display:grid;gap:7px;margin:0;padding:0;list-style:none}.shape-item{padding:10px 11px;border:1px solid var(--line);border-radius:7px;background:rgba(255,253,248,.72)}
+    .shape-item-text{display:block;font-size:12px;line-height:1.42;white-space:pre-wrap;overflow-wrap:anywhere}.shape-item-source{display:block;margin-top:4px;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.06em;font-weight:750}
+    .shape-section-note{margin:0 0 9px;color:var(--muted);font-size:11px;line-height:1.4}.shape-decision-row{display:flex;flex-wrap:wrap;gap:6px}
+    .shape-decision-chip{padding:7px 9px;border:1px solid var(--line);border-radius:999px;background:var(--paper-light);font-size:11px;font-weight:750}.shape-decision-chip strong{color:var(--teal)}
+    .shape-patterns{display:grid;gap:9px}.shape-pattern{padding:12px;border:1px solid var(--line);border-radius:9px;background:rgba(255,253,248,.76)}
+    .shape-pattern[data-shape-status="keep"]{border-left:4px solid var(--teal);background:var(--teal-soft)}.shape-pattern[data-shape-status="watch"]{border-left:4px solid var(--gold);background:rgba(244,228,167,.3)}
+    .shape-pattern[data-shape-status="notquite"]{border-left:4px solid var(--rule);background:var(--accent-soft)}.shape-pattern-title{margin:0 0 4px;font-size:12px;font-weight:830}
+    .shape-pattern-evidence{margin:0 0 9px;color:var(--muted);font-size:10px;line-height:1.4}.shape-pattern-actions{display:flex;flex-wrap:wrap;gap:5px}
+    .shape-pattern-action{min-height:35px;padding:6px 8px;border:1px solid #829188;border-radius:5px;background:var(--paper-light);color:var(--ink);font-size:10px;font-weight:750;cursor:pointer}
+    .shape-pattern-action[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:white}.shape-pattern-rewrite{margin-top:9px}
+    .shape-pattern-rewrite label{display:block;margin-bottom:4px;font-size:10px;font-weight:800}.shape-pattern-rewrite input{width:100%;padding:8px 9px;border:1px solid #87958e;border-radius:5px;background:var(--paper-light);color:var(--ink);font-size:13px}
+    .shape-pattern-rewrite button{margin-top:6px;min-height:34px;padding:6px 9px;border:1px solid var(--teal);border-radius:5px;background:transparent;color:var(--teal);font-size:10px;font-weight:800;cursor:pointer}
+    .shape-footnote{margin-top:11px;padding-top:10px;border-top:1px solid var(--line);color:var(--muted);font-size:10px;line-height:1.45}.shape-footnote strong{color:var(--ink)}
+    @media(max-width:780px){.shape-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.shape-panel{padding-bottom:19px}.shape-tab{min-height:42px;font-size:12px}.shape-item-text{font-size:13px}.shape-pattern-title{font-size:13px}}
+
   </style>
 </head>
 <body>
@@ -1879,6 +1912,23 @@
           <div class="journal-entry-list" id="conversation-journal-entries" aria-live="polite"></div>
         </div>
       </section>
+      <section class="shape-view" aria-labelledby="shape-title">
+        <button class="shape-toggle" type="button" id="shape-toggle" aria-expanded="false" aria-controls="shape-panel">
+          <span><strong id="shape-title">What’s Taking Shape</strong><small>Your answers organized, not scored</small></span>
+          <span class="shape-count-badge" id="shape-count-badge">0</span>
+        </button>
+        <div class="shape-panel" id="shape-panel" hidden>
+          <div class="shape-intro">
+            <p>This view pulls together what you already entered. It does not diagnose you, rank you, or decide what your answers mean.</p>
+            <p class="privacy-note">Everything here is calculated on this device. Nothing is sent anywhere.</p>
+          </div>
+          <div class="shape-tabs" role="tablist" aria-label="What’s Taking Shape sections">
+            <button type="button" role="tab" class="shape-tab" data-shape-tab="overview" aria-selected="true">Overview</button><button type="button" role="tab" class="shape-tab" data-shape-tab="threads" aria-selected="false">Threads</button><button type="button" role="tab" class="shape-tab" data-shape-tab="conditions" aria-selected="false">Conditions</button><button type="button" role="tab" class="shape-tab" data-shape-tab="supports" aria-selected="false">Supports</button><button type="button" role="tab" class="shape-tab" data-shape-tab="costs" aria-selected="false">Costs</button><button type="button" role="tab" class="shape-tab" data-shape-tab="unknowns" aria-selected="false">Unknowns</button><button type="button" role="tab" class="shape-tab" data-shape-tab="decisions" aria-selected="false">Decisions</button><button type="button" role="tab" class="shape-tab" data-shape-tab="evidence" aria-selected="false">Evidence</button><button type="button" role="tab" class="shape-tab" data-shape-tab="patterns" aria-selected="false">Patterns</button>
+          </div>
+          <div class="shape-content" id="shape-content" role="tabpanel" aria-live="polite"></div>
+          <div class="shape-footnote"><strong>Participant gets the last word.</strong> A possible pattern only becomes part of your working map if you decide it fits.</div>
+        </div>
+      </section>
       <div class="workbook-save-panel">
         <p class="workbook-save-title">Keep your work</p>
         <p class="workbook-save-copy">Nothing is sent anywhere. Saving is optional and stays on your device or in a file you choose.</p>
@@ -1910,6 +1960,8 @@
       let workbookUnlocked=false;
       let journalEntries=[];
       let journalPrompt='Notice';
+      let shapeReviews={};
+      let shapeActiveTab='overview';
 
 
       function syncWorkbookGate(){
@@ -1943,18 +1995,7 @@
         document.querySelectorAll('[data-loop-dot]').forEach(d=>d.classList.toggle('is-active',d.dataset.loopDot===key));
         document.querySelectorAll('[data-loop-word]').forEach(w=>w.classList.toggle('is-active',w.dataset.loopWord===key));
       }
-      function pressStamps(index){
-        const map={2:{discovery:'Started at Module 1',decision:'Started at Module 1'},3:{operating:'Note added at Module 1.5'},4:{discovery:'Note added at Module 2'},5:{operating:'Updated at Module 3',decision:'Updated at Module 3'}}[index]||{};
-        for(const [k,note] of Object.entries(map)){
-          const stamp=document.querySelector('[data-stamp="'+k+'"]');
-          if(!stamp) continue;
-          stamp.classList.add('is-pressed');
-          const noteEl=stamp.querySelector('[data-stamp-note="'+k+'"]');
-          if(noteEl) noteEl.textContent=note;
-        }
-        const count=document.querySelectorAll('.tray-stamp.is-pressed').length;
-        const countEl=document.getElementById('stamp-count'); if(countEl) countEl.textContent=count+' / 3 stamps';
-      }
+      function pressStamps(index){if(typeof renderShapeView==='function')renderShapeView();}
       function showLesson(screen,index,focus=false){
         if(!screen?.classList.contains('module-screen')) return;
         const lessons=[...screen.querySelectorAll('.lesson-card')];
@@ -2031,6 +2072,16 @@
           box?.querySelectorAll('[data-activity-route-panel]').forEach(p=>p.hidden=p.dataset.activityRoutePanel!==awRoute.dataset.activityRoute);
           return;
         }
+
+        const shapeToggle=e.target.closest('#shape-toggle');
+        if(shapeToggle){const p=document.getElementById('shape-panel'),opening=p?.hidden!==false;if(p)p.hidden=!opening;shapeToggle.setAttribute('aria-expanded',opening?'true':'false');if(opening)renderShapeView();return;}
+        const shapeTab=e.target.closest('[data-shape-tab]');
+        if(shapeTab){shapeActiveTab=shapeTab.dataset.shapeTab||'overview';renderShapeView();return;}
+        const shapeAction=e.target.closest('[data-shape-action]');
+        if(shapeAction){const id=shapeAction.dataset.shapePatternId,a=shapeAction.dataset.shapeAction;if(id&&a)shapeReviews[id]={...(shapeReviews[id]||{}),status:a};renderShapeView();return;}
+        const shapeRewriteSave=e.target.closest('[data-shape-rewrite-save]');
+        if(shapeRewriteSave){const id=shapeRewriteSave.dataset.shapeRewriteSave,input=document.querySelector('[data-shape-rewrite-id="'+CSS.escape(id)+'"]'),custom=input?.value?.trim()||'';shapeReviews[id]={...(shapeReviews[id]||{}),status:'notquite',custom};renderShapeView();showToast(custom?'Your wording is now part of the working map.':'No rewrite saved yet.');return;}
+
         const journalToggle=e.target.closest('#conversation-journal-toggle');
         if(journalToggle){
           const panel=document.getElementById('conversation-journal-panel');
@@ -2111,9 +2162,9 @@
       });
 
 
-      document.addEventListener('input',e=>{
-        if(e.target.closest('#life-map-workspace')) refreshLifeMap();
-      });
+      document.addEventListener('input',e=>{if(e.target.closest('#life-map-workspace'))refreshLifeMap();if(!e.target.closest('#shape-panel'))renderShapeView();});
+      document.addEventListener('change',e=>{if(!e.target.closest('#shape-panel'))renderShapeView();});
+      document.addEventListener('click',e=>{if(!e.target.closest('#shape-panel'))setTimeout(renderShapeView,0);});
 
 
       document.getElementById('workbook-upload-input')?.addEventListener('change',e=>{
@@ -2260,7 +2311,7 @@
 
         return {
           format:'Entrepalooza Pilot 1 workbook',
-          version:2,
+          version:3,
           preflightEntered,
           workbookUnlocked,
           savedAt:new Date().toISOString(),
@@ -2270,6 +2321,8 @@
           presentations,
           journalEntries,
           journalPrompt,
+          shapeReviews,
+          shapeActiveTab,
           fields,
           pressed,
           openDetails,
@@ -2342,6 +2395,9 @@
         journalEntries=Array.isArray(state.journalEntries)?state.journalEntries:[];
         setJournalPrompt(state.journalPrompt||'Notice');
         renderJournalEntries();
+        shapeReviews=state.shapeReviews&&typeof state.shapeReviews==='object'?state.shapeReviews:{};
+        shapeActiveTab=state.shapeActiveTab||'overview';
+        renderShapeView();
 
         if(state.stamps){
           document.querySelectorAll('.tray-stamp').forEach(x=>x.classList.toggle('is-pressed',state.stamps.includes(x.dataset.stamp)));
@@ -3006,6 +3062,59 @@
       }
 
 
+
+      function shapeValue(id){const el=document.getElementById(id);return el?String(el.value||'').trim():'';}
+      function shapeValues(ids){return ids.map(shapeValue).filter(Boolean);}
+      function shapeSelected(id){const g=document.getElementById(id);return g?[...g.querySelectorAll('button[aria-pressed="true"]')].map(b=>b.textContent.trim().replace(/\s+/g,' ')).filter(Boolean):[];}
+      function uniqueShapeItems(items){const seen=new Set(),out=[];items.forEach(item=>{const value=String(typeof item==='string'?item:item.value||'').trim();if(!value)return;const key=value.toLowerCase().replace(/\s+/g,' ');if(seen.has(key))return;seen.add(key);out.push(typeof item==='string'?{value,source:''}:{...item,value});});return out;}
+      function shapeSources(){
+        const map=typeof lifeMapEntries==='function'?lifeMapEntries():{activities:[],finals:{},bigger:''};
+        const mk=(ids,source)=>shapeValues(ids).map(value=>({value,source}));
+        const threads=uniqueShapeItems([
+          ...mk(['a-m1-attention','a-m1-return','a-m1-thread','a-m1-possibility','a-m1-possibility-question'],'Module 1'),
+          ...mk(['map-thread-1','map-thread-2','map-thread-3','map-thread-4'],'Life map'),
+          ...(map.activities||[]).map(value=>({value,source:'Life map'})),
+          ...(map.finals?.thing?[{value:map.finals.thing,source:'Life map'}]:[]),
+          ...(map.bigger?[{value:map.bigger,source:'Life map'}]:[])
+        ]);
+        const conditions=uniqueShapeItems([...mk(['a-m1-exp-balance','a-m1-exp-boundary'],'Module 1'),...mk(['a-m15-condition','a-m15-test-condition','a-m15-test-balance','a-m15-review-change'],'Module 1.5'),...mk(['a-m2-limit'],'Module 2'),...mk(['a-m3-protect-condition','a-m3-protect-boundary','a-m3-change-limit'],'Module 3')]);
+        const supports=uniqueShapeItems([...mk(['a-m0-support','a-m0-access','a-m0-tech','a-m0-logistics'],'Module 0'),...shapeSelected('a-m1-access').map(value=>({value,source:'Module 1'})),...mk(['a-m1-exp-support'],'Module 1'),...mk(['a-m15-test-support'],'Module 1.5'),...mk(['a-m2-support','a-m2-review-support'],'Module 2')]);
+        const costs=uniqueShapeItems([...mk(['a-m1-evidence-cost'],'Module 1'),...mk(['a-m15-review-cost'],'Module 1.5'),...mk(['a-m3-cost'],'Module 3')]);
+        const unknowns=uniqueShapeItems([...mk(['a-m0-one-unknown','a-m0-clear-question'],'Module 0'),...mk(['a-m1-unknown','a-m1-pattern-unknown','a-m1-reflect-unknown'],'Module 1'),...mk(['a-m15-review-unknown'],'Module 1.5'),...mk(['a-m2-uncertainty','a-m2-review-unknown'],'Module 2'),...mk(['a-m3-unknown'],'Module 3'),...(map.finals?.unknown?[{value:map.finals.unknown,source:'Life map'}]:[]),...journalEntries.filter(e=>e.prompt==='Question').map(e=>({value:e.text,source:'Conversation Journal'}))]);
+        const evidence=uniqueShapeItems([...mk(['a-m1-evidence-happened','a-m1-reflect-happened','a-m1-reflect-support'],'Module 1'),...mk(['a-m15-review-result'],'Module 1.5'),...mk(['a-m2-event','a-m2-review-evidence','a-m2-review-happened'],'Module 2'),...mk(['a-m3-action','a-m3-supports','a-m3-challenges'],'Module 3')]);
+        const decisions=[];[['a-m1-next','Module 1'],['a-m15-next','Module 1.5'],['a-m2-next','Module 2'],['a-m3-next','Module 3']].forEach(([id,source])=>shapeSelected(id).forEach(value=>decisions.push({value,source})));
+        return {threads,conditions,supports,costs,unknowns,evidence,decisions};
+      }
+      const shapeStopWords=new Set('about after again also another because before being could does doing from have into just more most much need only other really right same something still than that their there these they thing things this through under very want what when where which while with would your youre maybe optional keep change test pause park stop direction continue looking module workbook activity'.split(' '));
+      function shapePatternCandidates(data){
+        const out=[],decisionCounts={};
+        data.decisions.forEach(d=>{const k=d.value.toLowerCase();decisionCounts[k]=(decisionCounts[k]||{value:d.value,count:0});decisionCounts[k].count++;});
+        Object.values(decisionCounts).filter(x=>x.count>=2).forEach(x=>out.push({id:'decision:'+x.value.toLowerCase().replace(/[^a-z0-9]+/g,'-'),text:x.value+' has been your next decision '+x.count+' times.',evidence:'Repeated decision choice · '+x.count+' times'}));
+        const corpus=[...data.threads,...data.conditions,...data.supports,...data.costs,...data.unknowns,...data.evidence,...journalEntries.map(e=>({value:e.text,source:'Conversation Journal'}))],counts={};
+        corpus.forEach(item=>{const words=new Set(String(item.value||'').toLowerCase().replace(/[^a-z0-9'’-]+/g,' ').split(/\s+/).map(w=>w.replace(/[’']/g,'').trim()).filter(w=>w.length>=5&&!shapeStopWords.has(w)&&!/^\d+$/.test(w)));words.forEach(word=>{if(!counts[word])counts[word]={count:0,sources:new Set()};counts[word].count++;if(item.source)counts[word].sources.add(item.source);});});
+        Object.entries(counts).filter(([,v])=>v.count>=2).sort((a,b)=>b[1].count-a[1].count||a[0].localeCompare(b[0])).slice(0,5).forEach(([word,v])=>out.push({id:'word:'+word,text:'“'+word+'” showed up in '+v.count+' different answers.',evidence:'Repeated language'+(v.sources.size?' · '+[...v.sources].join(', '):'')}));
+        return out;
+      }
+      function shapeData(){const d=shapeSources();d.patterns=shapePatternCandidates(d);return d;}
+      function syncArtifactStamps(d=shapeData()){
+        const ready={discovery:d.threads.length+d.evidence.length+d.unknowns.length>0,operating:d.conditions.length+d.supports.length+d.costs.length>0,decision:d.decisions.length>0};
+        const notes={discovery:ready.discovery?(d.threads.length+' threads · '+d.evidence.length+' evidence notes'):'Not started yet',operating:ready.operating?(d.conditions.length+' conditions · '+d.supports.length+' supports'):'Not started yet',decision:ready.decision?('Latest: '+d.decisions[d.decisions.length-1].value):'Not started yet'};
+        document.querySelectorAll('.tray-stamp').forEach(s=>{const k=s.dataset.stamp;s.classList.toggle('is-pressed',!!ready[k]);const n=s.querySelector('[data-stamp-note="'+k+'"]');if(n)n.textContent=notes[k]||'Not started yet';});
+        const count=Object.values(ready).filter(Boolean).length,el=document.getElementById('stamp-count');if(el)el.textContent=count+' / 3 tools';
+      }
+      function clearNode(n){while(n.firstChild)n.removeChild(n.firstChild);}
+      function shapeEmpty(t){const d=document.createElement('div');d.className='shape-empty';d.textContent=t;return d;}
+      function renderShapeList(host,items,note){clearNode(host);if(note){const p=document.createElement('p');p.className='shape-section-note';p.textContent=note;host.appendChild(p);}if(!items.length){host.appendChild(shapeEmpty('Nothing here yet. You can keep moving without filling everything out.'));return;}const ul=document.createElement('ul');ul.className='shape-list';items.forEach(item=>{const li=document.createElement('li');li.className='shape-item';const t=document.createElement('span');t.className='shape-item-text';t.textContent=item.value;li.appendChild(t);if(item.source){const s=document.createElement('span');s.className='shape-item-source';s.textContent=item.source;li.appendChild(s);}ul.appendChild(li);});host.appendChild(ul);}
+      function renderShapeOverview(host,d){clearNode(host);const stats=document.createElement('div');stats.className='shape-stat-grid';[['Threads',d.threads.length],['Conditions',d.conditions.length],['Unknowns',d.unknowns.length],['Decisions',d.decisions.length]].forEach(([l,n])=>{const b=document.createElement('div');b.className='shape-stat';const s=document.createElement('strong');s.textContent=n;const x=document.createElement('span');x.textContent=l;b.append(s,x);stats.appendChild(b);});host.appendChild(stats);const tools=document.createElement('div');tools.className='shape-tool-grid';[
+        ['Builder Discovery Record',d.threads.length+d.evidence.length+d.unknowns.length>0,d.threads.length+' threads · '+d.evidence.length+' evidence notes · '+d.unknowns.length+' open questions'],
+        ['Operating Plan',d.conditions.length+d.supports.length+d.costs.length>0,d.conditions.length+' conditions · '+d.supports.length+' supports · '+d.costs.length+' costs'],
+        ['Next Decision',d.decisions.length>0,d.decisions.length?('Latest: '+d.decisions[d.decisions.length-1].value):'No decision recorded yet']
+      ].forEach(([title,ready,text])=>{const card=document.createElement('div');card.className='shape-tool';const head=document.createElement('div');head.className='shape-tool-head';const st=document.createElement('strong');st.textContent=title;const status=document.createElement('span');status.className='shape-tool-status';status.textContent=ready?'Building':'Waiting';head.append(st,status);const p=document.createElement('p');p.textContent=text;card.append(head,p);tools.appendChild(card);});host.appendChild(tools);if(d.patterns.length){const p=document.createElement('p');p.className='shape-section-note';p.style.marginTop='11px';p.textContent=d.patterns.length+' possible repetition signal'+(d.patterns.length===1?'':'s')+' found. Open Patterns to decide whether any actually fit.';host.appendChild(p);}}
+      function renderShapeDecisions(host,items){clearNode(host);const p=document.createElement('p');p.className='shape-section-note';p.textContent='These are choices you actually made. No option ranks higher than another.';host.appendChild(p);if(!items.length){host.appendChild(shapeEmpty('No Next Decision recorded yet.'));return;}const counts={};items.forEach(i=>counts[i.value]=(counts[i.value]||0)+1);const row=document.createElement('div');row.className='shape-decision-row';Object.entries(counts).forEach(([v,n])=>{const chip=document.createElement('span');chip.className='shape-decision-chip';chip.append(document.createTextNode(v+' · '));const strong=document.createElement('strong');strong.textContent=n;chip.appendChild(strong);row.appendChild(chip);});host.appendChild(row);}
+      function renderShapePatterns(host,patterns){clearNode(host);const note=document.createElement('p');note.className='shape-section-note';note.textContent='These are repetition signals only. They are not personality traits, diagnoses, or conclusions. You decide what fits.';host.appendChild(note);const visible=patterns.filter(p=>shapeReviews[p.id]?.status!=='remove');if(!visible.length){host.appendChild(shapeEmpty(patterns.length?'You removed the current suggestions. New ones can appear as your answers change.':'No repeated signal yet. One answer is still useful information.'));return;}const wrap=document.createElement('div');wrap.className='shape-patterns';visible.forEach(p=>{const r=shapeReviews[p.id]||{},card=document.createElement('article');card.className='shape-pattern';card.dataset.shapeStatus=r.status||'';const title=document.createElement('p');title.className='shape-pattern-title';title.textContent=r.custom||p.text;const ev=document.createElement('p');ev.className='shape-pattern-evidence';ev.textContent=p.evidence;const actions=document.createElement('div');actions.className='shape-pattern-actions';[['keep','Keep'],['watch','Keep watching'],['notquite','Not quite'],['remove','Remove']].forEach(([a,l])=>{const b=document.createElement('button');b.type='button';b.className='shape-pattern-action';b.dataset.shapePatternId=p.id;b.dataset.shapeAction=a;b.textContent=l;b.setAttribute('aria-pressed',r.status===a?'true':'false');actions.appendChild(b);});card.append(title,ev,actions);if(r.status==='notquite'){const box=document.createElement('div');box.className='shape-pattern-rewrite';const label=document.createElement('label'),id='shape-rewrite-'+Math.abs([...p.id].reduce((n,ch)=>((n*31)+ch.charCodeAt(0))|0,7));label.htmlFor=id;label.textContent='Rewrite it in your words';const input=document.createElement('input');input.id=id;input.type='text';input.value=r.custom||'';input.dataset.shapeRewriteId=p.id;input.placeholder='What fits better?';const save=document.createElement('button');save.type='button';save.dataset.shapeRewriteSave=p.id;save.textContent='Use my wording';box.append(label,input,save);card.appendChild(box);}wrap.appendChild(card);});host.appendChild(wrap);}
+      function renderShapeView(){const host=document.getElementById('shape-content');if(!host)return;const d=shapeData();syncArtifactStamps(d);const total=d.threads.length+d.conditions.length+d.supports.length+d.costs.length+d.unknowns.length+d.decisions.length+d.evidence.length,b=document.getElementById('shape-count-badge');if(b)b.textContent=total;document.querySelectorAll('[data-shape-tab]').forEach(x=>x.setAttribute('aria-selected',x.dataset.shapeTab===shapeActiveTab?'true':'false'));switch(shapeActiveTab){case'threads':renderShapeList(host,d.threads,'Things you keep noticing, returning to, researching, or wanting to understand.');break;case'conditions':renderShapeList(host,d.conditions,'Parts of the setup that may matter. A condition is information, not a permanent rule.');break;case'supports':renderShapeList(host,d.supports,'People, tools, access, structure, or flexibility you identified as potentially useful.');break;case'costs':renderShapeList(host,d.costs,'Time, effort, energy, friction, or after-effects you actually recorded.');break;case'unknowns':renderShapeList(host,d.unknowns,'Questions that are still open. “I don’t know yet” remains a complete answer.');break;case'decisions':renderShapeDecisions(host,d.decisions);break;case'evidence':renderShapeList(host,d.evidence,'What you recorded as happening, rather than what you predicted or concluded about yourself.');break;case'patterns':renderShapePatterns(host,d.patterns);break;default:renderShapeOverview(host,d);}}
+
+
       function setWorkbookStatus(message){
         const el=document.getElementById('workbook-save-status');if(el)el.textContent=message;
         showToast(message);
@@ -3072,6 +3181,13 @@
           selected.forEach(x=>lines.push('- '+x));
           lines.push('');
         }
+        const shape=shapeData();
+        lines.push('What’s Taking Shape:');
+        [['Threads',shape.threads],['Conditions',shape.conditions],['Supports',shape.supports],['Costs',shape.costs],['Unknowns',shape.unknowns],['Evidence',shape.evidence]].forEach(([label,items])=>{if(!items.length)return;lines.push(label+':');items.forEach(item=>lines.push('- '+item.value));lines.push('');});
+        if(shape.decisions.length){lines.push('Decisions:');shape.decisions.forEach(item=>lines.push('- '+item.value+(item.source?' ('+item.source+')':'')));lines.push('');}
+        const accepted=shape.patterns.filter(p=>['keep','watch','notquite'].includes(shapeReviews[p.id]?.status));
+        if(accepted.length){lines.push('Participant-reviewed possible patterns:');accepted.forEach(p=>{const r=shapeReviews[p.id]||{};lines.push('- '+(r.custom||p.text)+' ['+(r.status||'')+']');});lines.push('');}
+
         if(journalEntries.length){
           lines.push('Conversation Journal:');
           journalEntries.forEach(entry=>{
@@ -3122,6 +3238,7 @@
       setupVariedSlides();
       setJournalPrompt('Notice');
       renderJournalEntries();
+      renderShapeView();
       syncWorkbookGate();
       goTo(0,false);
       restoreWorkbookFromDevice();
