@@ -2531,9 +2531,13 @@
         if(pulse)pulse.hidden=i!==beats.length-1;
         const lessonControls=card.querySelector(':scope > .lesson-controls');
         if(lessonControls&&compressed)lessonControls.classList.toggle('reading-controls-muted',i!==beats.length-1);
-        if(focus)beats[i].querySelector('h4')?.focus?.();
-        const scroller=card.closest('.module-layout');
-        if(scroller)scroller.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+        if(focus){
+          const heading=beats[i].querySelector('h4');
+          if(heading?.focus){
+            try{heading.focus({preventScroll:true});}
+            catch(_){heading.focus();}
+          }
+        }
       }
 
       function foldToSection(fold){
