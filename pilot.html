@@ -765,6 +765,26 @@
     .shape-footnote{margin-top:11px;padding-top:10px;border-top:1px solid var(--line);color:var(--muted);font-size:10px;line-height:1.45}.shape-footnote strong{color:var(--ink)}
     @media(max-width:780px){.shape-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.shape-panel{padding-bottom:19px}.shape-tab{min-height:42px;font-size:12px}.shape-item-text{font-size:13px}.shape-pattern-title{font-size:13px}}
 
+  
+    /* Conversation Journal introduction on the first screen */
+    .journal-welcome{margin:24px 0 20px;padding:17px 18px;display:grid;grid-template-columns:auto 1fr;gap:14px;border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:10px;background:rgba(255,253,248,.72)}
+    .journal-welcome-mark{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--teal);color:#fff;font:800 20px/1 var(--serif)}
+    .journal-welcome-kicker{margin:0 0 3px;color:var(--teal);font-size:10px;text-transform:uppercase;letter-spacing:.11em;font-weight:850}
+    .journal-welcome h2{margin:0 0 7px;font-size:clamp(20px,2.6vw,27px);line-height:1.12}
+    .journal-welcome-copy{margin:0;color:var(--ink);font-size:14px;line-height:1.5}
+    .journal-welcome-flow{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:11px 0 9px}
+    .journal-welcome-flow span{padding:6px 9px;border:1px solid var(--line);border-radius:999px;background:var(--paper-light);font-size:11px;font-weight:750}
+    .journal-welcome-flow b{color:var(--copper);font-size:12px}
+    .journal-welcome-note{margin:0;color:var(--muted);font-size:11px;line-height:1.45}
+    .journal-welcome-note strong{color:var(--ink)}
+    @media(max-width:640px){
+      .journal-welcome{grid-template-columns:1fr;padding:15px}
+      .journal-welcome-mark{width:36px;height:36px;font-size:17px}
+      .journal-welcome-flow{gap:5px}
+      .journal-welcome-flow b{display:none}
+      .journal-welcome-flow span{font-size:10px}
+    }
+
   </style>
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -816,6 +836,18 @@
           <div class="eyebrow">A guided workbook, one step at a time</div>
           <h1 tabindex="-1" id="cover-title">Walk through Pilot&nbsp;1</h1>
           <p class="lede">Pilot 1 opens Entrepalooza, a small, human-guided cohort in Houston for adults figuring out what comes next. Here's how it feels, one step at a time.</p>
+          <aside class="journal-welcome" aria-labelledby="journal-welcome-title">
+            <div class="journal-welcome-mark" aria-hidden="true">J</div>
+            <div>
+              <p class="journal-welcome-kicker">A tool you’ll have throughout the workbook</p>
+              <h2 id="journal-welcome-title">Your Conversation Journal</h2>
+              <p class="journal-welcome-copy">Use it when a thought is worth keeping but you do not want to stop and answer every question. You can write in it directly, or send an activity note there and decide whether to keep it.</p>
+              <div class="journal-welcome-flow" aria-label="How the Conversation Journal works">
+                <span>Write or send a note</span><b aria-hidden="true">→</b><span>Review the draft</span><b aria-hidden="true">→</b><span>Keep it if you want</span>
+              </div>
+              <p class="journal-welcome-note"><strong>Optional and private.</strong> Journal text is not sent anywhere. It stays in this tab unless you choose to save or download your workbook. Entries you keep can also help <em>What’s Taking Shape</em> notice repeated ideas later, and you can reject or rewrite anything it suggests.</p>
+            </div>
+          </aside>
           <div class="check-in">
             <p class="prompt">Before we start, are you here?</p>
             <div class="button-row">
@@ -848,7 +880,7 @@
         <div class="lesson-stage"><article class="lesson-card is-lesson-active" data-lesson-index="0" data-loop="notice">
     <div class="lesson-meta"><strong>Lesson 1 of 5</strong><span>·</span><span>Try it here</span></div>
     <h3 tabindex="-1">What this pilot is and isn’t</h3><p class="lesson-purpose">Know what the pilot will and won’t do before choosing anything.</p>
-     <div class="beat"><div class="beat-label">Learn</div><p>You can answer aloud, write privately, observe, or pass. Passing never needs a reason. Entrepalooza is a structured way to notice, try something small, reflect, and decide what comes next. A job, training, a project, a pause, or still looking can all be complete finishes.</p></div>
+     <div class="beat"><div class="beat-label">Learn</div><p>You can answer aloud, write privately, observe, or pass. Passing never needs a reason. Entrepalooza is a structured way to notice, try something small, reflect, and decide what comes next. A job, training, a project, a pause, or still looking can all be complete finishes.</p><p><strong>Your Conversation Journal is optional.</strong> Use it to keep thoughts you want to remember without having to complete every prompt.</p></div>
      <div class="activity" data-single-select><p class="activity-title">Quick check: part of the pilot, or not?</p><div class="tile-grid">
        <button class="tile-option" type="button" aria-pressed="false" data-feedback="Yes. Small, bounded experiments are part of the pilot.">Try something small</button>
        <button class="tile-option" type="button" aria-pressed="false" data-feedback="No. The pilot does not promise jobs or income.">Job or income promise</button>
