@@ -393,7 +393,7 @@
     .map-node{position:absolute;width:150px;min-height:84px;padding:10px 11px;border:1px solid var(--line);border-radius:8px;background:var(--white);box-shadow:0 3px 12px rgba(38,59,57,.07);z-index:2}
     .map-node strong{display:block;font-size:14px;margin-bottom:3px}
     .map-node small{display:block;color:var(--muted);font-size:12px;line-height:1.35}
-    .map-node .map-symbols{margin-top:7px;font-weight:850;color:var(--accent);letter-spacing:.08em}
+    .map-node .map-symbols{margin-top:7px;font-weight:750;color:var(--accent);font-size:11px;line-height:1.3;letter-spacing:0}
     .map-node[data-slot="0"]{left:4%;top:8%}
     .map-node[data-slot="1"]{right:4%;top:8%}
     .map-node[data-slot="2"]{left:4%;bottom:8%}
@@ -413,6 +413,9 @@
     .map-symbol[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
     .map-add-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
     .map-add-row .button{min-height:42px}
+    .map-download-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:-4px 0 16px;padding:10px 12px;border:1px dashed rgba(62,105,99,.45);border-radius:8px;background:rgba(226,235,229,.45)}
+    .map-download-row p{margin:0;color:var(--muted);font-size:12px;line-height:1.4}
+    .map-download-row .button{flex:0 0 auto;min-height:42px}
     .map-tag-bank{display:flex;flex-wrap:wrap;gap:7px}
     .map-tag{min-height:40px;padding:8px 11px;border:1px solid #87978f;border-radius:999px;background:rgba(255,253,248,.7);cursor:pointer;font-weight:650}
     .map-tag[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
@@ -429,6 +432,8 @@
       .lesson-stage{padding-bottom:84px!important}
       .module-content{padding-bottom:70px}
       .map-input-grid,.map-thread-grid,.map-final-choice{grid-template-columns:1fr}
+      .map-download-row{align-items:stretch;flex-direction:column}
+      .map-download-row .button{width:100%}
       .map-canvas{min-height:520px}
       .map-home{width:82px;height:82px}
       .map-node{width:128px;min-height:76px;padding:8px 9px}
@@ -933,7 +938,21 @@
 
       <section class="map-step" aria-labelledby="map-week-title">
         <div class="map-step-head"><h4 id="map-week-title">1. Where do you spend your time?</h4><span>Places + what happens there</span></div>
-        <p class="map-help">Think about the places where you spend a lot of your time. Add only the ones you want to include.</p>
+        <p class="map-help">Think about the places where you spend a lot of your time. Add only the ones you want to include. The map below fills itself in as you answer.</p>
+
+        <div class="map-canvas" id="life-map-canvas" aria-label="Visual map of the places you spend time">
+          <div class="map-home">HOME</div>
+          <div class="map-node map-empty" data-map-node data-slot="0"><strong>Place 1</strong><small>Add a place below</small></div>
+          <div class="map-node map-empty" data-map-node data-slot="1"><strong>Place 2</strong><small>Add a place below</small></div>
+          <div class="map-node map-empty" data-map-node data-slot="2"><strong>Place 3</strong><small>Add a place below</small></div>
+          <div class="map-node map-empty" data-map-node data-slot="3"><strong>Place 4</strong><small>Add a place below</small></div>
+          <div class="map-node map-empty" data-map-node data-slot="4"><strong>Place 5</strong><small>Optional</small></div>
+          <div class="map-node map-empty" data-map-node data-slot="5"><strong>Place 6</strong><small>Optional</small></div>
+        </div>
+        <div class="map-download-row">
+          <p>This image is yours. Download the map by itself whenever you want.</p>
+          <button class="button" type="button" id="map-download-image">Download map</button>
+        </div>
 
         <div class="map-input-grid" id="map-place-grid">
           <div class="map-entry" data-map-entry="0">
@@ -2156,6 +2175,7 @@
         const mapActivity=e.target.closest('[data-map-activity]');
         if(mapActivity){mapActivity.setAttribute('aria-pressed',mapActivity.getAttribute('aria-pressed')==='true'?'false':'true');refreshLifeMap();return;}
         if(e.target.closest('#map-add-place')){addLifeMapPlace();return;}
+        if(e.target.closest('#map-download-image')){downloadLifeMap();return;}
         if(e.target.closest('#map-clear-all')){clearLifeMap();return;}
         if(e.target.closest('#map-nothing-yet')){
           const thing=document.querySelector('[data-map-final="thing"]');
@@ -2254,6 +2274,74 @@
           items.forEach(text=>{const li=document.createElement('li');li.textContent=text;list.appendChild(li);});
         }
       }
+      function downloadLifeMap(){
+        const data=lifeMapEntries();
+        const canvas=document.createElement('canvas');
+        canvas.width=1600; canvas.height=1050;
+        const ctx=canvas.getContext('2d');
+        if(!ctx){showToast('This browser could not create the map image.');return;}
+
+        const ink='#263b39', muted='#586762', teal='#3e6963', paper='#f5f2e9', white='#fffdf8', line='#d8d6c9', accent='#9b533b';
+        ctx.fillStyle=paper;ctx.fillRect(0,0,canvas.width,canvas.height);
+
+        ctx.strokeStyle='rgba(62,105,99,.08)';ctx.lineWidth=1;
+        for(let x=0;x<=canvas.width;x+=56){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke();}
+        for(let y=0;y<=canvas.height;y+=56){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke();}
+
+        ctx.fillStyle=teal;ctx.font='800 24px system-ui, sans-serif';ctx.fillText('ENTREPALOOZA',80,78);
+        ctx.fillStyle=ink;ctx.font='700 54px Georgia, serif';ctx.fillText('A few places in my week',80,145);
+        ctx.fillStyle=muted;ctx.font='24px system-ui, sans-serif';ctx.fillText('Built from the answers I chose to include.',80,190);
+
+        const cx=800, cy=560;
+        const nodes=[
+          {x:105,y:250},{x:1185,y:250},{x:105,y:720},{x:1185,y:720},{x:650,y:225},{x:650,y:800}
+        ];
+        const boxW=310, boxH=160;
+
+        function roundedRect(x,y,w,h,r){
+          const rr=Math.min(r,w/2,h/2);
+          ctx.beginPath();ctx.moveTo(x+rr,y);ctx.arcTo(x+w,y,x+w,y+h,rr);ctx.arcTo(x+w,y+h,x,y+h,rr);ctx.arcTo(x,y+h,x,y,rr);ctx.arcTo(x,y,x+w,y,rr);ctx.closePath();
+        }
+        function wrap(text,x,y,maxWidth,lineHeight,maxLines){
+          const words=String(text||'').split(/\s+/).filter(Boolean);let lineText='',lines=[];
+          words.forEach(word=>{const test=lineText?lineText+' '+word:word;if(ctx.measureText(test).width>maxWidth&&lineText){lines.push(lineText);lineText=word;}else lineText=test;});
+          if(lineText)lines.push(lineText);
+          if(lines.length>maxLines){lines=lines.slice(0,maxLines);let last=lines[maxLines-1];while(ctx.measureText(last+'…').width>maxWidth&&last.length>1)last=last.slice(0,-1);lines[maxLines-1]=last+'…';}
+          lines.forEach((lineText,i)=>ctx.fillText(lineText,x,y+i*lineHeight));
+          return lines.length;
+        }
+
+        data.places.slice(0,6).forEach((p,i)=>{
+          const n=nodes[i];if(!n)return;
+          ctx.strokeStyle='rgba(62,105,99,.28)';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(n.x+boxW/2,n.y+boxH/2);ctx.stroke();
+        });
+
+        ctx.fillStyle=white;ctx.strokeStyle=teal;ctx.lineWidth=5;ctx.beginPath();ctx.arc(cx,cy,83,0,Math.PI*2);ctx.fill();ctx.stroke();
+        ctx.fillStyle=ink;ctx.textAlign='center';ctx.font='800 27px system-ui, sans-serif';ctx.fillText('HOME',cx,cy+9);ctx.textAlign='left';
+
+        data.places.slice(0,6).forEach((p,i)=>{
+          const n=nodes[i];if(!n)return;
+          roundedRect(n.x,n.y,boxW,boxH,18);ctx.fillStyle=white;ctx.fill();ctx.strokeStyle=line;ctx.lineWidth=2;ctx.stroke();
+          ctx.fillStyle=ink;ctx.font='800 25px system-ui, sans-serif';wrap(p.place||('Place '+(i+1)),n.x+20,n.y+38,boxW-40,29,2);
+          ctx.fillStyle=muted;ctx.font='20px system-ui, sans-serif';wrap(p.doing||'',n.x+20,n.y+90,boxW-40,24,2);
+          const feeling=(p.marks||[])[0]||'';
+          if(feeling){ctx.fillStyle=accent;ctx.font='700 17px system-ui, sans-serif';wrap(feeling,n.x+20,n.y+139,boxW-40,20,1);}
+        });
+
+        if(!data.places.length){
+          ctx.fillStyle=muted;ctx.textAlign='center';ctx.font='22px system-ui, sans-serif';ctx.fillText('Add a place in the activity and it will appear here.',cx,cy+145);ctx.textAlign='left';
+        }
+
+        ctx.fillStyle=muted;ctx.font='18px system-ui, sans-serif';ctx.fillText('Private participant map · created on this device',80,1000);
+
+        canvas.toBlob(blob=>{
+          if(!blob){showToast('This browser could not create the map image.');return;}
+          const url=URL.createObjectURL(blob),a=document.createElement('a');
+          a.href=url;a.download='entrepalooza-my-map.png';document.body.appendChild(a);a.click();a.remove();
+          setTimeout(()=>URL.revokeObjectURL(url),1000);showToast('Map downloaded.');
+        },'image/png');
+      }
+
       function addLifeMapPlace(){
         const grid=document.getElementById('map-place-grid');
         if(!grid) return;
