@@ -559,6 +559,26 @@
       .next-content{padding-bottom:120px}
     }
 
+  
+    /* Module 0 is the pre-workbook doorway */
+    .workbook-tray.is-gated{display:none!important}
+    .workbook-doorway{margin-left:auto;display:flex;align-items:center;gap:12px;max-width:520px}
+    .workbook-doorway p{margin:0;color:var(--muted);font-size:13px;line-height:1.4}
+    body.preflight-pending .stepper [data-goto]:not([data-goto="0"]){opacity:.36}
+    body.preflight-pending .stepper [data-goto]:not([data-goto="0"]){cursor:not-allowed}
+    body.workbook-locked .stepper [data-goto="2"],
+    body.workbook-locked .stepper [data-goto="3"],
+    body.workbook-locked .stepper [data-goto="4"],
+    body.workbook-locked .stepper [data-goto="5"],
+    body.workbook-locked .stepper [data-goto="6"]{opacity:.38;cursor:not-allowed}
+    body.preflight-pending .module-progress{opacity:.42}
+    .cover-screen .check-in .button-primary{padding-inline:18px}
+    @media(max-width:780px){
+      .workbook-doorway{width:100%;flex-direction:column;align-items:stretch;margin-left:0}
+      .workbook-doorway .button{width:100%}
+      .workbook-doorway p{text-align:left}
+    }
+
   </style>
 </head>
 <body>
@@ -609,12 +629,12 @@
           <div class="check-in">
             <p class="prompt">Before we start, are you here?</p>
             <div class="button-row">
-              <button class="choice-button" type="button" data-message="Glad you're here.">Here</button>
+              <button class="choice-button button-primary" type="button" data-enter-gate data-message="Glad you're here.">Yes, I'm here</button>
               <button class="choice-button" type="button" data-message="Pass counts. You're still welcome to look around.">Pass</button>
             </div>
             <p class="message" role="status" aria-live="polite"></p>
           </div>
-          <p style="margin:20px 0 0"><a class="button button-primary" href="#module-0" data-goto="1">Start <span aria-hidden="true">→</span></a></p>
+          
         </div>
         <aside class="sticky-note" aria-label="A note about the module loop">
           <p>Every module follows the same loop:<br>Notice → Try → Reflect → Decide.</p>
@@ -632,7 +652,7 @@
     <div class="module-layout">
       <aside class="module-rail"><div><div class="module-number" aria-hidden="true">0</div><div class="rail-label">Enter with Agency</div></div><div class="margin-note">Passing is part of belonging.</div></aside>
       <div class="module-content">
-        <header class="module-heading"><div class="module-kicker"><strong>Module 1 of 5</strong><span>5 lessons</span></div><h2 tabindex="-1" id="module-0-title">Enter with Agency</h2></header>
+        <header class="module-heading"><div class="module-kicker"><strong>Before the workbook</strong><span>Module 0 · 5 lessons</span></div><h2 tabindex="-1" id="module-0-title">Enter with Agency</h2></header>
         
         <nav class="lesson-tabs" aria-label="Enter with Agency lessons"><button class="lesson-tab" type="button" data-lesson-goto="0" aria-current="step">1</button><button class="lesson-tab" type="button" data-lesson-goto="1" >2</button><button class="lesson-tab" type="button" data-lesson-goto="2" >3</button><button class="lesson-tab" type="button" data-lesson-goto="3" >4</button><button class="lesson-tab" type="button" data-lesson-goto="4" >5</button></nav>
         <div class="lesson-stage"><article class="lesson-card is-lesson-active" data-lesson-index="0" data-loop="notice">
@@ -673,7 +693,7 @@
        <button class="tile-option" type="button" aria-pressed="false" data-feedback="Adjustments are a full route, not a lesser one.">Participate with adjustments</button>
        <button class="tile-option" type="button" aria-pressed="false" data-feedback="Defer is valid.">Defer</button>
        <button class="tile-option" type="button" aria-pressed="false" data-feedback="Decline is a complete agency outcome.">Decline</button>
-     </div><p class="activity-message" role="status" aria-live="polite"></p></div><div class="beat"><div class="beat-label">Decide</div><p>Choose what fits what you actually saw. All seven choices count.</p><div class="decision-chips" aria-label="Choose a next decision"><button class="chip" type="button" aria-pressed="false">Keep</button><button class="chip" type="button" aria-pressed="false">Change</button><button class="chip" type="button" aria-pressed="false">Test Again</button><button class="chip" type="button" aria-pressed="false">Pause/Park</button><button class="chip" type="button" aria-pressed="false">Stop</button><button class="chip" type="button" aria-pressed="false">Another Direction</button><button class="chip" type="button" aria-pressed="false">Continue Looking</button></div><p class="activity-message choice-message" role="status" aria-live="polite"></p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 4</button><a class="button button-primary" href="#module-1" data-goto="2">Finish Module 0 → Module 1</a></div></article></div>
+     </div><p class="activity-message" role="status" aria-live="polite"></p></div><div class="beat"><div class="beat-label">Decide</div><p>Choose what fits what you actually saw. All seven choices count.</p><div class="decision-chips" aria-label="Choose a next decision"><button class="chip" type="button" aria-pressed="false">Keep</button><button class="chip" type="button" aria-pressed="false">Change</button><button class="chip" type="button" aria-pressed="false">Test Again</button><button class="chip" type="button" aria-pressed="false">Pause/Park</button><button class="chip" type="button" aria-pressed="false">Stop</button><button class="chip" type="button" aria-pressed="false">Another Direction</button><button class="chip" type="button" aria-pressed="false">Continue Looking</button></div><p class="activity-message choice-message" role="status" aria-live="polite"></p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 4</button><div class="workbook-doorway"><p>You can still pass, leave, or come back later. Entering the workbook is a separate choice.</p><button class="button button-primary" type="button" data-enter-workbook>Enter the workbook →</button></div></div></article></div>
       </div>
     </div>
   </section>
@@ -682,7 +702,7 @@
     <div class="module-layout">
       <aside class="module-rail"><div><div class="module-number" aria-hidden="true">1</div><div class="rail-label">Find Something Worth Exploring</div></div><div class="margin-note">“Nothing clear yet” is a real result.</div></aside>
       <div class="module-content">
-        <header class="module-heading"><div class="module-kicker"><strong>Module 2 of 5</strong><span>3 readings · 7 lessons</span></div><h2 tabindex="-1" id="module-1-title">Find Something Worth Exploring</h2></header>
+        <header class="module-heading"><div class="module-kicker"><strong>Workbook · Module 1 of 4</strong><span>3 readings · 7 lessons</span></div><h2 tabindex="-1" id="module-1-title">Find Something Worth Exploring</h2></header>
         
         <nav class="lesson-tabs" aria-label="Module 2 of 5 sequence"><button class="lesson-tab reading-tab" type="button" data-lesson-goto="0" aria-current="step" aria-label="Reading 1 — You Don’t Have to Know Yet">R1</button><button class="lesson-tab " type="button" data-lesson-goto="1"  aria-label="Lesson 0 — Map the Life You're Actually Living">L0</button><button class="lesson-tab " type="button" data-lesson-goto="2"  aria-label="Lesson 1 — Notice without forcing an answer">L1</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="3"  aria-label="Reading 2 — When Something Matters, How It Holds You Matters">R2</button><button class="lesson-tab " type="button" data-lesson-goto="4"  aria-label="Lesson 2 — Obsessive and harmonious passion">L2</button><button class="lesson-tab " type="button" data-lesson-goto="5"  aria-label="Lesson 3 — Encounter possibilities">L3</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="6"  aria-label="Reading 3 — A Try Is Not a Commitment">R3</button><button class="lesson-tab " type="button" data-lesson-goto="7"  aria-label="Lesson 4 — Design a manageable balance experiment">L4</button><button class="lesson-tab " type="button" data-lesson-goto="8"  aria-label="Lesson 5 — Try and collect evidence">L5</button><button class="lesson-tab " type="button" data-lesson-goto="9"  aria-label="Lesson 6 — Reflect and decide">L6</button></nav>
         <div class="lesson-stage"><article class="lesson-card module-item reading-inline is-lesson-active" data-lesson-index="0" data-loop="notice">
@@ -1108,7 +1128,7 @@
     <div class="module-layout">
       <aside class="module-rail"><div><div class="module-number" aria-hidden="true">1.5</div><div class="rail-label">Test How I Operate</div></div><div class="margin-note">Conditions are information, not a score.</div></aside>
       <div class="module-content">
-        <header class="module-heading"><div class="module-kicker"><strong>Module 3 of 5</strong><span>3 readings · 3 lessons</span></div><h2 tabindex="-1" id="module-1-5-title">Test How I Operate</h2></header>
+        <header class="module-heading"><div class="module-kicker"><strong>Workbook · Module 2 of 4</strong><span>3 readings · 3 lessons</span></div><h2 tabindex="-1" id="module-1-5-title">Test How I Operate</h2></header>
         
         <nav class="lesson-tabs" aria-label="Module 3 of 5 sequence"><button class="lesson-tab reading-tab" type="button" data-lesson-goto="0" aria-current="step" aria-label="Reading 1 — Maybe It’s Not Just You. Look at the Setup.">R1</button><button class="lesson-tab " type="button" data-lesson-goto="1"  aria-label="Lesson 1 — Describe the setup around a task">L1</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="2"  aria-label="Reading 2 — Change One Thing and See What You Learn">R2</button><button class="lesson-tab " type="button" data-lesson-goto="3"  aria-label="Lesson 2 — Run one changed-condition test">L2</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="4"  aria-label="Reading 3 — One Result Is a Clue, Not a Personality">R3</button><button class="lesson-tab " type="button" data-lesson-goto="5"  aria-label="Lesson 3 — Review what helped and what it cost">L3</button></nav>
         <div class="lesson-stage"><article class="lesson-card module-item reading-inline is-lesson-active" data-lesson-index="0" data-loop="notice">
@@ -1311,7 +1331,7 @@
     <div class="module-layout">
       <aside class="module-rail"><div><div class="module-number" aria-hidden="true">2</div><div class="rail-label">Check the Story</div></div><div class="margin-note">Accuracy over forced positivity.</div></aside>
       <div class="module-content">
-        <header class="module-heading"><div class="module-kicker"><strong>Module 4 of 5</strong><span>0 readings · 3 lessons</span></div><h2 tabindex="-1" id="module-2-title">Check the Story</h2></header>
+        <header class="module-heading"><div class="module-kicker"><strong>Workbook · Module 3 of 4</strong><span>0 readings · 3 lessons</span></div><h2 tabindex="-1" id="module-2-title">Check the Story</h2></header>
         
         <nav class="lesson-tabs" aria-label="Module 4 of 5 sequence"><button class="lesson-tab " type="button" data-lesson-goto="0" aria-current="step" aria-label="Lesson 1 — Separate what happened from what it means">L1</button><button class="lesson-tab " type="button" data-lesson-goto="1"  aria-label="Lesson 2 — Turn a chosen standard into observable practice">L2</button><button class="lesson-tab " type="button" data-lesson-goto="2"  aria-label="Lesson 3 — Review evidence and revise">L3</button></nav>
         <div class="lesson-stage"><article class="lesson-card module-item lesson-inline is-lesson-active" data-lesson-index="0" data-loop="notice">
@@ -1433,7 +1453,7 @@
     <div class="module-layout">
       <aside class="module-rail"><div><div class="module-number" aria-hidden="true">3</div><div class="rail-label">Navigate Intensity</div></div><div class="margin-note">Pilot 1 ends here.</div></aside>
       <div class="module-content">
-        <header class="module-heading"><div class="module-kicker"><strong>Module 5 of 5</strong><span>3 readings · 3 lessons</span></div><h2 tabindex="-1" id="module-3-title">Navigate Intensity</h2></header>
+        <header class="module-heading"><div class="module-kicker"><strong>Workbook · Module 4 of 4</strong><span>3 readings · 3 lessons</span></div><h2 tabindex="-1" id="module-3-title">Navigate Intensity</h2></header>
         
         <nav class="lesson-tabs" aria-label="Module 5 of 5 sequence"><button class="lesson-tab reading-tab" type="button" data-lesson-goto="0" aria-current="step" aria-label="Reading 1 — Intensity Is Not Automatically the Problem">R1</button><button class="lesson-tab " type="button" data-lesson-goto="1"  aria-label="Lesson 1 — Notice signal, story, urge, action, and cost">L1</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="2"  aria-label="Reading 2 — Protect What Works or Change What Needs Changing">R2</button><button class="lesson-tab " type="button" data-lesson-goto="3"  aria-label="Lesson 2 — Protect what works or try one small response">L2</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="4"  aria-label="Reading 3 — A Hunch Can Start a Question. It Cannot Finish One.">R3</button><button class="lesson-tab " type="button" data-lesson-goto="5"  aria-label="Lesson 3 — Check intuition, demands, and the next move">L3</button></nav>
         <div class="lesson-stage"><article class="lesson-card module-item reading-inline is-lesson-active" data-lesson-index="0" data-loop="notice">
@@ -1717,13 +1737,43 @@
       const toast=document.getElementById('toast');
       const titles=['Walk through Pilot 1','Module 0 · Enter with Agency','Module 1 · Find Something Worth Exploring','Module 1.5 · Test How I Operate','Module 2 · Check the Story','Module 3 · Navigate Intensity',"What's next"];
       let current=0,toastTimer;
+      let preflightEntered=false;
+      let workbookUnlocked=false;
+
+
+      function syncWorkbookGate(){
+        const tray=document.querySelector('.workbook-tray');
+        const shouldShow=workbookUnlocked && current>=2;
+        if(tray) tray.classList.toggle('is-gated',!shouldShow);
+        document.body.classList.toggle('preflight-pending',!preflightEntered);
+        document.body.classList.toggle('workbook-locked',preflightEntered && !workbookUnlocked);
+        document.querySelectorAll('.stepper [data-goto]').forEach(link=>{
+          const target=Number(link.dataset.goto);
+          const disabled=(!preflightEntered && target>0) || (preflightEntered && !workbookUnlocked && target>=2);
+          if(disabled) link.setAttribute('aria-disabled','true'); else link.removeAttribute('aria-disabled');
+        });
+      }
+
+      function enterPreflight(){
+        preflightEntered=true;
+        syncWorkbookGate();
+        goTo(1,true);
+      }
+
+      function enterWorkbook(){
+        preflightEntered=true;
+        workbookUnlocked=true;
+        syncWorkbookGate();
+        goTo(2,true);
+        showToast('Workbook opened. Your work stays in this tab unless you choose to save it.');
+      }
 
       function updateLoop(key){
         document.querySelectorAll('[data-loop-dot]').forEach(d=>d.classList.toggle('is-active',d.dataset.loopDot===key));
         document.querySelectorAll('[data-loop-word]').forEach(w=>w.classList.toggle('is-active',w.dataset.loopWord===key));
       }
       function pressStamps(index){
-        const map={1:{operating:'Added at Module 0'},2:{discovery:'Started at Module 1',decision:'Started at Module 1'},3:{operating:'Note added at Module 1.5'},4:{discovery:'Note added at Module 2'},5:{operating:'Updated at Module 3',decision:'Updated at Module 3'}}[index]||{};
+        const map={2:{discovery:'Started at Module 1',decision:'Started at Module 1'},3:{operating:'Note added at Module 1.5'},4:{discovery:'Note added at Module 2'},5:{operating:'Updated at Module 3',decision:'Updated at Module 3'}}[index]||{};
         for(const [k,note] of Object.entries(map)){
           const stamp=document.querySelector('[data-stamp="'+k+'"]');
           if(!stamp) continue;
@@ -1748,16 +1798,25 @@
         if(scroller) scroller.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
       }
       function goTo(index,focus=false){
-        current=Math.max(0,Math.min(screens.length-1,Number(index)));
+        let requested=Math.max(0,Math.min(screens.length-1,Number(index)));
+        if(!preflightEntered && requested>0){
+          requested=0;
+          showToast('Choose “Yes, I’m here” before continuing.');
+        } else if(preflightEntered && !workbookUnlocked && requested>=2){
+          requested=1;
+          showToast('Module 0 comes before the workbook.');
+        }
+        current=requested;
         screens.forEach((s,i)=>{const active=i===current;s.classList.toggle('is-active',active);if(active)s.removeAttribute('aria-hidden');else s.setAttribute('aria-hidden','true');});
         stepLinks.forEach(l=>{if(Number(l.dataset.goto)===current)l.setAttribute('aria-current','step');else l.removeAttribute('aria-current');});
         if(announce) announce.textContent='Step '+(current+1)+' of 7: '+titles[current];
         pressStamps(current);
-        const labels=['Start','Module 1 of 5','Module 2 of 5','Module 3 of 5','Module 4 of 5','Module 5 of 5','Pilot 1 complete'];
-        const widths=[0,20,40,60,80,100,100];
+        const labels=['Start','Module 0 · Before workbook','Workbook · Module 1 of 4','Workbook · Module 2 of 4','Workbook · Module 3 of 4','Workbook · Module 4 of 4','Pilot 1 complete'];
+        const widths=[0,0,25,50,75,100,100];
         const pl=document.getElementById('module-progress-label'); if(pl) pl.textContent=labels[current];
         const pf=document.getElementById('module-progress-fill'); if(pf) pf.style.width=widths[current]+'%';
         if(screens[current].classList.contains('module-screen')) showLesson(screens[current],Number(screens[current].dataset.lessonCurrent||0),false); else updateLoop('');
+        syncWorkbookGate();
         if(focus) screens[current].querySelector('h1,h2')?.focus();
         window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
       }
@@ -1766,6 +1825,10 @@
       }
 
       document.addEventListener('click',e=>{
+
+
+        if(e.target.closest('[data-enter-gate]')){enterPreflight();return;}
+        if(e.target.closest('[data-enter-workbook]')){enterWorkbook();return;}
 
         if(e.target.closest('#workbook-save-device')){saveWorkbookOnDevice();return;}
         if(e.target.closest('#workbook-download')){downloadWorkbook();return;}
@@ -1978,7 +2041,9 @@
 
         return {
           format:'Entrepalooza Pilot 1 workbook',
-          version:1,
+          version:2,
+          preflightEntered,
+          workbookUnlocked,
           savedAt:new Date().toISOString(),
           screen:current,
           lessons,
@@ -1998,6 +2063,8 @@
 
       function applyWorkbookState(state,{navigate=true}={}){
         if(!state||state.format!=='Entrepalooza Pilot 1 workbook') throw new Error('That file is not an Entrepalooza Pilot 1 workbook.');
+        preflightEntered = state.preflightEntered !== undefined ? !!state.preflightEntered : Number(state.screen)>=1;
+        workbookUnlocked = state.workbookUnlocked !== undefined ? !!state.workbookUnlocked : Number(state.screen)>=2;
         ensureMapPlaceCount(state.mapPlaceCount);
 
         if(state.fields){
@@ -2274,7 +2341,7 @@
         if(e.altKey||e.ctrlKey||e.metaKey||e.target.matches('textarea,input,select,[contenteditable="true"]'))return;
         if(e.key==='ArrowRight'){
           e.preventDefault();const s=screens[current];
-          if(s.classList.contains('module-screen')){const ls=[...s.querySelectorAll('.lesson-card')],i=Number(s.dataset.lessonCurrent||0);if(i<ls.length-1)showLesson(s,i+1,true);else goTo(current+1,true);}else goTo(current+1,true);
+          if(s.classList.contains('module-screen')){const ls=[...s.querySelectorAll('.lesson-card')],i=Number(s.dataset.lessonCurrent||0);if(i<ls.length-1)showLesson(s,i+1,true);else if(current===1&&!workbookUnlocked) enterWorkbook(); else goTo(current+1,true);}else goTo(current+1,true);
         }
         if(e.key==='ArrowLeft'){
           e.preventDefault();const s=screens[current];
@@ -2283,11 +2350,9 @@
       });
 
       setupVariedSlides();
+      syncWorkbookGate();
       goTo(0,false);
-      const restored=restoreWorkbookFromDevice();
-      if(!restored){
-        const initial=screens.findIndex(s=>'#'+s.id===location.hash);if(initial>0)goTo(initial,false);
-      }
+      restoreWorkbookFromDevice();
     })();
   </script>
 </body>
