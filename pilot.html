@@ -373,6 +373,72 @@
       .reading-intro p:first-child{font-size:18px}
     }
 
+  
+    /* Interactive Map the Life activity */
+    .life-map-workspace{margin:14px 0 6px}
+    .life-map-note{margin:0 0 14px;padding:12px 14px;border-left:3px solid var(--gold);background:#f8edc7;font-size:14px;line-height:1.5}
+    .life-map-note strong{color:var(--ink)}
+    .map-step{margin:18px 0;padding-top:17px;border-top:1px solid var(--line)}
+    .map-step:first-of-type{border-top:0;padding-top:0}
+    .map-step-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:10px}
+    .map-step-head h4{margin:0;font-size:19px}
+    .map-step-head span{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);font-weight:800}
+    .map-help{margin:0 0 12px;color:var(--muted);font-size:14px}
+    .map-canvas{position:relative;min-height:390px;margin:14px 0 18px;border:1px solid var(--line);border-radius:10px;background:
+      linear-gradient(rgba(62,105,99,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(62,105,99,.05) 1px,transparent 1px),
+      rgba(255,253,248,.7);
+      background-size:28px 28px;overflow:hidden}
+    .map-home{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;width:94px;height:94px;border:2px solid var(--teal);border-radius:50%;background:var(--paper-light);font-weight:850;letter-spacing:.04em;z-index:2;box-shadow:0 5px 18px rgba(38,59,57,.08)}
+    .map-node{position:absolute;width:150px;min-height:84px;padding:10px 11px;border:1px solid var(--line);border-radius:8px;background:var(--white);box-shadow:0 3px 12px rgba(38,59,57,.07);z-index:2}
+    .map-node strong{display:block;font-size:14px;margin-bottom:3px}
+    .map-node small{display:block;color:var(--muted);font-size:12px;line-height:1.35}
+    .map-node .map-symbols{margin-top:7px;font-weight:850;color:var(--accent);letter-spacing:.08em}
+    .map-node[data-slot="0"]{left:4%;top:8%}
+    .map-node[data-slot="1"]{right:4%;top:8%}
+    .map-node[data-slot="2"]{left:4%;bottom:8%}
+    .map-node[data-slot="3"]{right:4%;bottom:8%}
+    .map-node[data-slot="4"]{left:50%;top:4%;transform:translateX(-50%)}
+    .map-node[data-slot="5"]{left:50%;bottom:4%;transform:translateX(-50%)}
+    .map-line{position:absolute;left:50%;top:50%;height:1px;background:rgba(62,105,99,.24);transform-origin:left center;z-index:1}
+    .map-input-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .map-entry{padding:12px;border:1px solid var(--line);border-radius:6px;background:rgba(255,253,248,.62)}
+    .map-entry label{display:block;font-size:13px;font-weight:800;margin-bottom:5px}
+    .map-entry input,.map-entry textarea{width:100%;border:1px solid #8a968e;border-radius:4px;background:var(--paper-light);color:var(--ink);padding:10px 11px}
+    .map-entry textarea{min-height:70px;resize:vertical}
+    .map-entry .privacy-note{margin:6px 0 0!important}
+    .map-entry-tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+    .map-symbol{min-width:36px;min-height:36px;border:1px solid #87978f;border-radius:999px;background:var(--paper-light);cursor:pointer;font-weight:850}
+    .map-symbol[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+    .map-add-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
+    .map-add-row .button{min-height:42px}
+    .map-tag-bank{display:flex;flex-wrap:wrap;gap:7px}
+    .map-tag{min-height:40px;padding:8px 11px;border:1px solid #87978f;border-radius:999px;background:rgba(255,253,248,.7);cursor:pointer;font-weight:650}
+    .map-tag[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+    .map-thread-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .map-summary-card{margin-top:14px;padding:16px;border:1px solid var(--teal);border-radius:8px;background:var(--teal-soft)}
+    .map-summary-card h4{margin:0 0 10px;font-size:17px}
+    .map-summary-list{display:grid;gap:7px;margin:0;padding:0;list-style:none}
+    .map-summary-list li{padding:8px 10px;border-radius:4px;background:rgba(255,255,255,.55);font-size:14px}
+    .map-empty{color:var(--muted);font-style:italic}
+    .map-final-choice{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .map-clear{margin-left:auto}
+    @media(max-width:780px){
+      .lesson-controls{position:static!important;bottom:auto!important;background:transparent!important;padding:12px 0 0!important}
+      .lesson-stage{padding-bottom:84px!important}
+      .module-content{padding-bottom:70px}
+      .map-input-grid,.map-thread-grid,.map-final-choice{grid-template-columns:1fr}
+      .map-canvas{min-height:520px}
+      .map-home{width:82px;height:82px}
+      .map-node{width:128px;min-height:76px;padding:8px 9px}
+      .map-node[data-slot="0"]{left:3%;top:4%}
+      .map-node[data-slot="1"]{right:3%;top:4%}
+      .map-node[data-slot="2"]{left:3%;bottom:4%}
+      .map-node[data-slot="3"]{right:3%;bottom:4%}
+      .map-node[data-slot="4"]{left:50%;top:21%;transform:translateX(-50%)}
+      .map-node[data-slot="5"]{left:50%;bottom:21%;transform:translateX(-50%)}
+    }
+
   </style>
 </head>
 <body>
@@ -534,37 +600,191 @@
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
     </div>
   </article><article class="lesson-card module-item lesson-inline" data-lesson-index="1" data-loop="notice">
-    <div class="lesson-meta"><strong>Lesson 2 of 10</strong><span>·</span><span>Work through it</span></div>
+    <div class="lesson-meta"><strong>Lesson 2 of 10</strong><span>·</span><span>Do it here</span></div>
     <h3 tabindex="-1">Map the Life You're Actually Living</h3>
-    <div class="lesson-intro"><p><strong>Purpose:</strong> Notice what already occupies your time, attention, energy, movement, and relationships before deciding what might be worth exploring. <strong>Time:</strong> 25–35 minutes · <strong>Materials:</strong> Blank paper or digital canvas, pen/marker · <strong>Output:</strong> One life map + one thing worth looking at more closely</p></div><details class="module-fold  " open>
-      <summary>Start here</summary>
-      <div class="fold-copy"><p>You do not need to know what you want to do with your life. You do not need a business idea. You do not need to identify your &quot;passion.&quot; For this exercise, we are starting somewhere more concrete: What does your life actually look like right now? Researchers call a version of this <strong>occupational mapping</strong>. Instead of relying only on an interview or questionnaire, people draw the places they go and talk about what they actually do there. That can bring out ordinary routines, relationships, barriers, and meaningful activities that are easy to leave out when somebody simply asks, &quot;Tell me about yourself.&quot; Your map does not need to look good. This is not art class. Boxes, circles, arrows, words, stick figures, scribbles and mildly questionable geography are all legal.</p></div>
-    </details><details class="module-fold  action-fold" >
-      <summary>Part 1: Draw your week</summary>
-      <div class="fold-copy"><p>Put HOME somewhere on the page. Now think about a normal week. Add the places you regularly go. They could include:</p><ul><li>work</li><li>someone else's house</li><li>school</li><li>stores</li><li>a gym</li><li>church</li><li>meetings</li><li>appointments</li><li>parks</li><li>restaurants</li><li>a garage</li><li>a friend's place</li><li>treatment or recovery spaces</li><li>community organizations</li><li>places connected to your kids</li><li>anywhere else that is actually part of your life</li></ul><p>Connect the places however makes sense to you. Then add what you usually do there. You are not trying to make a geographically accurate map. You're making a map of your lived week. This closely follows the research method, where participants were asked to show the places they went during a typical week and weekend, describe what those places were, how they got there, and what they did once they arrived.</p></div>
-    </details><details class="module-fold  action-fold" >
-      <summary>Part 2: Add the things that don't have a place</summary>
-      <div class="fold-copy"><p>Some important parts of life happen without going anywhere. Add those too. Maybe you:</p><ul><li>research something for hours from your phone</li><li>fix things</li><li>draw</li><li>game</li><li>cook</li><li>sell things online</li><li>talk people through problems</li><li>scroll</li><li>write</li><li>care for somebody</li><li>organize things</li><li>watch tutorials</li><li>work on a car</li><li>make music</li><li>argue on Reddit about something you accidentally became an expert in</li><li>spend three hours researching something nobody asked you to research</li></ul><p>Put them somewhere on the page. The 2020 occupational-mapping study found exactly this problem: activities such as job searching sometimes disappeared from participants' physical maps because they happened online from home, libraries, or service organizations. So don't let &quot;I didn't go anywhere&quot; turn into &quot;I didn't do anything.&quot;</p></div>
-    </details><details class="module-fold  action-fold" >
-      <summary>Part 3: Mark the energy</summary>
-      <div class="fold-copy"><p>Look over your map. Don't analyze it yet. Just mark it. Use whatever symbols you want.</p><div class="reading-table-wrap"><table class="reading-table"><tbody><tr><td>Symbol</td><td>Meaning</td></tr><tr><td>+</td><td>gives me energy</td></tr><tr><td>–</td><td>drains me</td></tr><tr><td>\*</td><td>I care about this</td></tr><tr><td>?</td><td>I'm curious about this</td></tr><tr><td>$</td><td>mostly because I need money/resources</td></tr><tr><td>!</td><td>I get unusually focused here</td></tr><tr><td>X</td><td>something gets in the way</td></tr></tbody></table></div><p>You can invent your own symbols. There is no scoring system.</p></div>
-    </details><details class="module-fold  action-fold" >
-      <summary>Part 4: Look at what's missing</summary>
-      <div class="fold-copy"><p>Now look at the blank spaces. Ask yourself:</p><ul><li>What used to be part of my life that isn't anymore?</li><li>What do I want to do but rarely get access to?</li><li>Where would I go if money, transportation, time, childcare, fear, paperwork, health, or another barrier weren't stopping me?</li><li>Who or what would be on this map if my circumstances were different?</li></ul><p>Write those things outside the edge of the map. That distinction matters. Sometimes something is missing because you don't care about it. Sometimes it's missing because you can't currently reach it. Those are not the same thing. Research using occupational maps found that access to transportation, money, services, social expectations, and other resources could substantially shape where people went and what they were able to do.</p></div>
-    </details><details class="module-fold  action-fold" >
-      <summary>Part 5: Find the threads</summary>
-      <div class="fold-copy"><p>Now stop looking at individual places. Look for patterns. Finish any of these that actually fit:</p><ul><li>I keep ending up around…</li><li>I spend more time than I realized doing…</li><li>People seem to come to me for…</li><li>I lose track of time when…</li><li>I keep researching…</li><li>I seem to know a weird amount about…</li><li>I keep trying to improve…</li><li>I get frustrated when…</li><li>Something I miss is…</li><li>Something I wish I had access to is…</li><li>One part of this map I would willingly make bigger is…</li></ul><p>You do not have to answer every prompt.</p></div>
-    </details><details class="module-fold  action-fold" >
-      <summary>Part 6: Pick one thing worth exploring</summary>
-      <div class="fold-copy"><p>You are not choosing a career. You are not committing to a business. You are not announcing your life's purpose. Pick one thread that makes you curious enough to look again. Complete: <strong>One thing I might want to understand better is:</strong> <strong>I noticed it because:</strong> <strong>I do NOT know yet:</strong> <strong>One small way I could learn more about it:</strong> That's enough. Your answer can change.</p></div>
-    </details><details class="module-fold  " >
-      <summary>Before you leave the lesson</summary>
-      <div class="fold-copy"><p>Your map may show something exciting. It may show survival. It may look crowded, repetitive, tiny, chaotic, boring, disconnected, or unfinished. Do not grade the map. In the long-term unemployment study, participants' daily movement and occupations differed substantially depending on resources, transportation, social connection, employment circumstances, and other constraints. The researchers used mapping to make those circumstances more visible, not to rank people. The map is evidence. It says: This is where my life is right now. Then we can ask a better question: What here might be worth testing?</p></div>
-    </details><details class="module-fold  " >
-      <summary>Participant controls</summary>
-      <div class="fold-copy"><p>You may:</p><ul><li>keep the whole map private</li><li>share only one section</li><li>describe it without showing it</li><li>leave something off intentionally</li><li>stop and return later</li><li>decide that nothing on the map is worth exploring yet</li></ul><p>You do not have to turn the most painful, intense, or personal part of your life into a project.</p></div>
-    </details>
-    
+    <p class="lesson-purpose">Notice what already occupies your time, attention, energy, movement, and relationships before deciding what might be worth exploring.</p>
+
+    <div class="life-map-workspace" id="life-map-workspace">
+      <p class="life-map-note"><strong>Private by design.</strong> Everything below stays only on this page while it is open. Nothing you type is saved or sent. You can leave anything blank, skip a section, or clear the whole map.</p>
+
+      <section class="map-step" aria-labelledby="map-week-title">
+        <div class="map-step-head"><h4 id="map-week-title">1. Sketch your actual week</h4><span>Places + what happens there</span></div>
+        <p class="map-help">Start with HOME in the middle. Add only places you actually want to include. The map does not need to be geographically accurate.</p>
+        <div class="map-canvas" id="life-map-canvas" aria-label="Visual life map preview">
+          <div class="map-home">HOME</div>
+          <div class="map-node map-empty" data-map-node data-slot="0"><strong>Place 1</strong><small>Add a place below</small></div>
+          <div class="map-node map-empty" data-map-node data-slot="1"><strong>Place 2</strong><small>Add a place below</small></div>
+          <div class="map-node map-empty" data-map-node data-slot="2"><strong>Place 3</strong><small>Add a place below</small></div>
+          <div class="map-node map-empty" data-map-node data-slot="3"><strong>Place 4</strong><small>Add a place below</small></div>
+          <div class="map-node map-empty" data-map-node data-slot="4"><strong>Place 5</strong><small>Optional</small></div>
+          <div class="map-node map-empty" data-map-node data-slot="5"><strong>Place 6</strong><small>Optional</small></div>
+        </div>
+
+        <div class="map-input-grid" id="map-place-grid">
+          <div class="map-entry" data-map-entry="0">
+            <label for="map-place-0">Place 1</label>
+            <input id="map-place-0" data-map-place="0" type="text" maxlength="60" placeholder="e.g. work, a friend's place, the gym">
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <label for="map-do-0" style="margin-top:10px">What do you usually do there?</label>
+            <input id="map-do-0" data-map-do="0" type="text" maxlength="90" placeholder="A few words is enough">
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <div class="map-entry-tools" aria-label="Mark this place">
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="+" data-map-slot="0" title="Gives me energy">+</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="–" data-map-slot="0" title="Drains me">–</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="*" data-map-slot="0" title="I care about this">*</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="?" data-map-slot="0" title="I'm curious about this">?</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="!" data-map-slot="0" title="I get unusually focused here">!</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="X" data-map-slot="0" title="Something gets in the way">X</button>
+            </div>
+          </div><div class="map-entry" data-map-entry="1">
+            <label for="map-place-1">Place 2</label>
+            <input id="map-place-1" data-map-place="1" type="text" maxlength="60" placeholder="e.g. work, a friend's place, the gym">
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <label for="map-do-1" style="margin-top:10px">What do you usually do there?</label>
+            <input id="map-do-1" data-map-do="1" type="text" maxlength="90" placeholder="A few words is enough">
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <div class="map-entry-tools" aria-label="Mark this place">
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="+" data-map-slot="1" title="Gives me energy">+</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="–" data-map-slot="1" title="Drains me">–</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="*" data-map-slot="1" title="I care about this">*</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="?" data-map-slot="1" title="I'm curious about this">?</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="!" data-map-slot="1" title="I get unusually focused here">!</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="X" data-map-slot="1" title="Something gets in the way">X</button>
+            </div>
+          </div><div class="map-entry" data-map-entry="2">
+            <label for="map-place-2">Place 3</label>
+            <input id="map-place-2" data-map-place="2" type="text" maxlength="60" placeholder="e.g. work, a friend's place, the gym">
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <label for="map-do-2" style="margin-top:10px">What do you usually do there?</label>
+            <input id="map-do-2" data-map-do="2" type="text" maxlength="90" placeholder="A few words is enough">
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <div class="map-entry-tools" aria-label="Mark this place">
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="+" data-map-slot="2" title="Gives me energy">+</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="–" data-map-slot="2" title="Drains me">–</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="*" data-map-slot="2" title="I care about this">*</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="?" data-map-slot="2" title="I'm curious about this">?</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="!" data-map-slot="2" title="I get unusually focused here">!</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="X" data-map-slot="2" title="Something gets in the way">X</button>
+            </div>
+          </div><div class="map-entry" data-map-entry="3">
+            <label for="map-place-3">Place 4</label>
+            <input id="map-place-3" data-map-place="3" type="text" maxlength="60" placeholder="e.g. work, a friend's place, the gym">
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <label for="map-do-3" style="margin-top:10px">What do you usually do there?</label>
+            <input id="map-do-3" data-map-do="3" type="text" maxlength="90" placeholder="A few words is enough">
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            <div class="map-entry-tools" aria-label="Mark this place">
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="+" data-map-slot="3" title="Gives me energy">+</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="–" data-map-slot="3" title="Drains me">–</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="*" data-map-slot="3" title="I care about this">*</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="?" data-map-slot="3" title="I'm curious about this">?</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="!" data-map-slot="3" title="I get unusually focused here">!</button>
+              <button class="map-symbol" type="button" aria-pressed="false" data-map-mark="X" data-map-slot="3" title="Something gets in the way">X</button>
+            </div>
+          </div>
+        </div>
+        <div class="map-add-row">
+          <button class="button" type="button" id="map-add-place">+ Add another place</button>
+          <button class="button map-clear" type="button" id="map-clear-all">Clear this map</button>
+        </div>
+      </section>
+
+      <section class="map-step" aria-labelledby="map-anywhere-title">
+        <div class="map-step-head"><h4 id="map-anywhere-title">2. Add things that don't need a place</h4><span>Activities + attention</span></div>
+        <p class="map-help">Some important parts of life happen from a phone, a couch, a garage, or wherever you happen to be.</p>
+        <div class="map-tag-bank" id="map-activity-bank">
+          <button class="map-tag" type="button" aria-pressed="false" data-map-activity="Researching">Researching</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Fixing / making">Fixing / making</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Creating">Creating</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Learning">Learning</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Organizing">Organizing</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Helping people">Helping people</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Cooking">Cooking</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Gaming">Gaming</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Writing">Writing</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Watching tutorials">Watching tutorials</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Working on projects">Working on projects</button><button class="map-tag" type="button" aria-pressed="false" data-map-activity="Something else">Something else</button>
+        </div>
+        <div class="map-entry" style="margin-top:10px">
+          <label for="map-anywhere-custom">Optional: add your own</label>
+          <input id="map-anywhere-custom" data-map-anywhere-custom type="text" maxlength="80" placeholder="Something you do that doesn't need a specific place">
+          <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+        </div>
+      </section>
+
+      <section class="map-step" aria-labelledby="map-missing-title">
+        <div class="map-step-head"><h4 id="map-missing-title">3. Notice what's missing</h4><span>No grading</span></div>
+        <p class="map-help">This is about access and possibility, not blaming yourself for what isn't on the map.</p>
+        <div class="map-thread-grid">
+          <div class="map-entry">
+            <label for="map-miss">Something I miss or would like more access to</label>
+            <textarea id="map-miss" data-map-missing placeholder="Optional"></textarea>
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+          </div>
+          <div class="map-entry">
+            <label for="map-bigger">One part of this map I would willingly make bigger</label>
+            <textarea id="map-bigger" data-map-bigger placeholder="Optional"></textarea>
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="map-step" aria-labelledby="map-thread-title">
+        <div class="map-step-head"><h4 id="map-thread-title">4. Find a thread</h4><span>Patterns, not destiny</span></div>
+        <div class="map-thread-grid">
+          <div class="map-entry">
+            <label for="map-thread-1">I keep ending up around…</label>
+            <input id="map-thread-1" data-map-thread type="text" maxlength="100" placeholder="Optional">
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+          </div>
+          <div class="map-entry">
+            <label for="map-thread-2">I keep researching / learning about…</label>
+            <input id="map-thread-2" data-map-thread type="text" maxlength="100" placeholder="Optional">
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+          </div>
+          <div class="map-entry">
+            <label for="map-thread-3">People seem to come to me for…</label>
+            <input id="map-thread-3" data-map-thread type="text" maxlength="100" placeholder="Optional">
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+          </div>
+          <div class="map-entry">
+            <label for="map-thread-4">I get frustrated when…</label>
+            <input id="map-thread-4" data-map-thread type="text" maxlength="100" placeholder="Optional">
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="map-step" aria-labelledby="map-pick-title">
+        <div class="map-step-head"><h4 id="map-pick-title">5. Pick one thing worth another look</h4><span>Not a commitment</span></div>
+        <p class="map-help">You are not choosing a career, business, or permanent direction. You're choosing one thread that deserves a little more information.</p>
+        <div class="map-final-choice">
+          <div class="map-entry">
+            <label for="map-final-thing">One thing I might want to understand better is:</label>
+            <input id="map-final-thing" data-map-final="thing" type="text" maxlength="120" placeholder="Optional">
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+          </div>
+          <div class="map-entry">
+            <label for="map-final-because">I noticed it because:</label>
+            <input id="map-final-because" data-map-final="because" type="text" maxlength="140" placeholder="Optional">
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+          </div>
+          <div class="map-entry">
+            <label for="map-final-unknown">I do NOT know yet:</label>
+            <input id="map-final-unknown" data-map-final="unknown" type="text" maxlength="140" placeholder="Optional">
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+          </div>
+          <div class="map-entry">
+            <label for="map-final-next">One small way I could learn more about it:</label>
+            <input id="map-final-next" data-map-final="next" type="text" maxlength="140" placeholder="Optional">
+            <p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+          </div>
+        </div>
+        <div class="map-add-row">
+          <button class="button" type="button" id="map-nothing-yet">Nothing on my map is worth exploring yet</button>
+        </div>
+
+        <div class="map-summary-card" aria-live="polite">
+          <h4>Your map so far</h4>
+          <ul class="map-summary-list" id="map-summary-list">
+            <li class="map-empty">Add anything you want above. This summary updates only on this page and disappears when you leave.</li>
+          </ul>
+        </div>
+      </section>
+
+      <p class="life-map-note"><strong>Participant control:</strong> You can keep the whole map private, leave things out, stop and return later, or decide there is nothing worth exploring yet. The map is information, not a grade.</p>
+    </div>
+
     <div class="lesson-controls">
       <button class="button" type="button" data-lesson-prev>← Previous</button>
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
@@ -1431,6 +1651,19 @@
           if(opt.dataset.feedback)showToast(opt.dataset.feedback);
           return;
         }
+
+        const mapMark=e.target.closest('[data-map-mark]');
+        if(mapMark){mapMark.setAttribute('aria-pressed',mapMark.getAttribute('aria-pressed')==='true'?'false':'true');refreshLifeMap();return;}
+        const mapActivity=e.target.closest('[data-map-activity]');
+        if(mapActivity){mapActivity.setAttribute('aria-pressed',mapActivity.getAttribute('aria-pressed')==='true'?'false':'true');refreshLifeMap();return;}
+        if(e.target.closest('#map-add-place')){addLifeMapPlace();return;}
+        if(e.target.closest('#map-clear-all')){clearLifeMap();return;}
+        if(e.target.closest('#map-nothing-yet')){
+          const thing=document.querySelector('[data-map-final="thing"]');
+          if(thing) thing.value='Nothing on my map is worth exploring yet';
+          refreshLifeMap();showToast('That is a complete answer.');return;
+        }
+
         const route=e.target.closest('[data-route]');
         if(route){
           const a=route.closest('.activity');a.querySelectorAll('[data-route]').forEach(b=>b.setAttribute('aria-pressed','false'));route.setAttribute('aria-pressed','true');
@@ -1454,12 +1687,91 @@
         if(msg){const out=msg.closest('.work-step,.check-in')?.querySelector('.message');if(out)out.textContent=msg.dataset.message;showToast(msg.dataset.message);}
       });
 
+
+      document.addEventListener('input',e=>{
+        if(e.target.closest('#life-map-workspace')) refreshLifeMap();
+      });
+
       document.querySelectorAll('input[data-mot]').forEach(input=>input.addEventListener('input',()=>{
         const o=document.getElementById(input.id+'-o');if(o)o.textContent=input.value;
         const vals=[...document.querySelectorAll('input[data-mot]')];
         const score=vals.reduce((s,x)=>s+(x.dataset.mot==='plus'?Number(x.value):-Number(x.value)),0);
         const so=document.getElementById('mot-score');if(so)so.textContent=String(score);
       }));
+
+
+      function mapText(selector){ return document.querySelector(selector)?.value?.trim() || ''; }
+      function lifeMapEntries(){
+        const places=[...document.querySelectorAll('[data-map-place]')].map((input,i)=>({
+          place:input.value.trim(),
+          doing:document.querySelector('[data-map-do="'+i+'"]')?.value?.trim()||'',
+          marks:[...document.querySelectorAll('[data-map-slot="'+i+'"][aria-pressed="true"]')].map(b=>b.dataset.mapMark)
+        })).filter(x=>x.place||x.doing||x.marks.length);
+        const activities=[...document.querySelectorAll('[data-map-activity][aria-pressed="true"]')].map(b=>b.dataset.mapActivity);
+        const custom=mapText('[data-map-anywhere-custom]'); if(custom) activities.push(custom);
+        const threads=[...document.querySelectorAll('[data-map-thread]')].map(x=>x.value.trim()).filter(Boolean);
+        const finals={
+          thing:mapText('[data-map-final="thing"]'),
+          because:mapText('[data-map-final="because"]'),
+          unknown:mapText('[data-map-final="unknown"]'),
+          next:mapText('[data-map-final="next"]')
+        };
+        return {places,activities,missing:mapText('[data-map-missing]'),bigger:mapText('[data-map-bigger]'),threads,finals};
+      }
+      function refreshLifeMap(){
+        const data=lifeMapEntries();
+        document.querySelectorAll('[data-map-node]').forEach((node,i)=>{
+          const p=data.places[i];
+          node.classList.toggle('map-empty',!p);
+          node.querySelector('strong').textContent=p?.place || ('Place '+(i+1));
+          node.querySelector('small').textContent=p?.doing || (i<4?'Add a place below':'Optional');
+          let marks=node.querySelector('.map-symbols');
+          if(!marks){marks=document.createElement('div');marks.className='map-symbols';node.appendChild(marks);}
+          marks.textContent=p?.marks?.join(' ')||'';
+        });
+        const list=document.getElementById('map-summary-list');
+        if(!list) return;
+        const items=[];
+        data.places.forEach(p=>items.push('Place: '+(p.place||'Unnamed place')+(p.doing?' · '+p.doing:'')+(p.marks.length?' · '+p.marks.join(' '):'')));
+        if(data.activities.length) items.push('Things I do anywhere: '+data.activities.join(', '));
+        if(data.missing) items.push('Something I miss / want more access to: '+data.missing);
+        if(data.bigger) items.push('A part I would willingly make bigger: '+data.bigger);
+        if(data.threads.length) items.push('Threads I noticed: '+data.threads.join(' · '));
+        if(data.finals.thing) items.push('Worth another look: '+data.finals.thing);
+        if(data.finals.because) items.push('I noticed it because: '+data.finals.because);
+        if(data.finals.unknown) items.push('Still unknown: '+data.finals.unknown);
+        if(data.finals.next) items.push('One small way to learn more: '+data.finals.next);
+        list.innerHTML='';
+        if(!items.length){
+          const li=document.createElement('li');li.className='map-empty';li.textContent='Add anything you want above. This summary updates only on this page and disappears when you leave.';list.appendChild(li);
+        } else {
+          items.forEach(text=>{const li=document.createElement('li');li.textContent=text;list.appendChild(li);});
+        }
+      }
+      function addLifeMapPlace(){
+        const grid=document.getElementById('map-place-grid');
+        if(!grid) return;
+        const count=grid.querySelectorAll('[data-map-entry]').length;
+        if(count>=6){ showToast('You can map up to six places here.'); return; }
+        const i=count;
+        const box=document.createElement('div');
+        box.className='map-entry';box.dataset.mapEntry=String(i);
+        box.innerHTML='<label for="map-place-'+i+'">Place '+(i+1)+'</label>'+
+          '<input id="map-place-'+i+'" data-map-place="'+i+'" type="text" maxlength="60" placeholder="Another place in your week">'+
+          '<p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>'+
+          '<label for="map-do-'+i+'" style="margin-top:10px">What do you usually do there?</label>'+
+          '<input id="map-do-'+i+'" data-map-do="'+i+'" type="text" maxlength="90" placeholder="A few words is enough">'+
+          '<p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>'+
+          '<div class="map-entry-tools" aria-label="Mark this place">'+
+          ['+','–','*','?','!','X'].map(m=>'<button class="map-symbol" type="button" aria-pressed="false" data-map-mark="'+m+'" data-map-slot="'+i+'">'+m+'</button>').join('')+
+          '</div>';
+        grid.appendChild(box);refreshLifeMap();
+      }
+      function clearLifeMap(){
+        document.querySelectorAll('#life-map-workspace input,#life-map-workspace textarea').forEach(el=>el.value='');
+        document.querySelectorAll('#life-map-workspace [aria-pressed="true"]').forEach(el=>el.setAttribute('aria-pressed','false'));
+        refreshLifeMap();showToast('Map cleared from this page.');
+      }
 
       window.addEventListener('keydown',e=>{
         if(e.altKey||e.ctrlKey||e.metaKey||e.target.matches('textarea,input,select,[contenteditable="true"]'))return;
