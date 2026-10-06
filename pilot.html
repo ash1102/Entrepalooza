@@ -1,500 +1,528 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Walk through Pilot 1 of Entrepalooza, Build Otherwise's practical, human-guided cohort in Houston for adults figuring out what comes next.">
-  <title>Walk through Pilot 1 | Build Otherwise · Entrepalooza</title>
-  <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+  <meta name="theme-color" content="#f5f2e9">
+  <meta name="description" content="A guided, interactive walkthrough of Entrepalooza Pilot 1, Modules 0–3.">
+  <title>Walk through Pilot 1 · Entrepalooza</title>
   <style>
-    :root{
-      --bone:#f4f0e7;
-      --paper:#fffdf8;
-      --charcoal:#242725;
-      --muted:#5d625e;
-      --teal:#174f4c;
-      --teal2:#0f3f3c;
-      --copper:#a65737;
-      --stone:#d9d2c5;
-      --line:#c9c2b6;
-      --focus:#7b321d;
-      --paper-line:rgba(23,79,76,.085);
-      --max:1080px;
-      --header-h:66px;
-      --stepper-h:56px;
-      --radius:18px;
+    :root {
+      color-scheme: light;
+      --paper: #f5f2e9;
+      --paper-light: #fbf9f2;
+      --ink: #263b39;
+      --muted: #586762;
+      --line: #d8d6c9;
+      --rule: #bd7357;
+      --accent: #9b533b;
+      --accent-soft: #efe1d5;
+      --teal: #3e6963;
+      --teal-soft: #e2ebe5;
+      --gold: #e4bd64;
+      --white: #fffdf8;
+      --focus: #174d88;
+      --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --hand: "Comic Sans MS", "Bradley Hand", cursive;
+      --page-width: 1120px;
+      --header-height: 132px;
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bone);color:var(--charcoal);font-family:Arial,Helvetica,sans-serif;line-height:1.58;font-size:17px}
-    button,textarea,a{font:inherit}
-    a{color:var(--teal2);text-underline-offset:3px}
-    a:focus-visible,button:focus-visible,textarea:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
-    .skip{position:absolute;left:-999px;top:8px;background:var(--charcoal);color:#fff;padding:.7rem 1rem;z-index:1000}.skip:focus{left:8px}
-    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
-    .wrap{width:min(calc(100% - 2rem),var(--max));margin:auto}
-
-    header{position:sticky;top:0;z-index:60;background:rgba(244,240,231,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(9px)}
-    .nav{min-height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:1rem}
-    .brand{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:1.16rem;text-decoration:none;color:var(--charcoal)}
-    .header-actions{display:flex;align-items:center;gap:.65rem}
-    .home-link{font-size:.88rem;font-weight:800;text-decoration:none}
-    .interest-link{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:.55rem .82rem;border:1.5px solid var(--teal);border-radius:999px;background:var(--teal);color:#fff;font-size:.85rem;font-weight:800;text-decoration:none}
-
-    .stepper-wrap{position:sticky;top:var(--header-h);z-index:55;background:rgba(255,253,248,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(9px)}
-    .stepper{min-height:var(--stepper-h);display:flex;align-items:center;gap:.32rem;overflow-x:auto;padding:.45rem 0;scrollbar-width:thin}
-    .stepper button{border:1px solid transparent;background:transparent;color:var(--muted);min-height:38px;padding:.42rem .62rem;border-radius:999px;font-size:.82rem;font-weight:900;white-space:nowrap;cursor:pointer}
-    .stepper button:hover{background:var(--bone);color:var(--charcoal)}
-    .stepper button[aria-current="step"]{background:var(--teal);color:#fff;border-color:var(--teal)}
-    .progress-track{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--stone);overflow:hidden}
-    .progress-fill{height:100%;width:0;background:var(--teal);transition:width .2s ease}
-
-    main{position:relative}
-    .screen{position:relative;min-height:calc(100svh - var(--header-h) - var(--stepper-h));padding:clamp(2.3rem,6vw,5.6rem) 0 6.5rem;overflow:hidden}
-    .screen:nth-of-type(even){background:rgba(255,253,248,.46)}
-    .screen::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,var(--paper-line) 32px,transparent 33px);opacity:.72}
-    .screen::after{content:"";position:absolute;top:0;bottom:0;left:max(1.1rem,calc((100% - var(--max))/2 + 2rem));width:1px;background:rgba(166,87,55,.26);pointer-events:none}
-    .sheet{position:relative;z-index:1;padding-left:clamp(1.3rem,4vw,4rem);padding-right:clamp(.1rem,2vw,1rem)}
-    .page-mark{font-size:.76rem;text-transform:uppercase;letter-spacing:.13em;font-weight:900;color:var(--copper);margin:0 0 .65rem}
-    h1,h2,h3{font-family:Georgia,'Times New Roman',serif;line-height:1.08;margin-top:0}
-    h1{font-size:clamp(2.7rem,8vw,5.8rem);letter-spacing:-.04em;max-width:850px;margin-bottom:1.1rem}
-    .nowrap{white-space:nowrap}
-    h2{font-size:clamp(2.2rem,6vw,4rem);letter-spacing:-.025em;margin-bottom:1rem}
-    h3{font-size:clamp(1.25rem,3vw,1.7rem);margin-bottom:.45rem}
-    .lead{font-size:clamp(1.08rem,2.3vw,1.3rem);max-width:760px;color:#3f4440}
-    .intro-copy{max-width:760px}
-    .prompt{font-family:"Segoe Print","Bradley Hand","Comic Sans MS",cursive;font-size:1.05rem;font-weight:700;color:var(--teal2)}
-    .sticky-note{max-width:520px;margin:1.6rem 0;padding:1rem 1.15rem;background:#f3e6b8;border:1px solid #d5c27b;box-shadow:3px 5px 0 rgba(36,39,37,.08);transform:rotate(-.5deg)}
-    .margin-note{max-width:360px;margin:1.1rem 0 1.1rem auto;border-left:3px solid var(--copper);padding:.4rem 0 .4rem .85rem;color:var(--muted);font-size:.92rem}
-
-    .choice-row,.nav-row,.checkin-row{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}
-    .nav-row{justify-content:space-between;margin-top:2.1rem;padding-top:1.2rem;border-top:1px solid var(--line)}
-    .button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:.7rem 1rem;border:1.5px solid var(--teal);border-radius:999px;background:var(--paper);color:var(--teal2);font-weight:900;text-decoration:none;cursor:pointer}
-    .button.primary{background:var(--teal);color:#fff}
-    .button.quiet{border-color:var(--line);color:var(--charcoal)}
-    .button:hover{box-shadow:0 6px 16px rgba(36,39,37,.1);transform:translateY(-1px)}
-    .feedback{min-height:1.6em;margin:.7rem 0 0;font-weight:800;color:var(--teal2)}
-
-    .module-grid{display:grid;gap:1.2rem;margin-top:1.4rem}
-    .loop-block{position:relative;padding:1.05rem 1rem 1.15rem 1.1rem;border-left:3px solid var(--line);background:rgba(255,253,248,.62)}
-    .loop-block[data-loop="notice"]{border-left-color:var(--teal)}
-    .loop-block h3{display:flex;align-items:center;gap:.55rem}
-    .loop-number{display:inline-grid;place-items:center;width:1.8rem;height:1.8rem;border-radius:50%;border:1px solid var(--teal);color:var(--teal2);font:900 .78rem/1 Arial,Helvetica,sans-serif;flex:0 0 auto}
-    .reflect-box{margin-top:.8rem}
-    .optional-note{display:block;font-size:.76rem;font-weight:900;color:var(--copper);margin:.25rem 0 .12rem}.privacy-label{display:block;font-size:.78rem;font-weight:800;color:var(--muted);margin:.15rem 0 .45rem}
-    textarea{width:100%;min-height:82px;resize:vertical;border:1px solid #767c77;border-radius:10px;padding:.8rem;background:rgba(255,255,255,.9);color:var(--charcoal)}
-    .decision-chips{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:.8rem}
-    .decision-chip{min-height:42px;padding:.55rem .75rem;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--charcoal);font-weight:850;cursor:pointer}
-    .decision-chip:hover,.decision-chip:focus-visible{border-color:var(--teal);background:#f0f5f3}
-    .decision-chip[aria-pressed="true"]{border-color:var(--teal);background:#e2efec;color:var(--teal2);box-shadow:inset 0 0 0 1px var(--teal)}
-    .decision-result{min-height:1.5em;margin:.75rem 0 0;font-weight:800;color:var(--teal2)}
-
-    .stamp-callout{display:inline-flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin:1.05rem 0 .25rem;padding:.62rem .8rem;border:2px solid var(--teal);border-radius:8px;color:var(--teal2);font-size:.86rem;font-weight:900;text-transform:uppercase;letter-spacing:.035em;transform:rotate(-.4deg);background:rgba(255,253,248,.72)}
-    .stamp-callout.secondary{border-style:dashed;border-color:var(--copper);color:var(--copper)}
-
-    .later-path{list-style:none;padding:0;margin:1.4rem 0 2rem;max-width:760px}
-    .later-path li{position:relative;padding:.72rem 0 .72rem 2rem;border-left:2px dotted var(--line)}
-    .later-path li::before{content:"";position:absolute;left:-6px;top:1.05rem;width:10px;height:10px;border-radius:50%;background:var(--bone);border:2px solid var(--copper)}
-    .later-path strong{font-family:Georgia,'Times New Roman',serif}
-    blockquote{margin:2.2rem 0;padding:0;max-width:800px;font:700 clamp(1.8rem,5vw,3.2rem)/1.13 Georgia,'Times New Roman',serif;color:var(--teal2)}
-    .logistics-line{margin:1.5rem 0;font-weight:900}
-    .small-print{max-width:800px;font-size:.86rem;color:var(--muted)}
-
-    .loop-dial{position:fixed;right:.8rem;top:calc(var(--header-h) + var(--stepper-h) + .75rem);z-index:45;width:118px;height:118px;border-radius:50%;background:rgba(255,253,248,.96);border:1px solid var(--line);box-shadow:0 8px 24px rgba(36,39,37,.1);pointer-events:none}
-    .loop-dial::before{content:"";position:absolute;inset:26px;border:2px solid var(--stone);border-radius:50%}
-    .loop-word{position:absolute;font-size:.62rem;font-weight:900;color:var(--muted);padding:.18rem .28rem;border-radius:5px;background:var(--paper)}
-    .loop-word.active{background:var(--teal);color:#fff}
-    .loop-word.notice{top:6px;left:50%;transform:translateX(-50%)}
-    .loop-word.try{right:2px;top:50%;transform:translateY(-50%)}
-    .loop-word.reflect{bottom:6px;left:50%;transform:translateX(-50%)}
-    .loop-word.decide{left:0;top:50%;transform:translateY(-50%)}
-    .loop-arrow{position:absolute;inset:14px;border:1px dashed rgba(166,87,55,.38);border-radius:50%}
-
-    .workbook-tray{position:fixed;z-index:50;right:1rem;bottom:1rem;width:min(280px,calc(100% - 2rem));background:rgba(36,39,37,.96);color:#fff;border:1px solid #424744;border-radius:14px;padding:.8rem;box-shadow:0 12px 28px rgba(36,39,37,.24)}
-    .tray-title{display:flex;justify-content:space-between;gap:.5rem;align-items:center;margin-bottom:.5rem;font-weight:900;font-size:.82rem;letter-spacing:.04em}
-    .tray-title span:last-child{font-weight:700;color:#d9d2c5;font-size:.7rem}
-    .stamps{display:grid;grid-template-columns:1fr 1fr;gap:.45rem}
-    .stamp{min-height:54px;display:flex;flex-direction:column;justify-content:center;border:1px dashed #8a918c;border-radius:8px;padding:.4rem .5rem;color:#bfc4c0;font-size:.7rem;font-weight:900;line-height:1.15;background:rgba(255,255,255,.02);transition:transform .22s ease,box-shadow .22s ease,background .22s ease,color .22s ease}
-    .stamp small{font-size:.62rem;font-weight:700;opacity:.8;margin-top:.18rem}
-    .stamp.earned{color:#fff2e6;border:2px solid #d7835f;background:rgba(166,87,55,.22);box-shadow:inset 0 0 0 2px rgba(0,0,0,.2);transform:scale(.985) rotate(-.7deg)}
-    .stamp.later{border-style:dotted;color:#aeb4af}
-
-    footer{padding:2rem 0 8rem;border-top:1px solid var(--line);background:var(--bone)}
-    footer p{margin:.35rem 0}.small{font-size:.86rem;color:var(--muted)}
-
-    .js .screen{display:none}
-    .js .screen.active{display:block}
-    .js .no-js-note{display:none}
-    .no-js .interactive-only{display:none!important}
-    .no-js .screen{display:block;min-height:auto;border-bottom:1px solid var(--line)}
-    .no-js .loop-dial,.no-js .workbook-tray,.no-js .stepper-wrap{display:none}
-
-    @media(min-width:800px){
-      .module-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-      .loop-block[data-loop="notice"],.loop-block[data-loop="decide"]{grid-column:1/-1}
-      .screen{padding-right:330px}
-      .screen .wrap{width:min(calc(100% - 2rem),820px);margin-left:max(1rem,calc((100vw - var(--max))/2))}
-      .screen::after{left:max(1.1rem,calc((100% - var(--max))/2 + 2rem))}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--paper); }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background-color: var(--paper);
+      background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 31px, rgba(62,105,99,.075) 32px, transparent 33px);
+      font: 16px/1.55 var(--sans);
     }
-    @media(max-width:799px){
-      :root{--header-h:62px;--stepper-h:54px}
-      .home-link{display:none}
-      .interest-link{min-height:40px;padding:.5rem .72rem}
-      .screen{padding:2.2rem 0 9.4rem}
-      .sheet{padding-left:1.45rem;padding-right:.15rem}
-      .screen::after{left:1.45rem}
-      .loop-dial{top:calc(var(--header-h) + var(--stepper-h) + .45rem);right:.4rem;width:98px;height:98px;opacity:.93}
-      .loop-dial::before{inset:23px}.loop-arrow{inset:12px}.loop-word{font-size:.54rem}
-      .workbook-tray{left:.5rem;right:.5rem;bottom:.5rem;width:auto;border-radius:12px;padding:.55rem .65rem}
-      .tray-title{margin:0 0 .35rem}.stamps{grid-template-columns:repeat(4,1fr)}
-      .stamp{min-height:45px;padding:.28rem .34rem;font-size:.58rem}.stamp small{display:none}
-      footer{padding-bottom:7.8rem}
+    a { color: inherit; }
+    button, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+    .skip-link {
+      position: fixed; z-index: 30; top: 8px; left: 8px; transform: translateY(-160%);
+      padding: 10px 14px; background: var(--ink); color: var(--white); border-radius: 4px;
     }
-    @media(max-width:460px){
-      .stamps{gap:.28rem}.stamp{font-size:.52rem}.page-mark{font-size:.7rem}.stepper button{font-size:.76rem;padding:.4rem .54rem}
-      .loop-dial{transform:scale(.88);transform-origin:top right}
+    .skip-link:focus { transform: translateY(0); }
+    .site-header {
+      position: sticky; top: 0; z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(245,242,233,.97);
+      backdrop-filter: blur(8px);
     }
-    @media(prefers-reduced-motion:reduce){
-      html{scroll-behavior:auto}
-      *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-      .button:hover{transform:none}
+    .header-inner { max-width: var(--page-width); margin: auto; padding: 10px 30px 9px; }
+    .topline { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 35px; }
+    .brand { font-size: 13px; letter-spacing: .09em; text-transform: uppercase; font-weight: 750; }
+    .interest-link { font-size: 14px; font-weight: 650; text-decoration-thickness: 1px; text-underline-offset: 4px; color: var(--teal); padding: 7px 9px; border-radius: 4px; }
+    .interest-link:hover { background: var(--teal-soft); }
+    .header-bottom { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .stepper { display: flex; align-items: center; gap: 4px; overflow-x: auto; scrollbar-width: thin; padding: 4px 2px 7px; }
+    .stepper a {
+      display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 42px;
+      padding: 6px 9px; color: var(--muted); text-decoration: none; border-bottom: 2px solid transparent;
+      white-space: nowrap; font-size: 14px;
+    }
+    .stepper a[aria-current="step"] { color: var(--ink); border-color: var(--rule); font-weight: 750; }
+    .stepper a:hover { color: var(--ink); background: rgba(255,255,255,.45); }
+    .stepper .separator { color: #777e76; font-size: 13px; user-select: none; }
+    .loop-indicator { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; color: var(--muted); font-size: 12px; }
+    .loop-indicator svg { width: 37px; height: 37px; overflow: visible; }
+    .loop-indicator .orbit { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 2.5 3; }
+    .loop-indicator .loop-dot { fill: var(--paper-light); stroke: var(--teal); stroke-width: 2; transition: fill .18s ease; }
+    .loop-indicator .loop-dot.is-active { fill: var(--gold); stroke: var(--ink); stroke-width: 2.5; }
+    .loop-words { max-width: 190px; line-height: 1.25; }
+    .loop-words span { white-space: nowrap; }
+    .loop-words .is-active { color: var(--ink); font-weight: 750; }
+    .sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    main { max-width: var(--page-width); margin: auto; padding: 0 30px 120px; }
+    .screen {
+      position: relative; min-height: calc(100svh - var(--header-height));
+      padding: clamp(34px, 5vw, 68px) clamp(2px, 3vw, 34px) 54px;
+      border-left: 1px solid rgba(189,115,87,.55);
+      display: flex; flex-direction: column; justify-content: flex-start;
+    }
+    .screen::before { content: ""; position: absolute; left: -4px; top: 0; bottom: 0; width: 7px; background: linear-gradient(90deg, rgba(189,115,87,.12), transparent); pointer-events: none; }
+    .js .screen:not(.is-active) { display: none; }
+    .js main { padding-bottom: 0; }
+    .js .screen { height: calc(100svh - var(--header-height) - 56px); min-height: 0; padding-bottom: 12px; overflow: hidden; }
+    .js .screen-controls { flex: 0 0 auto; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+    .js .screen > .module-layout, .js .screen > .cover-layout, .js .screen > .next-content { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior-y: contain; scrollbar-width: thin; scrollbar-color: #b9c0b8 transparent; }
+    .js .screen > .module-layout::-webkit-scrollbar, .js .screen > .cover-layout::-webkit-scrollbar, .js .screen > .next-content::-webkit-scrollbar { width: 7px; }
+    .js .screen > .module-layout::-webkit-scrollbar-thumb, .js .screen > .cover-layout::-webkit-scrollbar-thumb, .js .screen > .next-content::-webkit-scrollbar-thumb { background: #b9c0b8; border-radius: 6px; }
+    .cover-layout { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(270px, .7fr); align-items: center; gap: clamp(32px, 7vw, 90px); }
+    .cover-note { max-width: 630px; }
+    .eyebrow { color: var(--teal); text-transform: uppercase; letter-spacing: .13em; font-weight: 750; font-size: 12px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 700px; margin: 16px 0 20px; font-size: clamp(42px, 7vw, 78px); line-height: .99; letter-spacing: -.055em; font-weight: 760; }
+    h2 { margin: 0; font-size: clamp(30px, 4.7vw, 54px); line-height: 1.05; letter-spacing: -.04em; font-weight: 730; }
+    h3 { margin-bottom: 10px; font-size: 16px; letter-spacing: .02em; }
+    .lede { max-width: 610px; font-size: clamp(18px, 2vw, 21px); line-height: 1.55; color: #394b47; }
+    .prompt { font: 19px/1.35 var(--hand); color: var(--accent); }
+    .check-in { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 18px 0 20px; margin-top: 28px; }
+    .check-in .prompt { margin: 0 0 10px; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .button, .choice-button, .chip {
+      min-height: 46px; border: 1px solid var(--teal); border-radius: 3px; padding: 10px 16px;
+      color: var(--ink); background: var(--paper-light); text-decoration: none; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; text-align: center; font-weight: 650;
+    }
+    .button:hover, .choice-button:hover, .chip:hover { background: var(--teal-soft); }
+    .button-primary { background: var(--teal); color: white; border-color: var(--teal); }
+    .button-primary:hover { background: #315951; color: white; }
+    .message { min-height: 24px; margin: 10px 0 0; font-size: 14px; color: var(--teal); font-weight: 650; }
+    .sticky-note { position: relative; max-width: 290px; padding: 20px 19px 23px; background: #f4e4a7; transform: rotate(1.2deg); box-shadow: 2px 4px 0 rgba(38,59,57,.08); }
+    .sticky-note::before { content: ""; position: absolute; top: -8px; left: calc(50% - 26px); width: 52px; height: 14px; background: rgba(255,255,255,.48); transform: rotate(-2deg); }
+    .sticky-note p { margin: 0; font: 20px/1.4 var(--hand); }
+    .cover-mark { position: absolute; right: 8%; bottom: 7%; width: min(26vw, 260px); opacity: .17; pointer-events: none; }
+
+    .module-layout { display: grid; grid-template-columns: minmax(155px, 230px) minmax(0, 1fr); gap: clamp(28px, 6vw, 76px); align-items: start; }
+    .module-rail { align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; min-height: 470px; border-right: 1px solid var(--line); padding: 3px 24px 18px 0; }
+    .module-number { font-size: clamp(50px, 7vw, 80px); line-height: 1; color: var(--rule); font-weight: 700; letter-spacing: -.07em; }
+    .module-rail .rail-label { color: var(--muted); font-size: 13px; max-width: 150px; }
+    .margin-note { margin-top: 26px; padding-left: 13px; border-left: 2px solid var(--gold); color: #4c5b52; font: 16px/1.45 var(--hand); }
+    .module-content { max-width: 750px; }
+    .module-heading { padding-bottom: 22px; border-bottom: 1px solid var(--line); margin-bottom: 6px; }
+    .module-heading .eyebrow { margin-bottom: 12px; }
+    .work-step { position: relative; padding: 19px 0 18px 38px; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--header-height) + 20px); }
+    .work-step::before { content: ""; position: absolute; top: 25px; left: 1px; width: 17px; height: 17px; border: 1.5px solid var(--teal); border-radius: 50%; background: var(--paper); }
+    .work-step[data-loop="notice"]::before { border-color: var(--accent); }
+    .work-step.is-current::before { background: var(--gold); border-color: var(--ink); }
+    .step-label { display: flex; align-items: baseline; gap: 10px; margin-bottom: 7px; color: var(--teal); font-size: 12px; text-transform: uppercase; letter-spacing: .12em; font-weight: 800; }
+    .step-label .ordinal { color: #777e76; font-size: 11px; }
+    .work-step p { max-width: 690px; margin: 0; }
+    .lesson-path { margin: 11px 0 0; padding-left: 13px; border-left: 2px dotted var(--rule); }
+    .lesson-path summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; color: var(--teal); font-size: 14px; font-weight: 700; }
+    .lesson-path summary:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .lesson-path summary::after { content: "+"; margin-left: auto; padding-left: 12px; font-size: 18px; line-height: 1; }
+    .lesson-path[open] summary::after { content: "−"; }
+    .lesson-path ol { margin: 3px 0 8px; padding-left: 22px; color: var(--muted); font-size: 14px; }
+    .lesson-path li { padding: 4px 0 4px 4px; border-bottom: 1px dotted var(--line); }
+    .example-sort { margin: 13px 0 1px; max-width: 680px; border-left: 2px dotted var(--rule); padding: 3px 0 3px 15px; }
+    .example-sort p { margin: 5px 0; }
+    .example-sort strong { color: var(--teal); }
+    .inline-choices { margin-top: 13px; }
+    .choice-button { min-height: 44px; padding: 8px 13px; font-size: 14px; }
+    .reflection-prompt { font: 19px/1.4 var(--hand); color: var(--accent); margin: 0 0 10px !important; }
+    .unknown-label { display: block; font-weight: 650; margin-bottom: 7px; }
+    .privacy-note { color: var(--muted); font-size: 13px; margin: 0 0 9px !important; }
+    textarea {
+      display: block; width: min(100%, 560px); min-height: 70px; resize: vertical;
+      padding: 11px 12px; border: 1px solid #8a968e; border-radius: 2px; color: var(--ink);
+      background-color: rgba(255,253,248,.6); background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 30px, rgba(62,105,99,.19) 31px, transparent 32px);
+      line-height: 1.8;
+    }
+    textarea::placeholder { color: #65716a; opacity: 1; }
+    .decision-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; max-width: 710px; }
+    .chip { min-height: 44px; padding: 8px 12px; border-color: #72847c; font-size: 14px; font-weight: 600; background: rgba(255,253,248,.55); }
+    .screen-controls { display: flex; justify-content: space-between; gap: 12px; margin: auto 0 0; padding-top: 26px; }
+    .screen-controls .button { min-width: 112px; }
+    #whats-next { padding-top: 36px; }
+    .next-path { list-style: none; margin: 18px 0 20px; padding: 0; max-width: 740px; }
+    .next-path li { position: relative; padding: 8px 0 8px 26px; border-left: 2px dotted #8d9a90; color: #4b5a53; }
+    .next-path li::before { content: ""; position: absolute; left: -5px; top: 17px; width: 8px; height: 8px; border: 1px solid var(--teal); border-radius: 50%; background: var(--paper); }
+    .next-path strong { color: var(--ink); }
+    .later-stamp { align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; border: 1.5px dashed var(--teal); padding: 10px 13px; margin: 0 0 18px; color: var(--muted); transform: rotate(-1deg); }
+    .later-stamp strong { color: var(--ink); }
+    blockquote { margin: 2px 0 14px; padding: 8px 0 9px 20px; border-left: 3px solid var(--rule); max-width: 700px; font-size: clamp(23px, 3vw, 34px); line-height: 1.25; letter-spacing: -.025em; }
+    .closing-line { max-width: 730px; font-size: 17px; }
+    .logistics { margin: 19px 0; font-weight: 700; }
+    .small-print { max-width: 770px; font-size: 13px; color: var(--muted); margin-top: 21px; }
+    .final-actions { margin-top: 24px; }
+
+    .workbook-tray { position: fixed; z-index: 12; right: 18px; bottom: 18px; width: 225px; color: var(--ink); }
+    .workbook-tray details { border: 1px solid var(--line); background: rgba(251,249,242,.97); box-shadow: 0 2px 12px rgba(38,59,57,.08); }
+    .workbook-tray summary { cursor: pointer; list-style: none; min-height: 48px; padding: 12px 14px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 750; }
+    .workbook-tray summary::-webkit-details-marker { display: none; }
+    .workbook-tray summary::after { content: "+"; font-size: 19px; line-height: 1; }
+    .workbook-tray details[open] summary::after { content: "−"; }
+    .tray-list { list-style: none; margin: 0; padding: 0 12px 12px; }
+    .tray-stamp { display: flex; gap: 9px; align-items: center; border-top: 1px solid var(--line); padding: 9px 2px; font-size: 12px; color: var(--muted); }
+    .stamp-mark { display: inline-flex; align-items: center; justify-content: center; width: 23px; height: 23px; border: 1px dashed #8a968e; border-radius: 50%; color: transparent; font-size: 13px; flex: 0 0 auto; }
+    .tray-stamp.is-pressed { color: var(--ink); font-weight: 700; }
+    .tray-stamp.is-pressed .stamp-mark { border-style: solid; border-color: var(--teal); background: var(--teal-soft); color: var(--teal); }
+    .stamp-sub { display: block; font-size: 11px; font-weight: 450; color: var(--muted); }
+
+    .announcement { position: fixed; z-index: 20; left: 50%; bottom: 82px; transform: translate(-50%, 14px); max-width: min(90vw, 520px); padding: 11px 16px; background: var(--ink); color: white; border-radius: 3px; box-shadow: 0 3px 14px rgba(0,0,0,.18); opacity: 0; pointer-events: none; transition: opacity .18s ease, transform .18s ease; text-align: center; font-size: 14px; }
+    .announcement.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 780px) {
+      :root { --header-height: 144px; }
+      .header-inner { padding: 7px 16px 6px; }
+      .topline { min-height: 31px; }
+      .brand { font-size: 10px; letter-spacing: .05em; white-space: nowrap; flex: 0 1 auto; }
+      .interest-link { font-size: 11px; padding: 5px 0; white-space: nowrap; flex: 0 0 auto; }
+      .header-bottom { align-items: flex-start; gap: 8px; flex-direction: column-reverse; }
+      .stepper { width: 100%; gap: 0; padding-top: 2px; }
+      .stepper a { min-height: 44px; padding: 5px 7px; font-size: 12px; }
+      .stepper .separator { font-size: 11px; }
+      .loop-indicator { position: static; align-self: flex-end; margin: -2px 1px -7px; }
+      .loop-indicator svg { width: 30px; height: 30px; }
+      .loop-words { display: none; }
+      main { padding: 0 17px 115px; }
+      .screen { min-height: calc(100svh - var(--header-height)); padding: 34px 3px 90px 13px; }
+      .js main { padding-bottom: 0; }
+      .js .screen { height: calc(100svh - var(--header-height) - 54px); min-height: 0; overflow: hidden; }
+      .cover-layout { grid-template-columns: 1fr; gap: 18px; }
+      .sticky-note { max-width: 340px; margin-left: auto; margin-right: 10px; padding: 13px 14px 15px; }
+      .sticky-note p { font-size: 16px; line-height: 1.25; }
+      .cover-mark { width: 120px; right: 12px; bottom: 20%; }
+      .module-layout { grid-template-columns: 1fr; gap: 20px; }
+      .module-rail { min-height: unset; border-right: 0; border-bottom: 1px solid var(--line); padding: 0 0 12px; flex-direction: row; align-items: end; gap: 15px; }
+      .module-number { font-size: 54px; }
+      .module-rail .rail-label { text-align: right; }
+      .margin-note { margin: 0 0 2px auto; max-width: 190px; font-size: 14px; }
+      .work-step { padding-left: 29px; }
+      .screen-controls .button { min-width: 100px; }
+      .workbook-tray { left: 0; right: 0; bottom: 0; width: 100%; }
+      .workbook-tray details { border-width: 1px 0 0; box-shadow: 0 -2px 12px rgba(38,59,57,.08); }
+      .workbook-tray summary { min-height: 54px; padding: 9px 17px; }
+      .workbook-tray details[open] { max-height: min(44svh, 300px); overflow-y: auto; }
+      .workbook-tray details[open] summary { position: sticky; top: 0; background: var(--paper-light); }
+      .announcement { bottom: 70px; }
+    }
+    @media (max-width: 430px) {
+      .brand { font-size: 10px; letter-spacing: .05em; }
+      .interest-link { font-size: 11px; white-space: nowrap; }
+      .stepper a { min-width: auto; padding-inline: 5px; font-size: 11px; }
+      .stepper .separator { padding: 0 1px; }
+      h1 { font-size: clamp(41px, 13vw, 58px); }
+      h2 { font-size: 34px; }
+      .lede { font-size: 17px; }
+      .chip { padding-inline: 9px; font-size: 13px; }
+      .decision-chips { gap: 6px; }
+    }
+    @media (max-width: 350px) {
+      .header-inner { padding-left: 12px; padding-right: 12px; }
+      .topline { gap: 8px; }
+      .brand { font-size: 9px; letter-spacing: .02em; }
+      .interest-link { font-size: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     }
   </style>
 </head>
 <body>
-<a class="skip" href="#walkthrough">Skip to walkthrough</a>
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="index.html">Build Otherwise <span aria-hidden="true">·</span> Entrepalooza</a>
-    <div class="header-actions">
-      <a class="home-link" href="index.html">Home</a>
-      <a class="interest-link" href="https://link.jotform.com/EhQXbmRwbk" target="_blank" rel="noopener">Express interest</a>
-    </div>
-  </div>
-</header>
-
-<div class="stepper-wrap interactive-only" aria-label="Pilot 1 steps">
-  <div class="wrap stepper">
-    <button type="button" data-goto="0" aria-label="Go to Start">Start</button>
-    <button type="button" data-goto="1" aria-label="Go to Module 0">0</button>
-    <button type="button" data-goto="2" aria-label="Go to Module 1">1</button>
-    <button type="button" data-goto="3" aria-label="Go to Module 1.5">1.5</button>
-    <button type="button" data-goto="4" aria-label="Go to Module 2">2</button>
-    <button type="button" data-goto="5" aria-label="Go to Module 3">3</button>
-    <button type="button" data-goto="6" aria-label="Go to What's next">What's next</button>
-  </div>
-  <div class="progress-track" role="progressbar" aria-label="Pilot 1 module progress" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><div class="progress-fill"></div></div>
-</div>
-
-<p class="sr-only" id="step-announcer" aria-live="polite" aria-atomic="true"></p>
-<p class="sr-only" id="action-announcer" aria-live="polite" aria-atomic="true"></p>
-
-<aside class="loop-dial interactive-only" aria-label="Notice, Try, Reflect, Decide loop">
-  <span class="loop-arrow" aria-hidden="true"></span>
-  <span class="loop-word notice active" data-loop-word="notice">Notice</span>
-  <span class="loop-word try" data-loop-word="try">Try</span>
-  <span class="loop-word reflect" data-loop-word="reflect">Reflect</span>
-  <span class="loop-word decide" data-loop-word="decide">Decide</span>
-</aside>
-
-<aside class="workbook-tray interactive-only" aria-label="My workbook tools collected during this walkthrough">
-  <div class="tray-title"><span>My workbook</span><span>this visit only</span></div>
-  <div class="stamps">
-    <div class="stamp" data-stamp="operating"><span>Operating Plan</span><small>not reached yet</small></div>
-    <div class="stamp" data-stamp="discovery"><span>Builder Discovery Record</span><small>not reached yet</small></div>
-    <div class="stamp" data-stamp="decision"><span>Next Decision</span><small>not reached yet</small></div>
-    <div class="stamp later" data-stamp="final"><span>Final Next Direction Map</span><small>later</small></div>
-  </div>
-</aside>
-
-<main id="walkthrough">
-  <p class="no-js-note wrap"><strong>JavaScript is off.</strong> The walkthrough is shown as one readable page below.</p>
-
-  <section class="screen active" data-step="0" data-title="Walk through Pilot 1">
-    <div class="wrap sheet">
-      <p class="page-mark">Status: pre-pilot</p>
-      <h1>Walk through <span class="nowrap">Pilot 1</span></h1>
-      <p class="lead intro-copy">Pilot 1 opens Entrepalooza, a small, human-guided cohort in Houston for adults figuring out what comes next. Here's how it feels, one step at a time.</p>
-
-      <div class="sticky-note">Every module follows the same loop: Notice → Try → Reflect → Decide.</div>
-
-      <div class="checkin" aria-labelledby="checkin-prompt">
-        <p class="prompt" id="checkin-prompt">Before we start, are you here?</p>
-        <div class="checkin-row">
-          <button class="button quiet" type="button" data-checkin="here">Here</button>
-          <button class="button quiet" type="button" data-checkin="pass">Pass</button>
+  <!-- FILL: start dates · time commitment · cost · meeting tool · facilitator names · recruitment status -->
+  <a class="skip-link" href="#main-content">Skip to walkthrough</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="topline">
+        <div class="brand">Entrepalooza · Pilot 1 · Pre-pilot</div>
+        <a class="interest-link" href="https://link.jotform.com/EhQXbmRwbk" target="_blank" rel="noopener">Express interest ↗</a>
+      </div>
+      <div class="header-bottom">
+        <nav class="stepper" aria-label="Walkthrough steps">
+          <a href="#module-0" data-goto="1" aria-label="Module 0">0</a><span class="separator" aria-hidden="true">·</span>
+          <a href="#module-1" data-goto="2" aria-label="Module 1">1</a><span class="separator" aria-hidden="true">·</span>
+          <a href="#module-1-5" data-goto="3" aria-label="Module 1.5">1.5</a><span class="separator" aria-hidden="true">·</span>
+          <a href="#module-2" data-goto="4" aria-label="Module 2">2</a><span class="separator" aria-hidden="true">·</span>
+          <a href="#module-3" data-goto="5" aria-label="Module 3">3</a><span class="separator" aria-hidden="true">·</span>
+          <a href="#whats-next" data-goto="6">What's next</a>
+        </nav>
+        <div class="loop-indicator" aria-label="Loop: Notice, Try, Reflect, Decide">
+          <svg viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+            <circle class="orbit" cx="22" cy="22" r="16"></circle>
+            <circle class="loop-dot" data-loop-dot="notice" cx="22" cy="5" r="3.5"></circle>
+            <circle class="loop-dot" data-loop-dot="try" cx="39" cy="22" r="3.5"></circle>
+            <circle class="loop-dot" data-loop-dot="reflect" cx="22" cy="39" r="3.5"></circle>
+            <circle class="loop-dot" data-loop-dot="decide" cx="5" cy="22" r="3.5"></circle>
+          </svg>
+          <div class="loop-words" aria-hidden="true"><span data-loop-word="notice">Notice</span> → <span data-loop-word="try">Try</span> → <span data-loop-word="reflect">Reflect</span> → <span data-loop-word="decide">Decide</span></div>
         </div>
-        <p class="feedback" id="checkin-result" aria-live="polite"></p>
-      </div>
-
-      <div class="nav-row">
-        <span></span>
-        <button class="button primary interactive-only" type="button" data-next>Start</button>
       </div>
     </div>
-  </section>
-
-  <section class="screen" data-step="1" data-title="Module 0 · Enter with Agency">
-    <div class="wrap sheet">
-      <p class="page-mark">Module 1 of 5</p>
-      <h2>Module 0 · Enter with Agency</h2>
-      <div class="module-grid">
-        <article class="loop-block" data-loop="notice">
-          <h3><span class="loop-number">1</span>Notice</h3>
-          <p>Ground rules come first: what this is and isn't, your privacy, and your right to pass or leave.</p>
-          <p class="margin-note">Joining and consent are separate choices.</p>
-        </article>
-        <article class="loop-block" data-loop="try">
-          <h3><span class="loop-number">2</span>Try</h3>
-          <p>Practice feedback with permission. In a made-up scenario, a peer asks, "Do you want a question, a suggestion, or no feedback?" You decide, and you can say no.</p>
-        </article>
-        <article class="loop-block" data-loop="reflect">
-          <h3><span class="loop-number">3</span>Reflect</h3>
-          <p class="prompt">What would make taking part workable for you?</p>
-          <span class="optional-note">Optional.</span><label class="privacy-label" for="reflect-0">Just for you. Nothing you type is saved or sent.</label>
-          <textarea id="reflect-0"></textarea>
-          <div class="stamp-callout" aria-label="Workbook stamp: Operating Plan">Workbook stamp · Operating Plan</div>
-        </article>
-        <article class="loop-block" data-loop="decide">
-          <h3><span class="loop-number">4</span>Decide</h3>
-          <p class="prompt">Name one unknown.</p>
-          <span class="optional-note">Optional.</span><label class="privacy-label" for="unknown-0">Just for you. Nothing you type is saved or sent.</label>
-          <textarea id="unknown-0"></textarea>
-          <div class="decision-chips" aria-label="Choose a next decision">
-            <button class="decision-chip" type="button">Keep</button><button class="decision-chip" type="button">Change</button><button class="decision-chip" type="button">Test Again</button><button class="decision-chip" type="button">Pause/Park</button><button class="decision-chip" type="button">Stop</button><button class="decision-chip" type="button">Another Direction</button><button class="decision-chip" type="button">Continue Looking</button>
+  </header>
+  <div id="step-announcement" class="sr-only" aria-live="polite" aria-atomic="true">Step 1 of 7: Walk through Pilot 1</div>
+  <main id="main-content">
+    <section class="screen cover-screen is-active" id="cover" data-index="0" aria-labelledby="cover-title">
+      <div class="cover-layout">
+        <div class="cover-note">
+          <div class="eyebrow">A guided workbook, one step at a time</div>
+          <h1 tabindex="-1" id="cover-title">Walk through Pilot 1</h1>
+          <p class="lede">Pilot 1 opens Entrepalooza, a small, human-guided cohort in Houston for adults figuring out what comes next. Here's how it feels, one step at a time.</p>
+          <div class="check-in">
+            <p class="prompt">Before we start, are you here?</p>
+            <div class="button-row">
+              <button class="choice-button" type="button" data-message="Glad you're here.">Here</button>
+              <button class="choice-button" type="button" data-message="Pass counts. You're still welcome to look around.">Pass</button>
+            </div>
+            <p class="message" role="status" aria-live="polite"></p>
           </div>
-          <p class="decision-result" aria-live="polite"></p>
-        </article>
+          <p style="margin:20px 0 0"><a class="button button-primary" href="#module-0" data-goto="1">Start <span aria-hidden="true">→</span></a></p>
+        </div>
+        <aside class="sticky-note" aria-label="A note about the module loop">
+          <p>Every module follows the same loop:<br>Notice → Try → Reflect → Decide.</p>
+        </aside>
       </div>
-      <div class="nav-row interactive-only"><button class="button quiet" type="button" data-back>← Back</button><button class="button primary" type="button" data-next>Finish Module 0 → Module 1</button></div>
-    </div>
-  </section>
+      <svg class="cover-mark" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+        <path d="M45 100a55 55 0 1 1 18 41" fill="none" stroke="#3e6963" stroke-width="4" stroke-dasharray="5 7" stroke-linecap="round"/>
+        <path d="m55 126 7 17 18-4" fill="none" stroke="#3e6963" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="100" cy="45" r="8" fill="#bd7357"/><circle cx="155" cy="100" r="8" fill="#e4bd64"/><circle cx="100" cy="155" r="8" fill="#3e6963"/>
+      </svg>
+    </section>
 
-  <section class="screen" data-step="2" data-title="Module 1 · Find Something Worth Exploring">
-    <div class="wrap sheet">
-      <p class="page-mark">Module 2 of 5</p>
-      <h2>Module 1 · Find Something Worth Exploring</h2>
-      <div class="module-grid">
-        <article class="loop-block" data-loop="notice"><h3><span class="loop-number">1</span>Notice</h3><p>Notice what holds your attention, or start with "I don't know yet." You don't need a passion or a business idea.</p><div class="sticky-note">"Nothing clear yet" is a real result.</div></article>
-        <article class="loop-block" data-loop="try"><h3><span class="loop-number">2</span>Try</h3><p>Pick an interest you already have, or something new. Design one small try with a limit and a stop rule.</p></article>
-        <article class="loop-block" data-loop="reflect"><h3><span class="loop-number">3</span>Reflect</h3><p class="prompt">What caught your attention? What did it cost? Would you go back to it?</p><span class="optional-note">Optional.</span><label class="privacy-label" for="reflect-1">Just for you. Nothing you type is saved or sent.</label><textarea id="reflect-1"></textarea><div class="stamp-callout" aria-label="Workbook stamps: Builder Discovery Record and Next Decision">Workbook stamps · Builder Discovery Record · Next Decision</div></article>
-        <article class="loop-block" data-loop="decide"><h3><span class="loop-number">4</span>Decide</h3><p class="prompt">Name one unknown.</p><span class="optional-note">Optional.</span><label class="privacy-label" for="unknown-1">Just for you. Nothing you type is saved or sent.</label><textarea id="unknown-1"></textarea><div class="decision-chips" aria-label="Choose a next decision"><button class="decision-chip" type="button">Keep</button><button class="decision-chip" type="button">Change</button><button class="decision-chip" type="button">Test Again</button><button class="decision-chip" type="button">Pause/Park</button><button class="decision-chip" type="button">Stop</button><button class="decision-chip" type="button">Another Direction</button><button class="decision-chip" type="button">Continue Looking</button></div><p class="decision-result" aria-live="polite"></p></article>
+    <section class="screen module-screen" id="module-0" data-index="1" aria-labelledby="module-0-title">
+      <div class="module-layout">
+        <aside class="module-rail"><div><div class="module-number" aria-hidden="true">0</div><div class="rail-label">Enter with Agency</div></div><div class="margin-note">Joining and consent are separate choices.</div></aside>
+        <div class="module-content">
+          <header class="module-heading"><div class="eyebrow">First, make room to choose</div><h2 tabindex="-1" id="module-0-title">Enter with Agency</h2></header>
+          <section class="work-step" data-loop="notice"><div class="step-label"><span class="ordinal">01</span> Notice</div><p>Ground rules come first: what this is and isn't, your privacy, and your right to pass or leave.</p><details class="lesson-path"><summary>See the 5 lesson steps</summary><ol><li>What this pilot is and isn’t</li><li>Rights, privacy, and separate consent</li><li>Group Code and permission-based feedback</li><li>Participation and Support Plan</li><li>Your participation decision and handoff</li></ol></details></section>
+          <section class="work-step" data-loop="try"><div class="step-label"><span class="ordinal">02</span> Try</div><p>Practice feedback with permission. In a made-up scenario, a peer asks, “Do you want a question, a suggestion, or no feedback?” You decide, and you can say no.</p><div class="button-row inline-choices" aria-label="Choose a response in the made-up scenario"><button class="choice-button" type="button" data-message="You can ask for a question, a suggestion, or no feedback—and change your mind.">A question</button><button class="choice-button" type="button" data-message="You can ask for a question, a suggestion, or no feedback—and change your mind.">A suggestion</button><button class="choice-button" type="button" data-message="No feedback is a complete answer.">No feedback</button></div><p class="message" role="status" aria-live="polite"></p></section>
+          <section class="work-step" data-loop="reflect"><div class="step-label"><span class="ordinal">03</span> Reflect</div><p class="reflection-prompt">What would make taking part workable for you?</p></section>
+          <section class="work-step" data-loop="decide"><div class="step-label"><span class="ordinal">04</span> Decide</div><label class="unknown-label" for="unknown-0">Name one unknown. <span class="muted">(optional)</span></label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="unknown-0" rows="2" placeholder="Optional — leave blank if you prefer"></textarea><div class="decision-chips" aria-label="Choose a next step"><button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button></div><p class="message choice-message" role="status" aria-live="polite"></p></section>
+        </div>
       </div>
-      <div class="nav-row interactive-only"><button class="button quiet" type="button" data-back>← Back</button><button class="button primary" type="button" data-next>Finish Module 1 → Module 1.5</button></div>
-    </div>
-  </section>
+      <div class="screen-controls"><a class="button" href="#cover" data-goto="0">← Back</a><a class="button button-primary" href="#module-1" data-goto="2">Next →</a></div>
+    </section>
 
-  <section class="screen" data-step="3" data-title="Module 1.5 · Test How I Operate">
-    <div class="wrap sheet">
-      <p class="page-mark">Module 3 of 5</p>
-      <h2>Module 1.5 · Test How I Operate</h2>
-      <div class="module-grid">
-        <article class="loop-block" data-loop="notice"><h3><span class="loop-number">1</span>Notice</h3><p>Look at how you work, not who you "are." No personality scores.</p></article>
-        <article class="loop-block" data-loop="try"><h3><span class="loop-number">2</span>Try</h3><p>Take an ordinary task and change one condition, like time of day, working alone or with people, or quiet or busy.</p></article>
-        <article class="loop-block" data-loop="reflect"><h3><span class="loop-number">3</span>Reflect</h3><p class="prompt">What changed? What did it cost? What's still uncertain?</p><span class="optional-note">Optional.</span><label class="privacy-label" for="reflect-15">Just for you. Nothing you type is saved or sent.</label><textarea id="reflect-15"></textarea><div class="stamp-callout" aria-label="Workbook stamp: Operating Plan, adds a note">Workbook stamp · Operating Plan · adds a note</div></article>
-        <article class="loop-block" data-loop="decide"><h3><span class="loop-number">4</span>Decide</h3><p class="prompt">Name one unknown.</p><span class="optional-note">Optional.</span><label class="privacy-label" for="unknown-15">Just for you. Nothing you type is saved or sent.</label><textarea id="unknown-15"></textarea><div class="decision-chips" aria-label="Choose a next decision"><button class="decision-chip" type="button">Keep</button><button class="decision-chip" type="button">Change</button><button class="decision-chip" type="button">Test Again</button><button class="decision-chip" type="button">Pause/Park</button><button class="decision-chip" type="button">Stop</button><button class="decision-chip" type="button">Another Direction</button><button class="decision-chip" type="button">Continue Looking</button></div><p class="decision-result" aria-live="polite"></p></article>
+    <section class="screen module-screen" id="module-1" data-index="2" aria-labelledby="module-1-title">
+      <div class="module-layout">
+        <aside class="module-rail"><div><div class="module-number" aria-hidden="true">1</div><div class="rail-label">Find Something Worth Exploring</div></div><div class="margin-note">“Nothing clear yet” is a real result.</div></aside>
+        <div class="module-content">
+          <header class="module-heading"><div class="eyebrow">Curiosity can start small</div><h2 tabindex="-1" id="module-1-title">Find Something Worth Exploring</h2></header>
+          <section class="work-step" data-loop="notice"><div class="step-label"><span class="ordinal">01</span> Notice</div><p>Notice what holds your attention, or start with “I don't know yet.” You don't need a passion or a business idea.</p><details class="lesson-path"><summary>See the 5 lesson steps</summary><ol><li>Notice without forcing an answer</li><li>Patterns of engagement (not types of people)</li><li>Choose an interest or try something new</li><li>Reflection, evidence, conditions, and cost</li><li>Review, next decision, and handoff</li></ol></details></section>
+          <section class="work-step" data-loop="try"><div class="step-label"><span class="ordinal">02</span> Try</div><p>Pick an interest you already have, or something new. Design one small try with a limit and a stop rule.</p></section>
+          <section class="work-step" data-loop="reflect"><div class="step-label"><span class="ordinal">03</span> Reflect</div><p class="reflection-prompt">What caught your attention? What did it cost? Would you go back to it?</p></section>
+          <section class="work-step" data-loop="decide"><div class="step-label"><span class="ordinal">04</span> Decide</div><label class="unknown-label" for="unknown-1">Name one unknown. <span class="muted">(optional)</span></label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="unknown-1" rows="2" placeholder="Optional — leave blank if you prefer"></textarea><div class="decision-chips" aria-label="Choose a next step"><button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button></div><p class="message choice-message" role="status" aria-live="polite"></p></section>
+        </div>
       </div>
-      <div class="nav-row interactive-only"><button class="button quiet" type="button" data-back>← Back</button><button class="button primary" type="button" data-next>Finish Module 1.5 → Module 2</button></div>
-    </div>
-  </section>
+      <div class="screen-controls"><a class="button" href="#module-0" data-goto="1">← Back</a><a class="button button-primary" href="#module-1-5" data-goto="3">Next →</a></div>
+    </section>
 
-  <section class="screen" data-step="4" data-title="Module 2 · Check the Story">
-    <div class="wrap sheet">
-      <p class="page-mark">Module 4 of 5</p>
-      <h2>Module 2 · Check the Story</h2>
-      <div class="module-grid">
-        <article class="loop-block" data-loop="notice"><h3><span class="loop-number">1</span>Notice</h3><p>Separate what happened from the story about it, and from any verdict about yourself.</p><p class="margin-note">No confession required.</p></article>
-        <article class="loop-block" data-loop="try"><h3><span class="loop-number">2</span>Try</h3><p>With a made-up example, sort three things: the event, the story, and the verdict.</p></article>
-        <article class="loop-block" data-loop="reflect"><h3><span class="loop-number">3</span>Reflect</h3><p class="prompt">Is there a wording that's more accurate, not just more positive?</p><span class="optional-note">Optional.</span><label class="privacy-label" for="reflect-2">Just for you. Nothing you type is saved or sent.</label><textarea id="reflect-2"></textarea><div class="stamp-callout" aria-label="Workbook stamp: Builder Discovery Record, adds a note">Workbook stamp · Builder Discovery Record · adds a note</div></article>
-        <article class="loop-block" data-loop="decide"><h3><span class="loop-number">4</span>Decide</h3><p class="prompt">Name one unknown.</p><span class="optional-note">Optional.</span><label class="privacy-label" for="unknown-2">Just for you. Nothing you type is saved or sent.</label><textarea id="unknown-2"></textarea><div class="decision-chips" aria-label="Choose a next decision"><button class="decision-chip" type="button">Keep</button><button class="decision-chip" type="button">Change</button><button class="decision-chip" type="button">Test Again</button><button class="decision-chip" type="button">Pause/Park</button><button class="decision-chip" type="button">Stop</button><button class="decision-chip" type="button">Another Direction</button><button class="decision-chip" type="button">Continue Looking</button></div><p class="decision-result" aria-live="polite"></p></article>
+    <section class="screen module-screen" id="module-1-5" data-index="3" aria-labelledby="module-1-5-title">
+      <div class="module-layout">
+        <aside class="module-rail"><div><div class="module-number" aria-hidden="true">1.5</div><div class="rail-label">Test How I Operate</div></div><div class="margin-note">A change in conditions is information, not a score.</div></aside>
+        <div class="module-content">
+          <header class="module-heading"><div class="eyebrow">Change a condition, not your identity</div><h2 tabindex="-1" id="module-1-5-title">Test How I Operate</h2></header>
+          <section class="work-step" data-loop="notice"><div class="step-label"><span class="ordinal">01</span> Notice</div><p>Look at how you work, not who you “are.” No personality scores.</p><details class="lesson-path"><summary>See the 3 lesson steps</summary><ol><li>Understand the setup around a task</li><li>Run one changed-condition test</li><li>Review the cost and carry evidence forward</li></ol></details></section>
+          <section class="work-step" data-loop="try"><div class="step-label"><span class="ordinal">02</span> Try</div><p>Take an ordinary task and change one condition, like time of day, working alone or with people, or quiet or busy.</p><div class="button-row inline-choices" aria-label="Examples of one condition to change"><button class="choice-button" type="button" data-message="One condition at a time is enough. No type or score is attached.">Time of day</button><button class="choice-button" type="button" data-message="One condition at a time is enough. No type or score is attached.">Alone or with people</button><button class="choice-button" type="button" data-message="One condition at a time is enough. No type or score is attached.">Quiet or busy</button></div><p class="message" role="status" aria-live="polite"></p></section>
+          <section class="work-step" data-loop="reflect"><div class="step-label"><span class="ordinal">03</span> Reflect</div><p class="reflection-prompt">What changed? What did it cost? What's still uncertain?</p></section>
+          <section class="work-step" data-loop="decide"><div class="step-label"><span class="ordinal">04</span> Decide</div><label class="unknown-label" for="unknown-15">Name one unknown. <span class="muted">(optional)</span></label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="unknown-15" rows="2" placeholder="Optional — leave blank if you prefer"></textarea><div class="decision-chips" aria-label="Choose a next step"><button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button></div><p class="message choice-message" role="status" aria-live="polite"></p></section>
+        </div>
       </div>
-      <div class="nav-row interactive-only"><button class="button quiet" type="button" data-back>← Back</button><button class="button primary" type="button" data-next>Finish Module 2 → Module 3</button></div>
-    </div>
-  </section>
+      <div class="screen-controls"><a class="button" href="#module-1" data-goto="2">← Back</a><a class="button button-primary" href="#module-2" data-goto="4">Next →</a></div>
+    </section>
 
-  <section class="screen" data-step="5" data-title="Module 3 · Navigate Intensity">
-    <div class="wrap sheet">
-      <p class="page-mark">Module 5 of 5</p>
-      <h2>Module 3 · Navigate Intensity</h2>
-      <div class="module-grid">
-        <article class="loop-block" data-loop="notice"><h3><span class="loop-number">1</span>Notice</h3><p>Sometimes effort spikes, stalls, or costs too much. Sometimes something is already working.</p></article>
-        <article class="loop-block" data-loop="try"><h3><span class="loop-number">2</span>Try</h3><p>Choose a route. Both are equal: protect one condition that's working, or try one small, low-risk response during an ordinary task.</p><div class="sticky-note">Pilot 1 ends here.</div></article>
-        <article class="loop-block" data-loop="reflect"><h3><span class="loop-number">3</span>Reflect</h3><p class="prompt">What's one limit you choose to keep?</p><span class="optional-note">Optional.</span><label class="privacy-label" for="reflect-3">Just for you. Nothing you type is saved or sent.</label><textarea id="reflect-3"></textarea><div class="stamp-callout" aria-label="Workbook stamps: Operating Plan and Next Decision">Workbook stamps · Operating Plan · Next Decision</div></article>
-        <article class="loop-block" data-loop="decide"><h3><span class="loop-number">4</span>Decide</h3><p class="prompt">Name one unknown.</p><span class="optional-note">Optional.</span><label class="privacy-label" for="unknown-3">Just for you. Nothing you type is saved or sent.</label><textarea id="unknown-3"></textarea><div class="decision-chips" aria-label="Choose a next decision"><button class="decision-chip" type="button">Keep</button><button class="decision-chip" type="button">Change</button><button class="decision-chip" type="button">Test Again</button><button class="decision-chip" type="button">Pause/Park</button><button class="decision-chip" type="button">Stop</button><button class="decision-chip" type="button">Another Direction</button><button class="decision-chip" type="button">Continue Looking</button></div><p class="decision-result" aria-live="polite"></p></article>
+    <section class="screen module-screen" id="module-2" data-index="4" aria-labelledby="module-2-title">
+      <div class="module-layout">
+        <aside class="module-rail"><div><div class="module-number" aria-hidden="true">2</div><div class="rail-label">Check the Story</div></div><div class="margin-note">No confession required.</div></aside>
+        <div class="module-content">
+          <header class="module-heading"><div class="eyebrow">Make room between event and verdict</div><h2 tabindex="-1" id="module-2-title">Check the Story</h2></header>
+          <section class="work-step" data-loop="notice"><div class="step-label"><span class="ordinal">01</span> Notice</div><p>Separate what happened from the story about it, and from any verdict about yourself.</p><details class="lesson-path"><summary>See the 3 lesson steps</summary><ol><li>Separate event, story, and verdict</li><li>Choose one standard and observable practice</li><li>Review, revise, and choose the next behavior</li></ol></details></section>
+          <section class="work-step" data-loop="try"><div class="step-label"><span class="ordinal">02</span> Try</div><p>With a made-up example, sort three things: the event, the story, and the verdict.</p><div class="example-sort"><p><strong>Event:</strong> A person shared a sketch with a peer; there was no reply that day.</p><p><strong>Story:</strong> “They didn't like it.”</p><p><strong>Verdict:</strong> “I'm not capable.”</p></div></section>
+          <section class="work-step" data-loop="reflect"><div class="step-label"><span class="ordinal">03</span> Reflect</div><p class="reflection-prompt">Is there a wording that's more accurate, not just more positive?</p></section>
+          <section class="work-step" data-loop="decide"><div class="step-label"><span class="ordinal">04</span> Decide</div><label class="unknown-label" for="unknown-2">Name one unknown. <span class="muted">(optional)</span></label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="unknown-2" rows="2" placeholder="Optional — leave blank if you prefer"></textarea><div class="decision-chips" aria-label="Choose a next step"><button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button></div><p class="message choice-message" role="status" aria-live="polite"></p></section>
+        </div>
       </div>
-      <div class="nav-row interactive-only"><button class="button quiet" type="button" data-back>← Back</button><button class="button primary" type="button" data-next>Finish Module 3 → What's next</button></div>
-    </div>
-  </section>
+      <div class="screen-controls"><a class="button" href="#module-1-5" data-goto="3">← Back</a><a class="button button-primary" href="#module-3" data-goto="5">Next →</a></div>
+    </section>
 
-  <section class="screen" data-step="6" data-title="What's next">
-    <div class="wrap sheet">
-      <h2>What's next</h2>
-      <p class="lead">Later phases of the fuller program (about six months):</p>
-      <ol class="later-path">
-        <li><strong>4 · Check Reality Outside Yourself:</strong> gather outside evidence <!-- FILL: confirm Module 4 title: Yourself vs Your Head --></li>
-        <li><strong>5 · Name / Do / Notice the Try:</strong> one manageable try</li>
-        <li><strong>6 · Check What This Costs:</strong> money, time, and real limits, including $0</li>
-        <li><strong>7 · Choose a Direction That Fits Capacity:</strong> work, training, a project, or a pause</li>
-        <li><strong>8 · Build the Tribe:</strong> how you stay connected</li>
+    <section class="screen module-screen" id="module-3" data-index="5" aria-labelledby="module-3-title">
+      <div class="module-layout">
+        <aside class="module-rail"><div><div class="module-number" aria-hidden="true">3</div><div class="rail-label">Navigate Intensity</div></div><div class="margin-note">Pilot 1 ends here.</div></aside>
+        <div class="module-content">
+          <header class="module-heading"><div class="eyebrow">Keep your limits in the picture</div><h2 tabindex="-1" id="module-3-title">Navigate Intensity</h2></header>
+          <section class="work-step" data-loop="notice"><div class="step-label"><span class="ordinal">01</span> Notice</div><p>Sometimes effort spikes, stalls, or costs too much. Sometimes something is already working.</p><details class="lesson-path"><summary>See the 3 lesson steps</summary><ol><li>Notice signal, story, urge, and cost</li><li>Protect what works or try one small response</li><li>Check intuition and close Pilot 1</li></ol></details></section>
+          <section class="work-step" data-loop="try"><div class="step-label"><span class="ordinal">02</span> Try</div><p>Choose a route. Both are equal: protect one condition that's working, or try one small, low-risk response during an ordinary task.</p><div class="button-row inline-choices" aria-label="Choose either route"><button class="choice-button" type="button" data-message="Protecting what works is a complete route.">Protect what works</button><button class="choice-button" type="button" data-message="A small, low-risk response is one option—not an obligation.">Try a small response</button></div><p class="message" role="status" aria-live="polite"></p></section>
+          <section class="work-step" data-loop="reflect"><div class="step-label"><span class="ordinal">03</span> Reflect</div><p class="reflection-prompt">What's one limit you choose to keep?</p></section>
+          <section class="work-step" data-loop="decide"><div class="step-label"><span class="ordinal">04</span> Decide</div><label class="unknown-label" for="unknown-3">Name one unknown. <span class="muted">(optional)</span></label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="unknown-3" rows="2" placeholder="Optional — leave blank if you prefer"></textarea><div class="decision-chips" aria-label="Choose a next step"><button class="chip" type="button">Keep</button><button class="chip" type="button">Change</button><button class="chip" type="button">Test Again</button><button class="chip" type="button">Pause/Park</button><button class="chip" type="button">Stop</button><button class="chip" type="button">Another Direction</button><button class="chip" type="button">Continue Looking</button></div><p class="message choice-message" role="status" aria-live="polite"></p></section>
+        </div>
+      </div>
+      <div class="screen-controls"><a class="button" href="#module-2" data-goto="4">← Back</a><a class="button button-primary" href="#whats-next" data-goto="6">What's next →</a></div>
+    </section>
+
+    <section class="screen next-screen" id="whats-next" data-index="6" aria-labelledby="next-title">
+      <div class="next-content">
+      <div class="eyebrow">A later phase of the fuller program · about six months</div>
+      <h2 tabindex="-1" id="next-title" style="margin-top:14px">What's next</h2>
+      <ol class="next-path">
+        <li><strong>4 · Check Reality Outside Yourself</strong> — gather outside evidence</li>
+        <li><strong>5 · Name / Do / Notice the Try</strong> — one manageable try</li>
+        <li><strong>6 · Check What This Costs</strong> — money, time, and real limits, including $0</li>
+        <li><strong>7 · Choose a Direction That Fits Capacity</strong> — work, training, a project, or a pause</li>
+        <li><strong>8 · Build the Tribe</strong> — how you stay connected</li>
       </ol>
-
-      <div class="stamp-callout secondary">Later · Final Next Direction Map</div>
-      <blockquote>"You're still of this tribe if you want to be."</blockquote>
-      <p class="lead">Starting a business is one possible path. A job, training, a project, a pause, or still looking are all complete finishes.</p>
-      <p class="logistics-line">Dates, time commitment, and cost: coming soon.</p>
-      <!-- FILL: start dates · time commitment · cost · meeting tool · facilitator names · recruitment status -->
-
-      <p><a class="button primary" href="https://link.jotform.com/EhQXbmRwbk" target="_blank" rel="noopener">Express interest</a></p>
+      <!-- FILL: confirm Module 4 title: Yourself vs Your Head -->
+      <div class="later-stamp" aria-label="Later: Final Next Direction Map"><span aria-hidden="true">✳</span><span><strong>Final Next Direction Map</strong><br><small>Later</small></span></div>
+      <blockquote>“You're still of this tribe if you want to be.”</blockquote>
+      <p class="closing-line">Starting a business is one possible path. A job, training, a project, a pause, or still looking are all complete finishes.</p>
+      <p class="logistics">Dates, time commitment, and cost: coming soon.</p>
+      <div class="final-actions"><a class="button button-primary" href="https://link.jotform.com/EhQXbmRwbk" target="_blank" rel="noopener">Express interest ↗</a></div>
       <p class="small-print">Entrepalooza is educational and nonclinical. It is not therapy, treatment, or crisis care. Design choices are informed by research on interest development, motivation, and belonging. This pilot does not claim proven outcomes. Expressing interest is not enrollment.</p>
+      </div>
+      <div class="screen-controls"><a class="button" href="#module-3" data-goto="5">← Back</a><a class="button" href="#cover" data-goto="0">Start again ↺</a></div>
+    </section>
+  </main>
 
-      <div class="nav-row interactive-only"><button class="button quiet" type="button" data-back>← Back</button><span></span></div>
-    </div>
-  </section>
-</main>
+  <aside class="workbook-tray" aria-label="My workbook">
+    <details id="workbook-tray">
+      <summary>My workbook <span id="stamp-count">0 / 3 stamps</span></summary>
+      <ul class="tray-list">
+        <li class="tray-stamp" data-stamp="operating"><span class="stamp-mark" aria-hidden="true">✓</span><span>Operating Plan<span class="stamp-sub" data-stamp-note="operating">Not reached yet</span></span></li>
+        <li class="tray-stamp" data-stamp="discovery"><span class="stamp-mark" aria-hidden="true">✓</span><span>Builder Discovery Record<span class="stamp-sub" data-stamp-note="discovery">Not reached yet</span></span></li>
+        <li class="tray-stamp" data-stamp="decision"><span class="stamp-mark" aria-hidden="true">✓</span><span>Next Decision<span class="stamp-sub" data-stamp-note="decision">Not reached yet</span></span></li>
+      </ul>
+    </details>
+  </aside>
+  <div class="announcement" id="toast" aria-live="polite" aria-atomic="true"></div>
 
-<footer>
-  <div class="wrap">
-    <strong>Build Otherwise</strong>
-    <p>Entrepalooza is an educational, human-guided program in development.</p>
-    <p class="small">Design choices are informed by research on interest development, motivation, and belonging. This pilot does not claim proven outcomes.</p>
-  </div>
-</footer>
+  <script>
+    (() => {
+      const screens = [...document.querySelectorAll('.screen')];
+      const stepLinks = [...document.querySelectorAll('.stepper [data-goto]')];
+      const announce = document.getElementById('step-announcement');
+      const toast = document.getElementById('toast');
+      const stepTitles = ['Walk through Pilot 1', 'Module 0 · Enter with Agency', 'Module 1 · Find Something Worth Exploring', 'Module 1.5 · Test How I Operate', 'Module 2 · Check the Story', 'Module 3 · Navigate Intensity', "What's next"];
+      let current = 0;
+      let toastTimer;
+      document.documentElement.classList.add('js');
 
-<script>
-(function(){
-  'use strict';
-
-  var screens=Array.prototype.slice.call(document.querySelectorAll('.screen'));
-  var stepButtons=Array.prototype.slice.call(document.querySelectorAll('[data-goto]'));
-  var stepAnnouncer=document.getElementById('step-announcer');
-  var actionAnnouncer=document.getElementById('action-announcer');
-  var loopWords=Array.prototype.slice.call(document.querySelectorAll('[data-loop-word]'));
-  var progressTrack=document.querySelector('.progress-track');
-  var progressFill=document.querySelector('.progress-fill');
-  var current=0;
-  var visited=new Set();
-  var stampNotes={operating:0,discovery:0,decision:0};
-  var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function announceAction(message){
-    actionAnnouncer.textContent='';
-    window.setTimeout(function(){actionAnnouncer.textContent=message;},10);
-  }
-
-  function setLoop(name){
-    loopWords.forEach(function(word){word.classList.toggle('active',word.getAttribute('data-loop-word')===name);});
-  }
-
-  function earnStamp(name,note){
-    var el=document.querySelector('[data-stamp="'+name+'"]');
-    if(!el){return;}
-    el.classList.add('earned');
-    stampNotes[name]=(stampNotes[name]||0)+1;
-    var small=el.querySelector('small');
-    if(small){
-      if(note){small.textContent=stampNotes[name]>1 ? stampNotes[name]+' marks added' : 'note added';}
-      else{small.textContent='pressed in';}
-    }
-  }
-
-  function collectForStep(index){
-    if(visited.has(index)){return;}
-    visited.add(index);
-    if(index===1){earnStamp('operating',false);}
-    if(index===2){earnStamp('discovery',false);earnStamp('decision',false);}
-    if(index===3){earnStamp('operating',true);}
-    if(index===4){earnStamp('discovery',true);}
-    if(index===5){earnStamp('operating',true);earnStamp('decision',true);}
-  }
-
-  function updateStepper(index){
-    stepButtons.forEach(function(btn){
-      var active=Number(btn.getAttribute('data-goto'))===index;
-      if(active){btn.setAttribute('aria-current','step');}
-      else{btn.removeAttribute('aria-current');}
-    });
-  }
-
-  function updateProgress(index){
-    var completed=0;
-    if(index>=1&&index<=5){completed=index;}
-    else if(index===6){completed=5;}
-    if(progressTrack){progressTrack.setAttribute('aria-valuenow',String(completed));}
-    if(progressFill){progressFill.style.width=(completed/5*100)+'%';}
-  }
-
-  function show(index,focusHeading){
-    if(index<0||index>=screens.length){return;}
-    current=index;
-    screens.forEach(function(screen,i){
-      screen.classList.toggle('active',i===index);
-      screen.setAttribute('aria-hidden',i===index?'false':'true');
-    });
-    updateStepper(index);
-    updateProgress(index);
-    collectForStep(index);
-    setLoop('notice');
-    var title=screens[index].getAttribute('data-title')||'';
-    stepAnnouncer.textContent='Step '+(index+1)+' of 7: '+title;
-    window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
-    if(focusHeading){
-      var heading=screens[index].querySelector('h1,h2');
-      if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});}
-    }
-    observeLoopBlocks();
-  }
-
-  function go(delta){show(current+delta,true);}
-
-  document.querySelectorAll('[data-next]').forEach(function(btn){btn.addEventListener('click',function(){go(1);});});
-  document.querySelectorAll('[data-back]').forEach(function(btn){btn.addEventListener('click',function(){go(-1);});});
-  stepButtons.forEach(function(btn){btn.addEventListener('click',function(){show(Number(btn.getAttribute('data-goto')),true);});});
-
-  document.querySelectorAll('[data-checkin]').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var result=document.getElementById('checkin-result');
-      var message=btn.getAttribute('data-checkin')==='here' ? "Glad you're here." : "Pass counts. You're still welcome to look around.";
-      result.textContent=message;
-      announceAction(message);
-    });
-  });
-
-  document.querySelectorAll('.decision-chip').forEach(function(btn){
-    btn.setAttribute('aria-pressed','false');
-    btn.addEventListener('click',function(){
-      var block=btn.closest('.loop-block');
-      block.querySelectorAll('.decision-chip').forEach(function(chip){chip.setAttribute('aria-pressed','false');});
-      btn.setAttribute('aria-pressed','true');
-      var result=block.querySelector('.decision-result');
-      var message="That's a valid choice. Every exit counts.";
-      result.textContent=message;
-      announceAction(message);
-    });
-  });
-
-  document.addEventListener('keydown',function(event){
-    var tag=(event.target&&event.target.tagName||'').toLowerCase();
-    if(tag==='textarea'||tag==='input'||tag==='select'||event.target.isContentEditable){return;}
-    if(event.key==='ArrowRight'){event.preventDefault();go(1);}
-    if(event.key==='ArrowLeft'){event.preventDefault();go(-1);}
-  });
-
-  var loopObserver=null;
-  function observeLoopBlocks(){
-    if(loopObserver){loopObserver.disconnect();loopObserver=null;}
-    var blocks=Array.prototype.slice.call(screens[current].querySelectorAll('.loop-block'));
-    if(!blocks.length){setLoop('notice');return;}
-    if(!('IntersectionObserver' in window)){setLoop('notice');return;}
-    loopObserver=new IntersectionObserver(function(entries){
-      var visible=entries.filter(function(e){return e.isIntersecting;}).sort(function(a,b){return b.intersectionRatio-a.intersectionRatio;});
-      if(visible.length){setLoop(visible[0].target.getAttribute('data-loop'));}
-    },{threshold:[.25,.5,.75],rootMargin:'-15% 0px -35% 0px'});
-    blocks.forEach(function(block){loopObserver.observe(block);});
-  }
-
-  screens.forEach(function(screen,i){screen.setAttribute('aria-hidden',i===0?'false':'true');});
-  show(0,false);
-})();
-</script>
+      function updateLoop(key) {
+        document.querySelectorAll('[data-loop-dot]').forEach(dot => dot.classList.toggle('is-active', dot.dataset.loopDot === key));
+        document.querySelectorAll('[data-loop-word]').forEach(word => word.classList.toggle('is-active', word.dataset.loopWord === key));
+        document.querySelectorAll('.work-step').forEach(block => block.classList.toggle('is-current', block.dataset.loop === key && block.closest('.screen')?.classList.contains('is-active')));
+      }
+      function pressStamps(index) {
+        const reached = {
+          1: { operating: 'Added at Module 0' },
+          2: { discovery: 'Started at Module 1', decision: 'Started at Module 1' },
+          3: { operating: 'Note added at Module 1.5' },
+          4: { discovery: 'Note added at Module 2' },
+          5: { operating: 'Updated at Module 3', decision: 'Updated at Module 3' }
+        }[index] || {};
+        for (const [key, note] of Object.entries(reached)) {
+          const stamp = document.querySelector(`[data-stamp="${key}"]`);
+          stamp.classList.add('is-pressed');
+          stamp.querySelector(`[data-stamp-note="${key}"]`).textContent = note;
+        }
+        const pressed = document.querySelectorAll('.tray-stamp.is-pressed').length;
+        document.getElementById('stamp-count').textContent = `${pressed} / 3 stamps`;
+      }
+      function goTo(index, options = {}) {
+        const next = Math.max(0, Math.min(screens.length - 1, Number(index)));
+        current = next;
+        screens.forEach((screen, i) => {
+          const active = i === current;
+          screen.classList.toggle('is-active', active);
+          if (active) { screen.removeAttribute('aria-hidden'); screen.scrollTop = 0; } else screen.setAttribute('aria-hidden', 'true');
+        });
+        stepLinks.forEach(link => {
+          const active = Number(link.dataset.goto) === current;
+          if (active) link.setAttribute('aria-current', 'step'); else link.removeAttribute('aria-current');
+        });
+        announce.textContent = `Step ${current + 1} of 7: ${stepTitles[current]}`;
+        pressStamps(current);
+        updateLoop(current === 0 || current === 6 ? '' : 'notice');
+        if (options.focus) screens[current].querySelector('h1, h2')?.focus?.();
+        if (options.scroll !== false) window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      }
+      document.querySelectorAll('[data-goto]').forEach(control => {
+        control.addEventListener('click', event => {
+          event.preventDefault();
+          goTo(control.dataset.goto, { focus: true });
+        });
+      });
+      document.querySelectorAll('[data-message]').forEach(button => {
+        button.addEventListener('click', () => {
+          const output = button.closest('.work-step, .check-in')?.querySelector('.message');
+          if (output) output.textContent = button.dataset.message;
+        });
+      });
+      document.querySelectorAll('.choice-message').forEach(output => {
+        const chips = output.parentElement.querySelectorAll('.chip');
+        chips.forEach(chip => chip.addEventListener('click', () => { output.textContent = "That's a valid choice. Every exit counts."; }));
+      });
+      function showToast(text) {
+        toast.textContent = text;
+        toast.classList.add('is-visible');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2200);
+      }
+      window.addEventListener('keydown', event => {
+        if (event.altKey || event.ctrlKey || event.metaKey) return;
+        if (event.target.matches('textarea, input, select, [contenteditable="true"]')) return;
+        if (event.key === 'ArrowRight') { event.preventDefault(); goTo(current + 1, { focus: true }); }
+        if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(current - 1, { focus: true }); }
+      });
+      let touchStart = null;
+      document.addEventListener('touchstart', event => {
+        if (event.touches.length !== 1 || event.target.closest('textarea, input, button, a, summary')) { touchStart = null; return; }
+        touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+      }, { passive: true });
+      document.addEventListener('touchend', event => {
+        if (!touchStart || !event.changedTouches.length) return;
+        const dx = event.changedTouches[0].clientX - touchStart.x;
+        const dy = event.changedTouches[0].clientY - touchStart.y;
+        if (Math.abs(dx) > 65 && Math.abs(dx) > Math.abs(dy) * 1.35) goTo(current + (dx < 0 ? 1 : -1));
+        touchStart = null;
+      }, { passive: true });
+      function updateCurrentLoop() {
+        if (current === 0 || current === 6) { updateLoop(''); return; }
+        const visible = [...screens[current].querySelectorAll('[data-loop]')];
+        const targetY = Math.min(window.innerHeight * .48, 430);
+        const nearest = visible.reduce((best, node) => {
+          const rect = node.getBoundingClientRect();
+          if (rect.bottom < 135 || rect.top > window.innerHeight) return best;
+          const center = Math.max(rect.top, Math.min(targetY, rect.bottom));
+          const distance = Math.abs(center - targetY);
+          return !best || distance < best.distance ? { node, distance } : best;
+        }, null);
+        if (nearest) updateLoop(nearest.node.dataset.loop);
+      }
+      screens.forEach(screen => screen.querySelector(':scope > .module-layout, :scope > .cover-layout, :scope > .next-content')?.addEventListener('scroll', updateCurrentLoop, { passive: true }));
+      window.addEventListener('scroll', updateCurrentLoop, { passive: true });
+      window.addEventListener('resize', updateCurrentLoop, { passive: true });
+      document.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => showToast("That's a valid choice. Every exit counts.")));
+      document.querySelectorAll('[data-message]').forEach(button => button.addEventListener('click', () => showToast(button.dataset.message)));
+      goTo(0, { scroll: false });
+      updateCurrentLoop();
+      const initialHash = location.hash;
+      const initial = screens.findIndex(screen => `#${screen.id}` === initialHash);
+      if (initial > 0) goTo(initial, { scroll: false });
+    })();
+  </script>
 </body>
 </html>
