@@ -333,24 +333,44 @@
     }
 
   
-    /* Visible module readings */
-    .reading-shelf{margin:14px 0 18px;padding:14px 0 4px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .reading-shelf-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}
-    .reading-shelf h3{margin:0;font-size:15px;letter-spacing:.01em}
-    .reading-shelf-note{margin:0;color:var(--muted);font-size:12px}
-    .reading-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-bottom:12px}
-    .reading-card{display:flex;flex-direction:column;gap:6px;min-height:126px;padding:13px 14px;border:1px solid var(--line);background:rgba(255,253,248,.58);text-decoration:none;border-radius:4px}
-    .reading-card:hover{background:var(--teal-soft);border-color:#aebdb5}
-    .reading-card strong{font-size:14px;line-height:1.3}
-    .reading-meta{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--teal);font-weight:800}
-    .reading-use{font-size:13px;line-height:1.42;color:var(--muted)}
-    .reading-open{margin-top:auto;font-size:12px;color:var(--teal);font-weight:750}
-    .reading-caution{font-size:12px;color:var(--muted);margin:0 0 11px}
     @media(max-width:780px){
       .reading-shelf{margin-top:10px}
       .reading-shelf-head{align-items:flex-start;flex-direction:column;gap:3px}
       .reading-row{display:flex;overflow-x:auto;gap:8px;padding:0 1px 8px;scroll-snap-type:x proximity}
       .reading-card{flex:0 0 min(82vw,300px);scroll-snap-align:start;min-height:138px}
+    }
+
+  
+    /* Inline readings from the canonical module pages */
+    .reading-inline{border-left:3px solid var(--gold);padding-left:18px}
+    .reading-inline .lesson-meta strong{color:var(--accent)}
+    .reading-tab{border-style:dashed}
+    .reading-tab[aria-current="step"]{background:var(--accent);border-color:var(--accent);color:#fff}
+    .reading-intro{font-size:17px;line-height:1.58;color:#394b47;margin-bottom:12px}
+    .reading-intro p:first-child{font-size:19px}
+    .module-fold{margin:10px 0;border:1px solid var(--line);background:rgba(255,253,248,.55)}
+    .module-fold summary{cursor:pointer;min-height:48px;padding:12px 14px;display:flex;align-items:center;font-weight:750;color:var(--teal)}
+    .module-fold summary::after{content:"+";margin-left:auto;font-size:18px}
+    .module-fold[open] summary::after{content:"−"}
+    .module-fold[open] summary{border-bottom:1px solid var(--line)}
+    .fold-copy{padding:13px 15px 15px}
+    .fold-copy p{margin:0 0 11px}
+    .fold-copy ul{margin:6px 0 10px;padding-left:20px}
+    .fold-copy li{margin:5px 0}
+    .action-fold{border-left:3px solid var(--teal)}
+    .carry-fold{border-left:3px solid var(--rule);background:var(--accent-soft)}
+    .reading-pulse{margin:16px 0;padding:14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .reading-pulse-title{margin:0 0 9px;font-weight:800;color:var(--ink)}
+    .reading-table-wrap{overflow-x:auto;margin:8px 0 12px}
+    .reading-table{width:100%;border-collapse:collapse;font-size:14px}
+    .reading-table td{padding:8px 9px;border:1px solid var(--line);vertical-align:top}
+    .lesson-inline{padding-left:2px}
+    .end-of-sequence{flex:1}
+    @media(max-width:780px){
+      .reading-inline{padding-left:12px}
+      .module-fold summary{padding:12px}
+      .fold-copy{padding:12px}
+      .reading-intro p:first-child{font-size:18px}
     }
 
   </style>
@@ -427,7 +447,7 @@
       <aside class="module-rail"><div><div class="module-number" aria-hidden="true">0</div><div class="rail-label">Enter with Agency</div></div><div class="margin-note">Passing is part of belonging.</div></aside>
       <div class="module-content">
         <header class="module-heading"><div class="module-kicker"><strong>Module 1 of 5</strong><span>5 lessons</span></div><h2 tabindex="-1" id="module-0-title">Enter with Agency</h2></header>
-        <section class="reading-shelf" aria-label="Readings behind this module"><div class="reading-shelf-head"><h3>Readings behind this module</h3><p class="reading-shelf-note">Optional · opens in a new tab</p></div><div class="reading-row"><a class="reading-card" href="https://doi.org/10.1186/1472-6939-14-28" target="_blank" rel="noopener"><span class="reading-meta">Nishimura et al. · 2013</span><strong>Improving understanding in informed consent</strong><span class="reading-use">Supports extended discussion and teach-back rather than treating a form as proof of understanding.</span><span class="reading-open">Open reading ↗</span></a><a class="reading-card" href="https://doi.org/10.1177/17407745211009529" target="_blank" rel="noopener"><span class="reading-meta">Sonn et al. · 2021</span><strong>Randomized comparison of consent interventions</strong><span class="reading-use">Supports conversational, interview-style consent teaching rather than a fact sheet alone.</span><span class="reading-open">Open reading ↗</span></a><a class="reading-card" href="https://doi.org/10.1002/eahr.70011" target="_blank" rel="noopener"><span class="reading-meta">O’Hare · 2026</span><strong>Information access in consent</strong><span class="reading-use">Supports proactive accessibility and not assuming literacy or motivation.</span><span class="reading-open">Open reading ↗</span></a><a class="reading-card" href="https://doi.org/10.1037/0003-066X.55.1.68" target="_blank" rel="noopener"><span class="reading-meta">Ryan & Deci · 2000</span><strong>Self-determination theory</strong><span class="reading-use">Supports choice, rationale, and non-controlling language as an autonomy-supportive climate.</span><span class="reading-open">Open reading ↗</span></a></div><p class="reading-caution">These readings inform the design by analogy. They do not validate Entrepalooza outcomes.</p></section>
+        
         <nav class="lesson-tabs" aria-label="Enter with Agency lessons"><button class="lesson-tab" type="button" data-lesson-goto="0" aria-current="step">1</button><button class="lesson-tab" type="button" data-lesson-goto="1" >2</button><button class="lesson-tab" type="button" data-lesson-goto="2" >3</button><button class="lesson-tab" type="button" data-lesson-goto="3" >4</button><button class="lesson-tab" type="button" data-lesson-goto="4" >5</button></nav>
         <div class="lesson-stage"><article class="lesson-card is-lesson-active" data-lesson-index="0" data-loop="notice">
     <div class="lesson-meta"><strong>Lesson 1 of 5</strong><span>·</span><span>Try it here</span></div>
@@ -476,162 +496,828 @@
     <div class="module-layout">
       <aside class="module-rail"><div><div class="module-number" aria-hidden="true">1</div><div class="rail-label">Find Something Worth Exploring</div></div><div class="margin-note">“Nothing clear yet” is a real result.</div></aside>
       <div class="module-content">
-        <header class="module-heading"><div class="module-kicker"><strong>Module 2 of 5</strong><span>5 lessons</span></div><h2 tabindex="-1" id="module-1-title">Find Something Worth Exploring</h2></header>
-        <section class="reading-shelf" aria-label="Readings behind this module"><div class="reading-shelf-head"><h3>Readings behind this module</h3><p class="reading-shelf-note">Optional · opens in a new tab</p></div><div class="reading-row"><a class="reading-card" href="https://doi.org/10.1207/s15326985ep4102_4" target="_blank" rel="noopener"><span class="reading-meta">Hidi & Renninger · 2006</span><strong>The four-phase model of interest development</strong><span class="reading-use">Supports treating interest as something that can develop, rather than something a person must already possess.</span><span class="reading-open">Open reading ↗</span></a><a class="reading-card" href="https://doi.org/10.1177/0956797618780643" target="_blank" rel="noopener"><span class="reading-meta">O’Keefe, Dweck & Walton · 2018</span><strong>Interest can be developed, not merely “found”</strong><span class="reading-use">Supports avoiding a fixed-passion frame and staying open to unfamiliar areas.</span><span class="reading-open">Open reading ↗</span></a><a class="reading-card" href="https://doi.org/10.1007/s11031-015-9503-0" target="_blank" rel="noopener"><span class="reading-meta">Curran et al. · 2015</span><strong>The psychology of passion: a meta-analytical review</strong><span class="reading-use">Supports distinguishing more harmonious and more obsessive patterns while keeping the distinction non-diagnostic.</span><span class="reading-open">Open reading ↗</span></a><a class="reading-card" href="https://doi.org/10.1007/s10648-025-10102-7" target="_blank" rel="noopener"><span class="reading-meta">Renninger et al. · 2026</span><strong>Interest, self-efficacy, and belonging</strong><span class="reading-use">Supports the idea that interest, confidence, and belonging can develop together over time.</span><span class="reading-open">Open reading ↗</span></a></div><p class="reading-caution">The passion research describes patterns and correlates. It does not show that this module converts one passion pattern into another.</p></section>
-        <nav class="lesson-tabs" aria-label="Find Something Worth Exploring lessons"><button class="lesson-tab" type="button" data-lesson-goto="0" aria-current="step">1</button><button class="lesson-tab" type="button" data-lesson-goto="1" >2</button><button class="lesson-tab" type="button" data-lesson-goto="2" >3</button><button class="lesson-tab" type="button" data-lesson-goto="3" >4</button><button class="lesson-tab" type="button" data-lesson-goto="4" >5</button></nav>
-        <div class="lesson-stage"><article class="lesson-card is-lesson-active" data-lesson-index="0" data-loop="notice">
-    <div class="lesson-meta"><strong>Lesson 1 of 5</strong><span>·</span><span>Try it here</span></div>
-    <h3 tabindex="-1">Notice without forcing an answer</h3><p class="lesson-purpose">Start with attention, curiosity, friction, or an honest “I don’t know yet.” None of it has to become a commitment.</p>
-     <div class="beat"><div class="beat-label">Learn</div><p>The readings treat interest as something that can develop through experience, confidence, and belonging. The first move is simply to notice.</p></div>
-     <div class="activity" data-single-select><p class="activity-title">Pick an entry route</p><div class="tile-grid">
-       <button class="tile-option" type="button" aria-pressed="false" data-feedback="A thread is enough. You do not need to know where it leads.">A thread already has my attention</button>
-       <button class="tile-option" type="button" aria-pressed="false" data-feedback="An open question is a real starting point.">I don’t know what interests me yet</button>
-       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Observation counts.">Observe the example</button>
-       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Private is a complete route.">Keep it private</button>
-     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
-     <div class="private-box"><label for="m1-private-1">Optional scratch: what keeps catching your attention, if anything?</label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="m1-private-1" rows="3" placeholder="Optional — leave blank if you prefer"></textarea></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Module 0</button><button class="button button-primary" type="button" data-lesson-next>Lesson 2 →</button></div></article><article class="lesson-card" data-lesson-index="1" data-loop="notice">
-    <div class="lesson-meta"><strong>Lesson 2 of 5</strong><span>·</span><span>Try it here</span></div>
-    <h3 tabindex="-1">Obsessive and harmonious patterns, not labels</h3><p class="lesson-purpose">Describe how an activity is operating without turning the pattern into a type of person.</p>
-     <div class="compare"><div class="compare-panel"><h5>More chosen / flexible</h5><p>Can pause, adjust, return, and fit the activity beside other responsibilities.</p></div><div class="compare-panel"><h5>More pressured / rigid</h5><p>Hard to stop or adjust, and pressure or self-worth starts controlling the activity.</p></div></div>
-     <div class="activity" data-single-select><p class="activity-title">What do you notice?</p><p>Someone loves making music. This week they can pause for dinner, change the plan when tired, and return tomorrow.</p><div class="tap-row">
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Yes. The example shows flexibility and the ability to pause.">Choice / flexibility</button>
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="There is no evidence of compulsion in the example as written.">Compulsion</button>
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Unclear is always allowed when evidence is thin.">Unclear</button>
-     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
-     <div class="mini-note">The passion research is used as a noticing lens, not a label or diagnosis.</div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 1</button><button class="button button-primary" type="button" data-lesson-next>Lesson 3 →</button></div></article><article class="lesson-card" data-lesson-index="2" data-loop="try">
-    <div class="lesson-meta"><strong>Lesson 3 of 5</strong><span>·</span><span>Try it here</span></div>
-    <h3 tabindex="-1">Choose an interest or try something new</h3><p class="lesson-purpose">Choose a thread, a bounded exposure, or a no-clue-yet route and gather one honest piece of evidence.</p>
-     <div class="activity" data-multi-select><p class="activity-title">Browse possibilities without picking a destiny</p><div class="tile-grid">
-       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Workplace exploration is one possible exposure category. No category ranks higher.">Workplace exploration</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Education / certification is one possible exposure category. No category ranks higher.">Education / certification</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Trades / hands-on skills is one possible exposure category. No category ranks higher.">Trades / hands-on skills</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Art / music / design is one possible exposure category. No category ranks higher.">Art / music / design</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Community contribution is one possible exposure category. No category ranks higher.">Community contribution</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Entrepreneurship / freelancing is one possible exposure category. No category ranks higher.">Entrepreneurship / freelancing</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Hobbies / routines is one possible exposure category. No category ranks higher.">Hobbies / routines</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Another direction is one possible exposure category. No category ranks higher.">Another direction</button>
-     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
-     <div class="beat"><div class="beat-label">Build a bounded try</div><p>Question → smallest real action → balance condition → boundary → support → stop/pause rule → evidence → reflection point.</p></div>
-     <div class="activity" data-single-select><p class="activity-title">Which boundary makes a ten-minute try genuinely bounded?</p><div class="tap-row">
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Yes. A time limit makes the try easier to stop and review.">Stop after 10 minutes</button>
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="That turns a small experiment into a performance test.">Keep going until I’m good at it</button>
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="That removes the stop rule.">No stopping point</button>
-     </div><p class="activity-message" role="status" aria-live="polite"></p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 2</button><button class="button button-primary" type="button" data-lesson-next>Lesson 4 →</button></div></article><article class="lesson-card" data-lesson-index="3" data-loop="reflect">
-    <div class="lesson-meta"><strong>Lesson 4 of 5</strong><span>·</span><span>Try it here</span></div>
-    <h3 tabindex="-1">Reflection, evidence, conditions, and cost</h3><p class="lesson-purpose">Separate what happened from what you or someone else inferred from it.</p>
-     <div class="activity" data-single-select><p class="activity-title">Sort one line</p><p><strong>“The checklist was completed in order.”</strong></p><div class="tap-row">
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Correct. That is an observation that can be checked.">Observation</button>
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="“The person likes structured work” would be an interpretation.">Interpretation</button>
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="The sentence itself does not describe cost.">Cost</button>
-     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
-     <div class="beat"><div class="beat-label">Evidence check</div><ul><li>What caught attention?</li><li>What actually happened?</li><li>What helped or blocked the try?</li><li>What did it cost?</li><li>Would you return?</li><li>What remains unknown?</li></ul></div>
-     <div class="mini-note">Boredom, friction, no access, no opportunity, and uncertainty are data. They are not character verdicts.</div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 3</button><button class="button button-primary" type="button" data-lesson-next>Lesson 5 →</button></div></article><article class="lesson-card" data-lesson-index="4" data-loop="decide">
-    <div class="lesson-meta"><strong>Lesson 5 of 5</strong><span>·</span><span>Try it here</span></div>
-    <h3 tabindex="-1">Review, next decision, and handoff</h3><p class="lesson-purpose">Compare expectation with evidence, keep uncertainty visible, and make a reversible next decision.</p>
-     <div class="activity"><p class="activity-title">Optional: rate the reasons, not the person</p><p>Adapted from Kennon Sheldon’s “Rating Your Motivations,” used with permission. This is optional and not a verdict.</p>
-       <div class="motivation-grid">
-         <div class="meter"><label>Interesting / enjoyable <output id="mi-o">4</output></label><input id="mi" data-mot="plus" type="range" min="1" max="7" value="4"></div>
-         <div class="meter"><label>Meaningful / important <output id="mm-o">4</output></label><input id="mm" data-mot="plus" type="range" min="1" max="7" value="4"></div>
-         <div class="meter"><label>Guilt / inner pressure <output id="mp-o">4</output></label><input id="mp" data-mot="minus" type="range" min="1" max="7" value="4"></div>
-         <div class="meter"><label>Approval / status / money <output id="me-o">4</output></label><input id="me" data-mot="minus" type="range" min="1" max="7" value="4"></div>
-       </div><p class="motivation-score">Demo score: <span id="mot-score">0</span>. Mixed motives are normal.</p></div>
-     <div class="beat"><div class="beat-label">Decide</div><p>Choose what fits what you actually saw. All seven choices count.</p><div class="decision-chips" aria-label="Choose a next decision"><button class="chip" type="button" aria-pressed="false">Keep</button><button class="chip" type="button" aria-pressed="false">Change</button><button class="chip" type="button" aria-pressed="false">Test Again</button><button class="chip" type="button" aria-pressed="false">Pause/Park</button><button class="chip" type="button" aria-pressed="false">Stop</button><button class="chip" type="button" aria-pressed="false">Another Direction</button><button class="chip" type="button" aria-pressed="false">Continue Looking</button></div><p class="activity-message choice-message" role="status" aria-live="polite"></p></div><div class="private-box"><label for="m1-private-5">Optional scratch: what evidence or unknown would you carry forward?</label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="m1-private-5" rows="3" placeholder="Optional — leave blank if you prefer"></textarea></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 4</button><a class="button button-primary" href="#module-1-5" data-goto="3">Finish Module 1 → Module 1.5</a></div></article></div>
+        <header class="module-heading"><div class="module-kicker"><strong>Module 2 of 5</strong><span>3 readings · 7 lessons</span></div><h2 tabindex="-1" id="module-1-title">Find Something Worth Exploring</h2></header>
+        
+        <nav class="lesson-tabs" aria-label="Module 2 of 5 sequence"><button class="lesson-tab reading-tab" type="button" data-lesson-goto="0" aria-current="step" aria-label="Reading 1 — You Don’t Have to Know Yet">R1</button><button class="lesson-tab " type="button" data-lesson-goto="1"  aria-label="Lesson 0 — Map the Life You're Actually Living">L0</button><button class="lesson-tab " type="button" data-lesson-goto="2"  aria-label="Lesson 1 — Notice without forcing an answer">L1</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="3"  aria-label="Reading 2 — When Something Matters, How It Holds You Matters">R2</button><button class="lesson-tab " type="button" data-lesson-goto="4"  aria-label="Lesson 2 — Obsessive and harmonious passion">L2</button><button class="lesson-tab " type="button" data-lesson-goto="5"  aria-label="Lesson 3 — Encounter possibilities">L3</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="6"  aria-label="Reading 3 — A Try Is Not a Commitment">R3</button><button class="lesson-tab " type="button" data-lesson-goto="7"  aria-label="Lesson 4 — Design a manageable balance experiment">L4</button><button class="lesson-tab " type="button" data-lesson-goto="8"  aria-label="Lesson 5 — Try and collect evidence">L5</button><button class="lesson-tab " type="button" data-lesson-goto="9"  aria-label="Lesson 6 — Reflect and decide">L6</button></nav>
+        <div class="lesson-stage"><article class="lesson-card module-item reading-inline is-lesson-active" data-lesson-index="0" data-loop="notice">
+    <div class="lesson-meta"><strong>Reading 1 of 10</strong><span>·</span><span>Read in pieces</span></div>
+    <h3 tabindex="-1">You Don’t Have to Know Yet</h3>
+    <div class="reading-intro"><p><em>Place before Lesson 1: Notice without forcing an answer</em> There is a lot of pressure to figure out what you are passionate about. Find your calling. Choose your direction. Know what you want. Build the plan. That sounds clean. Real life often is not. Sometimes you do know. Sometimes you have a strong pull toward something and cannot stop thinking about it. Sometimes you have a few loose threads. And sometimes the most accurate answer is: I don’t know yet. That is not a failed answer.</p></div><details class="module-fold  " open>
+      <summary>Interest does not always arrive fully formed</summary>
+      <div class="fold-copy"><p>Research on interest development gives us a useful correction to the idea that everyone has one hidden passion waiting to be discovered. Interest can begin as something small. Something catches your attention. You encounter it again. You learn a little more. You become more involved. Sometimes that interest disappears. Sometimes it sticks around. Sometimes it deepens. The important word is can. Seeing something once does not mean it will become meaningful. Being curious does not mean you have discovered your future. But you also do not have to wait for a lightning-bolt moment before you explore.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Look for signals, not answers</summary>
+      <div class="fold-copy"><p>Instead of asking: “What is my passion?” start smaller. What keeps catching your attention? What do you keep looking up? What kinds of problems do you notice? What do you complain about because you wish someone would fix it? What work do you find yourself watching other people do? What have you returned to more than once? What did you care about before somebody told you whether it was useful? What do people tend to ask you for help with? What kind of environment makes you curious? What question keeps coming back? None of those things proves that you have found “the thing.” They are signals. Signals are worth investigating. They are not instructions.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Interest is not destiny</summary>
+      <div class="fold-copy"><p>Something can interest you and still be wrong for you. You can enjoy learning about a field and hate doing the work. You can admire a profession and discover that its daily reality does not fit your life. You can be good at something and not want to build your future around it. You can care deeply about something without turning it into a career or business. And an interest can matter for a while and then change. Exploration is not a contract. It is how you get better information.</p></div>
+    </details><details class="module-fold  " >
+      <summary>You are allowed to begin without certainty</summary>
+      <div class="fold-copy"><p>If you already have something you want to explore, use it. If you have three possibilities, good. If all you have is: “I know I don’t want things to stay the same, but I don’t know what comes next.” you can start there too. Your job in this module is not to identify your permanent purpose. It is to find something with enough pull, curiosity, frustration, or possibility that it deserves a closer look.</p></div>
+    </details><details class="module-fold carry-fold " >
+      <summary>Carry this question forward</summary>
+      <div class="fold-copy"><p>What has enough of my attention that I would be willing to learn a little more about it?</p></div>
+    </details>
+    
+    <div class="reading-pulse" aria-label="Reading reflection">
+      <p class="reading-pulse-title">What are you carrying forward?</p>
+      <div class="tap-row" data-single-select>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
       </div>
+      <p class="activity-message" role="status" aria-live="polite"></p>
     </div>
-  </section>
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Back</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item lesson-inline" data-lesson-index="1" data-loop="notice">
+    <div class="lesson-meta"><strong>Lesson 2 of 10</strong><span>·</span><span>Work through it</span></div>
+    <h3 tabindex="-1">Map the Life You're Actually Living</h3>
+    <div class="lesson-intro"><p><em>Place before Lesson 1: Notice without forcing an answer. The map produces participant-selected evidence from actual life before anyone is asked to choose a direction.</em> <strong>Purpose:</strong> Notice what already occupies your time, attention, energy, movement, and relationships before deciding what might be worth exploring. <strong>Time:</strong> 25–35 minutes · <strong>Materials:</strong> Blank paper or digital canvas, pen/marker · <strong>Output:</strong> One life map + one thing worth looking at more closely</p></div><details class="module-fold  " open>
+      <summary>Start here</summary>
+      <div class="fold-copy"><p>You do not need to know what you want to do with your life. You do not need a business idea. You do not need to identify your &quot;passion.&quot; For this exercise, we are starting somewhere more concrete: What does your life actually look like right now? Researchers call a version of this <strong>occupational mapping</strong>. Instead of relying only on an interview or questionnaire, people draw the places they go and talk about what they actually do there. That can bring out ordinary routines, relationships, barriers, and meaningful activities that are easy to leave out when somebody simply asks, &quot;Tell me about yourself.&quot; Your map does not need to look good. This is not art class. Boxes, circles, arrows, words, stick figures, scribbles and mildly questionable geography are all legal.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Part 1: Draw your week</summary>
+      <div class="fold-copy"><p>Put HOME somewhere on the page. Now think about a normal week. Add the places you regularly go. They could include:</p><ul><li>work</li><li>someone else's house</li><li>school</li><li>stores</li><li>a gym</li><li>church</li><li>meetings</li><li>appointments</li><li>parks</li><li>restaurants</li><li>a garage</li><li>a friend's place</li><li>treatment or recovery spaces</li><li>community organizations</li><li>places connected to your kids</li><li>anywhere else that is actually part of your life</li></ul><p>Connect the places however makes sense to you. Then add what you usually do there. You are not trying to make a geographically accurate map. You're making a map of your lived week. This closely follows the research method, where participants were asked to show the places they went during a typical week and weekend, describe what those places were, how they got there, and what they did once they arrived.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Part 2: Add the things that don't have a place</summary>
+      <div class="fold-copy"><p>Some important parts of life happen without going anywhere. Add those too. Maybe you:</p><ul><li>research something for hours from your phone</li><li>fix things</li><li>draw</li><li>game</li><li>cook</li><li>sell things online</li><li>talk people through problems</li><li>scroll</li><li>write</li><li>care for somebody</li><li>organize things</li><li>watch tutorials</li><li>work on a car</li><li>make music</li><li>argue on Reddit about something you accidentally became an expert in</li><li>spend three hours researching something nobody asked you to research</li></ul><p>Put them somewhere on the page. The 2020 occupational-mapping study found exactly this problem: activities such as job searching sometimes disappeared from participants' physical maps because they happened online from home, libraries, or service organizations. So don't let &quot;I didn't go anywhere&quot; turn into &quot;I didn't do anything.&quot;</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Part 3: Mark the energy</summary>
+      <div class="fold-copy"><p>Look over your map. Don't analyze it yet. Just mark it. Use whatever symbols you want.</p><div class="reading-table-wrap"><table class="reading-table"><tbody><tr><td>Symbol</td><td>Meaning</td></tr><tr><td>+</td><td>gives me energy</td></tr><tr><td>–</td><td>drains me</td></tr><tr><td>\*</td><td>I care about this</td></tr><tr><td>?</td><td>I'm curious about this</td></tr><tr><td>$</td><td>mostly because I need money/resources</td></tr><tr><td>!</td><td>I get unusually focused here</td></tr><tr><td>X</td><td>something gets in the way</td></tr></tbody></table></div><p>You can invent your own symbols. There is no scoring system.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Part 4: Look at what's missing</summary>
+      <div class="fold-copy"><p>Now look at the blank spaces. Ask yourself:</p><ul><li>What used to be part of my life that isn't anymore?</li><li>What do I want to do but rarely get access to?</li><li>Where would I go if money, transportation, time, childcare, fear, paperwork, health, or another barrier weren't stopping me?</li><li>Who or what would be on this map if my circumstances were different?</li></ul><p>Write those things outside the edge of the map. That distinction matters. Sometimes something is missing because you don't care about it. Sometimes it's missing because you can't currently reach it. Those are not the same thing. Research using occupational maps found that access to transportation, money, services, social expectations, and other resources could substantially shape where people went and what they were able to do.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Part 5: Find the threads</summary>
+      <div class="fold-copy"><p>Now stop looking at individual places. Look for patterns. Finish any of these that actually fit:</p><ul><li>I keep ending up around…</li><li>I spend more time than I realized doing…</li><li>People seem to come to me for…</li><li>I lose track of time when…</li><li>I keep researching…</li><li>I seem to know a weird amount about…</li><li>I keep trying to improve…</li><li>I get frustrated when…</li><li>Something I miss is…</li><li>Something I wish I had access to is…</li><li>One part of this map I would willingly make bigger is…</li></ul><p>You do not have to answer every prompt.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Part 6: Pick one thing worth exploring</summary>
+      <div class="fold-copy"><p>You are not choosing a career. You are not committing to a business. You are not announcing your life's purpose. Pick one thread that makes you curious enough to look again. Complete: <strong>One thing I might want to understand better is:</strong> <strong>I noticed it because:</strong> <strong>I do NOT know yet:</strong> <strong>One small way I could learn more about it:</strong> That's enough. Your answer can change.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Before you leave the lesson</summary>
+      <div class="fold-copy"><p>Your map may show something exciting. It may show survival. It may look crowded, repetitive, tiny, chaotic, boring, disconnected, or unfinished. Do not grade the map. In the long-term unemployment study, participants' daily movement and occupations differed substantially depending on resources, transportation, social connection, employment circumstances, and other constraints. The researchers used mapping to make those circumstances more visible, not to rank people. The map is evidence. It says: This is where my life is right now. Then we can ask a better question: What here might be worth testing?</p></div>
+    </details><details class="module-fold  " >
+      <summary>Participant controls</summary>
+      <div class="fold-copy"><p>You may:</p><ul><li>keep the whole map private</li><li>share only one section</li><li>describe it without showing it</li><li>leave something off intentionally</li><li>stop and return later</li><li>decide that nothing on the map is worth exploring yet</li></ul><p>You do not have to turn the most painful, intense, or personal part of your life into a project.</p></div>
+    </details>
+    
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item lesson-inline" data-lesson-index="2" data-loop="notice">
+    <div class="lesson-meta"><strong>Lesson 3 of 10</strong><span>·</span><span>Work through it</span></div>
+    <h3 tabindex="-1">Notice without forcing an answer</h3>
+    <details class="module-fold  " open>
+      <summary>Why this matters</summary>
+      <div class="fold-copy"><p>People do not always know their direction before they begin. Attention, curiosity, friction, and repeated questions can provide starting information without becoming commitments.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Neutral demonstration</summary>
+      <div class="fold-copy"><p>Use a fictional example: A person keeps noticing community gardens but does not know whether they want to garden, volunteer, learn about food systems, meet people, or simply spend time outside.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Try—or pass</summary>
+      <div class="fold-copy"><p>Choose one entry route:</p><ul><li><strong>A thread:</strong> Something already has my attention.</li><li><strong>An open question:</strong> I do not know what interests me yet.</li><li><strong>Observe:</strong> Review the example without selecting a personal thread.</li><li><strong>Private:</strong> Record a thought without discussing it.</li></ul><p>Prompts:</p><ul><li>What keeps catching my attention?</li><li>What do I return to voluntarily?</li><li>Where do I notice curiosity, energy, friction, or possibility?</li><li>What am I unsure about?</li></ul></div>
+    </details><details class="module-fold carry-fold " >
+      <summary>Carry forward</summary>
+      <div class="fold-copy"><p>One participant-selected thread, question, or honest unknown. “Nothing clear yet” is sufficient.</p></div>
+    </details>
+    
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item reading-inline" data-lesson-index="3" data-loop="notice">
+    <div class="lesson-meta"><strong>Reading 4 of 10</strong><span>·</span><span>Read in pieces</span></div>
+    <h3 tabindex="-1">When Something Matters, How It Holds You Matters</h3>
+    <div class="reading-intro"><p><em>Place before Lesson 2: Notice patterns of passion</em> Caring intensely about something is not automatically a problem. It is also not automatically healthy. Research on passion makes a distinction that is useful here. It is not simply: passion or no passion. It also matters how the passion is held. Researchers studying what is called the Dualistic Model of Passion describe two broad patterns: harmonious passion and obsessive passion. These are research concepts. They are not personality types. This module is not going to label you as one or the other.</p></div><details class="module-fold  " open>
+      <summary>Harmonious passion</summary>
+      <div class="fold-copy"><p>Harmonious passion describes a pattern where an activity matters deeply but still feels more freely chosen. The activity can become an important part of your life without taking over all of it. You may work hard. You may care a lot. You may spend serious time on it. But there is usually more room for flexibility. You can adjust. You can make space for other parts of life. You can sometimes stop without feeling that stopping destroys who you are.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Obsessive passion</summary>
+      <div class="fold-copy"><p>Obsessive passion describes a more pressured relationship with an activity. The activity may still be something you genuinely love. But continuing can feel less optional. Pressure may come from inside: “I have to prove myself.” “If I stop, I’m failing.” “This is what makes me valuable.” Or it may be tied to approval, status, expectations, or other demands. The research describes this pattern as involving more internal pressure and rigid persistence. That does not mean every intense effort is obsessive. It does not mean working long hours automatically tells us what kind of passion is present. And it does not mean a person belongs permanently in one category.</p></div>
+    </details><details class="module-fold  " >
+      <summary>The difference is not how much you care</summary>
+      <div class="fold-copy"><p>Two people can care about the same activity just as intensely and have very different relationships with it. One person may feel: “I choose this. It matters to me. I can work hard and still change course when I need to.” Another may feel: “I have to do this. If I slow down, I’m failing. If this does not work, I don’t know what that says about me.” Real life can be mixed. You may feel free and excited one day and pressured the next. The activity itself matters. So can the reasons you are doing it, the conditions around it, and what else is happening in your life. This module is not asking you to diagnose the pattern. It is asking you to notice it.</p></div>
+    </details><details class="module-fold  " >
+      <summary>The goal is not to kill the fire</summary>
+      <div class="fold-copy"><p>Intensity can build things. It can also burn through everything around it. The point is not to become less driven. It is to learn enough about your relationship with that drive that you can make better decisions about where to put it. So instead of asking only: “How passionate am I?” also ask: “Do I still feel able to choose?” “Can I adjust?” “Can I stop when I need to?” “What happens to the rest of my life when I pursue this?” Those questions do not tell you whether an activity is good or bad. They give you more information about how you are engaging with it.</p></div>
+    </details><details class="module-fold carry-fold " >
+      <summary>Carry this question forward</summary>
+      <div class="fold-copy"><p>When I care intensely about something, what helps me stay able to choose instead of feeling controlled by it?</p></div>
+    </details>
+    
+    <div class="reading-pulse" aria-label="Reading reflection">
+      <p class="reading-pulse-title">What are you carrying forward?</p>
+      <div class="tap-row" data-single-select>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
+      </div>
+      <p class="activity-message" role="status" aria-live="polite"></p>
+    </div>
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item lesson-inline" data-lesson-index="4" data-loop="try">
+    <div class="lesson-meta"><strong>Lesson 5 of 10</strong><span>·</span><span>Work through it</span></div>
+    <h3 tabindex="-1">Obsessive and harmonious passion</h3>
+    <details class="module-fold  " open>
+      <summary>Why this matters</summary>
+      <div class="fold-copy"><p>Intensity can support meaning and effort, but intensity can also become rigid, controlling, or costly. The relevant question is not whether passion is good or bad; it is how the relationship with the activity is operating. This lesson teaches patterns. It does not sort people into types.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Neutral demonstration</summary>
+      <div class="fold-copy"><p>Compare two fictional patterns involving the same interest:</p><ul><li>A person enjoys making music, can pause when needed, adjusts expectations, and remains connected to sleep, relationships, and responsibilities.</li><li>A person feels unable to stop, treats every interruption as a threat, neglects essential needs, and believes poor performance means personal failure.</li></ul><p>Neither person receives a diagnosis or identity label. Never call either person “obsessive.” The examples illustrate patterns that may change over time and across conditions.</p></div>
+    </details><details class="module-fold  " >
+      <summary>What to notice</summary>
+      <div class="fold-copy"><ul><li>Choice or compulsion</li><li>Flexibility or rigidity</li><li>Meaning or pressure</li><li>Sustainable energy or depletion</li><li>Ability or inability to pause</li><li>Fit or conflict with the rest of life</li><li>Supportive or harmful environmental conditions</li></ul></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Try—or pass</summary>
+      <div class="fold-copy"><p>Participants examine a fictional example, a low-stakes personal interest, or a facilitator-provided scenario. They may choose <strong>mixed</strong> or <strong>unclear</strong> rather than forcing a category. Mixed and unclear are complete answers.</p></div>
+    </details><details class="module-fold carry-fold " >
+      <summary>Carry forward</summary>
+      <div class="fold-copy"><p>One sign to watch during the experiment. No score, type, cutoff, permanent conclusion, or OP→HP conversion claim.</p></div>
+    </details>
+    
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item lesson-inline" data-lesson-index="5" data-loop="reflect">
+    <div class="lesson-meta"><strong>Lesson 6 of 10</strong><span>·</span><span>Work through it</span></div>
+    <h3 tabindex="-1">Encounter possibilities</h3>
+    <details class="module-fold  " open>
+      <summary>Why this matters</summary>
+      <div class="fold-copy"><p>Interests often emerge through experience rather than advance certainty. Exposure can generate information about activities, environments, people, pace, and preferred ways of contributing.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Exposure categories</summary>
+      <div class="fold-copy"><p>Use a cohort-accessible menu developed before delivery. Categories may include:</p><ul><li>Employment and workplace exploration</li><li>Education, certification, or specialized study</li><li>Trades, technical skills, crafts, or hands-on work</li><li>Art, music, writing, design, and making</li><li>Volunteering, mentoring, peer support, or community contribution</li><li>Entrepreneurship, freelancing, self-employment, or testing an idea</li><li>Health, relationships, finances, routines, hobbies, and community life</li><li>Another participant-defined possibility</li></ul></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Try—or pass</summary>
+      <div class="fold-copy"><p>A participant may sample, observe, compare, research, ask someone a question, attend an accessible activity, or choose a supported simulation. No one must select entrepreneurship.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Barrier check</summary>
+      <div class="fold-copy"><p>Before choosing, consider transportation, money, schedules, childcare, technology, housing instability, accessibility, energy, and available support. Name practical barriers as practical barriers.</p></div>
+    </details><details class="module-fold carry-fold " >
+      <summary>Carry forward</summary>
+      <div class="fold-copy"><p>One possibility to test, compare, observe, or keep investigating—or <strong>Continue Looking</strong>.</p></div>
+    </details>
+    
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item reading-inline" data-lesson-index="6" data-loop="notice">
+    <div class="lesson-meta"><strong>Reading 7 of 10</strong><span>·</span><span>Read in pieces</span></div>
+    <h3 tabindex="-1">A Try Is Not a Commitment</h3>
+    <div class="reading-intro"><p><em>Place before Lesson 4: Design a manageable try</em> Sometimes exploration gets crushed under the weight of imaginary permanence. You look into a career and suddenly it feels like you are choosing what you will do for the next thirty years. You consider a class and your brain jumps to a degree. You think about selling something and suddenly you are imagining a company, taxes, investors, failure, and a logo you do not even have. The possibility becomes enormous before you have learned much about it. So we are going to separate two things: exploring and committing. They are not the same decision.</p></div><details class="module-fold  " open>
+      <summary>Different phases ask different questions</summary>
+      <div class="fold-copy"><p>Research on goal pursuit distinguishes between deciding what to pursue and carrying out a decision once it has been made. Those phases can involve different kinds of thinking. When you are still exploring, your job is not to defend a decision you have not made. Your job is to gather information. What is this actually like? What pulls me in? What pushes me away? What surprised me? What would I need to learn? What barriers are real? What assumptions was I making? Only later might the question become: “Do I want to commit more seriously to this?”</p></div>
+    </details><details class="module-fold  " >
+      <summary>Make the next move smaller than the future</summary>
+      <div class="fold-copy"><p>In Entrepalooza, we use bounded tries. That is a program design choice. It means you decide in advance how large the exploration is allowed to become. You might set:</p><ul><li>a time limit</li><li>a money limit</li><li>an energy limit</li><li>a privacy limit</li><li>a support you want available</li><li>something you are not willing to do</li><li>a reason you would pause</li><li>a reason you would stop</li><li>a point when you will review what happened</li></ul><p>The purpose is not to make the try scientifically perfect. It is to keep exploration from quietly turning into a commitment you never chose.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Build the exit before you enter</summary>
+      <div class="fold-copy"><p>Suppose you want to know whether photography interests you enough to explore further. You do not need to buy professional equipment. Your try might be: “For one week, I’ll use the camera I already have and spend thirty minutes on three different days learning and practicing.” Or maybe you are curious about a trade. The next move does not have to be: “Enroll in school.” It might be: “Talk to one person who actually does the work and watch one credible demonstration of what the job involves.” Or maybe you are wondering whether people would pay for something you can make. You do not need to launch a business. You might create one rough version and ask for feedback. The try should match what you actually need to learn.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>A useful try can disappoint you</summary>
+      <div class="fold-copy"><p>A try is not successful only when it makes you want more. You may discover: “I liked the idea more than the actual work.” “I enjoyed this, but not enough to build my life around it.” “I want to keep exploring, but I need different conditions.” “The work interests me, but the cost or schedule does not fit my reality.” “I thought I would hate this and I didn’t.” “I still don’t know.” Those are all possible outcomes. One try cannot tell you everything. It can give you another piece of evidence. That is enough for the next decision.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Do not turn five minutes of information into a five-year decision</summary>
+      <div class="fold-copy"><p>Exploration works better when the question is the right size. Not: “Is this my future?” Try: “Is this worth another look?” Not: “Should I become this kind of person?” Try: “What would I learn from one manageable step?” You are allowed to gather evidence before demanding certainty from yourself.</p></div>
+    </details><details class="module-fold carry-fold " >
+      <summary>Carry this question forward</summary>
+      <div class="fold-copy"><p>What could I try without needing the try to become my future?</p></div>
+    </details>
+    
+    <div class="reading-pulse" aria-label="Reading reflection">
+      <p class="reading-pulse-title">What are you carrying forward?</p>
+      <div class="tap-row" data-single-select>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
+      </div>
+      <p class="activity-message" role="status" aria-live="polite"></p>
+    </div>
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item lesson-inline" data-lesson-index="7" data-loop="reflect">
+    <div class="lesson-meta"><strong>Lesson 8 of 10</strong><span>·</span><span>Work through it</span></div>
+    <h3 tabindex="-1">Design a manageable balance experiment</h3>
+    <details class="module-fold  " open>
+      <summary>Design rule</summary>
+      <div class="fold-copy"><p><strong>Small + Supported + Chosen + Real + Reversible + Paced</strong></p></div>
+    </details><details class="module-fold  " >
+      <summary>Experiment card</summary>
+      <div class="fold-copy"><ul><li><strong>Question:</strong> What am I trying to learn?</li><li><strong>Smallest real action:</strong> What can I actually do or observe?</li><li><strong>Balance condition:</strong> What might support greater choice, flexibility, or sustainability?</li><li><strong>Boundary:</strong> How much time, money, energy, or disclosure will I use?</li><li><strong>Support:</strong> What person, tool, accommodation, or information would help?</li><li><strong>Stop/pause rule:</strong> What signal means I stop, pause, or adjust?</li><li><strong>Evidence:</strong> What will I notice?</li><li><strong>Reflection point:</strong> When will I review what happened?</li></ul></div>
+    </details><details class="module-fold  " >
+      <summary>Approved routes</summary>
+      <div class="fold-copy"><ul><li>Real-world field experiment</li><li>Classroom experiment</li><li>Private experiment</li><li>Observation-only route</li><li>Supported or adapted route</li><li>Simulation when a field route is inaccessible</li></ul><p>All approved routes receive equal completion credit.</p></div>
+    </details>
+    
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item lesson-inline" data-lesson-index="8" data-loop="decide">
+    <div class="lesson-meta"><strong>Lesson 9 of 10</strong><span>·</span><span>Work through it</span></div>
+    <h3 tabindex="-1">Try and collect evidence</h3>
+    <details class="module-fold  " open>
+      <summary>Evidence to notice</summary>
+      <div class="fold-copy"><ul><li>Did I want to begin?</li><li>Could I stop or change course?</li><li>What drew or lost my attention?</li><li>What felt meaningful, pressured, energizing, or draining?</li><li>What happened to sleep, health, relationships, responsibilities, rest, or support?</li><li>Which environmental conditions helped or interfered?</li><li>What practical barrier appeared?</li><li>What surprised me?</li></ul><p>Participants record only what they choose. A difficult, incomplete, or stopped experiment can still produce useful evidence.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Facilitator guardrail</summary>
+      <div class="fold-copy"><p>Do not praise overwork, intensity, emotional disclosure, or completion at the expense of boundaries. Do not interpret a participant’s behavior as a diagnosis or proof of readiness.</p></div>
+    </details>
+    
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item lesson-inline" data-lesson-index="9" data-loop="decide">
+    <div class="lesson-meta"><strong>Lesson 10 of 10</strong><span>·</span><span>Work through it</span></div>
+    <h3 tabindex="-1">Reflect and decide</h3>
+    <details class="module-fold  " open>
+      <summary>Separate experience from self-verdict</summary>
+      <div class="fold-copy"><ul><li>What happened?</li><li>What did I notice?</li><li>What did I learn about the activity?</li><li>What did I learn about the environment or conditions?</li><li>Did the experience feel more compulsive/rigid, more chosen/flexible, <strong>mixed</strong>, or <strong>unclear</strong>?</li><li>What story am I tempted to tell about myself?</li><li>What does the evidence actually support?</li></ul><p>Do <strong>not</strong> treat a useful try as proof that someone “became harmonious” or was “obsessive.” Interest remains a possibility—not destiny.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Next Decision</summary>
+      <div class="fold-copy"><p>Choose one:</p><ul><li><strong>Keep</strong></li><li><strong>Change</strong></li><li><strong>Test Again</strong></li><li><strong>Pause/Park</strong></li><li><strong>Stop</strong></li><li><strong>Another Direction</strong></li><li><strong>Continue Looking</strong></li></ul><p>All choices may be successful when they are participant-chosen and evidence-informed. Record on the <strong>Reframe &amp; Redirect Map</strong> / <strong>Next Decision</strong>.</p></div>
+    </details><details class="module-fold carry-fold " >
+      <summary>Carry forward</summary>
+      <div class="fold-copy"><p>Only participant-selected evidence, the Next Decision, and an optional open question move into Module 1.5 or Module 2. # Optional activities Optional activities may include:</p><ul><li>Private writing about a past relationship with an interest or pattern</li><li>A participant-chosen symbolic release or transition</li><li>Voluntary sharing or a support request</li><li>A real guest story that includes boundaries, setbacks, mixed evidence, and multiple legitimate paths</li><li>Additional reading or discussion about passion research</li></ul><p>Every optional activity must:</p><ul><li>Be labeled optional before it begins.</li><li>Offer a private, low-disclosure, observe-only, or neutral alternative.</li><li>Avoid requiring trauma, addiction, criminal-history, or recovery disclosure.</li><li>Preserve participant control over personal writing.</li><li>Carry no completion, evaluation, belonging, or approval penalty.</li><li>Include a pause or stop route.</li></ul></div>
+    </details>
+    
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <a class="button button-primary" href="#module-1-5" data-goto="3">Finish Module 1 → Module 1.5</a>
+    </div>
+  </article></div></div></div></section>
+
+    
 
     <section class="screen module-screen" id="module-1-5" data-index="3" aria-labelledby="module-1-5-title">
     <div class="module-layout">
       <aside class="module-rail"><div><div class="module-number" aria-hidden="true">1.5</div><div class="rail-label">Test How I Operate</div></div><div class="margin-note">Conditions are information, not a score.</div></aside>
       <div class="module-content">
-        <header class="module-heading"><div class="module-kicker"><strong>Module 3 of 5</strong><span>3 lessons</span></div><h2 tabindex="-1" id="module-1-5-title">Test How I Operate</h2></header>
-        <section class="reading-shelf" aria-label="Readings behind this module"><div class="reading-shelf-head"><h3>Readings behind this module</h3><p class="reading-shelf-note">Optional · opens in a new tab</p></div><div class="reading-row"><a class="reading-card" href="https://doi.org/10.1111/j.1467-6494.2009.00559.x" target="_blank" rel="noopener"><span class="reading-meta">Mageau et al. · 2009</span><strong>Autonomy support and passion development</strong><span class="reading-use">Supports attending to conditions around engagement instead of treating the person as a fixed type.</span><span class="reading-open">Open reading ↗</span></a><a class="reading-card" href="https://doi.org/10.1080/17408989.2023.2206832" target="_blank" rel="noopener"><span class="reading-meta">Jang et al. · 2025</span><strong>Autonomy-supportive conditions</strong><span class="reading-use">Used as an analogous source for testing how changes in setup can affect engagement and choice.</span><span class="reading-open">Open reading ↗</span></a></div><p class="reading-caution">Module 1.5 uses these readings as design analogies. One changed-condition test cannot establish a permanent preference or causal explanation.</p></section>
-        <nav class="lesson-tabs" aria-label="Test How I Operate lessons"><button class="lesson-tab" type="button" data-lesson-goto="0" aria-current="step">1</button><button class="lesson-tab" type="button" data-lesson-goto="1" >2</button><button class="lesson-tab" type="button" data-lesson-goto="2" >3</button></nav>
-        <div class="lesson-stage"><article class="lesson-card is-lesson-active" data-lesson-index="0" data-loop="notice">
-    <div class="lesson-meta"><strong>Lesson 1 of 3</strong><span>·</span><span>Try it here</span></div>
-    <h3 tabindex="-1">Understand the setup around a task</h3><p class="lesson-purpose">Describe one condition around a task without turning it into a personality score.</p>
-     <div class="beat"><div class="beat-label">Learn</div><p>An operating condition can include instruction format, noise, company, choice, time, uncertainty, access, or support. The same task can feel different when one condition changes.</p></div>
-     <div class="activity" data-single-select><p class="activity-title">Same task, different setup</p><p>Task: alphabetize <strong>cup, book, apple</strong>.</p><div class="tap-row">
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Paragraph format selected. The task itself has not changed.">Paragraph instructions</button>
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Checklist format selected. The task itself has not changed.">Checklist instructions</button>
-     </div><div class="compare"><div class="compare-panel"><h5>Paragraph</h5><p>Read the three words, alphabetize them, then check all three are included.</p></div><div class="compare-panel"><h5>Checklist</h5><p>1. Read. 2. Alphabetize. 3. Check all three.</p></div></div><p class="activity-message" role="status" aria-live="polite"></p></div>
-     <div class="mini-note">One attempt can raise a useful question. It cannot prove a permanent preference.</div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Module 1</button><button class="button button-primary" type="button" data-lesson-next>Lesson 2 →</button></div></article><article class="lesson-card" data-lesson-index="1" data-loop="try">
-    <div class="lesson-meta"><strong>Lesson 2 of 3</strong><span>·</span><span>Try it here</span></div>
-    <h3 tabindex="-1">Run one changed-condition test</h3><p class="lesson-purpose">Change one part of the setup, keep the task reasonably similar, and notice what actually changes.</p>
-     <div class="activity" data-single-select><p class="activity-title">Pick one condition to change</p><div class="tile-grid">
-       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Instruction format can be tested as one condition while keeping the rest as similar as practical.">Instruction format</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Noise level can be tested as one condition while keeping the rest as similar as practical.">Noise level</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Alone / alongside someone can be tested as one condition while keeping the rest as similar as practical.">Alone / alongside someone</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Pace can be tested as one condition while keeping the rest as similar as practical.">Pace</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Breaks can be tested as one condition while keeping the rest as similar as practical.">Breaks</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Available time can be tested as one condition while keeping the rest as similar as practical.">Available time</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Support can be tested as one condition while keeping the rest as similar as practical.">Support</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Tools can be tested as one condition while keeping the rest as similar as practical.">Tools</button>
-     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
-     <div class="beat"><div class="beat-label">Plan before the try</div><ul><li>What stays the same?</li><li>What one condition changes?</li><li>What time limit and stop rule apply?</li><li>What else could explain the result?</li></ul></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 1</button><button class="button button-primary" type="button" data-lesson-next>Lesson 3 →</button></div></article><article class="lesson-card" data-lesson-index="2" data-loop="decide">
-    <div class="lesson-meta"><strong>Lesson 3 of 3</strong><span>·</span><span>Try it here</span></div>
-    <h3 tabindex="-1">Review the cost and hand off evidence</h3><p class="lesson-purpose">Separate result, cost, explanation, and uncertainty, then carry forward only what you choose.</p>
-     <div class="activity" data-single-select><p class="activity-title">Which claim is stronger than the evidence?</p><div class="tap-row">
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="That is a direct observation.">I completed the order.</button>
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Right. This needs a comparison and may still be uncertain.">The checklist definitely makes me work better.</button>
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Unknown is appropriate when you do not have evidence.">I don’t know what caused the difference.</button>
-     </div><p class="activity-message" role="status" aria-live="polite"></p></div><div class="beat"><div class="beat-label">Decide</div><p>Choose what fits what you actually saw. All seven choices count.</p><div class="decision-chips" aria-label="Choose a next decision"><button class="chip" type="button" aria-pressed="false">Keep</button><button class="chip" type="button" aria-pressed="false">Change</button><button class="chip" type="button" aria-pressed="false">Test Again</button><button class="chip" type="button" aria-pressed="false">Pause/Park</button><button class="chip" type="button" aria-pressed="false">Stop</button><button class="chip" type="button" aria-pressed="false">Another Direction</button><button class="chip" type="button" aria-pressed="false">Continue Looking</button></div><p class="activity-message choice-message" role="status" aria-live="polite"></p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 2</button><a class="button button-primary" href="#module-2" data-goto="4">Finish Module 1.5 → Module 2</a></div></article></div>
+        <header class="module-heading"><div class="module-kicker"><strong>Module 3 of 5</strong><span>3 readings · 3 lessons</span></div><h2 tabindex="-1" id="module-1-5-title">Test How I Operate</h2></header>
+        
+        <nav class="lesson-tabs" aria-label="Module 3 of 5 sequence"><button class="lesson-tab reading-tab" type="button" data-lesson-goto="0" aria-current="step" aria-label="Reading 1 — Maybe It’s Not Just You. Look at the Setup.">R1</button><button class="lesson-tab " type="button" data-lesson-goto="1"  aria-label="Lesson 1 — Describe the setup around a task">L1</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="2"  aria-label="Reading 2 — Change One Thing and See What You Learn">R2</button><button class="lesson-tab " type="button" data-lesson-goto="3"  aria-label="Lesson 2 — Run one changed-condition test">L2</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="4"  aria-label="Reading 3 — One Result Is a Clue, Not a Personality">R3</button><button class="lesson-tab " type="button" data-lesson-goto="5"  aria-label="Lesson 3 — Review what helped and what it cost">L3</button></nav>
+        <div class="lesson-stage"><article class="lesson-card module-item reading-inline is-lesson-active" data-lesson-index="0" data-loop="notice">
+    <div class="lesson-meta"><strong>Reading 1 of 6</strong><span>·</span><span>Read in pieces</span></div>
+    <h3 tabindex="-1">Maybe It’s Not Just You. Look at the Setup.</h3>
+    <div class="reading-intro"><p><em>Place before Lesson 1: Describe the setup around a task</em></p></div><details class="module-fold  " open>
+      <summary>From Module 1 to here</summary>
+      <div class="fold-copy"><p>In Module 1, you explored something that caught your attention and started noticing how you related to it. Maybe it felt chosen. Maybe it felt pressured. Maybe you could stop easily. Maybe stopping was harder than you expected. Maybe you liked the activity but not the way you were doing it. Maybe the whole thing was mixed or unclear. Module 1 did not ask you to decide: “This is just who I am.” Module 1.5 picks up there. Before you explain the experience entirely through your personality, motivation, ability, or the activity itself, there is another part of the picture worth examining: the conditions around what you were doing. Research on behavior and personality has repeatedly shown that people do not behave exactly the same way in every situation. What someone does can vary depending on the situation, even while people also show real patterns across time. So the question here is not: “Was it me or the environment?” Usually, life is not that clean. A better question is: “What part of the person, task, and situation might be affecting what happened?” That is the job of this module. You will look at the setup around an activity, change one manageable part when possible, and see whether anything worth noticing changes. ---</p></div>
+    </details><details class="module-fold  " >
+      <summary>People turn experiences into descriptions of themselves quickly</summary>
+      <div class="fold-copy"><p>I’m lazy. I’m bad at this. I can’t focus. I work better alone. I need pressure. I’m terrible with structure. I never finish anything. Sometimes those conclusions may describe a real pattern. But one experience rarely tells you the whole story. Imagine trying to read while three people are talking, your phone keeps buzzing, you are hungry, and you have twenty minutes before you need to leave. Now imagine reading similar material somewhere quiet, after eating, with more time available and your phone out of reach. Same person. Similar task. Different setup. Your experience might change. Or it might not. Either result is useful because it reminds you that the person may not be the only relevant factor.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Every activity happens under conditions</summary>
+      <div class="fold-copy"><p>Nobody acts in a vacuum. There is always a situation around what you are doing. There may be:</p><ul><li>a deadline</li><li>no deadline</li><li>clear instructions</li><li>confusing instructions</li><li>more or less choice</li><li>noise</li><li>silence</li><li>another person nearby</li><li>someone evaluating the work</li><li>nobody available to help</li><li>interruptions</li><li>time pressure</li><li>unfamiliar technology</li><li>transportation problems</li><li>childcare demands</li><li>predictable routines</li><li>uncertainty</li><li>encouragement</li><li>criticism</li><li>money pressure</li><li>physical discomfort</li><li>exhaustion before you begin</li></ul><p>In Entrepalooza, we call parts of this setup operating conditions. That is a program term. An operating condition is simply something about the situation surrounding an activity that may be relevant to how the activity goes. It is not a diagnosis. It is not a personality type. And noticing a condition does not prove that the condition caused what happened. It gives you something worth examining.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Choice and structure can both matter</summary>
+      <div class="fold-copy"><p>One reason we look at conditions is that motivation research shows that social environments can matter. For example, research on autonomy support has found that people tend to show more autonomous motivation and engagement when they experience meaningful choice, perspective-taking, and less controlling pressure. Research also suggests that structure and autonomy do not have to be opposites. Clear expectations, useful information, and boundaries can support people without removing choice. That matters here because: “I need structure” and “I need freedom” may be too crude. A person might need: enough structure to understand what they are doing and enough choice to still feel ownership of it. That is something you can investigate.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Different does not mean defective</summary>
+      <div class="fold-copy"><p>Suppose you begin more easily when another person is nearby. That does not automatically mean you are dependent. Suppose written instructions are easier to use than six spoken directions. That does not prove anything is wrong with you. Suppose you work differently with music, silence, a timer, a deadline, a break, more choice, or clearer structure. That is information about what happened under those conditions. The trap is turning the result into another permanent rule: “This is the only way I can function.” Maybe that pattern will show up repeatedly. Maybe it will not. Different tasks and situations can produce different results. This module is not trying to uncover your permanent work style. It is helping you examine patterns without declaring them permanent too early.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Observation first</summary>
+      <div class="fold-copy"><p>Consider: Observation:&lt;br&gt;“I worked on it for three hours and skipped lunch.” Now consider: Interpretation:&lt;br&gt;“I have no self-control.” The first describes something that happened. The second explains it. The explanation could eventually contain something useful. But the observation alone does not establish why it happened. Other possibilities could include:</p><ul><li>you lost track of time</li><li>the activity was unusually engaging</li><li>there was no stopping point</li><li>you were under a deadline</li><li>you worried you would not restart if you stopped</li><li>food was not easily available</li><li>several factors were operating at once</li></ul><p>You do not have to choose the “nice” explanation. You just do not need to pretend you know more than you know. First: What happened? Then: What might explain it?</p></div>
+    </details><details class="module-fold  " >
+      <summary>Context is not an excuse</summary>
+      <div class="fold-copy"><p>Looking at conditions does not erase responsibility. If you made a choice that caused a problem, that still matters. But accurate learning usually requires more than asking: “What is wrong with me?” Look at: person + task + situation. That gives you more to work with.</p></div>
+    </details><details class="module-fold carry-fold " >
+      <summary>Carry this question forward</summary>
+      <div class="fold-copy"><p>What part of the setup around this activity might be worth examining before I decide what the experience says about me?</p></div>
+    </details>
+    
+    <div class="reading-pulse" aria-label="Reading reflection">
+      <p class="reading-pulse-title">What are you carrying forward?</p>
+      <div class="tap-row" data-single-select>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
       </div>
+      <p class="activity-message" role="status" aria-live="polite"></p>
     </div>
-  </section>
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Back</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item lesson-inline" data-lesson-index="1" data-loop="notice">
+    <div class="lesson-meta"><strong>Lesson 2 of 6</strong><span>·</span><span>Work through it</span></div>
+    <h3 tabindex="-1">Describe the setup around a task</h3>
+    <details class="module-fold  " open>
+      <summary>Why this matters</summary>
+      <div class="fold-copy"><p>The same activity can feel and function differently when its setup changes. Understanding conditions can help participants test what <strong>may support more chosen, flexible, or sustainable engagement</strong>—without blaming themselves, assigning a fixed type, or claiming harmonious passion was achieved.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Teach</summary>
+      <div class="fold-copy"><p>An <strong>operating condition</strong> is one part of the setup around an activity. An <strong>observation</strong> describes what happened. An <strong>interpretation</strong> is an explanation of why it happened. Example:</p><ul><li>Observation: “I wrote for three hours and skipped lunch.”</li><li>Interpretation: “I have no self-control.”</li></ul><p>The observation is evidence. The interpretation is a possible story and may need more information.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Neutral demonstration</summary>
+      <div class="fold-copy"><p>Use one simple adult-respectful task with two instruction formats or setups. Participants may examine the example without completing it. The demonstration should not imply that one format is universally better.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Try—or pass</summary>
+      <div class="fold-copy"><p>Choose: a participant-selected activity from Module 1; a low-stakes everyday task; the neutral demonstration; an observe-only route; or an honest unknown.</p></div>
+    </details><details class="module-fold  " >
+      <summary>What comes out</summary>
+      <div class="fold-copy"><p>One task, one condition, and one question or honest unknown.</p></div>
+    </details>
+    
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item reading-inline" data-lesson-index="2" data-loop="notice">
+    <div class="lesson-meta"><strong>Reading 3 of 6</strong><span>·</span><span>Read in pieces</span></div>
+    <h3 tabindex="-1">Change One Thing and See What You Learn</h3>
+    <div class="reading-intro"><p><em>Place before Lesson 2: Run one changed-condition trial</em> You have looked at the setup. Now you are going to make the question smaller. Not: “What environment is perfect for me?” Not: “How do I finally fix the way I work?” Instead: “What happens if I change one part of the setup?” Entrepalooza calls this a changed-condition trial. It is not a scientific experiment. Real life has too many moving pieces for that. It is a structured way to gather better information.</p></div><details class="module-fold  " open>
+      <summary>Start with something you noticed</summary>
+      <div class="fold-copy"><p>Maybe you noticed:</p><ul><li>I have trouble stopping once I start.</li><li>I keep getting pulled away by my phone.</li><li>I freeze when the instructions are vague.</li><li>I start more easily when someone else is working nearby.</li><li>I rush when I can see the clock.</li><li>I lose interest when the task feels heavily controlled.</li><li>I do better when I know what “done” means.</li></ul><p>Instead of turning that observation into a rule, turn it into a question. Instead of: “I need pressure to work.” Try: “What happens if I give myself a clear stopping time?” Instead of: “I can’t focus around people.” Try: “What do I notice if I do a similar task somewhere quieter?” Instead of: “I always lose track of time.” Try: “What happens if I decide when I will stop before I begin?” The question creates room for evidence.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Change as little as practical</summary>
+      <div class="fold-copy"><p>Suppose you want to know whether a visible stopping point affects the way you work. Try the activity with one. If possible, avoid completely redesigning everything else at the same time. Why? Because if you change the room, the task, the schedule, the person helping you, the music, the instructions, and the time limit all at once, you may learn: “This version felt different.” But you will have less information about what contributed to the difference. You do not need laboratory control. You are simply making the comparison easier to understand.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Decide what you want to notice</summary>
+      <div class="fold-copy"><p>A changed condition can affect different things. So choose what matters for your question. You might watch for:</p><ul><li>how easy it was to begin</li><li>whether you stayed with the task</li><li>whether you understood what to do</li><li>how much pressure you felt</li><li>whether you could stop when you planned</li><li>how much effort it took</li><li>whether you wanted to return</li><li>how you felt afterward</li></ul><p>Do not try to measure everything. A useful question is: “If this condition mattered, what difference might I actually notice?”</p></div>
+    </details><details class="module-fold  " >
+      <summary>Decide the boundaries before you begin</summary>
+      <div class="fold-copy"><p>Entrepalooza uses boundaries for these trials. That is a program design choice. You might decide:</p><ul><li>how long you are willing to try</li><li>how much money, if any, you are willing to spend</li><li>what support you want available</li><li>what would make you pause</li><li>what would make you stop</li></ul><p>For example: “I’ll try this for twenty minutes.” “I’m not spending money on this trial.” “I’ll ask for clarification if I stay stuck for ten minutes.” “I’ll stop if I am no longer learning anything useful.” Planning a response in advance can sometimes make it easier to act when the situation actually arrives. Research on implementation intentions supports the usefulness of linking a recognizable situation with a planned response. But the specific boundaries used here belong to our trial design. Their purpose is simple: keep the try small enough that you remain able to choose.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Then see what happens</summary>
+      <div class="fold-copy"><p>Change the condition. Try the activity if you choose to. Notice what happened. Maybe it feels easier. Maybe harder. Maybe different in one way and exactly the same in another. Maybe nothing noticeable changes. Do not rush to explain it. That comes next. For now: What changed? What did you notice?</p></div>
+    </details><details class="module-fold  " >
+      <summary>What if you cannot or do not run the trial?</summary>
+      <div class="fold-copy"><p>That route counts too. Maybe:</p><ul><li>transportation falls through</li><li>there is no opportunity</li><li>you do not have the equipment</li><li>childcare is unavailable</li><li>the cost is too high</li><li>the situation changes</li><li>you choose not to do it</li><li>you decide to observe instead</li><li>you want support before attempting it</li></ul><p>That does not answer the original question. If you never test whether quieter surroundings help, you cannot conclude that they do or do not. But you have learned something else: there was a barrier to running the trial. That information matters too. You may adapt it, plan it, observe someone else, try it with support, pause it, or leave the question open.</p></div>
+    </details><details class="module-fold carry-fold " >
+      <summary>Carry this question forward</summary>
+      <div class="fold-copy"><p>What one condition could I change, and what specifically would I watch for?</p></div>
+    </details>
+    
+    <div class="reading-pulse" aria-label="Reading reflection">
+      <p class="reading-pulse-title">What are you carrying forward?</p>
+      <div class="tap-row" data-single-select>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
+      </div>
+      <p class="activity-message" role="status" aria-live="polite"></p>
+    </div>
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item lesson-inline" data-lesson-index="3" data-loop="reflect">
+    <div class="lesson-meta"><strong>Lesson 4 of 6</strong><span>·</span><span>Work through it</span></div>
+    <h3 tabindex="-1">Run one changed-condition test</h3>
+    <details class="module-fold  " open>
+      <summary>Design rule</summary>
+      <div class="fold-copy"><p><strong>One task + one changed condition + one bounded comparison.</strong> Keep the task and amount of work as similar as practical. Note other things that may differ, including familiarity, practice, time of day, support, and interruptions.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Test plan</summary>
+      <div class="fold-copy"><p>Question; Task; Condition; Balance signal; Limit; Support; Stop/pause rule; Other explanations.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Approved routes</summary>
+      <div class="fold-copy"><p>Attempt the test; Plan without attempting; Observe a demonstration; Use a private, supported, adapted, or simulated route; Pause, stop, decline, or report no opportunity. All routes receive equal completion credit.</p></div>
+    </details><details class="module-fold  " >
+      <summary>What comes out</summary>
+      <div class="fold-copy"><p>A bounded test plan, a result or non-attempt, cost, and a revisable observation.</p></div>
+    </details>
+    
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item reading-inline" data-lesson-index="4" data-loop="notice">
+    <div class="lesson-meta"><strong>Reading 5 of 6</strong><span>·</span><span>Read in pieces</span></div>
+    <h3 tabindex="-1">One Result Is a Clue, Not a Personality</h3>
+    <div class="reading-intro"><p><em>Place before Lesson 3: Review what helped and what it cost</em> Now you have something that happened under a particular set of conditions. The next temptation is certainty. “That worked. I need this.” “That failed. This does not work for me.” “I am good under pressure.” “I cannot work with people.” “I need structure.” “I am naturally independent.” Slow down. Research on personality and behavior gives us a good reason to be careful here. People show meaningful patterns across time, and the same person can behave differently across situations. So one result may contribute to a pattern. It usually does not establish a permanent trait by itself.</p></div><details class="module-fold  " open>
+      <summary>Start with what happened</summary>
+      <div class="fold-copy"><p>Maybe: “I used a stopping point and stopped when I intended to.” “I worked beside someone and began sooner.” “I changed the noise level and noticed almost no difference.” “Clearer instructions reduced the time I spent figuring out where to start.” “I added more freedom and found it harder to choose a first step.” Those are observations. They are already useful. You do not have to turn them into personality statements.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Ask what the change helped</summary>
+      <div class="fold-copy"><p>Do not settle for: “It worked.” Worked how? Maybe you:</p><ul><li>started sooner</li><li>stayed longer</li><li>understood more</li><li>felt less controlled</li><li>felt more pressured</li><li>stopped more easily</li><li>completed more</li><li>made fewer mistakes</li><li>enjoyed the task more</li><li>needed less recovery afterward</li></ul><p>A condition can help one outcome and hurt another. That matters. A deadline could increase output while also increasing pressure. Another person could help you begin while making concentration harder. More freedom could increase choice while also making the next step less clear. Structure could make the task easier to understand while also feeling too controlling if there is no room for choice. There may not be one universally “best” condition.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Ask what it required</summary>
+      <div class="fold-copy"><p>A result also exists inside real life. Maybe the setup helped, but it required:</p><ul><li>transportation</li><li>money</li><li>childcare</li><li>another person's availability</li><li>special equipment</li><li>more preparation</li><li>recovery time</li><li>a support that is difficult to access regularly</li></ul><p>That does not make the result fake. It makes the description more complete. Instead of: “This works for me.” you may learn: “This seemed to help under these conditions, and these are the resources it required.”</p></div>
+    </details><details class="module-fold  " >
+      <summary>Support belongs in the description</summary>
+      <div class="fold-copy"><p>Suppose you completed the task while another person helped you. The accurate description is not: “I proved I can do this completely independently.” It is also not: “It doesn’t count because somebody helped me.” It is: “I completed this under conditions that included support.” That is what the evidence shows. You can then ask a different question: “Is that support available, useful, appropriate, and sustainable for what I want to do?” Do not erase support from the evidence. Do not pretend it was unnecessary either. Record the conditions honestly.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Ask what else may have mattered</summary>
+      <div class="fold-copy"><p>Imagine the second attempt went better. The changed condition may have helped. But other things may also have changed. Maybe:</p><ul><li>you had already practiced</li><li>you knew what to expect</li><li>you slept better</li><li>the second task was easier</li><li>someone encouraged you</li><li>you were less nervous</li><li>you happened to have more energy</li></ul><p>You do not need to solve every alternative explanation. You do need to avoid pretending one trial proved a cause. A reasonable conclusion might be: “With this change, the task seemed easier this time. I want to see whether that happens again.”</p></div>
+    </details><details class="module-fold  " >
+      <summary>Use provisional conclusions</summary>
+      <div class="fold-copy"><p>A provisional conclusion is useful now and revisable later. For example: “A visible stopping point seemed to help me disengage in this trial. I want to use one again.” “I started sooner when another person was present. I do not know whether the important part was accountability, having a scheduled time, or something else.” “More structure helped with this unfamiliar task. I do not know whether I will need as much structure once the task becomes familiar.” “I expected quieter surroundings to make a big difference. I did not notice much change this time.” Notice the language: seemed this time under these conditions I don’t know yet That is not weak language. It matches the amount of evidence you actually have.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Do not turn useful information into another cage</summary>
+      <div class="fold-copy"><p>The purpose of learning about your patterns is not to create a laminated card that says: THIS IS HOW I FUNCTION. People can show stable tendencies. People also change. Tasks differ. Skills develop. Situations change. Supports change. Responsibilities change. A better conclusion is often: “For now, under these conditions, this is what I noticed.” Then decide what to do with it. You can:</p><ul><li>Keep the condition</li><li>Change it</li><li>Test Again</li><li>Pause/Park</li><li>Stop</li><li>choose Another Direction</li><li>Continue Looking</li></ul><p>The decision does not declare who you are. It tells you what you want to do with the evidence you have.</p></div>
+    </details><details class="module-fold carry-fold " >
+      <summary>Carry this question forward</summary>
+      <div class="fold-copy"><p>What does the evidence support right now, and what would I need to see before I became more certain?</p></div>
+    </details>
+    
+    <div class="reading-pulse" aria-label="Reading reflection">
+      <p class="reading-pulse-title">What are you carrying forward?</p>
+      <div class="tap-row" data-single-select>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
+      </div>
+      <p class="activity-message" role="status" aria-live="polite"></p>
+    </div>
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item lesson-inline" data-lesson-index="5" data-loop="decide">
+    <div class="lesson-meta"><strong>Lesson 6 of 6</strong><span>·</span><span>Work through it</span></div>
+    <h3 tabindex="-1">Review what helped and what it cost</h3>
+    <details class="module-fold  " open>
+      <summary>Reflect</summary>
+      <div class="fold-copy"><p>What happened? What did the condition appear to change? What else was different? What effort did it require? What happened afterward? Did the condition affect choice, flexibility, enjoyment, pressure, or ability to stop? Would I choose this condition again? What remains unknown? What evidence would make me revise this conclusion?</p></div>
+    </details><details class="module-fold  " >
+      <summary>Separate the claims</summary>
+      <div class="fold-copy"><p><strong>Result</strong> · <strong>Cost</strong> · <strong>Explanation</strong> · <strong>Uncertainty</strong></p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Next Decision</summary>
+      <div class="fold-copy"><p>Keep · Change · Test Again · Pause/Park · Stop · Another Direction · Continue Looking</p></div>
+    </details><details class="module-fold carry-fold " >
+      <summary>Carry forward</summary>
+      <div class="fold-copy"><p>Only participant-selected evidence moves into Module 2.</p></div>
+    </details>
+    
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <a class="button button-primary" href="#module-2" data-goto="4">Finish Module 1.5 → Module 2</a>
+    </div>
+  </article></div></div></div></section>
+
+    
 
     <section class="screen module-screen" id="module-2" data-index="4" aria-labelledby="module-2-title">
     <div class="module-layout">
       <aside class="module-rail"><div><div class="module-number" aria-hidden="true">2</div><div class="rail-label">Check the Story</div></div><div class="margin-note">Accuracy over forced positivity.</div></aside>
       <div class="module-content">
-        <header class="module-heading"><div class="module-kicker"><strong>Module 4 of 5</strong><span>3 lessons</span></div><h2 tabindex="-1" id="module-2-title">Check the Story</h2></header>
-        <section class="reading-shelf" aria-label="Readings behind this module"><div class="reading-shelf-head"><h3>Readings behind this module</h3><p class="reading-shelf-note">Optional · opens in a new tab</p></div><div class="reading-row"><a class="reading-card" href="https://doi.org/10.1007/s11031-015-9503-0" target="_blank" rel="noopener"><span class="reading-meta">Curran et al. · 2015</span><strong>Passion patterns and rumination</strong><span class="reading-use">Supports caution around rigid, self-evaluative interpretations and rumination.</span><span class="reading-open">Open reading ↗</span></a><a class="reading-card" href="https://doi.org/10.1037/0003-066X.55.1.68" target="_blank" rel="noopener"><span class="reading-meta">Ryan & Deci · 2000</span><strong>Self-determination theory</strong><span class="reading-use">Supports participant-owned standards and treating supported action as valid capability evidence.</span><span class="reading-open">Open reading ↗</span></a></div><p class="reading-caution">The Module 2 lesson notes also draw on Gross & John (2003) and Ezawa & Hollon (2023). Those are used cautiously; this remains educational, not cognitive therapy.</p></section>
-        <nav class="lesson-tabs" aria-label="Check the Story lessons"><button class="lesson-tab" type="button" data-lesson-goto="0" aria-current="step">1</button><button class="lesson-tab" type="button" data-lesson-goto="1" >2</button><button class="lesson-tab" type="button" data-lesson-goto="2" >3</button></nav>
-        <div class="lesson-stage"><article class="lesson-card is-lesson-active" data-lesson-index="0" data-loop="notice">
-    <div class="lesson-meta"><strong>Lesson 1 of 3</strong><span>·</span><span>Try it here</span></div>
-    <h3 tabindex="-1">Separate event, story, and verdict</h3><p class="lesson-purpose">Keep what happened separate from the explanation and from a broad judgment about a person.</p>
-     <div class="activity" data-single-select><p class="activity-title">Sort the sentence</p><p><strong>“They stopped the activity after 20 minutes.”</strong></p><div class="tap-row">
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Correct. It describes an observable event.">Event</button>
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="A story would explain why they stopped.">Story</button>
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="A verdict would turn the event into a broad judgment about who they are.">Verdict</button>
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Uncertainty is what remains unknown, such as why the person stopped.">Uncertainty</button>
-     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
-     <div class="compare"><div class="compare-panel"><h5>Story</h5><p>“They can’t handle difficult things.”</p></div><div class="compare-panel"><h5>Verdict</h5><p>“They never follow through.”</p></div></div>
-     <div class="mini-note">The goal is accuracy, not forced positivity.</div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Module 1.5</button><button class="button button-primary" type="button" data-lesson-next>Lesson 2 →</button></div></article><article class="lesson-card" data-lesson-index="1" data-loop="try">
-    <div class="lesson-meta"><strong>Lesson 2 of 3</strong><span>·</span><span>Try it here</span></div>
-    <h3 tabindex="-1">Choose one standard and observable practice</h3><p class="lesson-purpose">Turn a value you choose into one small action you can actually observe.</p>
-     <div class="activity" data-single-select><p class="activity-title">Value → standard → practice</p><p><strong>Value:</strong> respect. Which practice is observable?</p><div class="tap-row">
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Yes. Asking before giving advice is concrete and observable.">Ask before giving advice</button>
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="That is broad, not a specific practice.">Be a respectful person</button>
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="That is a verdict, not a practice.">Prove I’m good</button>
-     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
-     <div class="beat"><div class="beat-label">Capability evidence can look ordinary</div><p>Showing up, asking for help, using support, honoring a boundary, revising a plan, repairing something, or choosing not to continue can all count as evidence.</p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 1</button><button class="button button-primary" type="button" data-lesson-next>Lesson 3 →</button></div></article><article class="lesson-card" data-lesson-index="2" data-loop="decide">
-    <div class="lesson-meta"><strong>Lesson 3 of 3</strong><span>·</span><span>Try it here</span></div>
-    <h3 tabindex="-1">Return, revise, and hand off the pressure cue</h3><p class="lesson-purpose">Revise wording when evidence changes. Keep responsibility, context, and uncertainty visible.</p>
-     <div class="activity" data-single-select><p class="activity-title">Which revision is more accurate?</p><p>Original: “The lesson teaches only four terms.”</p><div class="tap-row">
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Correct. It accounts for the four main distinctions and the optional deepeners.">The lesson starts with four main distinctions and offers optional ways to check them.</button>
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="That keeps the inaccurate word “only.”">The lesson definitely teaches only four things.</button>
-     </div><p class="activity-message" role="status" aria-live="polite"></p></div><div class="beat"><div class="beat-label">Decide</div><p>Choose what fits what you actually saw. All seven choices count.</p><div class="decision-chips" aria-label="Choose a next decision"><button class="chip" type="button" aria-pressed="false">Keep</button><button class="chip" type="button" aria-pressed="false">Change</button><button class="chip" type="button" aria-pressed="false">Test Again</button><button class="chip" type="button" aria-pressed="false">Pause/Park</button><button class="chip" type="button" aria-pressed="false">Stop</button><button class="chip" type="button" aria-pressed="false">Another Direction</button><button class="chip" type="button" aria-pressed="false">Continue Looking</button></div><p class="activity-message choice-message" role="status" aria-live="polite"></p></div><div class="private-box"><label for="m2-private-3">Optional scratch: what wording is more accurate now?</label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="m2-private-3" rows="3" placeholder="Optional — leave blank if you prefer"></textarea></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 2</button><a class="button button-primary" href="#module-3" data-goto="5">Finish Module 2 → Module 3</a></div></article></div>
-      </div>
+        <header class="module-heading"><div class="module-kicker"><strong>Module 4 of 5</strong><span>0 readings · 3 lessons</span></div><h2 tabindex="-1" id="module-2-title">Check the Story</h2></header>
+        
+        <nav class="lesson-tabs" aria-label="Module 4 of 5 sequence"><button class="lesson-tab " type="button" data-lesson-goto="0" aria-current="step" aria-label="Lesson 1 — Separate what happened from what it means">L1</button><button class="lesson-tab " type="button" data-lesson-goto="1"  aria-label="Lesson 2 — Turn a chosen standard into observable practice">L2</button><button class="lesson-tab " type="button" data-lesson-goto="2"  aria-label="Lesson 3 — Review evidence and revise">L3</button></nav>
+        <div class="lesson-stage"><article class="lesson-card module-item lesson-inline is-lesson-active" data-lesson-index="0" data-loop="notice">
+    <div class="lesson-meta"><strong>Lesson 1 of 3</strong><span>·</span><span>Work through it</span></div>
+    <h3 tabindex="-1">Separate what happened from what it means</h3>
+    <details class="module-fold  " open>
+      <summary>Teach (required)</summary>
+      <div class="fold-copy"><ul><li><strong>Event:</strong> What happened that can be observed or checked.</li><li><strong>Story:</strong> The meaning or explanation attached to the event.</li><li><strong>Verdict:</strong> A broad judgment about who the person is.</li><li><strong>Uncertainty:</strong> What remains unknown.</li></ul><p>Optional deepeners: Known impact, Assumed impact, Responsibility, Context, Contrary evidence.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Neutral demonstration</summary>
+      <div class="fold-copy"><p>Event: “The person stopped the activity after 20 minutes.” Story: “They stopped because they cannot handle difficult things.” Verdict: “They never follow through.” More accurate revision acknowledges boundary/barrier/setup without a permanent identity claim.</p></div>
+    </details><details class="module-fold  " >
+      <summary>What comes out</summary>
+      <div class="fold-copy"><p>An event/story/verdict distinction and one accurate, revisable statement.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Reading 2: Don’t Just Argue With the Story. Gather Evidence.</summary>
+      <div class="fold-copy"><p><em>Place before Lesson 2: Turn a chosen standard into observable practice</em> Once you notice a story about yourself, you could argue with it. “I never follow through.” “Yes I do.” “I’m unreliable.” “No I’m not.” “I can’t handle criticism.” “Yes I can.” Now there are two claims. What is still missing? Evidence. There is research behind the idea of testing beliefs through action instead of only thinking about them. Behavioral experiments have been used in cognitive-behavioral research to test predictions and gather information. In at least one randomized study with a nonclinical sample, behavioral experiments produced changes in target beliefs compared with a control condition. Entrepalooza borrows the basic logic: if you have a broad claim about yourself, look for a small, safe way to gather new information. This is an educational adaptation. It is not CBT treatment.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Start with something you choose to care about</summary>
+      <div class="fold-copy"><p>You do not need to prove that you are a different person. Instead, ask: “How do I want to act in a situation like this?” Maybe what matters to you is:</p><ul><li>Reliability</li><li>Honesty</li><li>Respect</li><li>Patience</li><li>Courage</li><li>Curiosity</li><li>Fairness</li><li>Responsibility</li><li>Asking for help</li><li>Following through</li><li>Setting a boundary</li></ul><p>Research traditions such as Acceptance and Commitment Therapy connect personally chosen values with actions taken in their direction. The evidence around values as a specific mechanism is still developing, and most of that research comes from clinical settings. So we are using a simpler idea here: choose a standard that matters to you, then make it observable.</p></div>
+    </details><details class="module-fold  " >
+      <summary>A standard needs a behavior</summary>
+      <div class="fold-copy"><p>“Be reliable” is too broad to observe. Try: “If I know I cannot meet a deadline, I will tell the person before the deadline instead of disappearing.” “Be respectful” is broad. Try: “Before giving advice, I will ask whether the person wants feedback.” “Ask for help” becomes: “If I have been stuck for ten minutes and still do not understand the instructions, I will ask one question.” Now you have something you can actually notice.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Choose a natural cue</summary>
+      <div class="fold-copy"><p>A cue is a situation that tells you the opportunity to practice may be here.</p><ul><li><strong>Cue:</strong> I notice that I am pretending I understand instructions. <strong>Practice:</strong> Ask one clarifying question.</li><li><strong>Cue:</strong> I feel the urge to give someone an answer immediately. <strong>Practice:</strong> Ask whether they want advice first.</li><li><strong>Cue:</strong> I realize I am going to miss a commitment. <strong>Practice:</strong> Communicate before the deadline.</li></ul><p>The cue does not have to happen. A practice window is an opportunity, not a quota.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Keep the practice small</summary>
+      <div class="fold-copy"><p>One observable action is enough. You are not trying to prove “I have completely changed.” You are asking: “What happens when I practice this once?” You may use support, reminders, written instructions, another person, an accommodation, a checklist, technology, a break, or a preplanned boundary. Using support does not invalidate what happened. It changes what the evidence says. For example, the conclusion is not “I proved I can always do this,” and not “It doesn’t count because I needed help.” Instead: “I completed the action under conditions that included this support.” That is precise.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Evidence can take more than one form</summary>
+      <div class="fold-copy"><p>Depending on the standard you chose, useful evidence might include showing up, beginning, asking for clarification, using support, keeping a boundary, stopping when a limit was reached, completing part of something, returning after a pause, communicating earlier, repairing an error, revising a plan, or choosing not to continue something that does not fit. These are Entrepalooza’s examples of evidence worth noticing. They are not a scientific test of your worth, identity, or overall capability. They give you information about what you did in a particular situation.</p></div>
+    </details><details class="module-fold  " >
+      <summary>What if there is no opportunity?</summary>
+      <div class="fold-copy"><p>Then record: “No opportunity.” Do not manufacture a difficult situation just to complete the exercise. If the opportunity appears and you choose not to practice, that is also recordable: “Opportunity appeared. I did not try it.” That is information. Not a grade.</p></div>
+    </details><details class="module-fold carry-fold " >
+      <summary>Carry this question forward</summary>
+      <div class="fold-copy"><p>What standard matters to me, and what small observable action could give me better evidence about how I act when the opportunity appears?</p></div>
+    </details>
+    
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Back</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
     </div>
-  </section>
+  </article><article class="lesson-card module-item lesson-inline" data-lesson-index="1" data-loop="try">
+    <div class="lesson-meta"><strong>Lesson 2 of 3</strong><span>·</span><span>Work through it</span></div>
+    <h3 tabindex="-1">Turn a chosen standard into observable practice</h3>
+    <details class="module-fold  " open>
+      <summary>Teach</summary>
+      <div class="fold-copy"><p>Value → Standard → Practice → Pressure cue. Confirm the value belongs to the participant.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Practice plan</summary>
+      <div class="fold-copy"><p>What value/standard; natural cue; usual action; smallest observable action; support; limits/stop rule; how to know what happened; what if no opportunity.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Capability evidence</summary>
+      <div class="fold-copy"><p>Showing up; asking for clarification or help; using support; setting a boundary; stopping when a stop rule was reached; completing part of an activity; revising a plan; returning after a pause; keeping a commitment; repairing an error; choosing not to continue something that does not fit.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Reading 3: Make the Claim the Size of the Evidence</summary>
+      <div class="fold-copy"><p><em>Place before Lesson 3: Review evidence and revise</em> Now you have a statement or story you started with and some additional evidence. This is where it is easy to swing from one extreme to another. The practice goes badly: “See? I knew I couldn’t do it.” The practice goes well: “See? I’ve completely changed.” Neither conclusion automatically follows from one attempt.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Start with the observation</summary>
+      <div class="fold-copy"><p>Ask: What actually happened? Maybe:</p><ul><li>“I noticed the cue and asked for clarification.”</li><li>“I remembered only after the conversation ended.”</li><li>“I used the support I planned.”</li><li>“I stopped when I reached the limit I had set.”</li><li>“There was no opportunity.”</li><li>“I had the opportunity but did not attempt the practice.”</li><li>“I made a mistake and repaired it afterward.”</li><li>“I completed part of what I intended.”</li></ul><p>Start there.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Then compare the observation with the original claim</summary>
+      <div class="fold-copy"><p>Suppose the original verdict was “I never ask for help.” Then you ask one clarifying question. Does that prove “I am great at asking for help”? No. But it does challenge <em>never</em>. A more defensible statement might be “I usually hesitate to ask for help, but I asked for clarification in this situation when I had a clear cue.” That statement is not dramatic. It is useful because it matches the evidence.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Do not force a positive replacement</summary>
+      <div class="fold-copy"><p>There is no requirement in this module to turn a negative statement into a positive affirmation. Research gives us reason to be cautious about that. In one experimental study, repeating highly positive self-statements did not help everyone and actually made some participants with low self-esteem feel worse. That does not mean positive statements are always harmful. It means unsupported positivity is not automatically better than accuracy. So instead of “I’m unreliable” becoming “I am incredibly reliable,” you might arrive at: &gt; “I missed this commitment. I have kept others. I want to understand the conditions under which I am more likely to communicate or follow through.” That is enough.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Difficult evidence still counts</summary>
+      <div class="fold-copy"><p>Maybe the practice did not go the way you hoped. Suppose you wanted to communicate before a deadline and did not. An accurate revision could be: “I knew I was behind and still avoided communicating. That is something I need to address.” Then add what you actually know: “I do not yet know whether a reminder, earlier cue, more support, or a different plan would change that.” Responsibility remains. The global verdict is unnecessary.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Successful evidence also has limits</summary>
+      <div class="fold-copy"><p>Suppose you did the practice once. A careful statement might be: “Under these conditions, I was able to do it once.” That sentence may sound small. Small is fine. Self-efficacy research has long emphasized the importance of experience and performance information in beliefs about what we can do. But one success does not establish unlimited capability across every situation. Treat it as evidence, not a coronation.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Look at support and conditions</summary>
+      <div class="fold-copy"><p>Ask: What made the action possible? Maybe a reminder, another person, clear instructions, a quiet environment, preparation, an accommodation, a deadline, a boundary, or extra time. Do not erase those conditions from the conclusion. If you practiced successfully with support, the evidence is: “I did this with support.” Then you can decide whether that support is realistic and useful going forward.</p></div>
+    </details><details class="module-fold  " >
+      <summary>What remains unknown?</summary>
+      <div class="fold-copy"><p>Your revised statement can include uncertainty.</p><ul><li>“I asked for clarification once when I had a prepared cue. I do not know yet whether I will do it when I am under more pressure.”</li><li>“I kept the boundary during this trial. I want to see whether I can do the same thing in another situation.”</li><li>“I did not attempt the practice, so I do not have new evidence about the original claim yet.”</li></ul><p>That last one matters. No attempt does not prove failure. It means the question is still open.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Revision means the map changed</summary>
+      <div class="fold-copy"><p>You may revise:</p><ul><li>“I always quit” to “I stopped this activity when I reached the limit I had set.”</li><li>“I cannot handle feedback” to “I became defensive during this conversation. I also stayed in the conversation long enough to ask one question.”</li><li>“I’m unreliable” to “I missed this commitment. The evidence does not tell me that I miss every commitment.”</li></ul><p>Or you may keep part of the original statement: “I have a repeated pattern of avoiding difficult conversations. I also have evidence that I can sometimes interrupt that pattern.” The goal is not nicer wording. It is more defensible wording.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Then choose what happens next</summary>
+      <div class="fold-copy"><p>Entrepalooza uses a Next Decision after the review. You can choose:</p><ul><li>Keep</li><li>Change</li><li>Test Again</li><li>Pause/Park</li><li>Stop</li><li>Another Direction</li><li>Continue Looking</li></ul><p>That decision system is part of the curriculum. Research did not produce those seven buttons. We use them because they keep the next step reversible and prevent one experience from silently becoming a permanent decision. You are not answering “Who am I?” You are answering “Given the evidence I have now, what do I want to do next?”</p></div>
+    </details><details class="module-fold carry-fold " >
+      <summary>Carry this question forward</summary>
+      <div class="fold-copy"><p>If I made my statement exactly as large as the evidence allows, what would I say now?</p></div>
+    </details>
+    
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item lesson-inline" data-lesson-index="2" data-loop="reflect">
+    <div class="lesson-meta"><strong>Lesson 3 of 3</strong><span>·</span><span>Work through it</span></div>
+    <h3 tabindex="-1">Review evidence and revise</h3>
+    <details class="module-fold  " open>
+      <summary>Reflect</summary>
+      <div class="fold-copy"><p>What happened? Natural opportunity? Evidence? Support? Cost? Pressure/shame influence? Supported vs challenged parts? Unknown? Responsibility/repair/skill need? More accurate wording now?</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Next Decision</summary>
+      <div class="fold-copy"><p>Keep · Change · Test Again · Pause/Park · Stop · Another Direction · Continue Looking</p></div>
+    </details><details class="module-fold carry-fold " >
+      <summary>Carry forward to Module 3</summary>
+      <div class="fold-copy"><p>Only participant-selected: one pressure cue, one protective limit, one small next action, one evidence reference, one open question.</p></div>
+    </details>
+    
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <a class="button button-primary" href="#module-3" data-goto="5">Finish Module 2 → Module 3</a>
+    </div>
+  </article></div></div></div></section>
+
+    
 
     <section class="screen module-screen" id="module-3" data-index="5" aria-labelledby="module-3-title">
     <div class="module-layout">
       <aside class="module-rail"><div><div class="module-number" aria-hidden="true">3</div><div class="rail-label">Navigate Intensity</div></div><div class="margin-note">Pilot 1 ends here.</div></aside>
       <div class="module-content">
-        <header class="module-heading"><div class="module-kicker"><strong>Module 5 of 5</strong><span>3 lessons</span></div><h2 tabindex="-1" id="module-3-title">Navigate Intensity</h2></header>
-        <section class="reading-shelf" aria-label="Readings behind this module"><div class="reading-shelf-head"><h3>Readings behind this module</h3><p class="reading-shelf-note">Optional · opens in a new tab</p></div><div class="reading-row"><a class="reading-card" href="https://doi.org/10.1111/j.1467-6494.2009.00559.x" target="_blank" rel="noopener"><span class="reading-meta">Mageau et al. · 2009</span><strong>Autonomy support and passion development</strong><span class="reading-use">Supports protecting conditions that help engagement stay chosen and flexible.</span><span class="reading-open">Open reading ↗</span></a><a class="reading-card" href="https://doi.org/10.1080/17408989.2023.2206832" target="_blank" rel="noopener"><span class="reading-meta">Jang et al. · 2025</span><strong>Autonomy-supportive conditions</strong><span class="reading-use">Supports the continuation route and attention to conditions that preserve choice.</span><span class="reading-open">Open reading ↗</span></a><a class="reading-card" href="https://doi.org/10.1126/science.ade4420" target="_blank" rel="noopener"><span class="reading-meta">Walton et al. · 2023</span><strong>Belonging depends on context</strong><span class="reading-use">Supports ending Pilot 1 with belonging that does not depend on choosing a particular exit path.</span><span class="reading-open">Open reading ↗</span></a></div><p class="reading-caution">These sources inform the module by analogy. The goal is not calmness, diagnosis, or proof of a treatment effect.</p></section>
-        <nav class="lesson-tabs" aria-label="Navigate Intensity lessons"><button class="lesson-tab" type="button" data-lesson-goto="0" aria-current="step">1</button><button class="lesson-tab" type="button" data-lesson-goto="1" >2</button><button class="lesson-tab" type="button" data-lesson-goto="2" >3</button></nav>
-        <div class="lesson-stage"><article class="lesson-card is-lesson-active" data-lesson-index="0" data-loop="notice">
-    <div class="lesson-meta"><strong>Lesson 1 of 3</strong><span>·</span><span>Try it here</span></div>
-    <h3 tabindex="-1">Notice signal, story, urge, action, and cost</h3><p class="lesson-purpose">Separate five parts of an ordinary moment so a choice or pause has somewhere to appear.</p>
-     <div class="sequence-map" aria-label="Signal to cost sequence"><button class="sequence-node" type="button" data-sequence="0">Signal</button><button class="sequence-node" type="button" data-sequence="1">Story</button><button class="sequence-node" type="button" data-sequence="2">Urge</button><button class="sequence-node" type="button" data-sequence="3">Action</button><button class="sequence-node" type="button" data-sequence="4">Cost</button></div>
-     <div class="activity"><p class="activity-title">Use the task already in front of you: reading this page</p><p>Tap the map from left to right. A signal does not establish its cause, and any part can be absent or unknown.</p><p class="activity-message" id="sequence-message" role="status" aria-live="polite"></p></div>
-     <div class="mini-note">The goal is choice, not calmness.</div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Module 2</button><button class="button button-primary" type="button" data-lesson-next>Lesson 2 →</button></div></article><article class="lesson-card" data-lesson-index="1" data-loop="try">
-    <div class="lesson-meta"><strong>Lesson 2 of 3</strong><span>·</span><span>Try it here</span></div>
-    <h3 tabindex="-1">Protect what works or try one small response</h3><p class="lesson-purpose">Continuation and navigation are equal routes. You do not need a setback to complete this lesson.</p>
-     <div class="activity"><p class="activity-title">Choose a route</p><div class="tap-row">
-       <button class="route-option" type="button" aria-pressed="false" data-route="continue">Protect what works</button>
-       <button class="route-option" type="button" aria-pressed="false" data-route="navigate">Try one small response</button>
-     </div><div class="route-panel" data-route-panel="continue" hidden><strong>Continuation:</strong> What condition is supporting choice and flexibility? What boundary do you want to protect? Continue, deepen, or repeat are all valid.</div><div class="route-panel" data-route-panel="navigate" hidden><strong>Navigation:</strong> Clarify an instruction, reduce scope, add a stopping point, ask for support, change the environment, or stop safely. Useful does not have to mean calm.</div><p class="activity-message" role="status" aria-live="polite"></p></div>
-     <div class="beat"><div class="beat-label">Reflect</div><p>Was the next choice easier, harder, unchanged, or unclear? What effort or after-effect appeared? What else might explain the result?</p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 1</button><button class="button button-primary" type="button" data-lesson-next>Lesson 3 →</button></div></article><article class="lesson-card" data-lesson-index="2" data-loop="decide">
-    <div class="lesson-meta"><strong>Lesson 3 of 3</strong><span>·</span><span>Try it here</span></div>
-    <h3 tabindex="-1">Check intuition and close Pilot 1</h3><p class="lesson-purpose">Turn an impression into a checkable question, then close Pilot 1 with a boundary and a reversible decision.</p>
-     <div class="activity" data-single-select><p class="activity-title">Impression or evidence?</p><p><strong>“A shorter instruction must be easier.”</strong></p><div class="tap-row">
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Correct. That is an impression to test, not evidence by itself.">Impression / intuition</button>
-       <button class="tap-option" type="button" aria-pressed="false" data-feedback="Not yet. You would need an actual comparison to call it evidence.">Evidence</button>
-     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
-     <div class="beat"><div class="beat-label">Close the pilot</div><p>What evidence is worth keeping? What condition or boundary is worth protecting? What support mattered? What is your next decision? What question, if any, remains open?</p></div><div class="beat"><div class="beat-label">Decide</div><p>Choose what fits what you actually saw. All seven choices count.</p><div class="decision-chips" aria-label="Choose a next decision"><button class="chip" type="button" aria-pressed="false">Keep</button><button class="chip" type="button" aria-pressed="false">Change</button><button class="chip" type="button" aria-pressed="false">Test Again</button><button class="chip" type="button" aria-pressed="false">Pause/Park</button><button class="chip" type="button" aria-pressed="false">Stop</button><button class="chip" type="button" aria-pressed="false">Another Direction</button><button class="chip" type="button" aria-pressed="false">Continue Looking</button></div><p class="activity-message choice-message" role="status" aria-live="polite"></p></div><div class="private-box"><label for="m3-private-3">Optional scratch: one boundary or unknown you want to keep</label><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p><textarea id="m3-private-3" rows="3" placeholder="Optional — leave blank if you prefer"></textarea></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 2</button><a class="button button-primary" href="#whats-next" data-goto="6">Finish Module 3 → What's next</a></div></article></div>
+        <header class="module-heading"><div class="module-kicker"><strong>Module 5 of 5</strong><span>3 readings · 3 lessons</span></div><h2 tabindex="-1" id="module-3-title">Navigate Intensity</h2></header>
+        
+        <nav class="lesson-tabs" aria-label="Module 5 of 5 sequence"><button class="lesson-tab reading-tab" type="button" data-lesson-goto="0" aria-current="step" aria-label="Reading 1 — Intensity Is Not Automatically the Problem">R1</button><button class="lesson-tab " type="button" data-lesson-goto="1"  aria-label="Lesson 1 — Notice signal, story, urge, action, and cost">L1</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="2"  aria-label="Reading 2 — Protect What Works or Change What Needs Changing">R2</button><button class="lesson-tab " type="button" data-lesson-goto="3"  aria-label="Lesson 2 — Protect what works or try one small response">L2</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="4"  aria-label="Reading 3 — A Hunch Can Start a Question. It Cannot Finish One.">R3</button><button class="lesson-tab " type="button" data-lesson-goto="5"  aria-label="Lesson 3 — Check intuition, demands, and the next move">L3</button></nav>
+        <div class="lesson-stage"><article class="lesson-card module-item reading-inline is-lesson-active" data-lesson-index="0" data-loop="notice">
+    <div class="lesson-meta"><strong>Reading 1 of 6</strong><span>·</span><span>Read in pieces</span></div>
+    <h3 tabindex="-1">Intensity Is Not Automatically the Problem</h3>
+    <div class="reading-intro"><p><em>Place before Lesson 1: Notice signal, story, urge, action, and cost</em></p></div><details class="module-fold  " open>
+      <summary>From Module 2 to here</summary>
+      <div class="fold-copy"><p>In Module 2, you practiced separating what happened from the story you built around it. You asked: What does the evidence actually support? Module 3 keeps that same discipline, but now we are looking at intensity while something is happening. Maybe you become deeply absorbed. Maybe your pace picks up. Maybe you feel pressure. Maybe you want to push harder. Maybe you want to avoid the whole thing. Maybe nothing feels especially intense at all. The goal is not to decide that intensity is good or bad. The question is: What is the intensity doing, and what choices are still available to me? ---</p></div>
+    </details><details class="module-fold  " >
+      <summary>Useful does not mean calm</summary>
+      <div class="fold-copy"><p>It is easy to assume that the “healthy” version of engagement should look calm, balanced, and peaceful all the time. That is not the standard here. You can be excited, energized, focused, frustrated, nervous, or deeply absorbed and still be making choices that work for you. You can also look calm while something is going badly. So Entrepalooza is not teaching emotional calmness as the goal. We care more about things such as:</p><ul><li>Can I still choose?</li><li>Can I adjust?</li><li>Can I stop if I need to?</li><li>Can I protect things outside this activity that matter?</li><li>What is this costing me?</li><li>Is the way I am doing this still workable?</li></ul><p>Research on passion gives us one reason to pay attention to those questions. Harmonious passion is described as a more autonomous and flexible form of engagement, while obsessive passion involves more internal pressure and rigid persistence. That does not mean you can diagnose the kind of passion you have from one intense moment. It gives us something to watch.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>A map for noticing</summary>
+      <div class="fold-copy"><p>Entrepalooza uses five words: <strong>Signal</strong>&lt;br&gt;A change you notice in your body, attention, pace, or energy. <strong>Story</strong>&lt;br&gt;The meaning or explanation you attach to what is happening. <strong>Urge</strong>&lt;br&gt;A pull to do something or avoid something. <strong>Action</strong>&lt;br&gt;What you actually do. <strong>Cost</strong>&lt;br&gt;What the action requires or affects, such as time, energy, effort, recovery, money, relationships, responsibilities, or something else you wanted to protect. This is a teaching map. It is not a scientific claim that every human experience unfolds in exactly five steps. Parts may happen together. Some may not appear at all. You may not know what one of them was. That is fine. The map exists to help you slow the scene down enough to notice where choices may exist.</p></div>
+    </details><details class="module-fold  " >
+      <summary>A signal does not tell you its cause</summary>
+      <div class="fold-copy"><p>Suppose you notice your attention becoming extremely narrow. That is a signal. It does not automatically tell you: “This is hyperfocus.” “This is anxiety.” “This is passion.” “This is trauma.” “This means I should stop.” You observed a change in attention. That is what you know. The cause may be unclear. The same applies to a racing heart, restless energy, shutting down, wanting to leave, working faster, or becoming completely absorbed. Noticing comes before explaining.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Then notice the story</summary>
+      <div class="fold-copy"><p>Maybe the signal is: “I have been working much faster for the last hour.” The story might be: “I finally found what I’m meant to do.” Or: “I have to finish this tonight or I’ll lose momentum.” Or there may be no clear story at all. Again, the point is not to argue with every thought. It is to notice when an interpretation has joined the event.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Then notice the urge and action</summary>
+      <div class="fold-copy"><p>An urge might be: “Keep going.” “Check it again.” “Quit.” “Hide it.” “Spend more money.” “Tell everybody.” “Do one more hour.” “Walk away.” An urge is not the same thing as an action. You can notice an urge without automatically following it. Then ask: What did I actually do? That is the action.</p></div>
+    </details><details class="module-fold  " >
+      <summary>And what did it cost?</summary>
+      <div class="fold-copy"><p>Cost does not mean punishment. It means what the action required or affected. Maybe you worked intensely for two hours and felt fine afterward. Maybe you accomplished a lot but skipped something important. Maybe continuing required very little. Maybe you needed the rest of the day to recover. Maybe there was no noticeable cost. Do not invent one just because the worksheet asks. When something is going well, the answer may simply be: “This remained workable.” That matters because Module 3 has two equal routes. You do not have to manufacture a problem in order to complete it.</p></div>
+    </details><details class="module-fold carry-fold " >
+      <summary>Carry this question forward</summary>
+      <div class="fold-copy"><p>When intensity changes, what do I actually notice, and what choices are still available?</p></div>
+    </details>
+    
+    <div class="reading-pulse" aria-label="Reading reflection">
+      <p class="reading-pulse-title">What are you carrying forward?</p>
+      <div class="tap-row" data-single-select>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
       </div>
+      <p class="activity-message" role="status" aria-live="polite"></p>
     </div>
-  </section>
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Back</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item lesson-inline" data-lesson-index="1" data-loop="notice">
+    <div class="lesson-meta"><strong>Lesson 2 of 6</strong><span>·</span><span>Work through it</span></div>
+    <h3 tabindex="-1">Notice signal, story, urge, action, and cost</h3>
+    <details class="module-fold  " open>
+      <summary>Why this matters</summary>
+      <div class="fold-copy"><p>Intensity can remain harmonious, become costly, or shift depending on conditions. Noticing the sequence creates room to protect what works or make a different choice when needed.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Teach</summary>
+      <div class="fold-copy"><ul><li><strong>Signal:</strong> A change noticed in body, attention, pace, or energy.</li><li><strong>Story:</strong> Meaning attached to the signal or situation.</li><li><strong>Urge:</strong> A pull to do or avoid something.</li><li><strong>Action:</strong> What happens next.</li><li><strong>Cost:</strong> Time, effort, energy, after-effect, or impact on a protected responsibility.</li></ul><p>The sequence is a noticing tool, not a rule. Any element may be absent or unknown. A signal does not establish its cause.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Neutral demonstration</summary>
+      <div class="fold-copy"><p>Use an ordinary reading, planning, or organizing task. Notice whether pace or attention changes; identify any story or urge; record the actual action; and note only observed cost. Do not assume an emotional response.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Try—or pass</summary>
+      <div class="fold-copy"><p>Participants may use:</p><ul><li>An activity that is going well</li><li>A moment of pressure or difficulty</li><li>A neutral task</li><li>An observe-only or private route</li><li>An honest unknown</li></ul><p>Prompts:</p><ul><li>What signal, if any, appeared?</li><li>What story or meaning was added?</li><li>What urge appeared, if any?</li><li>What action followed?</li><li>What cost or stable condition did I actually observe?</li><li>What external condition or barrier mattered?</li></ul></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Choose a route</summary>
+      <div class="fold-copy"><ul><li><strong>Continuation:</strong> Nothing needs correction; identify what is supporting choice and balance.</li><li><strong>Navigation:</strong> Identify one point where a pause, boundary, support, or different response could be available.</li></ul></div>
+    </details><details class="module-fold  " >
+      <summary>What comes out</summary>
+      <div class="fold-copy"><p>One optional five-part map and either one condition to protect or one possible choice point.</p></div>
+    </details>
+    
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item reading-inline" data-lesson-index="2" data-loop="notice">
+    <div class="lesson-meta"><strong>Reading 3 of 6</strong><span>·</span><span>Read in pieces</span></div>
+    <h3 tabindex="-1">Protect What Works or Change What Needs Changing</h3>
+    <div class="reading-intro"><p><em>Place before Lesson 2: Protect a working condition or try one small response</em> Once you have noticed what is happening, there are two legitimate directions. Something may be working. Or something may need attention. Neither route is more successful than the other. ---</p></div><details class="module-fold  " open>
+      <summary>Route 1: Protect what works</summary>
+      <div class="fold-copy"><p>Suppose you are deeply engaged in something and the current setup is working. You can still stop. You can adjust when needed. Important responsibilities are not being pushed out. The pace feels sustainable enough for you. You have support where you need it. There is no rule saying you must interfere. Instead, ask: What is helping this stay workable? Maybe it is:</p><ul><li>having a clear stopping point</li><li>enough freedom to make decisions</li><li>clear expectations</li><li>another person available for support</li><li>protected time</li><li>a manageable pace</li><li>breaks</li><li>limited spending</li><li>keeping another responsibility intact</li><li>knowing that you are allowed to stop</li></ul><p>Research on passion suggests that more autonomous forms of engagement are associated with more adaptive outcomes than more pressured and rigid forms of passion. Some research has also linked autonomy-supportive environments with the development of more harmonious passion, although parts of that evidence come from younger samples and do not prove that changing one condition will transform a person's passion. So we stay modest. If something appears to support flexible, chosen engagement: notice it and decide whether you want to protect it.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Protecting something is an action too</summary>
+      <div class="fold-copy"><p>People often pay more attention to problems than to working conditions. Then a useful condition disappears because nobody thought to protect it. Imagine that you discover: “I enjoy doing this when I stop at two hours.” You do not necessarily need a new strategy. Your strategy may be: Keep the two-hour boundary. Or: “I work well on this when I have one evening completely free afterward.” Protecting that recovery time may matter. Continuation still requires decisions. It just does not require a crisis first. ---</p></div>
+    </details><details class="module-fold  " >
+      <summary>Route 2: Navigate when something stops working</summary>
+      <div class="fold-copy"><p>Maybe you notice something different. Pressure keeps rising. You cannot stop when you intended to. A responsibility is getting pushed aside. The activity is costing more money, time, energy, or recovery than you expected. You find yourself continuing mostly because stopping feels unacceptable. Or an outside barrier is making the current approach unworkable. Now the question becomes: Where is one possible choice point? Not: “How do I control every reaction?” Just: “What is one practical thing I could change?”</p></div>
+    </details><details class="module-fold  " >
+      <summary>One response, not an overhaul</summary>
+      <div class="fold-copy"><p>A response might be:</p><ul><li>clarify one instruction</li><li>write down one next action</li><li>make the task smaller</li><li>add a stopping point</li><li>ask for specific help</li><li>protect an existing responsibility</li><li>remove one manageable distraction</li><li>change the environment</li><li>take a planned break</li><li>stop safely</li><li>return another time under different conditions</li></ul><p>Research on emotion regulation gives us an important caution here. There is not one strategy that is universally best in every situation. Researchers studying regulatory flexibility have argued that what works depends partly on the person, the situation, the options available, and what happens after a strategy is used. So this module does not teach: “Whenever intensity rises, always do X.” It teaches: notice → choose a reasonable response → watch what happens.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Choose what you are protecting</summary>
+      <div class="fold-copy"><p>Before making the change, ask: What must not get bulldozed while I pursue this? Maybe: “My sleep.” “Picking up my kid.” “My rent money.” “A relationship.” “My recovery time.” “Another commitment.” “My ability to stop.” “My physical safety.” “My privacy.” The protected boundary is an Entrepalooza curriculum tool. Research did not hand us a universal list of boundaries. The point of the tool is to make an important limit visible before intensity makes the decision for you.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Then look at the result</summary>
+      <div class="fold-copy"><p>If you try a response, notice: Did the next choice become easier? Harder? Unchanged? Unclear? What did the response require? What happened afterward? What else may have influenced the result? One attempt does not prove the response works universally. It gives you another piece of evidence.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>You can also choose not to try</summary>
+      <div class="fold-copy"><p>Maybe the response is not appropriate. Maybe the barrier cannot be changed right now. Maybe you need support first. Maybe you want to stop instead. Maybe continuing no longer makes sense. Navigation does not secretly mean: “Find a strategy that keeps you going.” Stopping and redirecting are navigation too.</p></div>
+    </details><details class="module-fold carry-fold " >
+      <summary>Carry this question forward</summary>
+      <div class="fold-copy"><p>What is working that I want to protect, or what is one choice I could change without sacrificing something important?</p></div>
+    </details>
+    
+    <div class="reading-pulse" aria-label="Reading reflection">
+      <p class="reading-pulse-title">What are you carrying forward?</p>
+      <div class="tap-row" data-single-select>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
+      </div>
+      <p class="activity-message" role="status" aria-live="polite"></p>
+    </div>
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item lesson-inline" data-lesson-index="3" data-loop="reflect">
+    <div class="lesson-meta"><strong>Lesson 4 of 6</strong><span>·</span><span>Work through it</span></div>
+    <h3 tabindex="-1">Protect what works or try one small response</h3>
+    <details class="module-fold  " open>
+      <summary>Continuation route</summary>
+      <div class="fold-copy"></div>
+    </details><details class="module-fold  " >
+      <summary>Why this matters</summary>
+      <div class="fold-copy"><p>When engagement is working, the learning task is to understand why and protect the conditions that keep it workable and chosen (facilitator language: protect what works).</p></div>
+    </details><details class="module-fold  " >
+      <summary>Reflect</summary>
+      <div class="fold-copy"><ul><li>What is supporting choice and flexibility?</li><li>Can I stop, adjust, and return when needed?</li><li>How does this fit with health, relationships, responsibilities, rest, and support?</li><li>What boundary or condition should I protect?</li><li>Do I want to continue, deepen, or repeat?</li></ul></div>
+    </details><details class="module-fold  " >
+      <summary>What comes out</summary>
+      <div class="fold-copy"><p>One working condition, support, or boundary to retain and one continuation decision.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Navigation route</summary>
+      <div class="fold-copy"></div>
+    </details><details class="module-fold  " >
+      <summary>Why this matters</summary>
+      <div class="fold-copy"><p>A small response can help preserve choice without demanding calmness or proving a cause.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Practical responses may include</summary>
+      <div class="fold-copy"><ul><li>Clarify one instruction</li><li>Write one next action</li><li>Reduce scope</li><li>Add a stopping point</li><li>Ask for specific support</li><li>Protect an existing responsibility</li><li>Remove a manageable distraction</li><li>Change the environment</li><li>Take an agreed break</li><li>Stop safely</li><li>Return later under different conditions</li></ul></div>
+    </details><details class="module-fold  " >
+      <summary>Response plan</summary>
+      <div class="fold-copy"><ul><li>What response will I try or plan?</li><li>What would a useful next choice look like?</li><li>What duration, support, and stop rule apply?</li><li>What protected responsibility must remain intact?</li><li>What will I observe?</li><li>What else might explain the result?</li></ul></div>
+    </details><details class="module-fold  " >
+      <summary>Reflect</summary>
+      <div class="fold-copy"><ul><li>What happened—or why was it not attempted?</li><li>Was the next choice easier, harder, unchanged, or unclear?</li><li>What effort, discomfort, or after-effect appeared?</li><li>What external barrier mattered?</li><li>What remains uncertain?</li></ul></div>
+    </details><details class="module-fold  " >
+      <summary>What comes out</summary>
+      <div class="fold-copy"><p>One response, observation or non-attempt, cost, and Next Decision.</p></div>
+    </details>
+    
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item reading-inline" data-lesson-index="4" data-loop="notice">
+    <div class="lesson-meta"><strong>Reading 5 of 6</strong><span>·</span><span>Read in pieces</span></div>
+    <h3 tabindex="-1">A Hunch Can Start a Question. It Cannot Finish One.</h3>
+    <div class="reading-intro"><p><em>Place before Lesson 3: Check intuition, demands, and the next move</em> By now, you have collected several kinds of information. You have explored what catches your attention. You have tested conditions. You have examined stories. You have watched what happens when intensity changes. Now you may have an impression. “I think this could really fit me.” “Something about this feels wrong.” “I think I should keep going.” “I have a feeling I could make this work.” “I don’t think this is for me.” Those impressions matter. But they are not the same thing as evidence.</p></div><details class="module-fold  " open>
+      <summary>Intuition can be useful</summary>
+      <div class="fold-copy"><p>Research on judgment makes this more complicated than: “Trust your gut” or “Never trust your gut.” Daniel Kahneman and Gary Klein, researchers who came from very different traditions, found substantial agreement on this point: Intuition can become highly skilled when someone operates in an environment with learnable patterns and has enough opportunity for meaningful feedback and practice. In other situations, intuitive judgments can be confidently wrong. Most importantly: feeling certain is not proof that the judgment is accurate. So Entrepalooza treats intuition as a question generator. If your gut says: “This fits me.” ask: “What evidence is making it feel that way?” If it says: “This will never work.” ask: “What evidence supports that, what challenges it, and what do I still not know?” You do not have to ignore the hunch. Make it earn its place beside the rest of the evidence.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Look at what the activity actually demands</summary>
+      <div class="fold-copy"><p>Something can interest you and still have demands that do not fit your current situation. In this module, operating demands means what the activity actually asks from you. That might include:</p><ul><li>time</li><li>attention</li><li>repeated decisions</li><li>uncertainty</li><li>interaction with other people</li><li>physical effort</li><li>money</li><li>transportation</li><li>technology</li><li>learning</li><li>schedule flexibility</li><li>recovery</li><li>administrative work</li></ul><p>Do not evaluate only the exciting part. And do not evaluate only the hardest part. Look at the actual package.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Then create a decision rule</summary>
+      <div class="fold-copy"><p>A decision rule is simply information you decide will matter when you make the next choice. For example: “I will continue exploring if I can do this without spending more than $50 this month.” “I will test this again if I can arrange childcare first.” “If I still cannot stop at the boundary I set after two more tries, I will pause and reconsider the setup.” “I will continue if the work itself still interests me after I talk to somebody who actually does it.” “If this repeatedly interferes with a responsibility I decided to protect, I will change the plan rather than automatically pushing harder.” The decision rule is a curriculum tool. It helps move the next decision out of the fog of the moment.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Keep a protected boundary</summary>
+      <div class="fold-copy"><p>Look back at what you said you wanted to protect. You can keep it. Change it. Or decide that it is no longer relevant. A protected boundary is not a promise that nothing difficult will happen. It is a reminder that pursuing something meaningful does not require every other part of life to become collateral damage.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Then make the next decision</summary>
+      <div class="fold-copy"><p>Your options are:</p><ul><li>Keep</li><li>Change</li><li>Test Again</li><li>Pause/Park</li><li>Stop</li><li>Another Direction</li><li>Continue Looking</li></ul><p>There is no hidden correct answer. Keep is not more successful than Stop. Test Again is not more courageous than Another Direction. Continue Looking is not a failure to decide. The point is to make a choice that matches the evidence you have now.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Pilot 1 ends here</summary>
+      <div class="fold-copy"><p>You do not need to leave Pilot 1 with: a business idea a career decision a perfect passion a new identity proof that you have changed or certainty about what happens next. You might leave with: one piece of evidence you trust one condition you want to protect one strategy worth keeping one support that mattered one thing you know does not fit one question worth testing later or simply: “I know more than I did when I started.” That is enough to make a next decision. You can continue. Pause. Redirect. Stop. Keep looking. Pilot 1 does not decide your future. It gives you a better way to investigate it.</p></div>
+    </details><details class="module-fold carry-fold " >
+      <summary>Carry this question forward</summary>
+      <div class="fold-copy"><p>Given the evidence, the demands, and what I want to protect, what makes sense next?</p></div>
+    </details>
+    
+    <div class="reading-pulse" aria-label="Reading reflection">
+      <p class="reading-pulse-title">What are you carrying forward?</p>
+      <div class="tap-row" data-single-select>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A useful idea. Nothing is saved.">An idea</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="A question is enough. Nothing is saved.">A question</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Something to test. Nothing is saved.">Something to try</button>
+        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Nothing yet is a complete answer. Nothing is saved.">Nothing yet</button>
+      </div>
+      <p class="activity-message" role="status" aria-live="polite"></p>
+    </div>
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <button class="button button-primary" type="button" data-lesson-next>Next →</button>
+    </div>
+  </article><article class="lesson-card module-item lesson-inline" data-lesson-index="5" data-loop="decide">
+    <div class="lesson-meta"><strong>Lesson 6 of 6</strong><span>·</span><span>Work through it</span></div>
+    <h3 tabindex="-1">Check intuition, demands, and the next move</h3>
+    <details class="module-fold  " open>
+      <summary>Why this matters</summary>
+      <div class="fold-copy"><p>An intuition can suggest a question, but it is not evidence by itself. A next decision is stronger when it considers available evidence, operating demands, and protected boundaries.</p></div>
+    </details><details class="module-fold  " >
+      <summary>Teach</summary>
+      <div class="fold-copy"><ul><li><strong>Intuition:</strong> An impression or hunch that can become a question.</li><li><strong>Operating demands:</strong> What the activity asks in time, decisions, attention, uncertainty, interaction, resources, or physical effort.</li><li><strong>Decision rule:</strong> Information that will guide the next choice.</li><li><strong>Protected boundary:</strong> A limit or responsibility the participant chooses to keep.</li></ul></div>
+    </details><details class="module-fold  " >
+      <summary>Check the impression</summary>
+      <div class="fold-copy"><ul><li>What impression or assumption am I examining?</li><li>What evidence supports it?</li><li>What challenges it?</li><li>What remains unknown?</li><li>Which operating demands matter here?</li><li>What information would change my mind?</li></ul></div>
+    </details><details class="module-fold  " >
+      <summary>Optional return plan</summary>
+      <div class="fold-copy"><p>Use only when a pause or setback occurred:</p><ul><li>What happened?</li><li>What did I notice earlier or later?</li><li>What response did I try, if any?</li><li>What did it change or cost?</li><li>What would make returning workable?</li><li>Should I return, adjust, redirect, or stop?</li></ul><p>Returning is not automatically the preferred outcome.</p></div>
+    </details><details class="module-fold  action-fold" >
+      <summary>Next Decision</summary>
+      <div class="fold-copy"><p>Choose one:</p><ul><li>Keep</li><li>Change</li><li>Test Again</li><li>Pause/Park</li><li>Stop</li><li>Another Direction</li><li>Continue Looking</li></ul></div>
+    </details><details class="module-fold  " >
+      <summary>What comes out</summary>
+      <div class="fold-copy"><p>One decision rule, protected boundary, Next Decision, and optional future question or return plan. # Pilot 1 close Pilot 1 closes with only participant-selected information:</p><ul><li>One piece of evidence</li><li>One strategy, condition, or boundary worth retaining</li><li>One support that mattered</li><li>One Next Decision</li><li>One optional question for later exploration</li></ul><p>Participants may leave with Keep or Test Again when something is working, as well as Continue Looking, Another Direction, Pause/Park, or Stop. No automatic progression, readiness judgment, or business direction is implied.</p></div>
+    </details>
+    
+    <div class="lesson-controls">
+      <button class="button" type="button" data-lesson-prev>← Previous</button>
+      <a class="button button-primary" href="#whats-next" data-goto="6">Finish Module 3 → What's next</a>
+    </div>
+  </article></div></div></div></section>
+
+    
 
     <section class="screen next-screen" id="whats-next" data-index="6" aria-labelledby="next-title">
       <div class="next-content">
