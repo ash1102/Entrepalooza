@@ -676,6 +676,55 @@
       .reading-deck-button{width:100%}
     }
 
+  
+    /* From Module 1.5 onward, readings are capped at a few semantic chapters */
+    .reading-inline[data-reading-compressed="true"] .reading-deck-top{margin-bottom:14px}
+    .reading-inline[data-reading-compressed="true"] .reading-deck-count{font-size:12px}
+    .reading-inline[data-reading-compressed="true"] .reading-deck-dots{gap:8px}
+    .reading-inline[data-reading-compressed="true"] .reading-deck-dot{
+      width:32px;height:32px;border:1px solid var(--line);background:var(--paper-light);
+      display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:850;color:var(--muted)
+    }
+    .reading-inline[data-reading-compressed="true"] .reading-deck-dot::before{content:attr(data-label)}
+    .reading-inline[data-reading-compressed="true"] .reading-deck-dot.is-active{background:var(--teal);border-color:var(--teal);color:white;transform:none}
+    .reading-inline[data-reading-compressed="true"] .reading-beat{min-height:310px}
+    .reading-inline[data-reading-compressed="true"] .reading-beat-content{font-size:18px;line-height:1.6}
+    .reading-inline[data-reading-compressed="true"] .reading-beat-section+ .reading-beat-section{margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+    .reading-inline[data-reading-compressed="true"] .reading-beat-section h5{margin:0 0 9px;font-size:17px;color:var(--teal)}
+    .reading-inline[data-reading-format="field-notes"] .reading-beat{
+      border:0;border-left:4px solid var(--teal);border-radius:0;background:rgba(255,253,248,.62);
+      box-shadow:none;padding-left:30px
+    }
+    .reading-inline[data-reading-format="field-notes"] .reading-beat::before{color:var(--teal)}
+    .reading-inline[data-reading-format="field-notes"] .reading-deck-progress>span{background:var(--teal)}
+    .reading-inline[data-reading-format="contrast"] .reading-beat{
+      background:linear-gradient(145deg,rgba(239,225,213,.68),rgba(255,253,248,.94));
+      border:1px solid rgba(189,115,87,.38)
+    }
+    .reading-inline[data-reading-format="contrast"] .reading-beat h4{font-size:clamp(25px,3.4vw,38px)}
+    .reading-inline[data-reading-format="contrast"] .reading-deck-progress>span{background:var(--accent)}
+    .reading-inline[data-reading-format="spotlight"] .reading-beat{
+      border:2px solid rgba(62,105,99,.24);background:linear-gradient(150deg,rgba(226,235,229,.74),rgba(255,253,248,.96));
+      padding:clamp(22px,4vw,38px)
+    }
+    .reading-inline[data-reading-format="spotlight"] .reading-beat h4{max-width:610px;font-size:clamp(28px,4vw,44px)}
+    .reading-inline[data-reading-format="spotlight"] .reading-beat-content{max-width:680px}
+    .reading-inline[data-reading-format="signal"] .reading-beat{
+      background:
+        linear-gradient(90deg,rgba(228,189,100,.13),transparent 28%),
+        rgba(255,253,248,.9);
+      border-left:6px solid var(--gold)
+    }
+    .reading-inline[data-reading-format="signal"] .reading-deck-progress>span{background:var(--gold)}
+    .reading-inline .reading-pulse[hidden]{display:none!important}
+    .reading-inline .lesson-controls.reading-controls-muted{opacity:.55}
+    @media(max-width:780px){
+      .reading-inline[data-reading-compressed="true"] .reading-beat{min-height:260px}
+      .reading-inline[data-reading-compressed="true"] .reading-beat-content{font-size:17px}
+      .reading-inline[data-reading-compressed="true"] .reading-deck-dot{width:30px;height:30px}
+      .reading-inline[data-reading-format="field-notes"] .reading-beat{padding-left:20px}
+    }
+
   </style>
 </head>
 <body>
@@ -2387,10 +2436,11 @@
         const beats=[...card.querySelectorAll('.reading-beat')];
         if(!beats.length)return;
         const i=Math.max(0,Math.min(beats.length-1,Number(index)||0));
+        const compressed=card.dataset.readingCompressed==='true';
         card.dataset.readingPiece=String(i);
         beats.forEach((beat,n)=>beat.hidden=n!==i);
         const count=card.querySelector('[data-reading-count]');
-        if(count)count.textContent='Piece '+(i+1)+' of '+beats.length;
+        if(count)count.textContent=(compressed?'Chapter ':'Piece ')+(i+1)+' of '+beats.length;
         const bar=card.querySelector('[data-reading-progress]');
         if(bar)bar.style.width=(((i+1)/beats.length)*100)+'%';
         card.querySelectorAll('.reading-deck-dot').forEach((dot,n)=>dot.classList.toggle('is-active',n===i));
@@ -2399,11 +2449,66 @@
         if(prev)prev.disabled=i===0;
         if(next){
           next.disabled=i===beats.length-1;
-          next.textContent=i===beats.length-1?'Reading complete':'Next piece →';
+          next.textContent=i===beats.length-1?'Reading complete':(compressed?'Next chapter →':'Next piece →');
         }
+        const pulse=card.querySelector(':scope > .reading-pulse');
+        if(pulse)pulse.hidden=i!==beats.length-1;
+        const lessonControls=card.querySelector(':scope > .lesson-controls');
+        if(lessonControls&&compressed)lessonControls.classList.toggle('reading-controls-muted',i!==beats.length-1);
         if(focus)beats[i].querySelector('h4')?.focus?.();
         const scroller=card.closest('.module-layout');
         if(scroller)scroller.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+      }
+
+      function foldToSection(fold){
+        const title=fold.querySelector('summary')?.textContent?.trim()||'Keep reading';
+        const copy=fold.querySelector('.fold-copy');
+        if(!copy)return null;
+        return {
+          title,
+          html:copy.innerHTML,
+          length:(copy.textContent||'').replace(/\s+/g,' ').trim().length
+        };
+      }
+
+      function groupReadingSections(sections,targetCount){
+        if(sections.length<=targetCount){
+          return sections.map(s=>({title:s.title,sections:[s]}));
+        }
+        const total=sections.reduce((sum,s)=>sum+s.length,0);
+        const target=Math.max(1,Math.ceil(total/targetCount));
+        const groups=[];
+        let current={title:sections[0]?.title||'Keep reading',sections:[],length:0};
+        sections.forEach((section,index)=>{
+          const remainingSections=sections.length-index;
+          const remainingGroups=targetCount-groups.length;
+          const shouldBreak=current.sections.length>0 &&
+            current.length>=target*.72 &&
+            remainingSections>=remainingGroups;
+          if(shouldBreak){
+            groups.push(current);
+            current={title:section.title,sections:[],length:0};
+          }
+          current.sections.push(section);
+          current.length+=section.length;
+        });
+        if(current.sections.length)groups.push(current);
+
+        // If balancing still produced too many groups, fold the smallest neighbor pairs together.
+        while(groups.length>targetCount){
+          let mergeAt=0,best=Infinity;
+          for(let i=0;i<groups.length-1;i++){
+            const size=(groups[i].length||0)+(groups[i+1].length||0);
+            if(size<best){best=size;mergeAt=i;}
+          }
+          const a=groups[mergeAt],b=groups[mergeAt+1];
+          groups.splice(mergeAt,2,{
+            title:a.title,
+            sections:[...a.sections,...b.sections],
+            length:(a.length||0)+(b.length||0)
+          });
+        }
+        return groups;
       }
 
       function setupReadingDecks(){
@@ -2412,24 +2517,41 @@
           const folds=[...card.querySelectorAll(':scope > .module-fold')];
           if(!folds.length)return;
 
-          const raw=[];
-          folds.forEach(f=>raw.push(...readingBeatParts(f)));
+          const screenIndex=Number(card.closest('.screen')?.dataset.index||0);
+          const compressed=screenIndex>=3;
+          const moduleThree=screenIndex>=5;
+          const formats=['field-notes','contrast','spotlight','signal'];
 
-          // Merge very short adjacent paragraph beats under the same section,
-          // but keep the visible amount deliberately small.
-          const beats=[];
-          raw.forEach(part=>{
-            const last=beats[beats.length-1];
-            const textLength=(part.html.replace(/<[^>]+>/g,'').length);
-            const lastLength=last?(last.html.replace(/<[^>]+>/g,'').length):0;
-            if(last && part.kind==='p' && last.kind==='p' && part.title===last.title && lastLength+textLength<430){
-              last.html+=part.html;
-            }else beats.push({...part});
-          });
+          let beats=[];
+          if(compressed){
+            const sections=folds.map(foldToSection).filter(Boolean);
+            const targetCount=Math.min(moduleThree?3:4,Math.max(1,sections.length));
+            const groups=groupReadingSections(sections,targetCount);
+            beats=groups.map((group,i)=>({
+              title:group.title,
+              kind:'chapter',
+              html:group.sections.map(section=>
+                '<section class="reading-beat-section"><h5>'+escapeHtml(section.title)+'</h5>'+section.html+'</section>'
+              ).join('')
+            }));
+            card.dataset.readingCompressed='true';
+            card.dataset.readingFormat=formats[cardIndex%formats.length];
+          }else{
+            const raw=[];
+            folds.forEach(f=>raw.push(...readingBeatParts(f)));
+            raw.forEach(part=>{
+              const last=beats[beats.length-1];
+              const textLength=(part.html.replace(/<[^>]+>/g,'').length);
+              const lastLength=last?(last.html.replace(/<[^>]+>/g,'').length):0;
+              if(last && part.kind==='p' && last.kind==='p' && part.title===last.title && lastLength+textLength<430){
+                last.html+=part.html;
+              }else beats.push({...part});
+            });
+          }
 
           const deck=document.createElement('section');
           deck.className='reading-deck';
-          deck.setAttribute('aria-label','Reading in small pieces');
+          deck.setAttribute('aria-label',compressed?'Reading in a few chapters':'Reading in small pieces');
 
           const top=document.createElement('div');top.className='reading-deck-top';
           const count=document.createElement('div');count.className='reading-deck-count';count.dataset.readingCount='';
@@ -2439,26 +2561,37 @@
 
           const tones=['ink','soft','warm','quote'];
           beats.forEach((part,i)=>{
-            const beat=document.createElement('article');beat.className='reading-beat';beat.hidden=i!==0;beat.dataset.tone=tones[(i+cardIndex)%tones.length];beat.dataset.piece='Reading piece '+(i+1);
+            const beat=document.createElement('article');beat.className='reading-beat';beat.hidden=i!==0;beat.dataset.tone=tones[(i+cardIndex)%tones.length];
+            beat.dataset.piece=(compressed?'Chapter ':'Reading piece ')+(i+1);
             const h=document.createElement('h4');h.tabIndex=-1;h.textContent=part.title;
             const body=document.createElement('div');body.className='reading-beat-content';body.innerHTML=part.html;
             beat.append(h,body);deck.appendChild(beat);
           });
 
           const controls=document.createElement('div');controls.className='reading-deck-controls';
-          const prev=document.createElement('button');prev.type='button';prev.className='reading-deck-button';prev.dataset.readingPrev='';prev.textContent='← Previous piece';
+          const prev=document.createElement('button');prev.type='button';prev.className='reading-deck-button';prev.dataset.readingPrev='';prev.textContent=compressed?'← Previous chapter':'← Previous piece';
           const dots=document.createElement('div');dots.className='reading-deck-dots';dots.setAttribute('aria-hidden','true');
-          beats.forEach((_,i)=>{const d=document.createElement('span');d.className='reading-deck-dot'+(i===0?' is-active':'');dots.appendChild(d);});
-          const next=document.createElement('button');next.type='button';next.className='reading-deck-button';next.dataset.readingNext='';next.textContent='Next piece →';
+          beats.forEach((_,i)=>{
+            const d=document.createElement('span');d.className='reading-deck-dot'+(i===0?' is-active':'');
+            if(compressed)d.dataset.label=String(i+1);
+            dots.appendChild(d);
+          });
+          const next=document.createElement('button');next.type='button';next.className='reading-deck-button';next.dataset.readingNext='';next.textContent=compressed?'Next chapter →':'Next piece →';
           controls.append(prev,dots,next);deck.appendChild(controls);
 
           const pulse=card.querySelector(':scope > .reading-pulse');
-          if(pulse)pulse.before(deck);else card.querySelector(':scope > .lesson-controls')?.before(deck);
+          if(pulse){
+            pulse.hidden=true;
+            pulse.before(deck);
+          }else card.querySelector(':scope > .lesson-controls')?.before(deck);
+
+          const lessonControls=card.querySelector(':scope > .lesson-controls');
+          if(lessonControls&&compressed)lessonControls.classList.add('reading-controls-muted');
+
           card.classList.add('reading-deck-ready');
           setReadingPiece(card,Number(card.dataset.readingPiece||0),false);
         });
       }
-
 
       function setupVariedSlides(){
         const cards=[...document.querySelectorAll('.lesson-card')];
