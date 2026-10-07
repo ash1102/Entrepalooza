@@ -1718,9 +1718,9 @@
     <details id="workbook-tray">
       <summary>My workbook <span id="stamp-count">0 of 3 taking shape</span></summary>
       <ul class="tray-list">
-        <li class="tray-stamp" data-stamp="operating"><span class="stamp-mark" aria-hidden="true">✓</span><span>What helps me work<span class="stamp-sub" data-stamp-note="operating">Nothing here yet/span></span></li>
-        <li class="tray-stamp" data-stamp="discovery"><span class="stamp-mark" aria-hidden="true">✓</span><span>What I’m noticing<span class="stamp-sub" data-stamp-note="discovery">Nothing here yet/span></span></li>
-        <li class="tray-stamp" data-stamp="decision"><span class="stamp-mark" aria-hidden="true">✓</span><span>My next choice<span class="stamp-sub" data-stamp-note="decision">Nothing here yet/span></span></li>
+        <li class="tray-stamp" data-stamp="operating"><span class="stamp-mark" aria-hidden="true">✓</span><span>What helps me work<span class="stamp-sub" data-stamp-note="operating">Nothing here yet</span></span></li>
+        <li class="tray-stamp" data-stamp="discovery"><span class="stamp-mark" aria-hidden="true">✓</span><span>What I’m noticing<span class="stamp-sub" data-stamp-note="discovery">Nothing here yet</span></span></li>
+        <li class="tray-stamp" data-stamp="decision"><span class="stamp-mark" aria-hidden="true">✓</span><span>My next choice<span class="stamp-sub" data-stamp-note="decision">Nothing here yet</span></span></li>
       </ul>
       <section class="conversation-journal" aria-labelledby="conversation-journal-title">
         <button class="conversation-journal-toggle" type="button" id="conversation-journal-toggle" aria-expanded="false" aria-controls="conversation-journal-panel">
@@ -2646,17 +2646,52 @@
 
       function standardizeLessonPattern(){
         const rank={idea:1,example:2,try:3,reflect:4,connect:5};
+        const roleLabel={idea:'The idea',example:'Everyday example',try:'Try it',reflect:'Reflect',connect:'How this connects'};
+        const fallback={
+          idea:'Use the main idea already introduced in this lesson as the starting point.',
+          example:'Use the example or ordinary situation already described in this lesson. If you prefer, picture the same idea in a situation you already know.',
+          try:'Use the activity below, plan it for later, observe instead, or pass.',
+          reflect:'What did you notice? What happened, what helped or got in the way, and what is still unclear?',
+          connect:'Keep only what feels useful for the next choice.'
+        };
+
+        function setRole(fold,role){
+          fold.dataset.patternRole=role;
+          const summary=fold.querySelector('summary');
+          if(summary) summary.textContent=roleLabel[role];
+        }
+
+        function makeFold(role){
+          const d=document.createElement('details');
+          d.className='module-fold '+(role==='try'?'action-fold ':role==='connect'?'carry-fold ':'');
+          d.dataset.patternRole=role;
+          const s=document.createElement('summary');s.textContent=roleLabel[role];
+          const c=document.createElement('div');c.className='fold-copy';c.innerHTML='<p>'+fallback[role]+'</p>';
+          d.append(s,c);
+          return d;
+        }
+
         document.querySelectorAll('.module-screen .lesson-card:not(.reading-inline)').forEach(card=>{
-          card.querySelectorAll('.activity-workbench-kicker').forEach(k=>k.textContent='Try it');
-          card.querySelectorAll(':scope > .activity').forEach(activity=>{
-            if(!activity.querySelector(':scope > .lesson-pattern-label')){
-              const label=document.createElement('p');
-              label.className='lesson-pattern-label';
-              label.textContent='Try it';
-              activity.prepend(label);
-            }
-          });
-          ['idea','example','reflect','connect'].forEach(role=>{
+          const workbench=card.querySelector(':scope > .activity-workbench');
+          const controls=card.querySelector(':scope > .lesson-controls');
+
+          // Reuse existing duplicate material before creating any connective fallback.
+          let folds=[...card.querySelectorAll(':scope > .module-fold[data-pattern-role]')];
+          const ideas=folds.filter(f=>f.dataset.patternRole==='idea');
+          const examples=folds.filter(f=>f.dataset.patternRole==='example');
+          const tries=folds.filter(f=>f.dataset.patternRole==='try');
+          const reflects=folds.filter(f=>f.dataset.patternRole==='reflect');
+          const connects=folds.filter(f=>f.dataset.patternRole==='connect');
+
+          if(!examples.length && ideas.length>1) setRole(ideas[1],'example');
+          if(!reflects.length && tries.length>1) setRole(tries[tries.length-1],'reflect');
+          if(!ideas.length && reflects.length>1) setRole(reflects[0],'idea');
+          if(!tries.length && !workbench && connects.length>1) setRole(connects[0],'try');
+
+          folds=[...card.querySelectorAll(':scope > .module-fold[data-pattern-role]')];
+
+          // Merge true duplicates after useful material has been reassigned.
+          ['idea','example','try','reflect','connect'].forEach(role=>{
             const same=[...card.querySelectorAll(':scope > .module-fold[data-pattern-role="'+role+'"]')];
             if(same.length<2)return;
             const first=same.shift(),copy=first.querySelector('.fold-copy');
@@ -2666,14 +2701,18 @@
               extra.remove();
             });
           });
-          const workbench=card.querySelector(':scope > .activity-workbench');
-          const controls=card.querySelector(':scope > .lesson-controls');
-          const folds=[...card.querySelectorAll(':scope > .module-fold[data-pattern-role]')];
+
+          // Decide whether the generated participant workbench is the Try or Reflect step.
           if(workbench){
-            const workbenchRole=workbench.dataset.patternRole||'try';
-            const workbenchKicker=workbench.querySelector('.activity-workbench-kicker');
-            if(workbenchKicker) workbenchKicker.textContent=workbenchRole==='reflect'?'Reflect':'Try it';
-            folds.filter(f=>f.dataset.patternRole===workbenchRole).forEach(f=>{
+            const loop=card.dataset.loop||'';
+            const existingReflect=card.querySelector(':scope > .module-fold[data-pattern-role="reflect"]');
+            const workbenchRole=(loop==='reflect'||loop==='decide')&&!existingReflect?'reflect':'try';
+            workbench.dataset.patternRole=workbenchRole;
+            const kicker=workbench.querySelector('.activity-workbench-kicker');
+            if(kicker) kicker.textContent=roleLabel[workbenchRole];
+
+            // Move any separate fold with the same role into the workbench guidance.
+            [...card.querySelectorAll(':scope > .module-fold[data-pattern-role="'+workbenchRole+'"]')].forEach(f=>{
               const copy=f.querySelector('.fold-copy');
               if(copy&&copy.innerHTML.trim()){
                 const guidance=document.createElement('div');
@@ -2685,16 +2724,33 @@
               f.remove();
             });
           }
+
+          // Ensure all five participant-facing steps exist. These fallbacks add no new
+          // curriculum claim; they only tell the participant how to use material already present.
+          const hasRole=role=>{
+            if(workbench&&workbench.dataset.patternRole===role) return true;
+            return !!card.querySelector(':scope > .module-fold[data-pattern-role="'+role+'"]');
+          };
+          ['idea','example','try','reflect','connect'].forEach(role=>{
+            if(!hasRole(role)) card.insertBefore(makeFold(role),controls||null);
+          });
+
+          // Label any older inline activity as Try it.
+          card.querySelectorAll(':scope > .activity').forEach(activity=>{
+            if(!activity.querySelector(':scope > .lesson-pattern-label')){
+              const label=document.createElement('p');
+              label.className='lesson-pattern-label';
+              label.textContent='Try it';
+              activity.prepend(label);
+            }
+          });
+
           if(controls){
-            const ordered=[...card.querySelectorAll(':scope > .module-fold[data-pattern-role]')]
-              .sort((a,b)=>(rank[a.dataset.patternRole]||99)-(rank[b.dataset.patternRole]||99));
-            const idea=ordered.filter(x=>x.dataset.patternRole==='idea');
-            const example=ordered.filter(x=>x.dataset.patternRole==='example');
-            const reflect=ordered.filter(x=>x.dataset.patternRole==='reflect');
-            const connect=ordered.filter(x=>x.dataset.patternRole==='connect');
-            [...idea,...example].forEach(node=>controls.before(node));
-            if(workbench) controls.before(workbench);
-            [...reflect,...connect].forEach(node=>controls.before(node));
+            const nodes=[
+              ...card.querySelectorAll(':scope > .module-fold[data-pattern-role]'),
+              ...(workbench?[workbench]:[])
+            ].sort((a,b)=>(rank[a.dataset.patternRole]||99)-(rank[b.dataset.patternRole]||99));
+            nodes.forEach(node=>controls.before(node));
           }
         });
       }
