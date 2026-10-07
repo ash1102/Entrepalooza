@@ -427,6 +427,13 @@
     .map-summary-card h4{margin:0 0 10px;font-size:17px}
     .map-summary-list{display:grid;gap:7px;margin:0;padding:0;list-style:none}
     .map-summary-list li{padding:8px 10px;border-radius:4px;background:rgba(255,255,255,.55);font-size:14px}
+    .map-journal-actions{margin-top:12px}
+    .map-journal-actions .button{width:100%}
+    .activity-fallback{margin:16px 0 20px;padding:16px;border:1px solid var(--line);border-radius:10px;background:rgba(255,253,248,.82)}
+    .activity-fallback label{display:block;margin-bottom:6px;font-weight:850}
+    .activity-fallback textarea{width:100%;min-height:110px;padding:11px 12px;border:1px solid #87958e;border-radius:6px;background:var(--paper-light);color:var(--ink);font-size:16px;resize:vertical}
+    .activity-fallback-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+    .activity-fallback-actions button{min-height:42px;padding:8px 11px;border:1px solid var(--teal);border-radius:5px;background:transparent;color:var(--teal);font-weight:750}
     .map-empty{color:var(--muted);font-style:italic}
     .map-final-choice{display:grid;grid-template-columns:1fr 1fr;gap:10px}
     .map-clear{margin-left:auto}
@@ -1232,6 +1239,9 @@
           <ul class="map-summary-list" id="map-summary-list">
             <li class="map-empty">Nothing has to stand out yet. Anything you add above will show up here automatically.</li>
           </ul>
+          <div class="map-journal-actions">
+            <button class="button" type="button" id="map-journal-capture">Keep this map in Conversation Journal</button>
+          </div>
         </div>
       </section>
 
@@ -2155,6 +2165,18 @@
       });
 
 
+      document.addEventListener('click',e=>{
+        if(e.target.id==='map-journal-capture'){captureLifeMapToJournal();return;}
+        const fallback=e.target.closest('[data-fallback-journal]');
+        if(fallback){
+          const box=fallback.closest('.activity-fallback');
+          const value=box?.querySelector('textarea')?.value?.trim()||'';
+          const title=box?.closest('.lesson-card')?.querySelector('h3')?.textContent?.trim()||'Activity';
+          if(!value){showToast('Write something first, or keep moving.');return;}
+          addJournalEntry(title+'\n'+value,'Reflect');
+          openConversationJournal();
+        }
+      });
       document.addEventListener('input',e=>{if(e.target.closest('#life-map-workspace'))refreshLifeMap();if(!e.target.closest('#shape-panel'))renderShapeView();});
       document.addEventListener('change',e=>{if(!e.target.closest('#shape-panel'))renderShapeView();});
       document.addEventListener('click',e=>{if(!e.target.closest('#shape-panel'))setTimeout(renderShapeView,0);});
@@ -2213,6 +2235,23 @@
           items.forEach(text=>{const li=document.createElement('li');li.textContent=text;list.appendChild(li);});
         }
       }
+      function captureLifeMapToJournal(){
+        const data=lifeMapEntries();
+        const lines=[];
+        data.places.forEach(x=>lines.push('Where I spend time: '+[x.place,x.doing,x.feeling].filter(Boolean).join(' · ')));
+        if(data.activities.length)lines.push('Things I find myself doing: '+data.activities.join(', '));
+        if(data.missing)lines.push('Something I wish I could do more often: '+data.missing);
+        if(data.bigger)lines.push('Something I would like the chance to try: '+data.bigger);
+        if(data.threads.length)lines.push('Things that keep showing up: '+data.threads.join(' · '));
+        if(data.finals.thing)lines.push('Curious about right now: '+data.finals.thing);
+        if(data.finals.because)lines.push('Why it stood out: '+data.finals.because);
+        if(data.finals.unknown)lines.push('What I want to find out: '+data.finals.unknown);
+        if(data.finals.next)lines.push('One small way to learn more: '+data.finals.next);
+        if(!lines.length){showToast('Add something to the map first, or keep moving.');return;}
+        addJournalEntry('Start with where you are now\n'+lines.join('\n'),'Notice');
+        openConversationJournal();
+      }
+
       function addLifeMapPlace(){
         const grid=document.getElementById('map-place-grid');
         if(!grid) return;
@@ -3243,14 +3282,29 @@
           const label=fold.querySelector('summary')?.textContent?.trim()||'';
           if(/^Facilitator\b/i.test(label)) fold.remove();
         });
-        document.querySelectorAll('.lesson-card').forEach(card=>{
-          const title=card.querySelector('h3')?.textContent?.trim()||'';
-          if(title==="Start with where you are now") return;
-          if(card.querySelector('.activity-workbench')) return;
-          const html=participantActivityMarkup(title);
-          if(!html) return;
+
+        document.querySelectorAll('.lesson-card:not(.reading-inline)').forEach((card,index)=>{
+          const title=card.querySelector('h3')?.textContent?.trim()||'Activity';
           const controls=card.querySelector('.lesson-controls');
-          if(controls) controls.insertAdjacentHTML('beforebegin',html);
+
+          if(title!=="Start with where you are now" && !card.querySelector('.activity-workbench')){
+            const html=participantActivityMarkup(title);
+            if(html && controls) controls.insertAdjacentHTML('beforebegin',html);
+          }
+
+          // Safety net: every participant activity must contain something the participant
+          // can actually use on the page. If a future lesson has no custom form, give it
+          // a simple response box instead of shipping instructions-only.
+          const hasInteractive=!!card.querySelector('input,textarea,select,button[data-activity-choice],button[data-activity-route],button[data-map-activity],button[data-map-feeling]');
+          if(!hasInteractive && controls){
+            const id='activity-fallback-'+index;
+            const fallback=document.createElement('section');
+            fallback.className='activity-fallback';
+            fallback.innerHTML='<label for="'+id+'">Do this activity here</label>'+
+              '<textarea id="'+id+'" placeholder="Write your response, notes, plan, or what you noticed."></textarea>'+
+              '<div class="activity-fallback-actions"><button type="button" data-fallback-journal>Keep this in Conversation Journal</button></div>';
+            controls.before(fallback);
+          }
         });
       }
 
@@ -3490,6 +3544,8 @@
 
       splitModuleOneReadings();
       setupParticipantActivities();
+      const uncovered=[...document.querySelectorAll('.lesson-card:not(.reading-inline)')].filter(card=>!card.querySelector('input,textarea,select,button[data-activity-choice],button[data-activity-route],button[data-map-activity],button[data-map-feeling]'));
+      if(uncovered.length) console.warn('Entrepalooza activity coverage check found '+uncovered.length+' activity screen(s) without on-page controls.',uncovered);
       normalizeLessonPattern();
       standardizeLessonPattern();
       cleanLessonChrome();
