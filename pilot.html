@@ -812,6 +812,12 @@
     .how-class-block li span{font-weight:600;color:var(--muted)}
     .how-class-pass{margin-top:4px;padding:10px 12px;border-left:3px solid var(--gold);background:rgba(244,228,167,.24);font-weight:750}
     @media(max-width:640px){.how-class-works{padding:15px}.how-class-block li{font-size:12px}}
+    .pilot-orientation{margin:20px 0;padding:17px 18px;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;background:rgba(255,253,248,.76)}
+    .pilot-orientation h2{margin:0 0 8px;font-size:clamp(22px,2.8vw,30px)}
+    .pilot-orientation p{margin:7px 0;line-height:1.5}
+    .tool-flow{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:7px 9px;align-items:center;margin:12px 0 14px;padding:11px;border:1px dashed var(--line);border-radius:8px;background:rgba(226,235,229,.28);font-size:12px;font-weight:750}
+    .tool-flow b{color:var(--copper);text-align:center}
+    @media(max-width:640px){.tool-flow{grid-template-columns:1fr auto 1.25fr;font-size:11px}}
 
   
     /* One participant lesson pattern */
@@ -874,16 +880,19 @@
           <h1 tabindex="-1" id="cover-title">Walk through Pilot&nbsp;1</h1>
           <p class="lede">Pilot 1 opens Entrepalooza, a small, human-guided cohort in Houston for adults figuring out what comes next. Here's how it feels, one step at a time.</p>
           <p class="preview-status-note"><strong>Public preview:</strong> exploring this workbook is not enrollment in the cohort.</p>
+          <section class="pilot-orientation" aria-labelledby="pilot-orientation-title">
+            <p class="how-class-kicker">Start here</p>
+            <h2 id="pilot-orientation-title">What am I doing here?</h2>
+            <p>You’re going to work through the first four parts of Entrepalooza. You’ll notice what catches your attention, try small ways of learning more, look at what happened, and decide what makes sense next.</p>
+            <p><strong>Nothing here is a test.</strong> You can skip questions, pass on activities, or stop and come back.</p>
+          </section>
           <aside class="journal-welcome" aria-labelledby="journal-welcome-title">
             <div class="journal-welcome-mark" aria-hidden="true">J</div>
             <div>
               <p class="journal-welcome-kicker">A tool you’ll have throughout the workbook</p>
               <h2 id="journal-welcome-title">Your Conversation Journal</h2>
-              <p class="journal-welcome-copy">Use it when a thought is worth keeping but you do not want to stop and answer every question. You can write in it directly, or send an activity note there and decide whether to keep it.</p>
-              <div class="journal-welcome-flow" aria-label="How the Conversation Journal works">
-                <span>Write or send a note</span><b aria-hidden="true">→</b><span>Review the draft</span><b aria-hidden="true">→</b><span>Keep it if you want</span>
-              </div>
-              <p class="journal-welcome-note"><strong>Optional and private.</strong> Journal text is not sent anywhere. It stays in this tab unless you choose to save or download your workbook. Entries you keep can also help <em>What’s Taking Shape</em> notice repeated ideas later, and you can reject or rewrite anything it suggests.</p>
+              <p class="journal-welcome-copy">A place to catch thoughts you want to remember while you work. You can write directly in it or send an activity note there. Keeping an entry is always your choice.</p>
+              <p class="journal-welcome-note"><strong>Nothing is saved automatically or sent to Entrepalooza.</strong> If you choose to save or download your workbook, that copy stays on your device or in the file you choose.</p>
             </div>
           </aside>
           <div class="check-in">
@@ -903,7 +912,12 @@
             </div>
             <div class="how-class-block">
               <h3>Your workbook tools</h3>
-              <p>You write something once, and it carries forward.</p>
+              <p>You write something once, and it carries forward. <strong>You do not fill these out separately.</strong> The workbook builds them from things you already chose to record.</p>
+              <div class="tool-flow" aria-label="How workbook tools build as you go">
+                <span>Your answers</span><b>→</b><span>What I’m noticing</span>
+                <span>Your experiments</span><b>→</b><span>What helps me work</span>
+                <span>Your decisions</span><b>→</b><span>My next choice</span>
+              </div>
               <ul>
                 <li><strong>What I'm noticing <span>(Builder Discovery Record)</span>:</strong> a running log of what you're curious about, what you tried, and what you learned.</li>
                 <li><strong>My next choice <span>(Next Decision)</span>:</strong> a short card after each try so you can choose your next move clearly.</li>
@@ -1702,11 +1716,11 @@
 
   <aside class="workbook-tray" aria-label="My workbook">
     <details id="workbook-tray">
-      <summary>My workbook <span id="stamp-count">0 / 3 stamps</span></summary>
+      <summary>My workbook <span id="stamp-count">0 of 3 taking shape</span></summary>
       <ul class="tray-list">
-        <li class="tray-stamp" data-stamp="operating"><span class="stamp-mark" aria-hidden="true">✓</span><span>What helps me work<span class="stamp-sub" data-stamp-note="operating">Not reached yet</span></span></li>
-        <li class="tray-stamp" data-stamp="discovery"><span class="stamp-mark" aria-hidden="true">✓</span><span>What I’m noticing<span class="stamp-sub" data-stamp-note="discovery">Not reached yet</span></span></li>
-        <li class="tray-stamp" data-stamp="decision"><span class="stamp-mark" aria-hidden="true">✓</span><span>My next choice<span class="stamp-sub" data-stamp-note="decision">Not reached yet</span></span></li>
+        <li class="tray-stamp" data-stamp="operating"><span class="stamp-mark" aria-hidden="true">✓</span><span>What helps me work<span class="stamp-sub" data-stamp-note="operating">Nothing here yet/span></span></li>
+        <li class="tray-stamp" data-stamp="discovery"><span class="stamp-mark" aria-hidden="true">✓</span><span>What I’m noticing<span class="stamp-sub" data-stamp-note="discovery">Nothing here yet/span></span></li>
+        <li class="tray-stamp" data-stamp="decision"><span class="stamp-mark" aria-hidden="true">✓</span><span>My next choice<span class="stamp-sub" data-stamp-note="decision">Nothing here yet/span></span></li>
       </ul>
       <section class="conversation-journal" aria-labelledby="conversation-journal-title">
         <button class="conversation-journal-toggle" type="button" id="conversation-journal-toggle" aria-expanded="false" aria-controls="conversation-journal-panel">
@@ -2469,7 +2483,10 @@
           const workbench=card.querySelector(':scope > .activity-workbench');
           if(workbench){
             const kicker=workbench.querySelector('.activity-workbench-kicker');
-            if(kicker) kicker.textContent='Try it';
+            const loop=card.dataset.loop||'';
+            const role=(loop==='reflect'||loop==='decide')?'reflect':'try';
+            if(kicker) kicker.textContent=role==='reflect'?'Reflect':'Try it';
+            workbench.dataset.patternRole=role;
           }
 
           card.querySelectorAll(':scope > .mini-note').forEach(note=>addLabel(note,'How this connects'));
@@ -2518,6 +2535,23 @@
         });
       }
 
+
+      function clarifySequenceProgress(){
+        document.querySelectorAll('.module-screen').forEach(screen=>{
+          const cards=[...screen.querySelectorAll('.lesson-stage > .lesson-card')];
+          const kicker=screen.querySelector('.module-heading .module-kicker span');
+          if(kicker) kicker.textContent=cards.length+' parts';
+          cards.forEach((card,index)=>{
+            const meta=card.querySelector(':scope > .lesson-meta');
+            if(!meta)return;
+            const strong=meta.querySelector('strong');
+            const spans=meta.querySelectorAll('span');
+            if(strong) strong.textContent='Part '+(index+1)+' of '+cards.length;
+            const type=card.classList.contains('reading-inline')?'Reading':'Activity';
+            if(spans.length) spans[spans.length-1].textContent=type;
+          });
+        });
+      }
 
       function setupReadingDecks(){
         document.querySelectorAll('.lesson-card.reading-inline').forEach((card,cardIndex)=>{
@@ -2614,11 +2648,24 @@
               activity.prepend(label);
             }
           });
+          ['idea','example','reflect','connect'].forEach(role=>{
+            const same=[...card.querySelectorAll(':scope > .module-fold[data-pattern-role="'+role+'"]')];
+            if(same.length<2)return;
+            const first=same.shift(),copy=first.querySelector('.fold-copy');
+            same.forEach(extra=>{
+              const extraCopy=extra.querySelector('.fold-copy');
+              if(copy&&extraCopy&&extraCopy.innerHTML.trim()) copy.insertAdjacentHTML('beforeend',extraCopy.innerHTML);
+              extra.remove();
+            });
+          });
           const workbench=card.querySelector(':scope > .activity-workbench');
           const controls=card.querySelector(':scope > .lesson-controls');
           const folds=[...card.querySelectorAll(':scope > .module-fold[data-pattern-role]')];
           if(workbench){
-            folds.filter(f=>f.dataset.patternRole==='try').forEach(f=>{
+            const workbenchRole=workbench.dataset.patternRole||'try';
+            const workbenchKicker=workbench.querySelector('.activity-workbench-kicker');
+            if(workbenchKicker) workbenchKicker.textContent=workbenchRole==='reflect'?'Reflect':'Try it';
+            folds.filter(f=>f.dataset.patternRole===workbenchRole).forEach(f=>{
               const copy=f.querySelector('.fold-copy');
               if(copy&&copy.innerHTML.trim()){
                 const guidance=document.createElement('div');
@@ -3095,9 +3142,9 @@
       function shapeData(){const d=shapeSources();d.patterns=shapePatternCandidates(d);return d;}
       function syncArtifactStamps(d=shapeData()){
         const ready={discovery:d.threads.length+d.evidence.length+d.unknowns.length>0,operating:d.conditions.length+d.supports.length+d.costs.length>0,decision:d.decisions.length>0};
-        const notes={discovery:ready.discovery?(d.threads.length+' threads · '+d.evidence.length+' evidence notes'):'Not started yet',operating:ready.operating?(d.conditions.length+' conditions · '+d.supports.length+' supports'):'Not started yet',decision:ready.decision?('Latest: '+d.decisions[d.decisions.length-1].value):'Not started yet'};
-        document.querySelectorAll('.tray-stamp').forEach(s=>{const k=s.dataset.stamp;s.classList.toggle('is-pressed',!!ready[k]);const n=s.querySelector('[data-stamp-note="'+k+'"]');if(n)n.textContent=notes[k]||'Not started yet';});
-        const count=Object.values(ready).filter(Boolean).length,el=document.getElementById('stamp-count');if(el)el.textContent=count+' / 3 tools';
+        const notes={discovery:ready.discovery?(d.threads.length+' threads · '+d.evidence.length+' evidence notes'):'Nothing here yet',operating:ready.operating?(d.conditions.length+' conditions · '+d.supports.length+' supports'):'Nothing here yet',decision:ready.decision?('Latest: '+d.decisions[d.decisions.length-1].value):'Nothing here yet'};
+        document.querySelectorAll('.tray-stamp').forEach(s=>{const k=s.dataset.stamp;s.classList.toggle('is-pressed',!!ready[k]);const n=s.querySelector('[data-stamp-note="'+k+'"]');if(n)n.textContent=notes[k]||'Nothing here yet';});
+        const count=Object.values(ready).filter(Boolean).length,el=document.getElementById('stamp-count');if(el)el.textContent=count+' of 3 taking shape';
       }
       function clearNode(n){while(n.firstChild)n.removeChild(n.firstChild);}
       function shapeEmpty(t){const d=document.createElement('div');d.className='shape-empty';d.textContent=t;return d;}
@@ -3233,6 +3280,7 @@
       setupParticipantActivities();
       normalizeLessonPattern();
       standardizeLessonPattern();
+      clarifySequenceProgress();
       setupReadingDecks();
       setupVariedSlides();
       setJournalPrompt('Notice');
