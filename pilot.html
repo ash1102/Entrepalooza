@@ -798,6 +798,29 @@
       .home-link,.interest-link{font-size:12px;padding:7px 6px}
     }
 
+  
+    /* Cover orientation: how the class works */
+    .how-class-works{margin:24px 0 4px;padding:18px;border:1px solid var(--line);border-radius:10px;background:rgba(255,253,248,.72)}
+    .how-class-kicker{margin:0 0 3px;color:var(--teal);font-size:10px;text-transform:uppercase;letter-spacing:.11em;font-weight:850}
+    .how-class-works h2{margin:0 0 14px;font-size:clamp(22px,2.8vw,30px)}
+    .how-class-block{padding:12px 0;border-top:1px solid var(--line)}
+    .how-class-block:first-of-type{border-top:0;padding-top:0}
+    .how-class-block h3{margin:0 0 5px;font-size:16px}
+    .how-class-block p,.how-class-pass{margin:0;font-size:13px;line-height:1.5}
+    .how-class-block ul{margin:8px 0 0;padding-left:20px;display:grid;gap:8px}
+    .how-class-block li{font-size:12px;line-height:1.5}
+    .how-class-block li span{font-weight:600;color:var(--muted)}
+    .how-class-pass{margin-top:4px;padding:10px 12px;border-left:3px solid var(--gold);background:rgba(244,228,167,.24);font-weight:750}
+    @media(max-width:640px){.how-class-works{padding:15px}.how-class-block li{font-size:12px}}
+
+  
+    /* One participant lesson pattern */
+    .lesson-pattern-label{margin:0 0 8px;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.11em;font-weight:900}
+    .try-guidance{margin:0 0 14px;padding:10px 12px;border-left:3px solid var(--gold);background:rgba(244,228,167,.2);font-size:13px;line-height:1.5}
+    .try-guidance p{margin:.35em 0}.try-guidance ul,.try-guidance ol{margin:.45em 0;padding-left:1.25em}
+
+      .activity-privacy-card{margin:0 0 13px;padding:8px 10px;border-left:3px solid var(--teal);background:rgba(226,235,229,.42);color:var(--muted);font-size:11px;line-height:1.4}
+
   </style>
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -806,7 +829,6 @@
 </head>
 <body>
   <!-- Canonical source pointer supplied by Ashley: https://app.notion.com/p/Module-1-Find-Something-Worth-Exploring-3f1ca793c2c5813498f9c463198e2942?source=copy_link -->
-  <!-- FILL: start dates · time commitment · cost · meeting tool · facilitator names · recruitment status -->
   <a class="skip-link" href="#main-content">Skip to walkthrough</a>
   <header class="site-header">
     <div class="header-inner">
@@ -839,7 +861,7 @@
         </div>
       </div>
       <div class="module-progress" aria-hidden="true">
-        <span class="module-progress-label" id="module-progress-label">Start</span>
+        <span class="module-progress-label" id="module-progress-label">Step Start</span>
         <div class="module-progress-track"><div class="module-progress-fill" id="module-progress-fill"></div></div>
       </div>
     </div>
@@ -872,6 +894,28 @@
             </div>
             <p class="message" role="status" aria-live="polite"></p>
           </div>
+          <section class="how-class-works" aria-labelledby="how-class-works-title">
+            <p class="how-class-kicker">Before you begin</p>
+            <h2 id="how-class-works-title">How this class works</h2>
+            <div class="how-class-block">
+              <h3>The loop</h3>
+              <p>Every lesson uses the same four steps: <strong>Notice → Try → Reflect → Decide.</strong> You notice what's going on. You try one small thing. You look at what happened. Then you choose your next move.</p>
+            </div>
+            <div class="how-class-block">
+              <h3>Your workbook tools</h3>
+              <p>You write something once, and it carries forward.</p>
+              <ul>
+                <li><strong>What I'm noticing <span>(Builder Discovery Record)</span>:</strong> a running log of what you're curious about, what you tried, and what you learned.</li>
+                <li><strong>My next choice <span>(Next Decision)</span>:</strong> a short card after each try so you can choose your next move clearly.</li>
+                <li><strong>What helps me work <span>(Operating Plan)</span>:</strong> conditions for working well — what you're protecting, early warning signs, and how to pause and come back.</li>
+              </ul>
+            </div>
+            <div class="how-class-block">
+              <h3>Seven ways to decide</h3>
+              <p>All of them count: <strong>Keep · Change · Test Again · Pause/Park · Stop · Another Direction · Continue Looking.</strong></p>
+            </div>
+            <p class="how-class-pass">You can always pass, watch, or plan a try instead of doing it.</p>
+          </section>
           
         </div>
         <aside class="sticky-note" aria-label="A note about the module loop">
@@ -888,29 +932,29 @@
     
     <section class="screen module-screen" id="module-0" data-index="1" aria-labelledby="module-0-title">
     <div class="module-layout">
-      <aside class="module-rail"><div><div class="module-number" aria-hidden="true">0</div><div class="rail-label">Choose How You Want to Take Part</div></div><div class="margin-note">Passing is part of belonging.</div></aside>
+      <aside class="module-rail"><div><div class="module-number" aria-hidden="true">0</div><div class="rail-label">Enter with Agency</div></div><div class="margin-note">Passing is part of belonging.</div></aside>
       <div class="module-content">
-        <header class="module-heading"><div class="module-kicker"><strong>Before the workbook</strong><span>Module 0 · 5 lessons</span></div><h2 tabindex="-1" id="module-0-title">Choose How You Want to Take Part</h2></header>
+        <header class="module-heading"><div class="module-kicker"><strong>Module 0 of Pilot 1</strong><span>5 lessons</span></div><h2 tabindex="-1" id="module-0-title">Enter with Agency</h2></header>
         
-        <nav class="lesson-tabs" aria-label="Choose How You Want to Take Part lessons"><button class="lesson-tab" type="button" data-lesson-goto="0" aria-current="step">1</button><button class="lesson-tab" type="button" data-lesson-goto="1" >2</button><button class="lesson-tab" type="button" data-lesson-goto="2" >3</button><button class="lesson-tab" type="button" data-lesson-goto="3" >4</button><button class="lesson-tab" type="button" data-lesson-goto="4" >5</button></nav>
+        <nav class="lesson-tabs" aria-label="Module 0 · Enter with Agency sequence"><button class="lesson-tab" type="button" data-lesson-goto="0" aria-current="step">1</button><button class="lesson-tab" type="button" data-lesson-goto="1" >2</button><button class="lesson-tab" type="button" data-lesson-goto="2" >3</button><button class="lesson-tab" type="button" data-lesson-goto="3" >4</button><button class="lesson-tab" type="button" data-lesson-goto="4" >5</button></nav>
         <div class="lesson-stage"><article class="lesson-card is-lesson-active" data-lesson-index="0" data-loop="notice">
-    <div class="lesson-meta"><strong>Lesson 1 of 5</strong><span>·</span><span>Try it here</span></div>
+    <div class="lesson-meta"><strong>Lesson 1 of 5</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">Know what this pilot is and isn’t</h3><p class="lesson-purpose">Know what the pilot will and won’t do before choosing anything.</p>
-     <div class="beat"><div class="beat-label">Learn</div><p>You can answer aloud, write privately, observe, or pass. Passing never needs a reason. Entrepalooza is a structured way to notice, try something small, reflect, and decide what comes next. A job, training, a project, a pause, or still looking can all be complete finishes.</p><p><strong>Your Conversation Journal is optional.</strong> Use it to keep thoughts you want to remember without having to complete every prompt.</p></div>
+     <div class="beat"><div class="beat-label">The idea</div><p>You can answer aloud, write privately, observe, or pass. Passing never needs a reason. Entrepalooza is a structured way to notice, try something small, reflect, and decide what comes next. A job, training, a project, a pause, or still looking can all be complete finishes.</p><p><strong>Your Conversation Journal is optional.</strong> Use it to keep thoughts you want to remember without having to complete every prompt.</p></div>
      <div class="activity" data-single-select><p class="activity-title">Quick check: part of the pilot, or not?</p><div class="tile-grid">
        <button class="tile-option" type="button" aria-pressed="false" data-feedback="Yes. Small, bounded experiments are part of the pilot.">Try something small</button>
        <button class="tile-option" type="button" aria-pressed="false" data-feedback="No. The pilot does not promise jobs or income.">Job or income promise</button>
        <button class="tile-option" type="button" aria-pressed="false" data-feedback="Yes. Passing is a real participation choice.">Pass without explaining</button>
        <button class="tile-option" type="button" aria-pressed="false" data-feedback="No. Entrepreneurship is optional.">Required business path</button>
      </div><p class="activity-message" role="status" aria-live="polite"></p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Cover</button><button class="button button-primary" type="button" data-lesson-next>Lesson 2 →</button></div></article><article class="lesson-card" data-lesson-index="1" data-loop="notice">
-    <div class="lesson-meta"><strong>Lesson 2 of 5</strong><span>·</span><span>Try it here</span></div>
+    <div class="lesson-meta"><strong>Lesson 2 of 5</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">Your choices, privacy, and permission</h3><p class="lesson-purpose">Practice the rights before anyone asks you for personal information.</p>
-     <div class="beat"><div class="beat-label">Learn</div><p>Participation, evaluation, recording, story use, and follow-up are separate choices. Saying yes to one does not mean yes to the others. You can pass without defending the choice.</p></div>
-     <div class="activity"><p class="activity-title">Try separate consent</p><p>This is a demonstration only. Your response is not sent.</p>
+     <div class="beat"><div class="beat-label">The idea</div><p>Participation, evaluation, recording, story use, and follow-up are separate choices. Saying yes to one does not mean yes to the others. You can pass without defending the choice.</p></div>
+     <div class="activity"><p class="activity-title">Try separate consent</p><p>Just for you. Nothing you type is saved or sent.</p>
        <div class="example-line"><strong>Participation</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Participation: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Participation: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Participation: Not now is a complete choice.">Not now</button></div></div><div class="example-line"><strong>Evaluation</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Evaluation: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Evaluation: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Evaluation: Not now is a complete choice.">Not now</button></div></div><div class="example-line"><strong>Recording</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Recording: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Recording: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Recording: Not now is a complete choice.">Not now</button></div></div><div class="example-line"><strong>Story use</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Story use: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Story use: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Story use: Not now is a complete choice.">Not now</button></div></div><div class="example-line"><strong>Follow-up</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Follow-up: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Follow-up: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Follow-up: Not now is a complete choice.">Not now</button></div></div>
        <p class="activity-message" role="status" aria-live="polite"></p></div>
-     <div class="beat"><div class="beat-label">Teach-back</div><p>Name one thing the program will not do and one way you could pause or leave. The consent readings support active discussion and teach-back rather than relying on a form alone.</p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 1</button><button class="button button-primary" type="button" data-lesson-next>Lesson 3 →</button></div></article><article class="lesson-card" data-lesson-index="2" data-loop="try">
-    <div class="lesson-meta"><strong>Lesson 3 of 5</strong><span>·</span><span>Try it here</span></div>
+     <div class="beat"><div class="beat-label">Reflect</div><p>Name one thing the program will not do and one way you could pause or leave. The consent readings support active discussion and teach-back rather than relying on a form alone.</p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 1</button><button class="button button-primary" type="button" data-lesson-next>Lesson 3 →</button></div></article><article class="lesson-card" data-lesson-index="2" data-loop="try">
+    <div class="lesson-meta"><strong>Lesson 3 of 5</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">How feedback works here</h3><p class="lesson-purpose">Practice asking before giving feedback, and practice hearing “no” without pushing.</p>
      <div class="activity" data-single-select><p class="activity-title">You want to comment on someone’s idea. What do you ask first?</p><div class="tap-row">
        <button class="tap-option" type="button" aria-pressed="false" data-feedback="Good. The other person chooses the kind of feedback, or none.">Question, suggestion, or no feedback?</button>
@@ -918,13 +962,13 @@
        <button class="tap-option" type="button" aria-pressed="false" data-feedback="That pressures the other person to explain.">Why don’t you want feedback?</button>
      </div><p class="activity-message" role="status" aria-live="polite"></p></div>
      <div class="mini-note">Ask · Pass · Listen · Bounded feedback. Those are group skills, not personality traits.</div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 2</button><button class="button button-primary" type="button" data-lesson-next>Lesson 4 →</button></div></article><article class="lesson-card" data-lesson-index="3" data-loop="reflect">
-    <div class="lesson-meta"><strong>Lesson 4 of 5</strong><span>·</span><span>Try it here</span></div>
+    <div class="lesson-meta"><strong>Lesson 4 of 5</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">What would help you take part?</h3><p class="lesson-purpose">Notice the setup that makes participation workable without turning support into a diagnosis.</p>
      <div class="activity" data-multi-select><p class="activity-title">What can count as a participation condition?</p><div class="tile-grid">
        <button class="tile-option" type="button" aria-pressed="false" data-feedback="Private writing can be a legitimate participation condition.">Private writing</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Paper handouts can be a legitimate participation condition.">Paper handouts</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Breaks can be a legitimate participation condition.">Breaks</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Schedule flexibility can be a legitimate participation condition.">Schedule flexibility</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Phone-friendly materials can be a legitimate participation condition.">Phone-friendly materials</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Reading support can be a legitimate participation condition.">Reading support</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Observe first can be a legitimate participation condition.">Observe first</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="No extra support can be a legitimate participation condition.">No extra support</button>
      </div><p class="activity-message" role="status" aria-live="polite"></p></div>
      <div class="mini-note">Needing a different setup is not evidence about someone’s worth or readiness.</div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 3</button><button class="button button-primary" type="button" data-lesson-next>Lesson 5 →</button></div></article><article class="lesson-card" data-lesson-index="4" data-loop="decide">
-    <div class="lesson-meta"><strong>Lesson 5 of 5</strong><span>·</span><span>Try it here</span></div>
+    <div class="lesson-meta"><strong>Lesson 5 of 5</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">Decide whether you want to continue</h3><p class="lesson-purpose">Make a real participation choice. Joining and consent stay separate.</p>
      <div class="activity" data-single-select><p class="activity-title">Choose a route for this demonstration</p><div class="tile-grid">
        <button class="tile-option" type="button" aria-pressed="false" data-feedback="Participate is one valid route.">Participate</button>
@@ -940,9 +984,9 @@
     <div class="module-layout">
       <aside class="module-rail"><div><div class="module-number" aria-hidden="true">1</div><div class="rail-label">Find Something Worth Exploring</div></div><div class="margin-note">“Nothing clear yet” is a real result.</div></aside>
       <div class="module-content">
-        <header class="module-heading"><div class="module-kicker"><strong>Workbook · Module 1 of 4</strong><span>3 readings · 7 lessons</span></div><h2 tabindex="-1" id="module-1-title">Find Something Worth Exploring</h2></header>
+        <header class="module-heading"><div class="module-kicker"><strong>Module 1 of Pilot 1</strong><span>3 readings · 7 lessons</span></div><h2 tabindex="-1" id="module-1-title">Find Something Worth Exploring</h2></header>
         
-        <nav class="lesson-tabs" aria-label="Module 2 of 5 sequence"><button class="lesson-tab reading-tab" type="button" data-lesson-goto="0" aria-current="step" aria-label="Reading 1 — You Don’t Have to Know Yet">R1</button><button class="lesson-tab " type="button" data-lesson-goto="1"  aria-label="Lesson 0 — Start with where you are now">L0</button><button class="lesson-tab " type="button" data-lesson-goto="2"  aria-label="Lesson 1 — Start with what keeps catching your attention">L1</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="3"  aria-label="Reading 2 — When Something Matters, How It Holds You Matters">R2</button><button class="lesson-tab " type="button" data-lesson-goto="4"  aria-label="Lesson 2 — Does it feel chosen or pressured?">L2</button><button class="lesson-tab " type="button" data-lesson-goto="5"  aria-label="Lesson 3 — Look at a few real possibilities">L3</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="6"  aria-label="Reading 3 — A Try Is Not a Commitment">R3</button><button class="lesson-tab " type="button" data-lesson-goto="7"  aria-label="Lesson 4 — Plan one small test">L4</button><button class="lesson-tab " type="button" data-lesson-goto="8"  aria-label="Lesson 5 — Try it and notice what happens">L5</button><button class="lesson-tab " type="button" data-lesson-goto="9"  aria-label="Lesson 6 — What did you learn, and what next?">L6</button></nav>
+        <nav class="lesson-tabs" aria-label="Module 1 · Find Something Worth Exploring sequence"><button class="lesson-tab reading-tab" type="button" data-lesson-goto="0" aria-current="step" aria-label="Reading 1 — You Don’t Have to Know Yet">R1</button><button class="lesson-tab " type="button" data-lesson-goto="1"  aria-label="Lesson 0 — Start with where you are now">L0</button><button class="lesson-tab " type="button" data-lesson-goto="2"  aria-label="Lesson 1 — Start with what keeps catching your attention">L1</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="3"  aria-label="Reading 2 — When Something Matters, How It Holds You Matters">R2</button><button class="lesson-tab " type="button" data-lesson-goto="4"  aria-label="Lesson 2 — Does it feel chosen or pressured?">L2</button><button class="lesson-tab " type="button" data-lesson-goto="5"  aria-label="Lesson 3 — Look at a few real possibilities">L3</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="6"  aria-label="Reading 3 — A Try Is Not a Commitment">R3</button><button class="lesson-tab " type="button" data-lesson-goto="7"  aria-label="Lesson 4 — Plan one small test">L4</button><button class="lesson-tab " type="button" data-lesson-goto="8"  aria-label="Lesson 5 — Try it and notice what happens">L5</button><button class="lesson-tab " type="button" data-lesson-goto="9"  aria-label="Lesson 6 — What did you learn, and what next?">L6</button></nav>
         <div class="lesson-stage"><article class="lesson-card module-item reading-inline is-lesson-active" data-lesson-index="0" data-loop="notice">
     <div class="lesson-meta"><strong>Reading 1 of 10</strong><span>·</span><span>Read in pieces</span></div>
     <h3 tabindex="-1">You Don’t Have to Know Yet</h3>
@@ -978,12 +1022,12 @@
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
     </div>
   </article><article class="lesson-card module-item lesson-inline" data-lesson-index="1" data-loop="notice">
-    <div class="lesson-meta"><strong>Lesson 2 of 10</strong><span>·</span><span>Do it here</span></div>
+    <div class="lesson-meta"><strong>Lesson 2 of 10</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">Start with where you are now</h3>
     <p class="lesson-purpose">Start with your actual life: where you spend time, what you do, what you want more of, and what keeps coming back.</p>
 
     <div class="life-map-workspace" id="life-map-workspace">
-      <p class="life-map-note"><strong>Private by design.</strong> Your answers are not sent anywhere. They stay in this tab unless you choose Save on this device or Download workbook. Leave anything blank, skip a section, or come back later.</p>
+      <p class="life-map-note">Just for you. Nothing you type is saved or sent.</p>
 
       <section class="map-step" aria-labelledby="map-week-title">
         <div class="map-step-head"><h4 id="map-week-title">1. Where do you spend your time?</h4><span>Start with real life</span></div>
@@ -992,10 +1036,10 @@
           <div class="map-entry" data-map-entry="0">
   <label for="map-place-0">Where do you spend a lot of your time?</label>
   <input id="map-place-0" data-map-place="0" type="text" maxlength="80" placeholder="Work, home, a friend's house, the gym, school, a garage, somewhere else">
-  <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+  
   <label for="map-do-0" style="margin-top:10px">What do you usually do there?</label>
   <input id="map-do-0" data-map-do="0" type="text" maxlength="100" placeholder="A few words is enough">
-  <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+  
   <fieldset class="map-feeling-group" data-map-feeling-group="0">
   <legend>How do you usually feel when you're there?</legend>
   <div class="map-feeling-row">
@@ -1009,10 +1053,10 @@
           <div class="map-entry" data-map-entry="1">
   <label for="map-place-1">Where else do you spend a lot of your time?</label>
   <input id="map-place-1" data-map-place="1" type="text" maxlength="80" placeholder="Work, home, a friend's house, the gym, school, a garage, somewhere else">
-  <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+  
   <label for="map-do-1" style="margin-top:10px">What do you usually do there?</label>
   <input id="map-do-1" data-map-do="1" type="text" maxlength="100" placeholder="A few words is enough">
-  <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+  
   <fieldset class="map-feeling-group" data-map-feeling-group="1">
   <legend>How do you usually feel when you're there?</legend>
   <div class="map-feeling-row">
@@ -1026,10 +1070,10 @@
           <div class="map-entry" data-map-entry="2">
   <label for="map-place-2">Where else do you spend a lot of your time?</label>
   <input id="map-place-2" data-map-place="2" type="text" maxlength="80" placeholder="Work, home, a friend's house, the gym, school, a garage, somewhere else">
-  <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+  
   <label for="map-do-2" style="margin-top:10px">What do you usually do there?</label>
   <input id="map-do-2" data-map-do="2" type="text" maxlength="100" placeholder="A few words is enough">
-  <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+  
   <fieldset class="map-feeling-group" data-map-feeling-group="2">
   <legend>How do you usually feel when you're there?</legend>
   <div class="map-feeling-row">
@@ -1056,7 +1100,7 @@
         <div class="map-entry" style="margin-top:10px">
           <label for="map-anywhere-custom">Anything else you do a lot?</label>
           <input id="map-anywhere-custom" data-map-anywhere-custom type="text" maxlength="100" placeholder="Something you spend time doing that isn't listed above">
-          <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+          
         </div>
       </section>
 
@@ -1067,12 +1111,12 @@
           <div class="map-entry">
             <label for="map-miss">What's something you wish you could do more often?</label>
             <textarea id="map-miss" data-map-missing placeholder="Optional"></textarea>
-            <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+            
           </div>
           <div class="map-entry">
             <label for="map-bigger">Is there anything you would like the chance to try?</label>
             <textarea id="map-bigger" data-map-bigger placeholder="Optional"></textarea>
-            <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+            
           </div>
         </div>
       </section>
@@ -1084,27 +1128,27 @@
           <div class="map-entry">
             <label for="map-thread-1">What do you keep coming back to?</label>
             <input id="map-thread-1" data-map-thread type="text" maxlength="130" placeholder="A topic, activity, problem, kind of work, place, community, idea...">
-            <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+            
           </div>
           <div class="map-entry">
             <label for="map-thread-2">What do you keep looking up, watching, reading, or learning about?</label>
             <input id="map-thread-2" data-map-thread type="text" maxlength="130" placeholder="Optional">
-            <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+            
           </div>
           <div class="map-entry">
             <label for="map-thread-3">What do people usually ask you for help with?</label>
             <input id="map-thread-3" data-map-thread type="text" maxlength="130" placeholder="Optional">
-            <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+            
           </div>
           <div class="map-entry">
             <label for="map-thread-4">What kinds of problems bother you enough that you want to fix them?</label>
             <input id="map-thread-4" data-map-thread type="text" maxlength="130" placeholder="Optional">
-            <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+            
           </div>
           <div class="map-entry">
             <label for="map-thread-5">What have you tried more than once, even if you didn't stick with it?</label>
             <input id="map-thread-5" data-map-thread type="text" maxlength="130" placeholder="Optional">
-            <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+            
           </div>
         </div>
       </section>
@@ -1116,22 +1160,22 @@
           <div class="map-entry">
             <label for="map-final-thing">What are you curious about right now?</label>
             <input id="map-final-thing" data-map-final="thing" type="text" maxlength="140" placeholder="Optional">
-            <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+            
           </div>
           <div class="map-entry">
             <label for="map-final-because">What made this stand out to you?</label>
             <input id="map-final-because" data-map-final="because" type="text" maxlength="160" placeholder="Optional">
-            <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+            
           </div>
           <div class="map-entry">
             <label for="map-final-unknown">What would you want to find out about it?</label>
             <input id="map-final-unknown" data-map-final="unknown" type="text" maxlength="160" placeholder="Optional">
-            <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+            
           </div>
           <div class="map-entry">
             <label for="map-final-next">What's one small way you could learn more?</label>
             <input id="map-final-next" data-map-final="next" type="text" maxlength="160" placeholder="Optional">
-            <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save it.</p>
+            
           </div>
         </div>
         <div class="map-add-row">
@@ -1155,9 +1199,9 @@
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
     </div>
   </article><article class="lesson-card module-item lesson-inline" data-lesson-index="2" data-loop="notice">
-    <div class="lesson-meta"><strong>Lesson 3 of 10</strong><span>·</span><span>Work through it</span></div>
+    <div class="lesson-meta"><strong>Lesson 3 of 10</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">Start with what keeps catching your attention</h3>
-    <details class="module-fold " open><summary>Why this matters</summary><div class="fold-copy"><p>You do not need a clear direction before you start. A repeated interest, a question, or even “nothing is clear yet” is enough information to work with.</p></div></details><details class="module-fold " ><summary>Example</summary><div class="fold-copy"><p>Someone keeps noticing community gardens. They do not know whether they want to garden, volunteer, learn about food, meet people, or just spend more time outside. They do not have to decide yet. They can simply notice that it keeps catching their attention.</p></div></details><details class="module-fold action-fold" ><summary>Try it, use the example, or skip</summary><div class="fold-copy"><p>Start with whatever keeps catching your attention, a question you keep returning to, or the example above. You can also keep your answer private or move on with “nothing is clear yet.”</p></div></details><details class="module-fold carry-fold" ><summary>Keep in mind</summary><div class="fold-copy"><p>One thing that has your attention, one question you want to remember, or “nothing is clear yet.”</p></div></details>
+    <details class="module-fold " open data-pattern-role="idea"><summary>The idea</summary><div class="fold-copy"><p>You do not need a clear direction before you start. A repeated interest, a question, or even “nothing is clear yet” is enough information to work with.</p></div></details><details class="module-fold "  data-pattern-role="example"><summary>Everyday example</summary><div class="fold-copy"><p>Someone keeps noticing community gardens. They do not know whether they want to garden, volunteer, learn about food, meet people, or just spend more time outside. They do not have to decide yet. They can simply notice that it keeps catching their attention.</p></div></details><details class="module-fold action-fold"  data-pattern-role="try"><summary>Try it</summary><div class="fold-copy"><p>Start with whatever keeps catching your attention, a question you keep returning to, or the example above. You can also keep your answer private or move on with “nothing is clear yet.”</p></div></details><details class="module-fold carry-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>One thing that has your attention, one question you want to remember, or “nothing is clear yet.”</p></div></details>
     <div class="lesson-controls">
       <button class="button" type="button" data-lesson-prev>← Previous</button>
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
@@ -1197,17 +1241,17 @@
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
     </div>
   </article><article class="lesson-card module-item lesson-inline" data-lesson-index="4" data-loop="try">
-    <div class="lesson-meta"><strong>Lesson 5 of 10</strong><span>·</span><span>Work through it</span></div>
+    <div class="lesson-meta"><strong>Lesson 5 of 10</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">Does it feel chosen or pressured?</h3>
-    <details class="module-fold " open><summary>Why this matters</summary><div class="fold-copy"><p>Caring a lot about something is not automatically good or bad. What matters here is whether it still feels chosen and flexible, or whether it starts to feel pressured and hard to step away from.</p></div></details><details class="module-fold " ><summary>Compare two examples</summary><div class="fold-copy"><p>Two people can care equally about music. One can pause, adjust, and make room for the rest of life. The other feels like stopping means failure and keeps going even when important things get pushed aside. Real life can be mixed.</p></div></details><details class="module-fold action-fold" ><summary>What to notice</summary><div class="fold-copy"><p>Ask simple questions: Can I still choose? Can I adjust? Can I stop when I need to? What happens to the rest of my life while I do this?</p></div></details><details class="module-fold carry-fold" ><summary>Keep in mind</summary><div class="fold-copy"><p>The research terms are <strong>harmonious passion</strong> and <strong>obsessive passion</strong>. They describe patterns, not types of people.</p></div></details>
+    <details class="module-fold " open data-pattern-role="idea"><summary>The idea</summary><div class="fold-copy"><p>Caring a lot about something is not automatically good or bad. What matters here is whether it still feels chosen and flexible, or whether it starts to feel pressured and hard to step away from.</p></div></details><details class="module-fold "  data-pattern-role="example"><summary>Everyday example</summary><div class="fold-copy"><p>Two people can care equally about music. One can pause, adjust, and make room for the rest of life. The other feels like stopping means failure and keeps going even when important things get pushed aside. Real life can be mixed.</p></div></details><details class="module-fold action-fold"  data-pattern-role="reflect"><summary>Reflect</summary><div class="fold-copy"><p>Ask simple questions: Can I still choose? Can I adjust? Can I stop when I need to? What happens to the rest of my life while I do this?</p></div></details><details class="module-fold carry-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>The research terms are <strong>harmonious passion</strong> and <strong>obsessive passion</strong>. They describe patterns, not types of people.</p></div></details>
     <div class="lesson-controls">
       <button class="button" type="button" data-lesson-prev>← Previous</button>
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
     </div>
   </article><article class="lesson-card module-item lesson-inline" data-lesson-index="5" data-loop="reflect">
-    <div class="lesson-meta"><strong>Lesson 6 of 10</strong><span>·</span><span>Work through it</span></div>
+    <div class="lesson-meta"><strong>Lesson 6 of 10</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">Look at a few real possibilities</h3>
-    <details class="module-fold " open><summary>Why this matters</summary><div class="fold-copy"><p>It is hard to know what fits when everything stays abstract. Looking at real options gives you something concrete to react to without making a commitment.</p></div></details><details class="module-fold " ><summary>What counts</summary><div class="fold-copy"><p>A job, training program, trade, project, community role, creative practice, hobby, freelance work, or business idea can all be worth looking at. Looking does not mean choosing.</p></div></details><details class="module-fold action-fold" ><summary>Try it, use the example, or skip</summary><div class="fold-copy"><p>Pick one or two possibilities you would be willing to learn more about. If nothing stands out, keep looking. That is a complete answer too.</p></div></details><details class="module-fold carry-fold" ><summary>Keep in mind</summary><div class="fold-copy"><p>One possibility you might want to look at more closely, or a clear “nothing yet.”</p></div></details>
+    <details class="module-fold " open data-pattern-role="idea"><summary>The idea</summary><div class="fold-copy"><p>It is hard to know what fits when everything stays abstract. Looking at real options gives you something concrete to react to without making a commitment.</p></div></details><details class="module-fold "  data-pattern-role="example"><summary>Everyday example</summary><div class="fold-copy"><p>A job, training program, trade, project, community role, creative practice, hobby, freelance work, or business idea can all be worth looking at. Looking does not mean choosing.</p></div></details><details class="module-fold action-fold"  data-pattern-role="try"><summary>Try it</summary><div class="fold-copy"><p>Pick one or two possibilities you would be willing to learn more about. If nothing stands out, keep looking. That is a complete answer too.</p></div></details><details class="module-fold carry-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>One possibility you might want to look at more closely, or a clear “nothing yet.”</p></div></details>
     <div class="lesson-controls">
       <button class="button" type="button" data-lesson-prev>← Previous</button>
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
@@ -1250,25 +1294,25 @@
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
     </div>
   </article><article class="lesson-card module-item lesson-inline" data-lesson-index="7" data-loop="reflect">
-    <div class="lesson-meta"><strong>Lesson 8 of 10</strong><span>·</span><span>Work through it</span></div>
+    <div class="lesson-meta"><strong>Lesson 8 of 10</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">Plan one small test</h3>
-    <details class="module-fold " open><summary>Why this matters</summary><div class="fold-copy"><p>You do not need a giant leap to learn something useful. A small test can tell you more than a big promise about what you think you will do.</p></div></details><details class="module-fold " ><summary>Keep it small</summary><div class="fold-copy"><p>Decide what you want to find out, one small thing you can actually do, what would help, what limit you want to keep, and what would make you pause or stop.</p></div></details><details class="module-fold action-fold" ><summary>A test can look different</summary><div class="fold-copy"><p>You can try something in real life, do it privately, observe, use support, work from the provided example, or simply make the plan for later.</p></div></details><details class="module-fold carry-fold" ><summary>Keep in mind</summary><div class="fold-copy"><p>The goal is not to prove yourself. It is to learn one useful thing without making the test bigger than it needs to be.</p></div></details>
+    <details class="module-fold " open data-pattern-role="idea"><summary>The idea</summary><div class="fold-copy"><p>You do not need a giant leap to learn something useful. A small test can tell you more than a big promise about what you think you will do.</p></div></details><details class="module-fold " ><summary>Keep it small</summary><div class="fold-copy"><p>Decide what you want to find out, one small thing you can actually do, what would help, what limit you want to keep, and what would make you pause or stop.</p></div></details><details class="module-fold action-fold"  data-pattern-role="try"><summary>Try it</summary><div class="fold-copy"><p>You can try something in real life, do it privately, observe, use support, work from the provided example, or simply make the plan for later.</p></div></details><details class="module-fold carry-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>The goal is not to prove yourself. It is to learn one useful thing without making the test bigger than it needs to be.</p></div></details>
     <div class="lesson-controls">
       <button class="button" type="button" data-lesson-prev>← Previous</button>
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
     </div>
   </article><article class="lesson-card module-item lesson-inline" data-lesson-index="8" data-loop="decide">
-    <div class="lesson-meta"><strong>Lesson 9 of 10</strong><span>·</span><span>Work through it</span></div>
+    <div class="lesson-meta"><strong>Lesson 9 of 10</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">Try it and notice what happens</h3>
-    <details class="module-fold " open><summary>Why this matters</summary><div class="fold-copy"><p>The useful part is what actually happened, including a try that was awkward, incomplete, stopped early, or not attempted.</p></div></details><details class="module-fold " ><summary>What to pay attention to</summary><div class="fold-copy"><p>Notice whether you wanted to begin, stayed interested, could stop or change course, felt pressured, gained or lost energy, hit a practical barrier, or were surprised by something.</p></div></details><details class="module-fold action-fold" ><summary>Record what happened</summary><div class="fold-copy"><p>Write down what happened, what helped or got in the way, what it took out of you, and anything that surprised you. Do not turn one try into a verdict about yourself.</p></div></details><details class="module-fold carry-fold" ><summary>Keep in mind</summary><div class="fold-copy"><p>A result is information, not a grade.</p></div></details>
+    <details class="module-fold " open data-pattern-role="idea"><summary>The idea</summary><div class="fold-copy"><p>The useful part is what actually happened, including a try that was awkward, incomplete, stopped early, or not attempted.</p></div></details><details class="module-fold "  data-pattern-role="reflect"><summary>Reflect</summary><div class="fold-copy"><p>Notice whether you wanted to begin, stayed interested, could stop or change course, felt pressured, gained or lost energy, hit a practical barrier, or were surprised by something.</p></div></details><details class="module-fold action-fold"  data-pattern-role="try"><summary>Try it</summary><div class="fold-copy"><p>Write down what happened, what helped or got in the way, what it took out of you, and anything that surprised you. Do not turn one try into a verdict about yourself.</p></div></details><details class="module-fold carry-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>A result is information, not a grade.</p></div></details>
     <div class="lesson-controls">
       <button class="button" type="button" data-lesson-prev>← Previous</button>
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
     </div>
   </article><article class="lesson-card module-item lesson-inline" data-lesson-index="9" data-loop="decide">
-    <div class="lesson-meta"><strong>Lesson 10 of 10</strong><span>·</span><span>Work through it</span></div>
+    <div class="lesson-meta"><strong>Lesson 10 of 10</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">What did you learn, and what next?</h3>
-    <details class="module-fold " ><summary>Look back</summary><div class="fold-copy"><p>What happened? What did it tell you about the activity? What did it tell you about the setup? What are you tempted to conclude about yourself, and does what happened actually support that conclusion?</p></div></details><details class="module-fold " ><summary>What is still unclear</summary><div class="fold-copy"><p>One try rarely answers everything. Keep the unanswered part visible instead of filling it in with a guess.</p></div></details><details class="module-fold action-fold" ><summary>What do you want to do next?</summary><div class="fold-copy"><p>Keep going, change something, try again, pause for now, stop, try a different direction, or keep looking.</p></div></details><details class="module-fold carry-fold" ><summary>Keep in mind</summary><div class="fold-copy"><p>Your next choice only has to fit what you know now. It can change later.</p></div></details>
+    <details class="module-fold "  data-pattern-role="reflect"><summary>Reflect</summary><div class="fold-copy"><p>What happened? What did it tell you about the activity? What did it tell you about the setup? What are you tempted to conclude about yourself, and does what happened actually support that conclusion?</p></div></details><details class="module-fold "  data-pattern-role="reflect"><summary>Reflect</summary><div class="fold-copy"><p>One try rarely answers everything. Keep the unanswered part visible instead of filling it in with a guess.</p></div></details><details class="module-fold action-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>Keep going, change something, try again, pause for now, stop, try a different direction, or keep looking.</p></div></details><details class="module-fold carry-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>Your next choice only has to fit what you know now. It can change later.</p></div></details>
     <div class="lesson-controls">
       <button class="button" type="button" data-lesson-prev>← Previous</button>
       <a class="button button-primary" href="#module-1-5" data-goto="3">Finish Module 1 → Module 1.5</a>
@@ -1279,11 +1323,11 @@
 
     <section class="screen module-screen" id="module-1-5" data-index="3" aria-labelledby="module-1-5-title">
     <div class="module-layout">
-      <aside class="module-rail"><div><div class="module-number" aria-hidden="true">1.5</div><div class="rail-label">See What Helps You Work Better</div></div><div class="margin-note">Conditions are information, not a score.</div></aside>
+      <aside class="module-rail"><div><div class="module-number" aria-hidden="true">1.5</div><div class="rail-label">Test How I Operate</div></div><div class="margin-note">Conditions are information, not a score.</div></aside>
       <div class="module-content">
-        <header class="module-heading"><div class="module-kicker"><strong>Workbook · Module 2 of 4</strong><span>3 readings · 3 lessons</span></div><h2 tabindex="-1" id="module-1-5-title">See What Helps You Work Better</h2></header>
+        <header class="module-heading"><div class="module-kicker"><strong>Module 1.5 of Pilot 1</strong><span>3 readings · 3 lessons</span></div><h2 tabindex="-1" id="module-1-5-title">Test How I Operate</h2></header>
         
-        <nav class="lesson-tabs" aria-label="Module 3 of 5 sequence"><button class="lesson-tab reading-tab" type="button" data-lesson-goto="0" aria-current="step" aria-label="Reading 1 — Maybe It’s Not Just You. Look at the Setup.">R1</button><button class="lesson-tab " type="button" data-lesson-goto="1"  aria-label="Lesson 1 — What makes this easier or harder?">L1</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="2"  aria-label="Reading 2 — Change One Thing and See What You Learn">R2</button><button class="lesson-tab " type="button" data-lesson-goto="3"  aria-label="Lesson 2 — Change one thing and see what happens">L2</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="4"  aria-label="Reading 3 — One Result Is a Clue, Not a Personality">R3</button><button class="lesson-tab " type="button" data-lesson-goto="5"  aria-label="Lesson 3 — What changed, and was it worth it?">L3</button></nav>
+        <nav class="lesson-tabs" aria-label="Module 1.5 · Test How I Operate sequence"><button class="lesson-tab reading-tab" type="button" data-lesson-goto="0" aria-current="step" aria-label="Reading 1 — Maybe It’s Not Just You. Look at the Setup.">R1</button><button class="lesson-tab " type="button" data-lesson-goto="1"  aria-label="Lesson 1 — What makes this easier or harder?">L1</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="2"  aria-label="Reading 2 — Change One Thing and See What You Learn">R2</button><button class="lesson-tab " type="button" data-lesson-goto="3"  aria-label="Lesson 2 — Change one thing and see what happens">L2</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="4"  aria-label="Reading 3 — One Result Is a Clue, Not a Personality">R3</button><button class="lesson-tab " type="button" data-lesson-goto="5"  aria-label="Lesson 3 — What changed, and was it worth it?">L3</button></nav>
         <div class="lesson-stage"><article class="lesson-card module-item reading-inline is-lesson-active" data-lesson-index="0" data-loop="notice">
     <div class="lesson-meta"><strong>Reading 1 of 6</strong><span>·</span><span>Read in pieces</span></div>
     <h3 tabindex="-1">Maybe It’s Not Just You. Look at the Setup.</h3>
@@ -1328,9 +1372,9 @@
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
     </div>
   </article><article class="lesson-card module-item lesson-inline" data-lesson-index="1" data-loop="notice">
-    <div class="lesson-meta"><strong>Lesson 2 of 6</strong><span>·</span><span>Work through it</span></div>
+    <div class="lesson-meta"><strong>Lesson 2 of 6</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">What makes this easier or harder?</h3>
-    <details class="module-fold " open><summary>Why this matters</summary><div class="fold-copy"><p>The same task can feel completely different depending on the setup. Clear instructions, noise, time, support, interruptions, or working alone can change what happens.</p></div></details><details class="module-fold " ><summary>Keep two things separate</summary><div class="fold-copy"><p><strong>What happened:</strong> something you could see or check. <strong>Your explanation:</strong> what you think caused it. Example: “I wrote for three hours and skipped lunch” is what happened. “I have no self-control” is an explanation, not a fact.</p></div></details><details class="module-fold action-fold" ><summary>Try it, use the example, or skip</summary><div class="fold-copy"><p>Choose one ordinary task, something from Module 1, or the example. Name one part of the setup that might matter and one thing you want to find out.</p></div></details><details class="module-fold carry-fold" ><summary>Keep in mind</summary><div class="fold-copy"><p>One task, one part of the setup, and one question.</p></div></details>
+    <details class="module-fold " open data-pattern-role="idea"><summary>The idea</summary><div class="fold-copy"><p>The same task can feel completely different depending on the setup. Clear instructions, noise, time, support, interruptions, or working alone can change what happens.</p></div></details><details class="module-fold "  data-pattern-role="idea"><summary>The idea</summary><div class="fold-copy"><p><strong>What happened:</strong> something you could see or check. <strong>Your explanation:</strong> what you think caused it. Example: “I wrote for three hours and skipped lunch” is what happened. “I have no self-control” is an explanation, not a fact.</p></div></details><details class="module-fold action-fold"  data-pattern-role="try"><summary>Try it</summary><div class="fold-copy"><p>Choose one ordinary task, something from Module 1, or the example. Name one part of the setup that might matter and one thing you want to find out.</p></div></details><details class="module-fold carry-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>One task, one part of the setup, and one question.</p></div></details>
     <div class="lesson-controls">
       <button class="button" type="button" data-lesson-prev>← Previous</button>
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
@@ -1376,9 +1420,9 @@
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
     </div>
   </article><article class="lesson-card module-item lesson-inline" data-lesson-index="3" data-loop="reflect">
-    <div class="lesson-meta"><strong>Lesson 4 of 6</strong><span>·</span><span>Work through it</span></div>
+    <div class="lesson-meta"><strong>Lesson 4 of 6</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">Change one thing and see what happens</h3>
-    <details class="module-fold " ><summary>Keep it simple</summary><div class="fold-copy"><p>Use the same task if you can. Change one thing about the setup. Keep the comparison small enough that you can tell what happened.</p></div></details><details class="module-fold " ><summary>Plan it</summary><div class="fold-copy"><p>What are you trying to find out? What one thing will you change? What limit do you want to keep? What could help? What would make you pause or stop? What else could affect the result?</p></div></details><details class="module-fold action-fold" ><summary>Ways you can do this</summary><div class="fold-copy"><p>Try it, plan it for later, observe the provided example, use support or an adaptation, or pause. You do not have to force an attempt just to finish the lesson.</p></div></details><details class="module-fold carry-fold" ><summary>Keep in mind</summary><div class="fold-copy"><p>One small comparison and what happened, including “I did not try it.”</p></div></details>
+    <details class="module-fold "  data-pattern-role="idea"><summary>The idea</summary><div class="fold-copy"><p>Use the same task if you can. Change one thing about the setup. Keep the comparison small enough that you can tell what happened.</p></div></details><details class="module-fold "  data-pattern-role="try"><summary>Try it</summary><div class="fold-copy"><p>What are you trying to find out? What one thing will you change? What limit do you want to keep? What could help? What would make you pause or stop? What else could affect the result?</p></div></details><details class="module-fold action-fold"  data-pattern-role="try"><summary>Try it</summary><div class="fold-copy"><p>Try it, plan it for later, observe the provided example, use support or an adaptation, or pause. You do not have to force an attempt just to finish the lesson.</p></div></details><details class="module-fold carry-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>One small comparison and what happened, including “I did not try it.”</p></div></details>
     <div class="lesson-controls">
       <button class="button" type="button" data-lesson-prev>← Previous</button>
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
@@ -1427,9 +1471,9 @@
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
     </div>
   </article><article class="lesson-card module-item lesson-inline" data-lesson-index="5" data-loop="decide">
-    <div class="lesson-meta"><strong>Lesson 6 of 6</strong><span>·</span><span>Work through it</span></div>
+    <div class="lesson-meta"><strong>Lesson 6 of 6</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">What changed, and was it worth it?</h3>
-    <details class="module-fold " ><summary>Look back</summary><div class="fold-copy"><p>What happened after you changed the setup? What seemed easier or harder? What else was different? What did it take in effort, time, energy, or recovery?</p></div></details><details class="module-fold " ><summary>Keep the result separate from the explanation</summary><div class="fold-copy"><p>What happened is one thing. Why you think it happened is another. Leave room for “I am not sure yet.”</p></div></details><details class="module-fold action-fold" ><summary>What do you want to do next?</summary><div class="fold-copy"><p>Keep it, change something, try again, pause for now, stop, try a different direction, or keep looking.</p></div></details><details class="module-fold carry-fold" ><summary>Keep in mind</summary><div class="fold-copy"><p>Carry forward only the parts that feel useful to you.</p></div></details>
+    <details class="module-fold "  data-pattern-role="reflect"><summary>Reflect</summary><div class="fold-copy"><p>What happened after you changed the setup? What seemed easier or harder? What else was different? What did it take in effort, time, energy, or recovery?</p></div></details><details class="module-fold "  data-pattern-role="reflect"><summary>Reflect</summary><div class="fold-copy"><p>What happened is one thing. Why you think it happened is another. Leave room for “I am not sure yet.”</p></div></details><details class="module-fold action-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>Keep it, change something, try again, pause for now, stop, try a different direction, or keep looking.</p></div></details><details class="module-fold carry-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>Carry forward only the parts that feel useful to you.</p></div></details>
     <div class="lesson-controls">
       <button class="button" type="button" data-lesson-prev>← Previous</button>
       <a class="button button-primary" href="#module-2" data-goto="4">Finish Module 1.5 → Module 2</a>
@@ -1442,29 +1486,29 @@
     <div class="module-layout">
       <aside class="module-rail"><div><div class="module-number" aria-hidden="true">2</div><div class="rail-label">Check the Story</div></div><div class="margin-note">Accuracy over forced positivity.</div></aside>
       <div class="module-content">
-        <header class="module-heading"><div class="module-kicker"><strong>Workbook · Module 3 of 4</strong><span>0 readings · 3 lessons</span></div><h2 tabindex="-1" id="module-2-title">Check the Story</h2></header>
+        <header class="module-heading"><div class="module-kicker"><strong>Module 2 of Pilot 1</strong><span>3 lessons</span></div><h2 tabindex="-1" id="module-2-title">Check the Story</h2></header>
         
-        <nav class="lesson-tabs" aria-label="Module 4 of 5 sequence"><button class="lesson-tab " type="button" data-lesson-goto="0" aria-current="step" aria-label="Lesson 1 — What happened, and what are you telling yourself about it?">L1</button><button class="lesson-tab " type="button" data-lesson-goto="1"  aria-label="Lesson 2 — Turn what matters to you into one small action">L2</button><button class="lesson-tab " type="button" data-lesson-goto="2"  aria-label="Lesson 3 — Look at what happened and update the story">L3</button></nav>
+        <nav class="lesson-tabs" aria-label="Module 2 · Check the Story sequence"><button class="lesson-tab " type="button" data-lesson-goto="0" aria-current="step" aria-label="Lesson 1 — What happened, and what are you telling yourself about it?">L1</button><button class="lesson-tab " type="button" data-lesson-goto="1"  aria-label="Lesson 2 — Turn what matters to you into one small action">L2</button><button class="lesson-tab " type="button" data-lesson-goto="2"  aria-label="Lesson 3 — Look at what happened and update the story">L3</button></nav>
         <div class="lesson-stage"><article class="lesson-card module-item lesson-inline is-lesson-active" data-lesson-index="0" data-loop="notice">
-    <div class="lesson-meta"><strong>Lesson 1 of 3</strong><span>·</span><span>Work through it</span></div>
+    <div class="lesson-meta"><strong>Lesson 1 of 3</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">What happened, and what are you telling yourself about it?</h3>
-    <details class="module-fold " ><summary>What to know</summary><div class="fold-copy"><p>Separate four things: <strong>what happened</strong>, <strong>the meaning you attached to it</strong>, <strong>the big judgment that followed</strong>, and <strong>what you still do not know</strong>.</p></div></details><details class="module-fold " ><summary>Example</summary><div class="fold-copy"><p>What happened: “I stopped after 20 minutes.” Story: “I stopped because I cannot handle hard things.” Big judgment: “I never follow through.” The first sentence is observable. The others need more evidence.</p></div></details><details class="module-fold action-fold" ><summary>Try it</summary><div class="fold-copy"><p>Use one real event or the example. Write the event first, then the story, then any big judgment. Finish with a more accurate sentence that is only as big as the evidence.</p></div></details><details class="module-fold carry-fold" ><summary>Keep in mind</summary><div class="fold-copy"><p>More accurate does not mean more positive. It means more defensible.</p></div></details>
+    <details class="module-fold "  data-pattern-role="idea"><summary>The idea</summary><div class="fold-copy"><p>Separate four things: <strong>what happened</strong>, <strong>the meaning you attached to it</strong>, <strong>the big judgment that followed</strong>, and <strong>what you still do not know</strong>.</p></div></details><details class="module-fold "  data-pattern-role="example"><summary>Everyday example</summary><div class="fold-copy"><p>What happened: “I stopped after 20 minutes.” Story: “I stopped because I cannot handle hard things.” Big judgment: “I never follow through.” The first sentence is observable. The others need more evidence.</p></div></details><details class="module-fold action-fold" ><summary>Try it</summary><div class="fold-copy"><p>Use one real event or the example. Write the event first, then the story, then any big judgment. Finish with a more accurate sentence that is only as big as the evidence.</p></div></details><details class="module-fold carry-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>More accurate does not mean more positive. It means more defensible.</p></div></details>
     <div class="lesson-controls">
       <button class="button" type="button" data-lesson-prev>← Back</button>
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
     </div>
   </article><article class="lesson-card module-item lesson-inline" data-lesson-index="1" data-loop="try">
-    <div class="lesson-meta"><strong>Lesson 2 of 3</strong><span>·</span><span>Work through it</span></div>
+    <div class="lesson-meta"><strong>Lesson 2 of 3</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">Turn what matters to you into one small action</h3>
-    <details class="module-fold " open><summary>Why this matters</summary><div class="fold-copy"><p>“Be reliable,” “be honest,” or “ask for help” are too broad to practice all at once. Turn what matters to you into one small action you could actually notice.</p></div></details><details class="module-fold " ><summary>Example</summary><div class="fold-copy"><p>Instead of “be reliable,” try: “If I know I will miss a deadline, I will tell the person before the deadline.” Instead of “ask for help,” try: “If I am stuck for ten minutes, I will ask one question.”</p></div></details><details class="module-fold action-fold" ><summary>Plan one small action</summary><div class="fold-copy"><p>Choose what matters, when the situation might come up, what you usually do, one small action you could try, what could help, and what limit you want to keep.</p></div></details><details class="module-fold carry-fold" ><summary>Keep in mind</summary><div class="fold-copy"><p>If the situation never comes up, record “no opportunity.” You do not need to manufacture a hard moment to complete the exercise.</p></div></details>
+    <details class="module-fold " open data-pattern-role="idea"><summary>The idea</summary><div class="fold-copy"><p>“Be reliable,” “be honest,” or “ask for help” are too broad to practice all at once. Turn what matters to you into one small action you could actually notice.</p></div></details><details class="module-fold "  data-pattern-role="example"><summary>Everyday example</summary><div class="fold-copy"><p>Instead of “be reliable,” try: “If I know I will miss a deadline, I will tell the person before the deadline.” Instead of “ask for help,” try: “If I am stuck for ten minutes, I will ask one question.”</p></div></details><details class="module-fold action-fold"  data-pattern-role="try"><summary>Try it</summary><div class="fold-copy"><p>Choose what matters, when the situation might come up, what you usually do, one small action you could try, what could help, and what limit you want to keep.</p></div></details><details class="module-fold carry-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>If the situation never comes up, record “no opportunity.” You do not need to manufacture a hard moment to complete the exercise.</p></div></details>
     <div class="lesson-controls">
       <button class="button" type="button" data-lesson-prev>← Previous</button>
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
     </div>
   </article><article class="lesson-card module-item lesson-inline" data-lesson-index="2" data-loop="reflect">
-    <div class="lesson-meta"><strong>Lesson 3 of 3</strong><span>·</span><span>Work through it</span></div>
+    <div class="lesson-meta"><strong>Lesson 3 of 3</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">Look at what happened and update the story</h3>
-    <details class="module-fold " ><summary>Look back</summary><div class="fold-copy"><p>What happened? What do you actually have evidence for? What helped? What did it cost? What is still unknown?</p></div></details><details class="module-fold " ><summary>Update the story</summary><div class="fold-copy"><p>Do not swing from “I always fail” to “I can do anything.” Make the new statement fit what actually happened. “I did this once with support” can be enough.</p></div></details><details class="module-fold action-fold" ><summary>What do you want to do next?</summary><div class="fold-copy"><p>Keep going, change something, try again, pause for now, stop, try a different direction, or keep looking.</p></div></details><details class="module-fold carry-fold" ><summary>Keep in mind</summary><div class="fold-copy"><p>Bring forward one useful piece of evidence, one limit you want to keep, one small next step, or one open question.</p></div></details>
+    <details class="module-fold "  data-pattern-role="reflect"><summary>Reflect</summary><div class="fold-copy"><p>What happened? What do you actually have evidence for? What helped? What did it cost? What is still unknown?</p></div></details><details class="module-fold "  data-pattern-role="reflect"><summary>Reflect</summary><div class="fold-copy"><p>Do not swing from “I always fail” to “I can do anything.” Make the new statement fit what actually happened. “I did this once with support” can be enough.</p></div></details><details class="module-fold action-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>Keep going, change something, try again, pause for now, stop, try a different direction, or keep looking.</p></div></details><details class="module-fold carry-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>Bring forward one useful piece of evidence, one limit you want to keep, one small next step, or one open question.</p></div></details>
     <div class="lesson-controls">
       <button class="button" type="button" data-lesson-prev>← Previous</button>
       <a class="button button-primary" href="#module-3" data-goto="5">Finish Module 2 → Module 3</a>
@@ -1475,11 +1519,11 @@
 
     <section class="screen module-screen" id="module-3" data-index="5" aria-labelledby="module-3-title">
     <div class="module-layout">
-      <aside class="module-rail"><div><div class="module-number" aria-hidden="true">3</div><div class="rail-label">When Things Get Intense</div></div><div class="margin-note">Pilot 1 ends here.</div></aside>
+      <aside class="module-rail"><div><div class="module-number" aria-hidden="true">3</div><div class="rail-label">Navigate Intensity</div></div><div class="margin-note">Pilot 1 ends here.</div></aside>
       <div class="module-content">
-        <header class="module-heading"><div class="module-kicker"><strong>Workbook · Module 4 of 4</strong><span>3 readings · 3 lessons</span></div><h2 tabindex="-1" id="module-3-title">When Things Get Intense</h2></header>
+        <header class="module-heading"><div class="module-kicker"><strong>Module 3 of Pilot 1</strong><span>3 readings · 3 lessons</span></div><h2 tabindex="-1" id="module-3-title">Navigate Intensity</h2></header>
         
-        <nav class="lesson-tabs" aria-label="Module 5 of 5 sequence"><button class="lesson-tab reading-tab" type="button" data-lesson-goto="0" aria-current="step" aria-label="Reading 1 — Intensity Is Not Automatically the Problem">R1</button><button class="lesson-tab " type="button" data-lesson-goto="1"  aria-label="Lesson 1 — Slow the moment down">L1</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="2"  aria-label="Reading 2 — Protect What Works or Change What Needs Changing">R2</button><button class="lesson-tab " type="button" data-lesson-goto="3"  aria-label="Lesson 2 — Keep what helps or change one thing">L2</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="4"  aria-label="Reading 3 — A Hunch Can Start a Question. It Cannot Finish One.">R3</button><button class="lesson-tab " type="button" data-lesson-goto="5"  aria-label="Lesson 3 — Check your hunch before you act on it">L3</button></nav>
+        <nav class="lesson-tabs" aria-label="Module 3 · Navigate Intensity sequence"><button class="lesson-tab reading-tab" type="button" data-lesson-goto="0" aria-current="step" aria-label="Reading 1 — Intensity Is Not Automatically the Problem">R1</button><button class="lesson-tab " type="button" data-lesson-goto="1"  aria-label="Lesson 1 — Slow the moment down">L1</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="2"  aria-label="Reading 2 — Protect What Works or Change What Needs Changing">R2</button><button class="lesson-tab " type="button" data-lesson-goto="3"  aria-label="Lesson 2 — Keep what helps or change one thing">L2</button><button class="lesson-tab reading-tab" type="button" data-lesson-goto="4"  aria-label="Reading 3 — A Hunch Can Start a Question. It Cannot Finish One.">R3</button><button class="lesson-tab " type="button" data-lesson-goto="5"  aria-label="Lesson 3 — Check your hunch before you act on it">L3</button></nav>
         <div class="lesson-stage"><article class="lesson-card module-item reading-inline is-lesson-active" data-lesson-index="0" data-loop="notice">
     <div class="lesson-meta"><strong>Reading 1 of 6</strong><span>·</span><span>Read in pieces</span></div>
     <h3 tabindex="-1">Intensity Is Not Automatically the Problem</h3>
@@ -1524,9 +1568,9 @@
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
     </div>
   </article><article class="lesson-card module-item lesson-inline" data-lesson-index="1" data-loop="notice">
-    <div class="lesson-meta"><strong>Lesson 2 of 6</strong><span>·</span><span>Work through it</span></div>
+    <div class="lesson-meta"><strong>Lesson 2 of 6</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">Slow the moment down</h3>
-    <details class="module-fold " open><summary>Why this matters</summary><div class="fold-copy"><p>When something gets intense, slowing the moment down can make your choices easier to see. You do not have to decide what caused the feeling before you can notice what happened next.</p></div></details><details class="module-fold " ><summary>Five simple questions</summary><div class="fold-copy"><p><strong>What changed?</strong> <strong>What did I tell myself it meant?</strong> <strong>What did I feel pulled to do or avoid?</strong> <strong>What did I actually do?</strong> <strong>What did that choice take or affect?</strong></p></div></details><details class="module-fold action-fold" ><summary>Try it, use the example, or skip</summary><div class="fold-copy"><p>Use a moment that went well, a pressured moment, an ordinary task, the provided example, or an honest “I am not sure.” You do not have to invent intensity.</p></div></details><details class="module-fold carry-fold" ><summary>Keep in mind</summary><div class="fold-copy"><p>Notice what happened before explaining why it happened.</p></div></details>
+    <details class="module-fold " open data-pattern-role="idea"><summary>The idea</summary><div class="fold-copy"><p>When something gets intense, slowing the moment down can make your choices easier to see. You do not have to decide what caused the feeling before you can notice what happened next.</p></div></details><details class="module-fold "  data-pattern-role="reflect"><summary>Reflect</summary><div class="fold-copy"><p><strong>What changed?</strong> <strong>What did I tell myself it meant?</strong> <strong>What did I feel pulled to do or avoid?</strong> <strong>What did I actually do?</strong> <strong>What did that choice take or affect?</strong></p></div></details><details class="module-fold action-fold"  data-pattern-role="try"><summary>Try it</summary><div class="fold-copy"><p>Use a moment that went well, a pressured moment, an ordinary task, the provided example, or an honest “I am not sure.” You do not have to invent intensity.</p></div></details><details class="module-fold carry-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>Notice what happened before explaining why it happened.</p></div></details>
     <div class="lesson-controls">
       <button class="button" type="button" data-lesson-prev>← Previous</button>
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
@@ -1575,9 +1619,9 @@
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
     </div>
   </article><article class="lesson-card module-item lesson-inline" data-lesson-index="3" data-loop="reflect">
-    <div class="lesson-meta"><strong>Lesson 4 of 6</strong><span>·</span><span>Work through it</span></div>
+    <div class="lesson-meta"><strong>Lesson 4 of 6</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">Keep what helps or change one thing</h3>
-    <details class="module-fold " ><summary>If it is working</summary><div class="fold-copy"><p>Do not change something just because the worksheet expects a problem. Ask what is helping it stay workable and what you want to keep in place.</p></div></details><details class="module-fold " ><summary>If something needs to change</summary><div class="fold-copy"><p>Choose one small thing: make the task smaller, clarify an instruction, add a stopping point, ask for help, change the environment, protect another responsibility, take a break, or stop.</p></div></details><details class="module-fold action-fold" ><summary>Keep it manageable</summary><div class="fold-copy"><p>Decide what you want to try, what limits or support you want around it, and what would make the next choice easier to make.</p></div></details><details class="module-fold carry-fold" ><summary>Keep in mind</summary><div class="fold-copy"><p>Protecting what works and changing something are equally valid outcomes.</p></div></details>
+    <details class="module-fold "  data-pattern-role="idea"><summary>The idea</summary><div class="fold-copy"><p>Do not change something just because the worksheet expects a problem. Ask what is helping it stay workable and what you want to keep in place.</p></div></details><details class="module-fold "  data-pattern-role="try"><summary>Try it</summary><div class="fold-copy"><p>Choose one small thing: make the task smaller, clarify an instruction, add a stopping point, ask for help, change the environment, protect another responsibility, take a break, or stop.</p></div></details><details class="module-fold action-fold"  data-pattern-role="try"><summary>Try it</summary><div class="fold-copy"><p>Decide what you want to try, what limits or support you want around it, and what would make the next choice easier to make.</p></div></details><details class="module-fold carry-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>Protecting what works and changing something are equally valid outcomes.</p></div></details>
     <div class="lesson-controls">
       <button class="button" type="button" data-lesson-prev>← Previous</button>
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
@@ -1623,9 +1667,9 @@
       <button class="button button-primary" type="button" data-lesson-next>Next →</button>
     </div>
   </article><article class="lesson-card module-item lesson-inline" data-lesson-index="5" data-loop="decide">
-    <div class="lesson-meta"><strong>Lesson 6 of 6</strong><span>·</span><span>Work through it</span></div>
+    <div class="lesson-meta"><strong>Lesson 6 of 6</strong><span>·</span><span>Try it</span></div>
     <h3 tabindex="-1">Check your hunch before you act on it</h3>
-    <details class="module-fold " open><summary>Why this matters</summary><div class="fold-copy"><p>A hunch can point you toward a question. It is not proof by itself. Before you make a bigger decision, check what supports the hunch, what challenges it, and what the activity actually asks of you.</p></div></details><details class="module-fold " ><summary>Check the hunch</summary><div class="fold-copy"><p>What are you assuming or wondering? What points in that direction? What points against it? What do you still not know? What information would make you think differently?</p></div></details><details class="module-fold action-fold" ><summary>Look at what the activity asks of you</summary><div class="fold-copy"><p>Think about time, attention, decisions, uncertainty, people, money or other resources, physical effort, and any limit you want to keep.</p></div></details><details class="module-fold carry-fold" ><summary>What do you want to do next?</summary><div class="fold-copy"><p>Keep going, change something, try again, pause for now, stop, try a different direction, or keep looking.</p></div></details>
+    <details class="module-fold " open data-pattern-role="idea"><summary>The idea</summary><div class="fold-copy"><p>A hunch can point you toward a question. It is not proof by itself. Before you make a bigger decision, check what supports the hunch, what challenges it, and what the activity actually asks of you.</p></div></details><details class="module-fold "  data-pattern-role="reflect"><summary>Reflect</summary><div class="fold-copy"><p>What are you assuming or wondering? What points in that direction? What points against it? What do you still not know? What information would make you think differently?</p></div></details><details class="module-fold action-fold"  data-pattern-role="try"><summary>Try it</summary><div class="fold-copy"><p>Think about time, attention, decisions, uncertainty, people, money or other resources, physical effort, and any limit you want to keep.</p></div></details><details class="module-fold carry-fold"  data-pattern-role="connect"><summary>How this connects</summary><div class="fold-copy"><p>Keep going, change something, try again, pause for now, stop, try a different direction, or keep looking.</p></div></details>
     <div class="lesson-controls">
       <button class="button" type="button" data-lesson-prev>← Previous</button>
       <a class="button button-primary" href="#whats-next" data-goto="6" data-track-event="Pilot Completed">Finish Module 3 → What's next</a>
@@ -1636,7 +1680,7 @@
 
     <section class="screen next-screen" id="whats-next" data-index="6" aria-labelledby="next-title">
       <div class="next-content">
-      <div class="eyebrow">A later phase of the fuller program · about six months</div>
+      <div class="eyebrow">After Pilot 1</div>
       <h2 tabindex="-1" id="next-title" style="margin-top:14px">What's next</h2>
       <ol class="next-path">
         <li><strong>4 · Check Reality Outside Yourself</strong> — gather outside evidence</li>
@@ -1645,13 +1689,12 @@
         <li><strong>7 · Choose a Direction That Fits Your Life</strong> — work, training, a project, or a pause</li>
         <li><strong>8 · Build the Tribe</strong> — how you stay connected</li>
       </ol>
-      <!-- FILL: confirm Module 4 title: Yourself vs Your Head -->
       <div class="later-stamp" aria-label="Later: Final Next Direction Map"><span aria-hidden="true">✳</span><span><strong>Final Next Direction Map</strong><br><small>Later</small></span></div>
       <blockquote>“You're still of this tribe if you want to be.”</blockquote>
       <p class="closing-line">Starting a business is one possible path. A job, training, a project, a pause, or still looking are all complete finishes.</p>
       <p class="logistics">Dates, time commitment, and cost: coming soon.</p>
       <div class="final-actions"><a class="button button-primary" href="https://link.jotform.com/EhQXbmRwbk" target="_blank" rel="noopener" data-track-event="Express Interest">Express interest ↗</a></div>
-      <p class="small-print">Entrepalooza is educational and nonclinical. It is not therapy, treatment, or crisis care. Design choices are informed by research on interest development, motivation, and belonging. This pilot does not claim proven outcomes. Expressing interest is not enrollment.</p>
+      <p class="small-print">Entrepalooza is educational and nonclinical. It is not therapy, treatment, rehab, diagnosis, or crisis care. Design choices are informed by research on interest development, motivation, and belonging. No participant outcomes are claimed for this pre-pilot. Expressing interest is not enrollment.</p>
       </div>
       <div class="screen-controls"><a class="button" href="#module-3" data-goto="5">← Back</a><a class="button" href="#cover" data-goto="0">Start again ↺</a></div>
     </section>
@@ -1671,8 +1714,8 @@
           <span aria-hidden="true">＋</span>
         </button>
         <div class="conversation-journal-panel" id="conversation-journal-panel" hidden>
-          <p class="journal-intro">A private participant workspace for the questions, observations, experiments, and decisions that show up as you move through the workbook.</p>
-          <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save or download your workbook.</p>
+          <p class="journal-intro">A private participant workspace for the questions, observations, experiments, and decisions that show up as you move through the workbook.</p><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+          
           <div class="journal-prompt-row" role="group" aria-label="Choose a journal prompt">
             <button type="button" class="journal-prompt" data-journal-prompt="Notice" aria-pressed="true">Notice</button>
             <button type="button" class="journal-prompt" data-journal-prompt="Question" aria-pressed="false">Question</button>
@@ -1683,7 +1726,7 @@
           <p class="journal-current-prompt" id="journal-current-prompt">What are you noticing right now?</p>
           <label class="unknown-label" for="conversation-journal-draft">Write here</label>
           <textarea id="conversation-journal-draft" rows="4" placeholder="A sentence, a question, a rough thought, or 'I don't know yet.'"></textarea>
-          <p class="privacy-note">Just for you. Your response is not sent. It stays in this tab unless you choose to save or download your workbook.</p>
+          
           <div class="journal-actions">
             <button class="button button-primary" type="button" id="conversation-journal-add">Keep this entry</button>
             <button class="button" type="button" id="conversation-journal-clear">Clear draft</button>
@@ -1698,8 +1741,8 @@
         </button>
         <div class="shape-panel" id="shape-panel" hidden>
           <div class="shape-intro">
-            <p>This view pulls together what you already entered. It does not diagnose you, rank you, or decide what your answers mean.</p>
-            <p class="privacy-note">Everything here is calculated on this device. Your workbook content is not sent anywhere.</p>
+            <p>This view pulls together what you already entered. It does not diagnose you, rank you, or decide what your answers mean.</p><p class="privacy-note">Just for you. Nothing you type is saved or sent.</p>
+            
           </div>
           <div class="shape-tabs" role="tablist" aria-label="What’s Taking Shape sections">
             <button type="button" role="tab" class="shape-tab" data-shape-tab="overview" aria-selected="true">Overview</button><button type="button" role="tab" class="shape-tab" data-shape-tab="threads" aria-selected="false">What keeps showing up</button><button type="button" role="tab" class="shape-tab" data-shape-tab="conditions" aria-selected="false">What helps / gets in the way</button><button type="button" role="tab" class="shape-tab" data-shape-tab="supports" aria-selected="false">Support</button><button type="button" role="tab" class="shape-tab" data-shape-tab="costs" aria-selected="false">What it takes</button><button type="button" role="tab" class="shape-tab" data-shape-tab="unknowns" aria-selected="false">Open questions</button><button type="button" role="tab" class="shape-tab" data-shape-tab="decisions" aria-selected="false">Choices</button><button type="button" role="tab" class="shape-tab" data-shape-tab="evidence" aria-selected="false">What happened</button><button type="button" role="tab" class="shape-tab" data-shape-tab="patterns" aria-selected="false">Possible repeats</button>
@@ -1710,7 +1753,7 @@
       </section>
       <div class="workbook-save-panel">
         <p class="workbook-save-title">Keep your work</p>
-        <p class="workbook-save-copy">Your workbook content is not sent anywhere. Saving is optional and stays on your device or in a file you choose.</p><p class="workbook-save-copy">Anonymous site-use analytics may count page visits and navigation. Workbook answers, journal text, and free-text responses are not included.</p>
+        <p class="workbook-save-copy">Nothing you type is saved automatically or sent. If you choose Save on this device or Download, that copy stays on your device or in a file you choose.</p><p class="workbook-save-copy">Anonymous site-use analytics may count page visits and navigation. Workbook answers, journal text, and free-text responses are not included.</p>
         <div class="workbook-save-actions">
           <button class="workbook-action" type="button" id="workbook-save-device">Save on this device</button>
           <button class="workbook-action" type="button" id="workbook-download">Download workbook</button>
@@ -1733,7 +1776,7 @@
       const stepLinks=[...document.querySelectorAll('.stepper [data-goto]')];
       const announce=document.getElementById('step-announcement');
       const toast=document.getElementById('toast');
-      const titles=['Walk through Pilot 1','Module 0 · Choose How You Want to Take Part','Module 1 · Find Something Worth Exploring','Module 1.5 · See What Helps You Work Better','Module 2 · Check the Story','Module 3 · When Things Get Intense',"What's next"];
+      const titles=['Step Start','Module 0 · Enter with Agency','Module 1 · Find Something Worth Exploring','Module 1.5 · Test How I Operate','Module 2 · Check the Story','Module 3 · Navigate Intensity','After Pilot 1'];
       let current=0,toastTimer;
       let preflightEntered=false;
       let workbookUnlocked=false;
@@ -1809,7 +1852,7 @@
         stepLinks.forEach(l=>{if(Number(l.dataset.goto)===current)l.setAttribute('aria-current','step');else l.removeAttribute('aria-current');});
         if(announce) announce.textContent='Step '+(current+1)+' of 7: '+titles[current];
         pressStamps(current);
-        const labels=['Start','Module 0 · Before workbook','Workbook · Module 1 of 4','Workbook · Module 2 of 4','Workbook · Module 3 of 4','Workbook · Module 4 of 4','Pilot 1 complete'];
+        const labels=['Step Start','Module 0 of Pilot 1','Module 1 of Pilot 1','Module 1.5 of Pilot 1','Module 2 of Pilot 1','Module 3 of Pilot 1','After Pilot 1'];
         const widths=[0,0,25,50,75,100,100];
         const pl=document.getElementById('module-progress-label'); if(pl) pl.textContent=labels[current];
         const pf=document.getElementById('module-progress-fill'); if(pf) pf.style.width=widths[current]+'%';
@@ -2046,10 +2089,8 @@
         placeLabel.htmlFor='map-place-'+i;placeLabel.textContent='Where else do you spend a lot of your time?';
         const placeInput=document.createElement('input');
         placeInput.id='map-place-'+i;placeInput.dataset.mapPlace=String(i);placeInput.type='text';placeInput.maxLength=80;placeInput.placeholder="Work, home, a friend's house, the gym, school, a garage, somewhere else";
-        const privacy1=document.createElement('p');privacy1.className='privacy-note';privacy1.textContent='Just for you. Your response is not sent. It stays in this tab unless you choose to save it.';
         const doLabel=document.createElement('label');doLabel.htmlFor='map-do-'+i;doLabel.style.marginTop='10px';doLabel.textContent='What do you usually do there?';
         const doInput=document.createElement('input');doInput.id='map-do-'+i;doInput.dataset.mapDo=String(i);doInput.type='text';doInput.maxLength=100;doInput.placeholder='A few words is enough';
-        const privacy2=privacy1.cloneNode(true);
         const fieldset=document.createElement('fieldset');fieldset.className='map-feeling-group';fieldset.dataset.mapFeelingGroup=String(i);
         const legend=document.createElement('legend');legend.textContent="How do you usually feel when you're there?";
         const row=document.createElement('div');row.className='map-feeling-row';
@@ -2057,7 +2098,7 @@
           const button=document.createElement('button');button.className='map-feeling';button.type='button';button.setAttribute('aria-pressed','false');button.dataset.mapFeeling=feeling;button.dataset.mapSlot=String(i);button.textContent=feeling;row.appendChild(button);
         });
         fieldset.append(legend,row);
-        box.append(placeLabel,placeInput,privacy1,doLabel,doInput,privacy2,fieldset);
+        box.append(placeLabel,placeInput,doLabel,doInput,fieldset);
         grid.appendChild(box);refreshLifeMap();
       }
       function clearLifeMap(){
@@ -2469,6 +2510,50 @@
         });
       }
 
+
+      function standardizeLessonPattern(){
+        const rank={idea:1,example:2,try:3,reflect:4,connect:5};
+        document.querySelectorAll('.module-screen .lesson-card:not(.reading-inline)').forEach(card=>{
+          card.querySelectorAll('.activity-workbench-kicker').forEach(k=>k.textContent='Try it');
+          card.querySelectorAll(':scope > .activity').forEach(activity=>{
+            if(!activity.querySelector(':scope > .lesson-pattern-label')){
+              const label=document.createElement('p');
+              label.className='lesson-pattern-label';
+              label.textContent='Try it';
+              activity.prepend(label);
+            }
+          });
+          const workbench=card.querySelector(':scope > .activity-workbench');
+          const controls=card.querySelector(':scope > .lesson-controls');
+          const folds=[...card.querySelectorAll(':scope > .module-fold[data-pattern-role]')];
+          if(workbench){
+            folds.filter(f=>f.dataset.patternRole==='try').forEach(f=>{
+              const copy=f.querySelector('.fold-copy');
+              if(copy&&copy.innerHTML.trim()){
+                const guidance=document.createElement('div');
+                guidance.className='try-guidance';
+                guidance.innerHTML=copy.innerHTML;
+                const head=workbench.querySelector('.activity-workbench-head');
+                if(head) head.after(guidance); else workbench.prepend(guidance);
+              }
+              f.remove();
+            });
+          }
+          if(controls){
+            const ordered=[...card.querySelectorAll(':scope > .module-fold[data-pattern-role]')]
+              .sort((a,b)=>(rank[a.dataset.patternRole]||99)-(rank[b.dataset.patternRole]||99));
+            const idea=ordered.filter(x=>x.dataset.patternRole==='idea');
+            const example=ordered.filter(x=>x.dataset.patternRole==='example');
+            const reflect=ordered.filter(x=>x.dataset.patternRole==='reflect');
+            const connect=ordered.filter(x=>x.dataset.patternRole==='connect');
+            [...idea,...example].forEach(node=>controls.before(node));
+            if(workbench) controls.before(workbench);
+            [...reflect,...connect].forEach(node=>controls.before(node));
+          }
+        });
+      }
+
+
       function setupVariedSlides(){
         const cards=[...document.querySelectorAll('.lesson-card')];
         const rotation=['editorial','tabs','path','mosaic','focus','reveal'];
@@ -2497,7 +2582,7 @@
           const badge=document.createElement('div');
           badge.className='presentation-mode-badge';
           badge.setAttribute('aria-hidden','true');
-          badge.textContent=reading?'Read + react':'Do it here';
+          badge.textContent=reading?'Read + react':'Try it';
           card.querySelector('h3')?.before(badge);
 
           folds.forEach((fold,i)=>{
@@ -2570,13 +2655,13 @@
 
 
 
-      const activityPrivacy='Just for you. Your response is not sent. It stays in this tab unless you choose to save or download your workbook.';
+      const activityPrivacy='Just for you. Nothing you type is saved or sent.';
 
       function awField(id,label,placeholder='',kind='textarea',full=false){
         const control=kind==='input'
           ? '<input id="'+id+'" type="text" maxlength="220" placeholder="'+placeholder+'">'
           : '<textarea id="'+id+'" rows="3" placeholder="'+placeholder+'"></textarea>';
-        return '<div class="activity-field'+(full?' full':'')+'"><label for="'+id+'">'+label+'</label>'+control+'<span class="activity-privacy">'+activityPrivacy+'</span></div>';
+        return '<div class="activity-field'+(full?' full':'')+'"><label for="'+id+'">'+label+'</label>'+control+'</div>';
       }
 
       function awChoices(label,id,choices,mode='single'){
@@ -2584,7 +2669,7 @@
       }
 
       function awShell(title,intro,body,style='board'){
-        return '<section class="activity-workbench" data-activity-style="'+style+'"><div class="activity-workbench-head"><div><p class="activity-workbench-kicker">Do it here</p><h4>'+title+'</h4><p class="activity-workbench-intro">'+intro+'</p></div></div>'+body+'<div class="activity-footer"><p>Skip anything you do not want to answer.</p><button class="activity-journal-capture" type="button" data-journal-capture>Add a note to Conversation Journal</button></div></section>';
+        return '<section class="activity-workbench" data-activity-style="'+style+'"><div class="activity-workbench-head"><div><p class="activity-workbench-kicker">Try it</p><h4>'+title+'</h4><p class="activity-workbench-intro">'+intro+'</p></div></div><p class="activity-privacy-card">'+activityPrivacy+'</p>'+body+'<div class="activity-footer"><p>Skip anything you do not want to answer.</p><button class="activity-journal-capture" type="button" data-journal-capture>Add a note to Conversation Journal</button></div></section>';
       }
 
       function participantActivityMarkup(title){
@@ -3055,6 +3140,7 @@
       });
 
       setupParticipantActivities();
+      standardizeLessonPattern();
       setupReadingDecks();
       setupVariedSlides();
       setJournalPrompt('Notice');
