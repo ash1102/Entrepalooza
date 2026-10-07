@@ -854,8 +854,10 @@
     .cover-more-copy{padding:8px 0 2px;font-size:12px;line-height:1.5;color:var(--muted)}
     .cover-more-copy p{margin:0 0 7px}
     .cover-more-copy ul{margin:0;padding-left:18px;display:grid;gap:5px}
-    .cover-start-actions{margin-top:14px}
-    .cover-start-actions .button{min-height:46px}
+    .cover-check-in{margin:14px 0 4px;padding:14px 0 4px;border-top:1px solid var(--line)}
+    .cover-check-in .prompt{margin:0 0 8px;font-weight:800}
+    .cover-check-in .button-row{display:flex;gap:8px;flex-wrap:wrap}
+    .cover-check-in .message{min-height:1.2em;margin:7px 0 0;color:var(--muted);font-size:12px}
 
     /* Cover orientation: how the class works */
     .how-class-works{margin:24px 0 4px;padding:18px;border:1px solid var(--line);border-radius:10px;background:rgba(255,253,248,.72)}
@@ -945,6 +947,15 @@
             <p class="cover-start-copy"><strong>Conversation Journal:</strong> use it when you want to keep a thought or answer. It is optional, and nothing is saved automatically or sent to Entrepalooza.</p>
             <p class="cover-start-copy">You can skip a question, pass on an activity, plan a try for later, or stop and come back.</p>
 
+            <div class="check-in cover-check-in">
+              <p class="prompt">Before we start, are you here?</p>
+              <div class="button-row">
+                <button class="choice-button button-primary" type="button" data-enter-gate data-message="Glad you're here.">Yes, I'm here</button>
+                <button class="choice-button" type="button" data-message="Pass counts. You're still welcome to look around.">Pass</button>
+              </div>
+              <p class="message" role="status" aria-live="polite"></p>
+            </div>
+
             <details class="cover-more">
               <summary>What the workbook keeps track of</summary>
               <div class="cover-more-copy">
@@ -964,9 +975,6 @@
               </div>
             </details>
 
-            <div class="cover-start-actions">
-              <button class="button button-primary" type="button" data-enter-gate>Start with Module 0 →</button>
-            </div>
           </section>          
         </div>
       </div>
