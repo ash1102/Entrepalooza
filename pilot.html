@@ -2671,7 +2671,7 @@
           return d;
         }
 
-        document.querySelectorAll('.module-screen .lesson-card:not(.reading-inline)').forEach(card=>{
+        document.querySelectorAll('.module-screen .lesson-card.lesson-inline:not(.reading-inline)').forEach(card=>{
           const workbench=card.querySelector(':scope > .activity-workbench');
           const controls=card.querySelector(':scope > .lesson-controls');
 
