@@ -2368,12 +2368,8 @@
         if(focus){
           const heading=beats[i].querySelector('h4');
           try{heading?.focus?.({preventScroll:true});}catch(_){heading?.focus?.();}
-          requestAnimationFrame(()=>{
-            beats[i].scrollIntoView({
-              block:'start',
-              behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'
-            });
-          });
+          // Keep the reader's current vertical position when changing reading pieces.
+          // Focus already uses preventScroll above, so Back/Next changes content without a page jump.
         }
       }
 
@@ -3235,6 +3231,7 @@
       });
 
       setupParticipantActivities();
+      normalizeLessonPattern();
       standardizeLessonPattern();
       setupReadingDecks();
       setupVariedSlides();
