@@ -587,6 +587,11 @@
     }
 
   
+    /* One lesson title per screen */
+    .lesson-card.lesson-inline:not(.reading-inline)>h3{margin-bottom:10px}
+    .lesson-card.lesson-inline:not(.reading-inline)>.lesson-purpose{margin-top:0}
+    .lesson-card.lesson-inline:not(.reading-inline) .presentation-mode-badge{display:none!important}
+
     /* Participant activities live on the page */
     .activity-workbench{margin:18px 0 22px;padding:18px;border:1px solid var(--line);border-radius:14px;background:rgba(255,253,248,.82)}
     .activity-workbench[data-activity-style="lab"]{background:linear-gradient(145deg,rgba(226,235,229,.72),rgba(255,253,248,.9))}
@@ -595,10 +600,9 @@
     .activity-workbench[data-activity-style="plan"]{border-top:4px solid var(--teal)}
     .activity-workbench[data-activity-style="review"]{background:linear-gradient(150deg,rgba(255,253,248,.94),rgba(244,228,167,.34))}
     .activity-workbench[data-activity-style="route"]{border:2px solid rgba(62,105,99,.35)}
-    .activity-workbench-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:14px}
-    .activity-workbench-kicker{margin:0 0 4px;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:850}
-    .activity-workbench h4{margin:0;font-size:clamp(20px,2.7vw,28px);line-height:1.15}
-    .activity-workbench-intro{margin:7px 0 0;color:var(--muted);font-size:14px;max-width:650px}
+    .activity-workbench-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:12px}
+    .activity-workbench-kicker{margin:0 0 5px;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:850}
+    .activity-workbench-intro{margin:0;color:var(--muted);font-size:14px;max-width:650px;line-height:1.5}
     .activity-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
     .activity-field{min-width:0}
     .activity-field.full{grid-column:1/-1}
@@ -2882,6 +2886,29 @@
       }
 
 
+      function cleanLessonChrome(){
+        document.querySelectorAll('.lesson-card.lesson-inline:not(.reading-inline)').forEach(card=>{
+          // Keep a single visible lesson title. The workbench title is metadata only.
+          card.querySelectorAll('.activity-workbench h4').forEach(h=>h.remove());
+          card.querySelectorAll('.presentation-mode-badge').forEach(b=>b.remove());
+
+          // Remove adjacent duplicate pattern labels if any survived older markup.
+          let last='';
+          [...card.querySelectorAll(':scope > .module-fold[data-pattern-role]')].forEach(fold=>{
+            const role=fold.dataset.patternRole||'';
+            const label=fold.querySelector('summary')?.textContent?.trim()||'';
+            const key=role+'|'+label.toLowerCase();
+            if(key===last){
+              const prev=fold.previousElementSibling;
+              const prevCopy=prev?.querySelector?.('.fold-copy');
+              const copy=fold.querySelector('.fold-copy');
+              if(prevCopy&&copy&&copy.innerHTML.trim())prevCopy.insertAdjacentHTML('beforeend',copy.innerHTML);
+              fold.remove();
+            }else last=key;
+          });
+        });
+      }
+
       function setupVariedSlides(){
         const cards=[...document.querySelectorAll('.lesson-card')];
         const rotation=['editorial','tabs','path','mosaic','focus','reveal'];
@@ -2906,12 +2933,6 @@
           const mode=rotation[globalIndex%rotation.length];
           card.dataset.presentation=mode;
           card.classList.add('presentation-'+mode);
-
-          const badge=document.createElement('div');
-          badge.className='presentation-mode-badge';
-          badge.setAttribute('aria-hidden','true');
-          badge.textContent=reading?'Read + react':'Try it';
-          card.querySelector('h3')?.before(badge);
 
           folds.forEach((fold,i)=>{
             const seq=String(i+1).padStart(2,'0');
@@ -2997,7 +3018,7 @@
       }
 
       function awShell(title,intro,body,style='board'){
-        return '<section class="activity-workbench" data-activity-style="'+style+'"><div class="activity-workbench-head"><div><p class="activity-workbench-kicker">Try it</p><h4>'+title+'</h4><p class="activity-workbench-intro">'+intro+'</p></div></div><p class="activity-privacy-card">'+activityPrivacy+'</p>'+body+'<div class="activity-footer"><p>Skip anything you do not want to answer.</p><button class="activity-journal-capture" type="button" data-journal-capture>Add a note to Conversation Journal</button></div></section>';
+        return '<section class="activity-workbench" data-activity-style="'+style+'" data-activity-title="'+escapeHtml(title)+'"><div class="activity-workbench-head"><div><p class="activity-workbench-kicker">Your turn</p><p class="activity-workbench-intro">'+intro+'</p></div></div><p class="activity-privacy-card">'+activityPrivacy+'</p>'+body+'<div class="activity-footer"><p>Skip anything you do not want to answer.</p><button class="activity-journal-capture" type="button" data-journal-capture>Keep these answers in Conversation Journal</button></div></section>';
       }
 
       function participantActivityMarkup(title){
@@ -3471,6 +3492,7 @@
       setupParticipantActivities();
       normalizeLessonPattern();
       standardizeLessonPattern();
+      cleanLessonChrome();
       clarifySequenceProgress();
       setupReadingDecks();
       setupVariedSlides();
