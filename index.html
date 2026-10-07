@@ -115,9 +115,9 @@
       max-width:650px;
     }
     .problem-copy{font-size:1.08rem;color:#454a45}
-    .core-questions{display:grid;gap:.7rem;margin-top:1.5rem}
+    .core-questions{display:grid;margin-top:1.5rem;border-top:1px solid var(--line)}
     .core-question{
-      padding:.9rem 1rem;border-left:4px solid var(--teal);background:var(--bone);
+      padding:.9rem 0;border-bottom:1px solid var(--line);
       font-family:var(--serif);font-size:1.08rem;font-weight:700
     }
     .loop-intro{max-width:760px}
@@ -170,27 +170,23 @@
     .small{font-size:.82rem;color:var(--muted)}
     .analytics-note{font-size:.76rem;color:var(--muted);max-width:780px}
     .status-strip{padding:0 0 1.5rem}
-    .status-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:16px;overflow:hidden;background:rgba(255,253,248,.72)}
-    .status-grid>div{padding:1rem;border-right:1px solid var(--line)}
-    .status-grid>div:last-child{border-right:0}
-    .status-grid span{display:block;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800;margin-bottom:.3rem}
-    .status-grid strong{font-size:.94rem;line-height:1.35}
+    .status-line{display:flex;align-items:flex-start;gap:1.2rem;padding:1rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .status-label{flex:0 0 auto;color:var(--copper);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:850;padding-top:.18rem}
+    .status-line p{margin:0;max-width:920px;line-height:1.55;color:#454a45}
     .hero-interest{align-self:center}
-    @media(max-width:780px){.status-grid{grid-template-columns:1fr 1fr}.status-grid>div{border-bottom:1px solid var(--line)}.status-grid>div:nth-child(2){border-right:0}.status-grid>div:nth-last-child(-n+2){border-bottom:0}}
-    @media(max-width:520px){.status-grid{grid-template-columns:1fr}.status-grid>div{border-right:0;border-bottom:1px solid var(--line)!important}.status-grid>div:last-child{border-bottom:0!important}}
-    .fit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:1.5rem}
-    .fit-card{padding:1rem 1.05rem;border:1px solid var(--line);border-radius:14px;background:rgba(255,253,248,.62);font-weight:700;line-height:1.45}
-    .fit-card:last-child{grid-column:1/-1}
-    .loop-example{margin:2rem 0 1.2rem;padding:1.25rem;border:1px solid var(--line);border-radius:18px;background:rgba(255,253,248,.7)}
-    .loop-example-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-    .loop-example-grid>div{padding:.9rem;border-left:3px solid var(--teal);background:rgba(226,235,229,.4)}
-    .loop-example-grid strong{display:block;margin-bottom:.3rem}
-    .loop-example-grid span{display:block;line-height:1.45}
+    .fit-list{list-style:none;margin:1.6rem 0 0;padding:0;max-width:900px;border-top:1px solid var(--line)}
+    .fit-list li{position:relative;padding:1rem 0 1rem 1.5rem;border-bottom:1px solid var(--line);font:700 clamp(1rem,1.7vw,1.18rem)/1.45 var(--sans)}
+    .fit-list li::before{content:"";position:absolute;left:0;top:1.45rem;width:7px;height:7px;border-radius:50%;background:var(--copper)}
+    .loop-example{margin:2.2rem 0 1.2rem;padding:1.2rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .loop-story{display:grid;gap:0;max-width:900px}
+    .loop-story p{margin:0;padding:.75rem 0;border-bottom:1px dotted var(--line);line-height:1.55}
+    .loop-story p:last-child{border-bottom:0}
+    .loop-story strong{display:inline-block;min-width:72px;color:var(--teal)}
     .loop-example-note{margin:1rem 0 0;font-weight:700}
+    @media(max-width:680px){.status-line{display:block}.status-label{display:block;margin-bottom:.45rem}.loop-story strong{min-width:0;display:block;margin-bottom:.2rem}}
     .commitment-chips{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1.2rem}
     .commitment-chips span{padding:.65rem .85rem;border:1px solid var(--teal);border-radius:999px;font-weight:800;color:var(--teal)}
-    @media(max-width:680px){.fit-grid,.loop-example-grid{grid-template-columns:1fr}.fit-card:last-child{grid-column:auto}}
-    @media(max-width:900px){
+        @media(max-width:900px){
       .hero-grid,.problem-grid,.community-grid,.cta-box{grid-template-columns:1fr}
       .hero-art{min-height:390px}
       .branching-visual{height:390px}
@@ -279,11 +275,9 @@
   </section>
 
   <section class="status-strip" aria-label="Pilot 1 at a glance">
-    <div class="wrap status-grid">
-      <div><span>For</span><strong>Adults exploring what comes next</strong></div>
-      <div><span>Format</span><strong>Small, human-guided cohort</strong></div>
-      <div><span>Timing + cost</span><strong>Coming soon</strong></div>
-      <div><span>Next step</span><strong>Use one interest form for participant or partner interest</strong></div>
+    <div class="wrap status-line">
+      <span class="status-label">Pilot 1 at a glance</span>
+      <p><strong>For adults exploring what comes next.</strong> Small, human-guided cohort. Dates, time commitment, and cost are coming soon. One interest form handles participant and partner interest.</p>
     </div>
   </section>
 
@@ -311,13 +305,13 @@
     <div class="wrap">
       <p class="eyebrow">Who this may fit</p>
       <h2>You do not need a business idea to start.</h2>
-      <div class="fit-grid">
-        <div class="fit-card">You know you want something different but do not know what yet.</div>
-        <div class="fit-card">You have several possible directions and do not know which deserves your attention.</div>
-        <div class="fit-card">You keep trying things but struggle to tell what actually fits.</div>
-        <div class="fit-card">You have an interest but are not ready to turn it into a career or business.</div>
-        <div class="fit-card">You want a practical next step instead of another personality test.</div>
-      </div>
+      <ul class="fit-list">
+        <li>You know you want something different but do not know what yet.</li>
+        <li>You have several possible directions and do not know which deserves your attention.</li>
+        <li>You keep trying things but struggle to tell what actually fits.</li>
+        <li>You have an interest but are not ready to turn it into a career or business.</li>
+        <li>You want a practical next step instead of another personality test.</li>
+      </ul>
     </div>
   </section>
 
@@ -352,11 +346,11 @@
 
       <div class="loop-example" aria-label="Example of the Entrepalooza learning loop">
         <p class="eyebrow">One small example</p>
-        <div class="loop-example-grid">
-          <div><strong>Notice</strong><span>“I keep watching furniture-restoration videos.”</span></div>
-          <div><strong>Try</strong><span>Spend one Saturday helping refinish a small piece.</span></div>
-          <div><strong>Reflect</strong><span>“I liked the hands-on work, hated the fumes, and lost track of time.”</span></div>
-          <div><strong>Decide</strong><span>Learn more, but next time test it in a ventilated workshop.</span></div>
+        <div class="loop-story">
+          <p><strong>Notice:</strong> “I keep watching furniture-restoration videos.”</p>
+          <p><strong>Try:</strong> Spend one Saturday helping refinish a small piece.</p>
+          <p><strong>Reflect:</strong> “I liked the hands-on work, hated the fumes, and lost track of time.”</p>
+          <p><strong>Decide:</strong> Learn more, but next time test it in a ventilated workshop.</p>
         </div>
         <p class="loop-example-note">That does not mean “become a furniture restorer.” It means you know more than you did before.</p>
       </div>
