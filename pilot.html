@@ -295,6 +295,9 @@
     .beat li{margin:5px 0}
     .activity{margin:13px 0;padding:15px;border:1px solid var(--line);background:rgba(255,253,248,.65)}
     .activity-title{margin:0 0 10px;font:700 21px/1.4 var(--sans);color:var(--accent)}
+    .quick-check{border-left:4px solid var(--gold);background:rgba(244,228,167,.2)}
+    .quick-check-kicker{margin:0 0 5px;color:var(--teal);font-size:10px;text-transform:uppercase;letter-spacing:.12em;font-weight:900}
+    .quick-check .activity-title{font-size:17px;color:var(--ink);margin-bottom:9px}
     .tap-row,.tile-grid{display:flex;flex-wrap:wrap;gap:8px}
     .tap-option,.tile-option,.route-option{min-height:44px;border:1px solid #72847c;border-radius:4px;background:var(--paper-light);color:var(--ink);padding:9px 12px;font-weight:650;cursor:pointer;text-align:left}
     .tap-option:hover,.tile-option:hover,.route-option:hover{background:var(--teal-soft)}
@@ -2860,6 +2863,57 @@
         s15.dataset.restructured='true';
       }
 
+      function addQuickCheckins(){
+        const checks=[
+          {
+            title:'Looking Is Not Choosing',
+            question:'Quick check: What are you actually choosing here?',
+            options:[
+              ['One possibility worth learning more about','Exactly. You are choosing what deserves more information, not choosing your future.'],
+              ['My permanent direction','Not yet. This part is exploration, not a permanent decision.']
+            ]
+          },
+          {
+            title:'Action Is Information',
+            question:'Quick check: Childcare falls through and you cannot run the try. What did you learn?',
+            options:[
+              ['There was a barrier around the try','Right. That is a barrier finding, not a judgment about you.'],
+              ['I failed the activity','No. If the barrier blocked the try, you do not have evidence about the activity yet.']
+            ]
+          },
+          {
+            title:'Make the Claim the Size of the Evidence',
+            question:'Quick check: You did something successfully once with support. Which claim fits the evidence?',
+            options:[
+              ['I did it once with support','Yes. Specific and defensible.'],
+              ['I can always do it now','That goes beyond the evidence from one try.']
+            ]
+          },
+          {
+            title:'Check your hunch before you act on it',
+            question:'Quick check: Is a hunch enough evidence for a bigger decision?',
+            options:[
+              ['No. It points to a question I can check.','Exactly. A hunch can guide what you investigate. It is not proof by itself.'],
+              ['Yes. If it feels strong, that is enough.','Not by itself. Check what supports it, what challenges it, and what is still unknown.']
+            ]
+          }
+        ];
+        checks.forEach(check=>{
+          const card=[...document.querySelectorAll('.lesson-card')].find(c=>c.querySelector('h3')?.textContent?.trim()===check.title);
+          if(!card || card.querySelector('.quick-check')) return;
+          const box=document.createElement('section');
+          box.className='activity quick-check';
+          box.setAttribute('aria-label','Quick comprehension check');
+          box.innerHTML='<p class="quick-check-kicker">Quick check</p>'+
+            '<p class="activity-title">'+escapeHtml(check.question.replace(/^Quick check:\s*/i,''))+'</p>'+
+            '<div class="tile-grid" data-single-select>'+
+            check.options.map(o=>'<button class="tile-option" type="button" aria-pressed="false" data-feedback="'+escapeHtml(o[1])+'">'+escapeHtml(o[0])+'</button>').join('')+
+            '</div><p class="activity-message" role="status" aria-live="polite"></p>';
+          const controls=card.querySelector(':scope > .lesson-controls');
+          if(controls)controls.before(box);else card.appendChild(box);
+        });
+      }
+
       function clarifySequenceProgress(){
         document.querySelectorAll('.module-screen').forEach(screen=>{
           const cards=[...screen.querySelectorAll('.lesson-stage > .lesson-card')];
@@ -3670,6 +3724,7 @@
       });
 
       restructureEarlyModules();
+      addQuickCheckins();
       setupParticipantActivities();
       const uncovered=[...document.querySelectorAll('.lesson-card:not(.reading-inline)')].filter(card=>!card.querySelector('input,textarea,select,button[data-activity-choice],button[data-activity-route],button[data-map-activity],button[data-map-feeling]'));
       if(uncovered.length) console.warn('Entrepalooza activity coverage check found '+uncovered.length+' activity screen(s) without on-page controls.',uncovered);
