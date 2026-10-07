@@ -1552,7 +1552,7 @@
       <div class="fold-copy"><p>Entrepalooza uses five words: <strong>Signal</strong>&lt;br&gt;A change you notice in your body, attention, pace, or energy. <strong>Story</strong>&lt;br&gt;The meaning or explanation you attach to what is happening. <strong>Urge</strong>&lt;br&gt;A pull to do something or avoid something. <strong>Action</strong>&lt;br&gt;What you actually do. <strong>Cost</strong>&lt;br&gt;What the action requires or affects, such as time, energy, effort, recovery, money, relationships, responsibilities, or something else you wanted to protect. This is a teaching map. It is not a scientific claim that every human experience unfolds in exactly five steps. Parts may happen together. Some may not appear at all. You may not know what one of them was. That is fine. The map exists to help you slow the scene down enough to notice where choices may exist.</p></div>
     </details><details class="module-fold  " >
       <summary>A signal does not tell you its cause</summary>
-      <div class="fold-copy"><p>Suppose you notice your attention becoming extremely narrow. That is a signal. It does not automatically tell you: “This is hyperfocus.” “This is anxiety.” “This is passion.” “This is trauma.” “This means I should stop.” You observed a change in attention. That is what you know. The cause may be unclear. The same applies to a racing heart, restless energy, shutting down, wanting to leave, working faster, or becoming completely absorbed. Noticing comes before explaining.</p></div>
+      <div class="fold-copy"><p>Suppose you notice your attention becoming extremely narrow. That is a signal. It does not automatically tell you: “This is hyperfocus.” “This is anxiety.” “This is passion.” “This is stress.” “This means I should stop.” You observed a change in attention. That is what you know. The cause may be unclear. The same applies to a racing heart, restless energy, shutting down, wanting to leave, working faster, or becoming completely absorbed. Noticing comes before explaining.</p></div>
     </details><details class="module-fold  " >
       <summary>Then notice the story</summary>
       <div class="fold-copy"><p>Maybe the signal is: “I have been working much faster for the last hour.” The story might be: “I finally found what I’m meant to do.” Or: “I have to finish this tonight or I’ll lose momentum.” Or there may be no clear story at all. Again, the point is not to argue with every thought. It is to notice when an interpretation has joined the event.</p></div>
@@ -2539,16 +2539,24 @@
       function clarifySequenceProgress(){
         document.querySelectorAll('.module-screen').forEach(screen=>{
           const cards=[...screen.querySelectorAll('.lesson-stage > .lesson-card')];
+          const tabs=[...screen.querySelectorAll('.lesson-tabs [data-lesson-goto]')];
           const kicker=screen.querySelector('.module-heading .module-kicker span');
           if(kicker) kicker.textContent=cards.length+' parts';
           cards.forEach((card,index)=>{
-            const meta=card.querySelector(':scope > .lesson-meta');
-            if(!meta)return;
-            const strong=meta.querySelector('strong');
-            const spans=meta.querySelectorAll('span');
-            if(strong) strong.textContent='Part '+(index+1)+' of '+cards.length;
             const type=card.classList.contains('reading-inline')?'Reading':'Activity';
-            if(spans.length) spans[spans.length-1].textContent=type;
+            const title=card.querySelector('h3')?.textContent?.trim()||'';
+            const meta=card.querySelector(':scope > .lesson-meta');
+            if(meta){
+              const strong=meta.querySelector('strong');
+              const spans=meta.querySelectorAll('span');
+              if(strong) strong.textContent='Part '+(index+1)+' of '+cards.length;
+              if(spans.length) spans[spans.length-1].textContent=type;
+            }
+            const tab=tabs[index];
+            if(tab){
+              tab.textContent=String(index+1);
+              tab.setAttribute('aria-label','Part '+(index+1)+' of '+cards.length+' · '+type+(title?' · '+title:''));
+            }
           });
         });
       }
@@ -3030,7 +3038,7 @@
       function setupParticipantActivities(){
         document.querySelectorAll('.lesson-card .module-fold').forEach(fold=>{
           const label=fold.querySelector('summary')?.textContent?.trim()||'';
-          if(/^Facilitator/i.test(label)) fold.remove();
+          if(/^Facilitator\b/i.test(label)) fold.remove();
         });
         document.querySelectorAll('.lesson-card').forEach(card=>{
           const title=card.querySelector('h3')?.textContent?.trim()||'';
@@ -3256,7 +3264,7 @@
           try{
             const state=JSON.parse(String(reader.result||''));
             applyWorkbookState(state,{navigate:true});
-            setWorkbookStatus('Saved workbook loaded. Nothing was uploaded to a server.');
+            setWorkbookStatus('Saved workbook loaded on this device. Nothing was uploaded to a server.');
           }catch(err){
             setWorkbookStatus('That file could not be loaded as a Pilot 1 workbook.');
           }
