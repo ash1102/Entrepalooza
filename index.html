@@ -168,6 +168,18 @@
     .footer-grid{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:end}
     .small{font-size:.82rem;color:var(--muted)}
     .analytics-note{font-size:.76rem;color:var(--muted);max-width:780px}
+    .fit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:1.5rem}
+    .fit-card{padding:1rem 1.05rem;border:1px solid var(--line);border-radius:14px;background:rgba(255,253,248,.62);font-weight:700;line-height:1.45}
+    .fit-card:last-child{grid-column:1/-1}
+    .loop-example{margin:2rem 0 1.2rem;padding:1.25rem;border:1px solid var(--line);border-radius:18px;background:rgba(255,253,248,.7)}
+    .loop-example-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .loop-example-grid>div{padding:.9rem;border-left:3px solid var(--teal);background:rgba(226,235,229,.4)}
+    .loop-example-grid strong{display:block;margin-bottom:.3rem}
+    .loop-example-grid span{display:block;line-height:1.45}
+    .loop-example-note{margin:1rem 0 0;font-weight:700}
+    .commitment-chips{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1.2rem}
+    .commitment-chips span{padding:.65rem .85rem;border:1px solid var(--teal);border-radius:999px;font-weight:800;color:var(--teal)}
+    @media(max-width:680px){.fit-grid,.loop-example-grid{grid-template-columns:1fr}.fit-card:last-child{grid-column:auto}}
     @media(max-width:900px){
       .hero-grid,.problem-grid,.community-grid,.cta-box{grid-template-columns:1fr}
       .hero-art{min-height:390px}
@@ -245,10 +257,10 @@
           <ellipse class="leaf-copper" cx="405" cy="89" rx="27" ry="9" transform="rotate(-30 405 89)"/>
           <ellipse class="leaf-teal" cx="64" cy="355" rx="24" ry="9" transform="rotate(-5 64 355)"/>
           <text x="86" y="470">START HERE</text>
-          <text x="73" y="179">TEST</text>
-          <text x="397" y="205">LEARN</text>
+          <text x="73" y="179">TRY</text>
+          <text x="397" y="205">REFLECT</text>
           <text x="166" y="64">NOTICE</text>
-          <text x="404" y="67">CHOOSE</text>
+          <text x="404" y="67">DECIDE</text>
         </svg>
         <div class="art-note">Not one straight line. A series of small moves that make the next choice clearer.</div>
       </div>
@@ -275,33 +287,58 @@
     </div>
   </section>
 
+  <section class="fit-section" id="fit">
+    <div class="wrap">
+      <p class="eyebrow">Who this may fit</p>
+      <h2>You do not need a business idea to start.</h2>
+      <div class="fit-grid">
+        <div class="fit-card">You know you want something different but do not know what yet.</div>
+        <div class="fit-card">You have several possible directions and do not know which deserves your attention.</div>
+        <div class="fit-card">You keep trying things but struggle to tell what actually fits.</div>
+        <div class="fit-card">You have an interest but are not ready to turn it into a career or business.</div>
+        <div class="fit-card">You want a practical next step instead of another personality test.</div>
+      </div>
+    </div>
+  </section>
+
   <section id="how">
     <div class="wrap">
       <p class="eyebrow">How it works</p>
-      <h2>Notice → Test → Learn → Choose</h2>
-      <p class="loop-intro">The program uses a simple learning loop. You do not need to predict your future correctly. You need a way to notice, test, learn, and make the next choice with better information.</p>
+      <h2>Notice → Try → Reflect → Decide</h2>
+      <p class="loop-intro">The program uses a simple learning loop. You do not need to predict your future correctly. You need a way to notice, try, reflect, and make the next choice with better information.</p>
 
       <div class="loop" aria-label="Entrepalooza learning loop">
         <article class="loop-step">
           <span class="loop-num">01</span>
           <h3>Notice</h3>
-          <p>Pay attention to what pulls you in, drains you, and keeps resurfacing.</p>
+          <p>Pay attention to what keeps getting your attention, what you want more of, and what seems worth exploring.</p>
         </article>
         <article class="loop-step">
           <span class="loop-num">02</span>
-          <h3>Test</h3>
-          <p>Run small, bounded experiments instead of betting your future on a personality quiz.</p>
+          <h3>Try</h3>
+          <p>Do one small thing to learn more. It can be an action, a conversation, an observation, or a plan.</p>
         </article>
         <article class="loop-step">
           <span class="loop-num">03</span>
-          <h3>Learn</h3>
-          <p>Use what actually happened as evidence.</p>
+          <h3>Reflect</h3>
+          <p>Look at what actually happened. What helped, what got in the way, and what surprised you?</p>
         </article>
         <article class="loop-step">
           <span class="loop-num">04</span>
-          <h3>Choose</h3>
-          <p>Move forward, change direction, keep looking, pause, or stop.</p>
+          <h3>Decide</h3>
+          <p>Keep going, change something, try again, pause, stop, choose another direction, or keep looking.</p>
         </article>
+      </div>
+
+      <div class="loop-example" aria-label="Example of the Entrepalooza learning loop">
+        <p class="eyebrow">One small example</p>
+        <div class="loop-example-grid">
+          <div><strong>Notice</strong><span>“I keep watching furniture-restoration videos.”</span></div>
+          <div><strong>Try</strong><span>Spend one Saturday helping refinish a small piece.</span></div>
+          <div><strong>Reflect</strong><span>“I liked the hands-on work, hated the fumes, and lost track of time.”</span></div>
+          <div><strong>Decide</strong><span>Learn more, but next time test it in a ventilated workshop.</span></div>
+        </div>
+        <p class="loop-example-note">That does not mean “become a furniture restorer.” It means you know more than you did before.</p>
       </div>
 
       <a class="text-link" href="pilot.html" data-track-event="Open Pilot">See the Pilot 1 curriculum →</a>
@@ -326,22 +363,15 @@
   </section>
 
   <section id="community">
-    <div class="wrap community-grid">
-      <div>
-        <p class="eyebrow">Community</p>
-        <h2>Build beside people, not for their approval.</h2>
-        <p class="community-copy"><strong>Belonging without conformity.</strong> Entrepalooza is designed as a small cohort where people can test ideas, compare notes, and learn alongside others without having to perform confidence or vulnerability. You choose what you share. Passing is allowed. Feedback is permission-based. Nobody has to turn their hardest experiences into group material just to count as engaged. The goal is a room where people can be honest, stay distinct, and still build beside each other.</p>
+    <div class="wrap">
+      <p class="eyebrow">Your choices stay yours</p>
+      <h2>Explore without performing for the room.</h2>
+      <p class="community-copy">You can participate privately, pass, change direction, stop, or keep looking. Entrepreneurship is one possible outcome, not the goal everyone has to reach.</p>
+      <div class="commitment-chips" aria-label="Participation commitments">
+        <span>No forced disclosure</span>
+        <span>Permission-based feedback</span>
+        <span>Every exit counts</span>
       </div>
-      <aside class="community-card" aria-label="Community commitments">
-        <h3>Participation without performance</h3>
-        <ul>
-          <li>No forced personal disclosure</li>
-          <li>Passing is allowed</li>
-          <li>Private reflection counts</li>
-          <li>Feedback starts with permission</li>
-          <li>You keep your own direction</li>
-        </ul>
-      </aside>
     </div>
   </section>
 
