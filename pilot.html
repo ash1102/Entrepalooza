@@ -1033,7 +1033,7 @@
 
     <section class="screen module-screen" id="module-1" data-index="2" aria-labelledby="module-1-title">
     <div class="module-layout">
-      <aside class="module-rail"><div><div class="module-number" aria-hidden="true">1</div><div class="rail-label">Find Something Worth Exploring</div></div><div class="margin-note">“Nothing clear yet” is a real result.</div></aside>
+      <aside class="module-rail"><div><div class="module-number" aria-hidden="true">1</div><div class="rail-label">Find Something Worth Exploring</div></div><div class="margin-note">You only need one possibility worth learning more about.</div></aside>
       <div class="module-content">
         <header class="module-heading"><div class="module-kicker"><strong>Module 1 of Pilot 1</strong><span>10 parts</span></div><h2 tabindex="-1" id="module-1-title">Find Something Worth Exploring</h2></header>
         
@@ -1200,6 +1200,14 @@
             <label for="map-thread-5">What have you tried more than once, even if you didn't stick with it?</label>
             <input id="map-thread-5" data-map-thread type="text" maxlength="130" placeholder="Optional">
             
+          </div>
+          <div class="map-entry">
+            <label for="map-thread-6">Is there something you used to enjoy or care about that has not had much room lately?</label>
+            <input id="map-thread-6" data-map-thread type="text" maxlength="130" placeholder="Optional">
+          </div>
+          <div class="map-entry">
+            <label for="map-thread-7">Is there something you have never really had the chance to explore?</label>
+            <input id="map-thread-7" data-map-thread type="text" maxlength="130" placeholder="Optional">
           </div>
         </div>
       </section>
@@ -2697,53 +2705,153 @@
       }
 
 
-      function splitModuleOneReadings(){
-        const screen=document.getElementById('module-1');
-        const stage=screen?.querySelector('.lesson-stage');
-        if(!stage || stage.dataset.splitReadings==='true') return;
+      function restructureEarlyModules(){
+        const m1=document.getElementById('module-1');
+        const m15=document.getElementById('module-1-5');
+        const s1=m1?.querySelector('.lesson-stage');
+        const s15=m15?.querySelector('.lesson-stage');
+        if(!s1||!s15||s1.dataset.restructured==='true') return;
 
-        const activities=[...stage.querySelectorAll(':scope > .lesson-card:not(.reading-inline)')];
-        const readings=[...stage.querySelectorAll(':scope > .lesson-card.reading-inline')];
-        if(activities.length!==7 || readings.length!==3) return;
+        const find=(stage,title)=>[...stage.querySelectorAll(':scope > .lesson-card')].find(card=>card.querySelector('h3')?.textContent?.trim()===title);
+        const controlsFrom=source=>source?.querySelector(':scope > .lesson-controls')?.cloneNode(true);
 
-        const plans=[
-          {source:0,groups:[[0,1],[2,3,4]]},
-          {source:1,groups:[[0,1],[2,3,4]]},
-          {source:2,groups:[[0,1],[2,3],[4,5]]}
-        ];
-        const newReadings=[];
-        plans.forEach(plan=>{
-          const source=readings[plan.source];
-          const folds=[...source.querySelectorAll(':scope > .module-fold')];
-          const intro=source.querySelector(':scope > .reading-intro');
-          const originalTitle=source.querySelector('h3')?.textContent?.trim()||'Reading';
-          plan.groups.forEach((indices,groupIndex)=>{
-            const card=source.cloneNode(false);
-            card.className=source.className.replace(/\bis-lesson-active\b/g,'').trim();
-            card.removeAttribute('data-lesson-index');
-            card.removeAttribute('data-reading-piece');
-            const meta=source.querySelector(':scope > .lesson-meta')?.cloneNode(true);
-            if(meta)card.appendChild(meta);
-            const h=document.createElement('h3');h.tabIndex=-1;
-            const firstFold=folds[indices[0]];
-            h.textContent=groupIndex===0?originalTitle:(firstFold?.querySelector('summary')?.textContent?.trim()||originalTitle);
-            card.appendChild(h);
-            if(groupIndex===0 && intro)card.appendChild(intro.cloneNode(true));
-            indices.forEach(index=>{if(folds[index])card.appendChild(folds[index].cloneNode(true));});
-            const pulse=source.querySelector(':scope > .reading-pulse');
-            if(pulse && groupIndex===plan.groups.length-1)card.appendChild(pulse.cloneNode(true));
-            const controls=source.querySelector(':scope > .lesson-controls');
-            if(controls)card.appendChild(controls.cloneNode(true));
-            newReadings.push(card);
+        function makeReading(title,intro,sections,carry,loop='notice'){
+          const card=document.createElement('article');
+          card.className='lesson-card module-item reading-inline';
+          card.dataset.loop=loop;
+          const meta=document.createElement('div');meta.className='lesson-meta';meta.innerHTML='<strong>Part</strong><span>·</span><span>Reading</span>';
+          const h=document.createElement('h3');h.tabIndex=-1;h.textContent=title;
+          card.append(meta,h);
+          if(intro){
+            const ri=document.createElement('div');ri.className='reading-intro';ri.innerHTML='<p>'+intro+'</p>';card.appendChild(ri);
+          }
+          sections.forEach((section,i)=>{
+            const d=document.createElement('details');d.className='module-fold';d.open=i===0;
+            const s=document.createElement('summary');s.textContent=section[0];
+            const c=document.createElement('div');c.className='fold-copy';c.innerHTML=section[1];
+            d.append(s,c);card.appendChild(d);
           });
-        });
+          const cd=document.createElement('details');cd.className='module-fold carry-fold';
+          const cs=document.createElement('summary');cs.textContent='Carry this question forward';
+          const cc=document.createElement('div');cc.className='fold-copy';cc.innerHTML='<p>'+carry+'</p>';
+          cd.append(cs,cc);card.appendChild(cd);
+          const lc=document.createElement('div');lc.className='lesson-controls';
+          lc.innerHTML='<button class="button" type="button" data-lesson-prev>← Previous</button><button class="button button-primary" type="button" data-lesson-next>Next →</button>';
+          card.appendChild(lc);
+          return card;
+        }
 
-        const ordered=[];
-        activities.forEach((activity,index)=>{
-          ordered.push(newReadings[index],activity);
-        });
-        stage.replaceChildren(...ordered.filter(Boolean));
-        stage.dataset.splitReadings='true';
+        function cloneReadingSubset(source,newTitle,summaryNames,intro){
+          if(!source)return null;
+          const card=source.cloneNode(false);
+          card.className='lesson-card module-item reading-inline';
+          card.dataset.loop=source.dataset.loop||'notice';
+          const meta=source.querySelector(':scope > .lesson-meta')?.cloneNode(true);
+          if(meta)card.appendChild(meta);
+          const h=document.createElement('h3');h.tabIndex=-1;h.textContent=newTitle;
+          card.appendChild(h);
+          if(intro){
+            const ri=document.createElement('div');ri.className='reading-intro';ri.innerHTML='<p>'+intro+'</p>';card.appendChild(ri);
+          }
+          const folds=[...source.querySelectorAll(':scope > .module-fold')];
+          summaryNames.forEach(name=>{
+            const fold=folds.find(x=>x.querySelector('summary')?.textContent?.trim()===name);
+            if(fold)card.appendChild(fold.cloneNode(true));
+          });
+          const carry=folds.find(x=>/carry this question forward/i.test(x.querySelector('summary')?.textContent||''));
+          if(carry)card.appendChild(carry.cloneNode(true));
+          const lc=controlsFrom(source);if(lc)card.appendChild(lc);
+          return card;
+        }
+
+        // Current Module 1 source pieces.
+        const rKnow=find(s1,'You Don’t Have to Know Yet');
+        const rPassion=find(s1,'When Something Matters, How It Holds You Matters');
+        const rTry=find(s1,'A Try Is Not a Commitment');
+        const aMap=find(s1,'Start with where you are now');
+        const aAttention=find(s1,'Start with what keeps catching your attention');
+        const aPressure=find(s1,'Does it feel chosen or pressured?');
+        const aPossibilities=find(s1,'Look at a few real possibilities');
+        const aPlan=find(s1,'Plan one small test');
+        const aTry=find(s1,'Try it and notice what happens');
+        const aReview=find(s1,'What did you learn, and what next?');
+
+        const rKnowShort=cloneReadingSubset(
+          rKnow,
+          'You Don’t Have to Know Yet',
+          ['Interest does not always arrive fully formed','You are allowed to begin without certainty'],
+          'You do not need a finished identity, one hidden passion, or a permanent direction before you begin. “I don’t know yet” gives you a starting point, not a reason to stay stuck.'
+        );
+        const rSignals=cloneReadingSubset(
+          rKnow,
+          'Look for Signals, Not Answers',
+          ['Look for signals, not answers','Interest is not destiny'],
+          'Instead of trying to name your future, notice what keeps returning. A signal gives you something to investigate. It does not tell you what you have to become.'
+        );
+        const rLooking=makeReading(
+          'Looking Is Not Choosing',
+          'A possibility can be worth investigating without becoming a promise. The point is to find something real enough to react to, not to make a life decision from the worksheet.',
+          [
+            ['A possibility is not an identity','You can look at a field, role, project, class, community, hobby, or business idea without deciding “this is who I am.” Looking creates information.'],
+            ['Fit is more useful than prestige','A direction can sound impressive and still fit badly. Another can look ordinary and keep pulling your attention. For now, notice what makes you want to learn more rather than what would look best from the outside.'],
+            ['One useful question is enough','You do not need a five-year plan. “What is this actually like?” “Would I enjoy the day-to-day?” “What would it require?” or “Do I want to try this once?” is enough to carry into the next module.']
+          ],
+          'Which possibility deserves more information, not commitment?'
+        );
+
+        // Module 1 becomes exploration only.
+        const m1Order=[rKnowShort,aMap,rSignals,aAttention,rPassion,aPressure,rLooking,aPossibilities].filter(Boolean);
+        s1.replaceChildren(...m1Order);
+
+        // Current Module 1.5 source pieces.
+        const rSetup=find(s15,'Maybe It’s Not Just You. Look at the Setup.');
+        const aSetup=find(s15,'What makes this easier or harder?');
+        const rChange=find(s15,'Change One Thing and See What You Learn');
+        const aChange=find(s15,'Change one thing and see what happens');
+        const rClue=find(s15,'One Result Is a Clue, Not a Personality');
+        const aWorth=find(s15,'What changed, and was it worth it?');
+
+        const rAction=makeReading(
+          'Action Is Information',
+          'Some questions about fit are hard to answer from inside your head. A small try gives you something real to react to.',
+          [
+            ['The try is for learning','The goal is not to prove that you are talented, motivated, healed, disciplined, or meant for something. The goal is to notice what happened when you actually met the activity.'],
+            ['Notice yourself in the experience','Pay attention to attention, curiosity, frustration, energy, willingness to continue, desire to stop, and what conditions seemed to matter. None of those signals has to become a permanent label.'],
+            ['Uncertainty belongs in the loop','If you do not know whether something fits, that is exactly when a small, reversible try can be useful. You are collecting evidence, not forcing certainty.']
+          ],
+          'What could I learn by doing that I cannot learn by thinking about it?'
+        );
+        const rPatterns=makeReading(
+          'Look for a Pattern, Not a Verdict',
+          'By now you may have more than one piece of evidence. Put them next to each other before deciding what they say about you.',
+          [
+            ['Repeated evidence is different from one result','One easy or difficult attempt can be useful without defining you. If the same thing keeps showing up across different tries, it may be worth treating as a working pattern.'],
+            ['Conditions belong in the pattern','A pattern can include the setup: clearer instructions helped, another person changed the experience, transportation blocked the try, a time limit made stopping easier, or the opportunity never appeared. That is not background noise. It is part of the information.'],
+            ['Keep the conclusion revisable','A useful conclusion sounds more like “This seems to help me right now” than “This is just who I am.” You can keep testing, change the setup, pause, stop, or choose another direction as new evidence appears.']
+          ],
+          'Across my tries, what seems to repeat, and what still depends on the conditions?',
+          'reflect'
+        );
+
+        // Module 1.5 becomes the full experimentation loop.
+        const m15Order=[
+          rTry,aPlan,
+          rAction,aTry,
+          rSetup,aSetup,
+          rChange,aChange,
+          rClue,aWorth,
+          rPatterns,aReview
+        ].filter(Boolean);
+        s15.replaceChildren(...m15Order);
+
+        // Make the last activity continue to Module 2 even after moving it.
+        const lastControls=aReview?.querySelector(':scope > .lesson-controls');
+        if(lastControls){
+          lastControls.innerHTML='<button class="button" type="button" data-lesson-prev>← Previous</button><a class="button button-primary" href="#module-2" data-goto="4">Finish Module 1.5 → Module 2</a>';
+        }
+
+        s1.dataset.restructured='true';
+        s15.dataset.restructured='true';
       }
 
       function clarifySequenceProgress(){
@@ -2788,6 +2896,7 @@
         document.querySelectorAll('.lesson-card.reading-inline').forEach((card,cardIndex)=>{
           if(card.classList.contains('reading-page-ready'))return;
           card.classList.add('reading-page-ready');
+          card.querySelector(':scope > .reading-pulse')?.remove();
           card.querySelectorAll(':scope > .module-fold').forEach((fold,i)=>{fold.open=i===0;});
 
           const carry=[...card.querySelectorAll(':scope > .module-fold')].find(f=>/carry this question forward/i.test(f.querySelector('summary')?.textContent||''));
@@ -3542,7 +3651,7 @@
         }
       });
 
-      splitModuleOneReadings();
+      restructureEarlyModules();
       setupParticipantActivities();
       const uncovered=[...document.querySelectorAll('.lesson-card:not(.reading-inline)')].filter(card=>!card.querySelector('input,textarea,select,button[data-activity-choice],button[data-activity-route],button[data-map-activity],button[data-map-feeling]'));
       if(uncovered.length) console.warn('Entrepalooza activity coverage check found '+uncovered.length+' activity screen(s) without on-page controls.',uncovered);
