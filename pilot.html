@@ -642,6 +642,32 @@
     }
 
   
+    /* Readings use a calm workbook page, not a carousel card */
+    .reading-inline.reading-page-ready{max-width:760px}
+    .reading-inline.reading-page-ready>.reading-intro{font-size:17px;line-height:1.6;max-width:700px;margin-bottom:12px}
+    .reading-inline.reading-page-ready>.module-fold{margin:0;border:0;border-top:1px solid var(--line);border-radius:0;background:transparent}
+    .reading-inline.reading-page-ready>.module-fold:last-of-type{border-bottom:1px solid var(--line)}
+    .reading-inline.reading-page-ready>.module-fold summary{padding:14px 0;min-height:0;color:var(--ink);font-size:17px}
+    .reading-inline.reading-page-ready>.module-fold .fold-copy{padding:0 0 16px;font-size:16px;line-height:1.62}
+    .reading-question-box{margin:18px 0 4px;padding:16px 0;border-top:2px solid var(--teal);border-bottom:1px solid var(--line)}
+    .reading-question-box label{display:block;margin-bottom:6px;font-weight:850}
+    .reading-question-prompt{margin:0 0 10px;color:var(--muted);font-size:14px}
+    .reading-question-box textarea{width:100%;min-height:100px;padding:11px 12px;border:1px solid #87958e;border-radius:6px;background:var(--paper-light);color:var(--ink);font-size:16px;resize:vertical}
+    .reading-question-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+    .reading-question-actions button{min-height:42px;padding:8px 11px;border:1px solid var(--teal);border-radius:5px;background:transparent;color:var(--teal);font-weight:750}
+    .reading-question-actions button:hover{background:var(--teal-soft)}
+    @media(max-width:780px){
+      html,body{max-width:100%;overflow-x:hidden}
+      .module-layout,.module-content,.lesson-stage,.lesson-card{min-width:0!important;max-width:100%!important;overflow-x:hidden!important}
+      .presentation-editorial .module-fold{padding-left:0!important}
+      .presentation-editorial .module-fold summary::before{display:none!important}
+      .presentation-editorial .module-fold:nth-of-type(even) .fold-copy{padding-left:0!important;border-left:0!important}
+      .presentation-path .presentation-path-wrap{padding-left:12px!important;margin-left:0!important}
+      .presentation-path .module-fold{padding-left:14px!important;margin-left:0!important}
+      .presentation-mosaic .presentation-mosaic-grid{grid-template-columns:1fr!important}
+      .presentation-mosaic .module-fold{grid-column:auto!important}
+    }
+
     /* Readings appear in small pieces instead of one wall of text */
     .reading-deck{margin:16px 0 20px}
     .reading-deck-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
@@ -2628,15 +2654,81 @@
       }
 
 
+      function splitModuleOneReadings(){
+        const screen=document.getElementById('module-1');
+        const stage=screen?.querySelector('.lesson-stage');
+        if(!stage || stage.dataset.splitReadings==='true') return;
+
+        const activities=[...stage.querySelectorAll(':scope > .lesson-card:not(.reading-inline)')];
+        const readings=[...stage.querySelectorAll(':scope > .lesson-card.reading-inline')];
+        if(activities.length!==7 || readings.length!==3) return;
+
+        const plans=[
+          {source:0,groups:[[0,1],[2,3,4]]},
+          {source:1,groups:[[0,1],[2,3,4]]},
+          {source:2,groups:[[0,1],[2,3],[4,5]]}
+        ];
+        const newReadings=[];
+        plans.forEach(plan=>{
+          const source=readings[plan.source];
+          const folds=[...source.querySelectorAll(':scope > .module-fold')];
+          const intro=source.querySelector(':scope > .reading-intro');
+          const originalTitle=source.querySelector('h3')?.textContent?.trim()||'Reading';
+          plan.groups.forEach((indices,groupIndex)=>{
+            const card=source.cloneNode(false);
+            card.className=source.className.replace(/\bis-lesson-active\b/g,'').trim();
+            card.removeAttribute('data-lesson-index');
+            card.removeAttribute('data-reading-piece');
+            const meta=source.querySelector(':scope > .lesson-meta')?.cloneNode(true);
+            if(meta)card.appendChild(meta);
+            const h=document.createElement('h3');h.tabIndex=-1;
+            const firstFold=folds[indices[0]];
+            h.textContent=groupIndex===0?originalTitle:(firstFold?.querySelector('summary')?.textContent?.trim()||originalTitle);
+            card.appendChild(h);
+            if(groupIndex===0 && intro)card.appendChild(intro.cloneNode(true));
+            indices.forEach(index=>{if(folds[index])card.appendChild(folds[index].cloneNode(true));});
+            const pulse=source.querySelector(':scope > .reading-pulse');
+            if(pulse && groupIndex===plan.groups.length-1)card.appendChild(pulse.cloneNode(true));
+            const controls=source.querySelector(':scope > .lesson-controls');
+            if(controls)card.appendChild(controls.cloneNode(true));
+            newReadings.push(card);
+          });
+        });
+
+        const ordered=[];
+        activities.forEach((activity,index)=>{
+          ordered.push(newReadings[index],activity);
+        });
+        stage.replaceChildren(...ordered.filter(Boolean));
+        stage.dataset.splitReadings='true';
+      }
+
       function clarifySequenceProgress(){
         document.querySelectorAll('.module-screen').forEach(screen=>{
           const cards=[...screen.querySelectorAll('.lesson-stage > .lesson-card')];
-          const tabs=[...screen.querySelectorAll('.lesson-tabs [data-lesson-goto]')];
+          const nav=screen.querySelector('.lesson-tabs');
           const kicker=screen.querySelector('.module-heading .module-kicker span');
           if(kicker) kicker.textContent=cards.length+' parts';
+
+          if(nav){
+            nav.innerHTML='';
+            cards.forEach((card,index)=>{
+              const type=card.classList.contains('reading-inline')?'Reading':'Activity';
+              const title=card.querySelector('h3')?.textContent?.trim()||'';
+              const tab=document.createElement('button');
+              tab.type='button';tab.className='lesson-tab'+(type==='Reading'?' reading-tab':'');
+              tab.dataset.lessonGoto=String(index);
+              if(index===0)tab.setAttribute('aria-current','step');
+              tab.textContent=String(index+1);
+              tab.setAttribute('aria-label','Part '+(index+1)+' of '+cards.length+' · '+type+(title?' · '+title:''));
+              nav.appendChild(tab);
+            });
+          }
+
           cards.forEach((card,index)=>{
+            card.dataset.lessonIndex=String(index);
+            card.classList.toggle('is-lesson-active',index===0);
             const type=card.classList.contains('reading-inline')?'Reading':'Activity';
-            const title=card.querySelector('h3')?.textContent?.trim()||'';
             const meta=card.querySelector(':scope > .lesson-meta');
             if(meta){
               const strong=meta.querySelector('strong');
@@ -2644,94 +2736,36 @@
               if(strong) strong.textContent='Part '+(index+1)+' of '+cards.length;
               if(spans.length) spans[spans.length-1].textContent=type;
             }
-            const tab=tabs[index];
-            if(tab){
-              tab.textContent=String(index+1);
-              tab.setAttribute('aria-label','Part '+(index+1)+' of '+cards.length+' · '+type+(title?' · '+title:''));
-            }
           });
+          screen.dataset.lessonCurrent='0';
         });
       }
 
       function setupReadingDecks(){
         document.querySelectorAll('.lesson-card.reading-inline').forEach((card,cardIndex)=>{
-          if(card.classList.contains('reading-deck-ready'))return;
-          const folds=[...card.querySelectorAll(':scope > .module-fold')];
-          if(!folds.length)return;
+          if(card.classList.contains('reading-page-ready'))return;
+          card.classList.add('reading-page-ready');
+          card.querySelectorAll(':scope > .module-fold').forEach((fold,i)=>{fold.open=i===0;});
 
-          const screenIndex=Number(card.closest('.screen')?.dataset.index||0);
-          const compressed=screenIndex>=3;
-          const moduleThree=screenIndex>=5;
-          const formats=['field-notes','contrast','spotlight','signal'];
+          const carry=[...card.querySelectorAll(':scope > .module-fold')].find(f=>/carry this question forward/i.test(f.querySelector('summary')?.textContent||''));
+          const prompt=carry?.querySelector('.fold-copy')?.textContent?.trim() || 'What do you want to keep from this reading?';
+          const controls=card.querySelector(':scope > .lesson-controls');
+          const box=document.createElement('section');
+          box.className='reading-question-box';
+          const id='reading-note-'+cardIndex;
+          box.innerHTML='<label for="'+id+'">Write your answer here</label>'+
+            '<p class="reading-question-prompt">'+escapeHtml(prompt)+'</p>'+
+            '<textarea id="'+id+'" placeholder="A rough thought is enough."></textarea>'+
+            '<div class="reading-question-actions"><button type="button" data-reading-journal>Keep in Conversation Journal</button><button type="button" data-reading-skip>Skip for now</button></div>';
+          if(controls)controls.before(box);else card.appendChild(box);
 
-          let beats=[];
-          if(compressed){
-            const sections=folds.map(foldToSection).filter(Boolean);
-            const targetCount=Math.min(moduleThree?3:4,Math.max(1,sections.length));
-            const groups=groupReadingSections(sections,targetCount);
-            beats=groups.map((group,i)=>({
-              title:group.title,
-              kind:'chapter',
-              html:group.sections.map(section=>
-                '<section class="reading-beat-section"><h5>'+escapeHtml(section.title)+'</h5>'+section.html+'</section>'
-              ).join('')
-            }));
-            card.dataset.readingCompressed='true';
-            card.dataset.readingFormat=formats[cardIndex%formats.length];
-          }else{
-            const raw=[];
-            folds.forEach(f=>raw.push(...readingBeatParts(f)));
-            raw.forEach(part=>{
-              const last=beats[beats.length-1];
-              const textLength=(part.html.replace(/<[^>]+>/g,'').length);
-              const lastLength=last?(last.html.replace(/<[^>]+>/g,'').length):0;
-              if(last && part.kind==='p' && last.kind==='p' && part.title===last.title && lastLength+textLength<430){
-                last.html+=part.html;
-              }else beats.push({...part});
-            });
-          }
-
-          const deck=document.createElement('section');
-          deck.className='reading-deck';
-          deck.setAttribute('aria-label',compressed?'Reading in a few chapters':'Reading in small pieces');
-
-          const top=document.createElement('div');top.className='reading-deck-top';
-          const count=document.createElement('div');count.className='reading-deck-count';count.dataset.readingCount='';
-          const progress=document.createElement('div');progress.className='reading-deck-progress';progress.setAttribute('aria-hidden','true');
-          const progressFill=document.createElement('span');progressFill.dataset.readingProgress='';progress.appendChild(progressFill);
-          top.append(count,progress);deck.appendChild(top);
-
-          const tones=['ink','soft','warm','quote'];
-          beats.forEach((part,i)=>{
-            const beat=document.createElement('article');beat.className='reading-beat';beat.hidden=i!==0;beat.dataset.tone=tones[(i+cardIndex)%tones.length];
-            beat.dataset.piece=(compressed?'Chapter ':'Reading piece ')+(i+1);
-            const h=document.createElement('h4');h.tabIndex=-1;h.textContent=part.title;
-            const body=document.createElement('div');body.className='reading-beat-content';body.innerHTML=part.html;
-            beat.append(h,body);deck.appendChild(beat);
+          box.querySelector('[data-reading-journal]')?.addEventListener('click',()=>{
+            const value=box.querySelector('textarea')?.value?.trim()||'';
+            if(!value){showToast('Write something first, or skip for now.');return;}
+            addJournalEntry(prompt+'\n'+value,'Reflect');
+            openConversationJournal();
           });
-
-          const controls=document.createElement('div');controls.className='reading-deck-controls';
-          const prev=document.createElement('button');prev.type='button';prev.className='reading-deck-button';prev.dataset.readingPrev='';prev.textContent=compressed?'← Previous chapter':'← Previous piece';
-          const dots=document.createElement('div');dots.className='reading-deck-dots';dots.setAttribute('aria-hidden','true');
-          beats.forEach((_,i)=>{
-            const d=document.createElement('span');d.className='reading-deck-dot'+(i===0?' is-active':'');
-            if(compressed)d.dataset.label=String(i+1);
-            dots.appendChild(d);
-          });
-          const next=document.createElement('button');next.type='button';next.className='reading-deck-button';next.dataset.readingNext='';next.textContent=compressed?'Next chapter →':'Next piece →';
-          controls.append(prev,dots,next);deck.appendChild(controls);
-
-          const pulse=card.querySelector(':scope > .reading-pulse');
-          if(pulse){
-            pulse.hidden=true;
-            pulse.before(deck);
-          }else card.querySelector(':scope > .lesson-controls')?.before(deck);
-
-          const lessonControls=card.querySelector(':scope > .lesson-controls');
-          if(lessonControls&&compressed)lessonControls.classList.add('reading-controls-muted');
-
-          card.classList.add('reading-deck-ready');
-          setReadingPiece(card,Number(card.dataset.readingPiece||0),false);
+          box.querySelector('[data-reading-skip]')?.addEventListener('click',()=>showToast('Skipped. You can keep moving.'));
         });
       }
 
@@ -2864,7 +2898,7 @@
           }
           const reading=card.classList.contains('reading-inline');
           if(reading){
-            card.dataset.presentation='reading-deck';
+            card.dataset.presentation='reading-page';
             return;
           }
 
@@ -3433,6 +3467,7 @@
         }
       });
 
+      splitModuleOneReadings();
       setupParticipantActivities();
       normalizeLessonPattern();
       standardizeLessonPattern();
