@@ -846,6 +846,17 @@
     }
 
   
+    /* Compact cover doorway */
+    .cover-start-card{max-width:760px}
+    .cover-start-copy{margin:8px 0;font-size:14px;line-height:1.55}
+    .cover-more{margin:10px 0 0;border-top:1px solid var(--line);padding-top:8px}
+    .cover-more summary{cursor:pointer;font-size:13px;font-weight:800;color:var(--teal)}
+    .cover-more-copy{padding:8px 0 2px;font-size:12px;line-height:1.5;color:var(--muted)}
+    .cover-more-copy p{margin:0 0 7px}
+    .cover-more-copy ul{margin:0;padding-left:18px;display:grid;gap:5px}
+    .cover-start-actions{margin-top:14px}
+    .cover-start-actions .button{min-height:46px}
+
     /* Cover orientation: how the class works */
     .how-class-works{margin:24px 0 4px;padding:18px;border:1px solid var(--line);border-radius:10px;background:rgba(255,253,248,.72)}
     .how-class-kicker{margin:0 0 3px;color:var(--teal);font-size:10px;text-transform:uppercase;letter-spacing:.11em;font-weight:850}
@@ -858,7 +869,7 @@
     .how-class-block li{font-size:12px;line-height:1.5}
     .how-class-block li span{font-weight:600;color:var(--muted)}
     .how-class-pass{margin-top:4px;padding:10px 12px;border-left:3px solid var(--gold);background:rgba(244,228,167,.24);font-weight:750}
-    @media(max-width:640px){.how-class-works{padding:15px}.how-class-block li{font-size:12px}}
+    @media(max-width:640px){.how-class-works{padding:15px}.how-class-block li{font-size:12px}.cover-screen .cover-mark{opacity:.16}}
     .pilot-orientation{margin:20px 0;padding:17px 18px;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;background:rgba(255,253,248,.76)}
     .pilot-orientation h2{margin:0 0 8px;font-size:clamp(22px,2.8vw,30px)}
     .pilot-orientation p{margin:7px 0;line-height:1.5}
@@ -927,61 +938,37 @@
           <h1 tabindex="-1" id="cover-title">Walk through Pilot&nbsp;1</h1>
           <p class="lede">Pilot 1 opens Entrepalooza, a small, human-guided cohort in Houston for adults figuring out what comes next. Here's how it feels, one step at a time.</p>
           <p class="preview-status-note"><strong>Public preview:</strong> exploring this workbook is not enrollment in the cohort.</p>
-          <section class="pilot-orientation" aria-labelledby="pilot-orientation-title">
+          <section class="how-class-works cover-start-card" aria-labelledby="how-class-works-title">
             <p class="how-class-kicker">Start here</p>
-            <h2 id="pilot-orientation-title">What am I doing here?</h2>
-            <p>You’re going to work through the first four parts of Entrepalooza. You’ll notice what catches your attention, try small ways of learning more, look at what happened, and decide what makes sense next.</p>
-            <p><strong>Nothing here is a test.</strong> You can skip questions, pass on activities, or stop and come back.</p>
-          </section>
-          <aside class="journal-welcome" aria-labelledby="journal-welcome-title">
-            <div class="journal-welcome-mark" aria-hidden="true">J</div>
-            <div>
-              <p class="journal-welcome-kicker">A tool you’ll have throughout the workbook</p>
-              <h2 id="journal-welcome-title">Your Conversation Journal</h2>
-              <p class="journal-welcome-copy">A place to catch thoughts you want to remember while you work. You can write directly in it or send an activity note there. Keeping an entry is always your choice.</p>
-              <p class="journal-welcome-note"><strong>Nothing is saved automatically or sent to Entrepalooza.</strong> If you choose to save or download your workbook, that copy stays on your device or in the file you choose.</p>
-            </div>
-          </aside>
-          <div class="check-in">
-            <p class="prompt">Before we start, are you here?</p>
-            <div class="button-row">
-              <button class="choice-button button-primary" type="button" data-enter-gate data-message="Glad you're here.">Yes, I'm here</button>
-              <button class="choice-button" type="button" data-message="Pass counts. You're still welcome to look around.">Pass</button>
-            </div>
-            <p class="message" role="status" aria-live="polite"></p>
-          </div>
-          <section class="how-class-works" aria-labelledby="how-class-works-title">
-            <p class="how-class-kicker">Before you begin</p>
-            <h2 id="how-class-works-title">How this class works</h2>
-            <div class="how-class-block">
-              <h3>The loop</h3>
-              <p>Every lesson uses the same four steps: <strong>Notice → Try → Reflect → Decide.</strong> You notice what's going on. You try one small thing. You look at what happened. Then you choose your next move.</p>
-            </div>
-            <div class="how-class-block">
-              <h3>Your workbook tools</h3>
-              <p>You write something once, and it carries forward. <strong>You do not fill these out separately.</strong> The workbook builds them from things you already chose to record.</p>
-              <div class="tool-flow" aria-label="How workbook tools build as you go">
-                <span>Your answers</span><b>→</b><span>What I’m noticing</span>
-                <span>Your experiments</span><b>→</b><span>What helps me work</span>
-                <span>Your decisions</span><b>→</b><span>My next choice</span>
+            <h2 id="how-class-works-title">How this works</h2>
+            <p class="cover-start-copy"><strong>Notice → Try → Reflect → Decide.</strong> You notice what has your attention, try something small, look at what happened, and choose what makes sense next.</p>
+            <p class="cover-start-copy"><strong>Conversation Journal:</strong> use it when you want to keep a thought or answer. It is optional, and nothing is saved automatically or sent to Entrepalooza.</p>
+            <p class="cover-start-copy">You can skip a question, pass on an activity, plan a try for later, or stop and come back.</p>
+
+            <details class="cover-more">
+              <summary>What the workbook keeps track of</summary>
+              <div class="cover-more-copy">
+                <p>Your answers build three running tools. You do not fill them out separately.</p>
+                <ul>
+                  <li><strong>What I’m noticing:</strong> interests, tries, and things you learned.</li>
+                  <li><strong>What helps me work:</strong> conditions, supports, limits, and barriers you noticed.</li>
+                  <li><strong>My next choice:</strong> the decision you make after a try.</li>
+                </ul>
               </div>
-              <ul>
-                <li><strong>What I'm noticing <span>(Builder Discovery Record)</span>:</strong> a running log of what you're curious about, what you tried, and what you learned.</li>
-                <li><strong>My next choice <span>(Next Decision)</span>:</strong> a short card after each try so you can choose your next move clearly.</li>
-                <li><strong>What helps me work <span>(Operating Plan)</span>:</strong> conditions for working well — what you're protecting, early warning signs, and how to pause and come back.</li>
-              </ul>
+            </details>
+
+            <details class="cover-more">
+              <summary>Your choices after a try</summary>
+              <div class="cover-more-copy">
+                <p><strong>Keep · Change · Test Again · Pause/Park · Stop · Another Direction · Continue Looking.</strong> None is treated as the “right” finish.</p>
+              </div>
+            </details>
+
+            <div class="cover-start-actions">
+              <button class="button button-primary" type="button" data-enter-gate>Start with Module 0 →</button>
             </div>
-            <div class="how-class-block">
-              <h3>Seven ways to decide</h3>
-              <p>All of them count: <strong>Keep · Change · Test Again · Pause/Park · Stop · Another Direction · Continue Looking.</strong></p>
-            </div>
-            <p class="how-class-pass">You can always pass, watch, or plan a try instead of doing it.</p>
-          </section>
-          
+          </section>          
         </div>
-        <aside class="sticky-note" aria-label="A note about the module loop">
-          <p>Every module follows the same loop:<br>Notice → Try → Reflect → Decide.</p>
-        </aside>
       </div>
       <svg class="cover-mark" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
         <path d="M45 100a55 55 0 1 1 18 41" fill="none" stroke="#3e6963" stroke-width="4" stroke-dasharray="5 7" stroke-linecap="round"/>
@@ -2001,7 +1988,7 @@
         let requested=Math.max(0,Math.min(screens.length-1,Number(index)));
         if(!preflightEntered && requested>0){
           requested=0;
-          showToast('Choose “Yes, I’m here” before continuing.');
+          showToast('Start with Module 0 before continuing.');
         } else if(preflightEntered && !workbookUnlocked && requested>=2){
           requested=1;
           showToast('Module 0 comes before the workbook.');
