@@ -2817,7 +2817,8 @@
           [
             ['The try is for learning','The goal is not to prove that you are talented, motivated, healed, disciplined, or meant for something. The goal is to notice what happened when you actually met the activity.'],
             ['Notice yourself in the experience','Pay attention to attention, curiosity, frustration, energy, willingness to continue, desire to stop, and what conditions seemed to matter. None of those signals has to become a permanent label.'],
-            ['Uncertainty belongs in the loop','If you do not know whether something fits, that is exactly when a small, reversible try can be useful. You are collecting evidence, not forcing certainty.']
+            ['Uncertainty belongs in the loop','If you do not know whether something fits, that is exactly when a small, reversible try can be useful. You are collecting evidence, not forcing certainty.'],
+            ['A barrier finding is still a finding','If childcare falls through, the bus route does not work, the cost is too high, your schedule changes, you lack a device or document, or another real-life condition blocks the try, record that separately. It does not tell you that the activity is a bad fit or that you failed. It tells you what would have to change for a fairer test.']
           ],
           'What could I learn by doing that I cannot learn by thinking about it?'
         );
@@ -3249,6 +3250,8 @@
               awField('a-m1-exp-balance','What would make this feel manageable?','A pace, place, amount of time, or other setup that would help')+
               awField('a-m1-exp-boundary','What limit do you want to set before you start?','Time, energy, spending, privacy, or another limit')+
               awField('a-m1-exp-support','What could help?','A person, tool, reminder, information, or something else')+
+              awField('a-m1-exp-barrier','What real-life condition could make this hard to try?','Work schedule, childcare, transportation, money, technology, documents, benefits, access, or something else')+
+              awField('a-m1-exp-stability','What needs to stay protected while you test this?','Income, housing, caregiving, health, another responsibility, or nothing specific')+
               awField('a-m1-exp-stop','What would tell you to pause, stop, or change the plan?','')+
               awField('a-m1-exp-evidence','What will you pay attention to?','')+
               awField('a-m1-exp-review','When will you look back at what happened?','')+
@@ -3257,9 +3260,11 @@
           case 'Try it and notice what happens':
             return awShell('Notice what actually happened','A stopped, incomplete, awkward, or disappointing try can still teach you something.',
               awChoices('What did you notice?','a-m1-evidence-signals',['I wanted to start','I could stop or change course','I stayed interested','My interest dropped','It felt meaningful','It felt pressured','It gave me energy','It drained me','Something practical got in the way','Something surprised me'],'multi')+
+              awChoices('Did anything outside the activity shape or block the try?','a-m1-barrier-type',['No outside barrier I noticed','Work schedule','Childcare / caregiving','Transportation','Cost / money','Technology / device','Documents / eligibility','Benefits concern','No opportunity came up','Something else'],'multi')+
               '<div class="activity-grid">'+
               awField('a-m1-evidence-happened','What happened?','Describe the try, not what it says about you')+
               awField('a-m1-evidence-conditions','What helped or got in the way?','Optional')+
+              awField('a-m1-evidence-barrier','If there was a barrier around the activity, what was it?','Keep this separate from what the activity itself was like')+
               awField('a-m1-evidence-cost','What did it take out of you?','Time, effort, energy, recovery, money, or nothing noticeable')+
               awField('a-m1-evidence-surprise','What surprised you?','Optional')+
               '</div>','lab');
@@ -3268,8 +3273,10 @@
             return awShell('Turn the try into something useful','Keep the conclusion as small as the evidence.',
               '<div class="activity-grid">'+
               awField('a-m1-reflect-happened','What happened?','')+
-              awField('a-m1-reflect-learned','What did this tell you about the activity?','')+
+              awField('a-m1-reflect-learned','What did this tell you about the activity itself?','')+
               awField('a-m1-reflect-conditions','What did this tell you about the setup?','')+
+              awField('a-m1-reflect-barrier','What, if anything, was a barrier around the activity rather than a finding about you?','Childcare, transportation, schedule, cost, access, documents, benefits, no opportunity, or something else')+
+              awField('a-m1-reflect-needed','What would make a fairer next test possible?','Optional')+
               awField('a-m1-reflect-story','What are you tempted to conclude about yourself?','Optional')+
               awField('a-m1-reflect-support','What does what happened actually support?','')+
               awField('a-m1-reflect-unknown','What still is not clear?','Optional')+
@@ -3279,7 +3286,8 @@
             return awShell('Look at the task and the setup','Do not turn one result into a rule about yourself.',
               '<div class="activity-grid">'+
               awField('a-m15-task','What task are you looking at?','An everyday task, something from Module 1, or the provided example','input')+
-              awField('a-m15-condition','What is one part of the setup that might matter?','Clear instructions, noise, time, interruptions, working alone, working with someone','input')+
+              awField('a-m15-condition','What is one part of the setup or real-life situation that might matter?','Clear instructions, noise, time, work schedule, childcare, transportation, cost, technology, access, working alone, working with someone','input')+
+              awField('a-m15-barrier','Is there a barrier around the task that should be recorded separately?','Optional. A barrier finding is not a personal finding.','input')+
               awField('a-m15-observation','What happened that you could actually see or check?','')+
               awField('a-m15-interpretation','What explanation are you tempted to add?','Optional')+
               awField('a-m15-question','What would you like to test before deciding that is the explanation?','')+
@@ -3304,7 +3312,9 @@
               awField('a-m15-review-result','What happened?','')+
               awField('a-m15-review-change','What seemed different after you changed the setup?','')+
               awField('a-m15-review-other','What else was different?','Optional')+
-              awField('a-m15-review-cost','What did it cost in effort, time, energy, or recovery?','Optional')+
+              awField('a-m15-review-barrier','Was anything outside the activity a barrier?','Work, caregiving, transportation, money, technology, documents, benefits, access, no opportunity, or something else')+
+              awField('a-m15-review-cost','What did it cost in effort, time, energy, recovery, or money?','Optional')+
+              awField('a-m15-review-support','What support or access would make this more workable next time?','Optional')+
               awField('a-m15-review-unknown','What still is not clear?','')+
               awField('a-m15-review-revise','What would make you change your mind about what you think happened?','Optional')+
               '</div>'+awChoices('What do you want to do next?','a-m15-next',['Keep going','Change something','Try again','Pause for now','Stop','Try a different direction','Keep looking'],'single'),'review');
@@ -3495,9 +3505,9 @@
           ...(map.bigger?[{value:map.bigger,source:'Opening activity'}]:[]),
           ...(map.finals?.thing?[{value:map.finals.thing,source:'Opening activity'}]:[])
         ]);
-        const conditions=uniqueShapeItems([...mk(['a-m1-exp-balance','a-m1-exp-boundary'],'Module 1'),...mk(['a-m15-condition','a-m15-test-condition','a-m15-test-balance','a-m15-review-change'],'Module 1.5'),...mk(['a-m2-limit'],'Module 2'),...mk(['a-m3-protect-condition','a-m3-protect-boundary','a-m3-change-limit'],'Module 3')]);
-        const supports=uniqueShapeItems([...mk(['a-m0-support','a-m0-access','a-m0-tech','a-m0-logistics'],'Module 0'),...shapeSelected('a-m1-access').map(value=>({value,source:'Module 1'})),...mk(['a-m1-exp-support'],'Module 1'),...mk(['a-m15-test-support'],'Module 1.5'),...mk(['a-m2-support','a-m2-review-support'],'Module 2')]);
-        const costs=uniqueShapeItems([...mk(['a-m1-evidence-cost'],'Module 1'),...mk(['a-m15-review-cost'],'Module 1.5'),...mk(['a-m3-cost'],'Module 3')]);
+        const conditions=uniqueShapeItems([...mk(['a-m1-exp-balance','a-m1-exp-boundary','a-m1-exp-barrier','a-m1-exp-stability','a-m1-evidence-barrier','a-m1-reflect-barrier'],'Module 1.5'),...mk(['a-m15-condition','a-m15-barrier','a-m15-test-condition','a-m15-test-balance','a-m15-review-change','a-m15-review-barrier'],'Module 1.5'),...mk(['a-m2-limit'],'Module 2'),...mk(['a-m3-protect-condition','a-m3-protect-boundary','a-m3-change-limit'],'Module 3')]);
+        const supports=uniqueShapeItems([...mk(['a-m0-support','a-m0-access','a-m0-tech','a-m0-logistics'],'Module 0'),...shapeSelected('a-m1-access').map(value=>({value,source:'Module 1'})),...mk(['a-m1-exp-support','a-m1-reflect-needed'],'Module 1.5'),...mk(['a-m15-test-support','a-m15-review-support'],'Module 1.5'),...mk(['a-m2-support','a-m2-review-support'],'Module 2')]);
+        const costs=uniqueShapeItems([...mk(['a-m1-evidence-cost'],'Module 1.5'),...mk(['a-m15-review-cost'],'Module 1.5'),...mk(['a-m3-cost'],'Module 3')]);
         const unknowns=uniqueShapeItems([...mk(['a-m0-one-unknown','a-m0-clear-question'],'Module 0'),...mk(['a-m1-unknown','a-m1-pattern-unknown','a-m1-reflect-unknown'],'Module 1'),...mk(['a-m15-review-unknown'],'Module 1.5'),...mk(['a-m2-uncertainty','a-m2-review-unknown'],'Module 2'),...mk(['a-m3-unknown'],'Module 3'),...(map.finals?.unknown?[{value:map.finals.unknown,source:'Opening activity'}]:[]),...journalEntries.filter(e=>e.prompt==='Question').map(e=>({value:e.text,source:'Conversation Journal'}))]);
         const evidence=uniqueShapeItems([...mk(['a-m1-evidence-happened','a-m1-reflect-happened','a-m1-reflect-support'],'Module 1'),...mk(['a-m15-review-result'],'Module 1.5'),...mk(['a-m2-event','a-m2-review-evidence','a-m2-review-happened'],'Module 2'),...mk(['a-m3-action','a-m3-supports','a-m3-challenges'],'Module 3')]);
         const decisions=[];[['a-m1-next','Module 1'],['a-m15-next','Module 1.5'],['a-m2-next','Module 2'],['a-m3-next','Module 3']].forEach(([id,source])=>shapeSelected(id).forEach(value=>decisions.push({value,source})));
