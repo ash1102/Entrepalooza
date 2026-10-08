@@ -933,6 +933,15 @@
     .canvas-remove {align-self:flex-end;margin-top:16px;border:0;background:none;color:var(--muted);text-decoration:underline;min-height:42px;cursor:pointer;}
     .canvas-add {margin:4px 0 24px;border-style:dashed;}
     @media(max-width:640px){.life-canvas-grid{grid-template-columns:1fr;gap:18px;}}
+
+.privacy-shield{margin:24px 0;padding:28px;border:1px solid #d9dfd9;border-radius:20px;background:#fafbf8;}
+.privacy-shield h4{margin:0 0 14px;}.privacy-shield button{white-space:normal;max-width:100%;min-height:48px;}
+.privacy-shield button[aria-pressed="true"]{background:#285c45;color:white;}
+.privacy-shield-confirmation{margin-top:20px;padding:18px;border:1px solid #bdd5c4;border-radius:12px;background:#edf5ef;color:#214b36;}
+.privacy-shield-note{font-size:.85rem;line-height:1.6;margin-top:18px;}
+
+.baseline-card{padding:32px;border:1px solid #d9dfd9;border-radius:20px;background:#fafbf8;}.baseline-card ul{padding-left:24px;margin:24px 0;}.baseline-card li{padding:8px 0 8px 8px;font-weight:600;line-height:1.65;}.baseline-card button{white-space:normal;}
+.workbook-support-bar{margin-top:14px;padding:12px 16px;border-top:1px solid #d9dfd9;border-radius:10px;background:#f1f4ed;font-size:12px;line-height:1.6;color:#3a5148;}.workbook-support-bar a{color:inherit;text-decoration:underline;}.profile-settings{margin-top:8px;font-size:12px;}.profile-settings label{display:block;padding:8px;}.profile-settings input{margin-right:8px;}body.layout-larger-text main{font-size:1.15em;}body.layout-more-space main p,body.layout-more-space main li{line-height:2;}@media(max-width:640px){.baseline-card{padding:24px;}.workbook-support-bar{font-size:11px;padding:10px;}}
 </style>
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -971,6 +980,8 @@
           <div class="loop-words" aria-hidden="true"><span data-loop-word="notice">Notice</span> → <span data-loop-word="try">Try</span> → <span data-loop-word="reflect">Reflect</span> → <span data-loop-word="decide">Decide</span></div>
         </div>
       </div>
+      <div class="workbook-support-bar">💡 Needing a different setup is never a measure of your worth or readiness. Adjust your layout options anytime in your <a href="#profile-settings" id="open-profile-settings">profile settings</a>.</div>
+      <details id="profile-settings" class="profile-settings"><summary>Profile settings</summary><p>Layout preferences stay in this browser. No account or personal details required.</p><label><input type="checkbox" id="layout-larger-text"> Larger workbook text</label><label><input type="checkbox" id="layout-more-space"> More space between lines</label><p id="layout-status" role="status"></p></details>
       <div class="module-progress" aria-hidden="true">
         <span class="module-progress-label" id="module-progress-label">Step Start</span>
         <div class="module-progress-track"><div class="module-progress-fill" id="module-progress-fill"></div></div>
@@ -1039,22 +1050,21 @@
         <header class="module-heading"><div class="module-kicker"><strong>Module 0 of Pilot 1</strong><span>5 parts</span></div><h2 tabindex="-1" id="module-0-title">Enter with Agency</h2></header>
         
         <nav class="lesson-tabs" aria-label="Module 0 · Enter with Agency sequence"><button class="lesson-tab" type="button" data-lesson-goto="0" aria-current="step">1</button><button class="lesson-tab" type="button" data-lesson-goto="1" >2</button><button class="lesson-tab" type="button" data-lesson-goto="2" >3</button><button class="lesson-tab" type="button" data-lesson-goto="3" >4</button><button class="lesson-tab" type="button" data-lesson-goto="4" >5</button></nav>
-        <div class="lesson-stage"><article class="lesson-card is-lesson-active" data-lesson-index="0" data-loop="notice">
-    <div class="lesson-meta"><strong>Part 1 of 5</strong><span>·</span><span>Activity</span></div>
-    <h3 tabindex="-1">Know what this pilot is and isn’t</h3><p class="lesson-purpose">Know what the pilot will and won’t do before choosing anything.</p>
-     <div class="beat"><div class="beat-label">The idea</div><p>You can answer aloud, write privately, observe, or pass. Passing never needs a reason. Entrepalooza is a structured way to notice, try something small, reflect, and decide what comes next. A job, training, a project, a pause, or still looking can all be complete finishes.</p><p><strong>Your Conversation Journal is optional.</strong> Use it to keep thoughts you want to remember without having to complete every prompt.</p></div>
-     <div class="activity" data-single-select><p class="activity-title">Quick check: part of the pilot, or not?</p><div class="tile-grid">
-       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Yes. Small, bounded experiments are part of the pilot.">Try something small</button>
-       <button class="tile-option" type="button" aria-pressed="false" data-feedback="No. The pilot does not promise jobs or income.">Job or income promise</button>
-       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Yes. Passing is a real participation choice.">Pass without explaining</button>
-       <button class="tile-option" type="button" aria-pressed="false" data-feedback="No. Entrepreneurship is optional.">Required business path</button>
-     </div><p class="activity-message" role="status" aria-live="polite"></p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Cover</button><button class="button button-primary" type="button" data-lesson-next>Lesson 2 →</button></div></article><article class="lesson-card" data-lesson-index="1" data-loop="notice">
+        <div class="lesson-stage"><article class="lesson-card is-lesson-active m1-pdf reading-inline" data-lesson-index="0" data-loop="notice">
+<div class="lesson-meta"><strong>Part 1 of 5</strong><span>·</span><span>Continue</span></div>
+<section class="baseline-card" aria-labelledby="baseline-title"><p class="eyebrow">Continue</p><h3 id="baseline-title" tabindex="-1">The Baseline</h3><ul><li>This is a private space to notice what holds your attention.</li><li>There are no business quotas, income promises, or required paths here.</li></ul><button type="button" class="button button-primary" id="baseline-continue">Understood. Let's Map the Week</button></section>
+<div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Cover</button></div></article><article class="lesson-card" data-lesson-index="1" data-loop="notice">
     <div class="lesson-meta"><strong>Part 2 of 5</strong><span>·</span><span>Activity</span></div>
     <h3 tabindex="-1">Your choices, privacy, and permission</h3><p class="lesson-purpose">Practice the rights before anyone asks you for personal information.</p>
      <div class="beat"><div class="beat-label">The idea</div><p>Participation, evaluation, recording, story use, and follow-up are separate choices. Saying yes to one does not mean yes to the others. You can pass without defending the choice.</p></div>
-     <div class="activity"><p class="activity-title">Try separate consent</p><p>Just for you. Nothing you type is saved or sent.</p>
-       <div class="example-line"><strong>Participation</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Participation: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Participation: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Participation: Not now is a complete choice.">Not now</button></div></div><div class="example-line"><strong>Evaluation</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Evaluation: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Evaluation: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Evaluation: Not now is a complete choice.">Not now</button></div></div><div class="example-line"><strong>Recording</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Recording: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Recording: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Recording: Not now is a complete choice.">Not now</button></div></div><div class="example-line"><strong>Story use</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Story use: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Story use: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Story use: Not now is a complete choice.">Not now</button></div></div><div class="example-line"><strong>Follow-up</strong><div class="tap-row" data-single-select><button class="tap-option" type="button" aria-pressed="false" data-feedback="Follow-up: Yes for this demo only.">Yes</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Follow-up: No for this demo only.">No</button><button class="tap-option" type="button" aria-pressed="false" data-feedback="Follow-up: Not now is a complete choice.">Not now</button></div></div>
-       <p class="activity-message" role="status" aria-live="polite"></p></div>
+     <section class="privacy-shield" aria-labelledby="privacy-shield-title">
+       <h4 id="privacy-shield-title">Privacy Shield</h4>
+       <p>Keep participation, evaluation, recording, story use, and follow-up permissions private. You can still explore the workbook without granting any of them.</p>
+       <button class="button button-primary" id="privacy-shield-toggle" type="button" aria-pressed="false" aria-describedby="privacy-shield-status">🔒 Lock Everything to Private</button>
+       <div id="privacy-shield-status" class="privacy-shield-confirmation" role="status" aria-live="polite" hidden></div>
+       <p class="privacy-shield-note">Your existing device-saving controls still apply. This does not give permission to record, evaluate, contact you, or use your story. Turning the shield off never grants permission.</p>
+       <input type="hidden" id="permission-participation" value="No"><input type="hidden" id="permission-evaluation" value="No"><input type="hidden" id="permission-recording" value="No"><input type="hidden" id="permission-story-use" value="Private"><input type="hidden" id="permission-follow-up" value="No">
+     </section>
      <div class="beat"><div class="beat-label">Reflect</div><p>Name one thing the program will not do and one way you could pause or leave. The consent readings support active discussion and teach-back rather than relying on a form alone.</p></div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 1</button><button class="button button-primary" type="button" data-lesson-next>Lesson 3 →</button></div></article><article class="lesson-card" data-lesson-index="2" data-loop="try">
     <div class="lesson-meta"><strong>Part 3 of 5</strong><span>·</span><span>Activity</span></div>
     <h3 tabindex="-1">How feedback works here</h3><p class="lesson-purpose">Practice asking before giving feedback, and practice hearing “no” without pushing.</p>
@@ -1063,13 +1073,7 @@
        <button class="tap-option" type="button" aria-pressed="false" data-feedback="That skips permission. Ask first.">Here’s what you should change.</button>
        <button class="tap-option" type="button" aria-pressed="false" data-feedback="That pressures the other person to explain.">Why don’t you want feedback?</button>
      </div><p class="activity-message" role="status" aria-live="polite"></p></div>
-     <div class="mini-note">Ask · Pass · Listen · Bounded feedback. Those are group skills, not personality traits.</div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 2</button><button class="button button-primary" type="button" data-lesson-next>Lesson 4 →</button></div></article><article class="lesson-card" data-lesson-index="3" data-loop="reflect">
-    <div class="lesson-meta"><strong>Part 4 of 5</strong><span>·</span><span>Activity</span></div>
-    <h3 tabindex="-1">What would help you take part?</h3><p class="lesson-purpose">Notice the setup that makes participation workable without turning support into a diagnosis.</p>
-     <div class="activity" data-multi-select><p class="activity-title">What can count as a participation condition?</p><div class="tile-grid">
-       <button class="tile-option" type="button" aria-pressed="false" data-feedback="Private writing can be a legitimate participation condition.">Private writing</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Paper handouts can be a legitimate participation condition.">Paper handouts</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Breaks can be a legitimate participation condition.">Breaks</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Schedule flexibility can be a legitimate participation condition.">Schedule flexibility</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Phone-friendly materials can be a legitimate participation condition.">Phone-friendly materials</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Reading support can be a legitimate participation condition.">Reading support</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="Observe first can be a legitimate participation condition.">Observe first</button><button class="tile-option" type="button" aria-pressed="false" data-feedback="No extra support can be a legitimate participation condition.">No extra support</button>
-     </div><p class="activity-message" role="status" aria-live="polite"></p></div>
-     <div class="mini-note">Needing a different setup is not evidence about someone’s worth or readiness.</div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 3</button><button class="button button-primary" type="button" data-lesson-next>Lesson 5 →</button></div></article><article class="lesson-card" data-lesson-index="4" data-loop="decide">
+     <div class="mini-note">Ask · Pass · Listen · Bounded feedback. Those are group skills, not personality traits.</div><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 2</button><button class="button button-primary" type="button" data-lesson-next>Lesson 4 →</button></div></article><article class="lesson-card m1-pdf reading-inline" data-lesson-index="3" data-loop="reflect"><div class="lesson-meta"><strong>Part 4 of 5</strong></div><h3 tabindex="-1">Make room for your setup</h3><p>You can change your workbook layout anytime using Profile settings in the navigation below. No explanation or disclosure is required.</p><div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Lesson 3</button><button class="button button-primary" type="button" data-lesson-next>Lesson 5 →</button></div></article><article class="lesson-card" data-lesson-index="4" data-loop="decide">
     <div class="lesson-meta"><strong>Part 5 of 5</strong><span>·</span><span>Activity</span></div>
     <h3 tabindex="-1">Decide whether you want to continue</h3><p class="lesson-purpose">Make a real participation choice. Joining and consent stay separate.</p>
      <div class="activity" data-single-select><p class="activity-title">Choose a route for this demonstration</p><div class="tile-grid">
@@ -2852,6 +2856,33 @@ You Matters</summary><div class="fold-copy"><p>Caring intensely about something 
       });
       restoreExperimentCard();
       restoreLifeCanvas();
+      document.getElementById('baseline-continue').addEventListener('click',()=>{enterWorkbook();showLesson(document.getElementById('module-1'),0,true);});
+      document.getElementById('open-profile-settings').addEventListener('click',event=>{event.preventDefault();const settings=document.getElementById('profile-settings');settings.open=true;settings.querySelector('summary').focus();});
+      ['larger-text','more-space'].forEach(option=>{
+        const input=document.getElementById('layout-'+option);
+        try{input.checked=localStorage.getItem('entrepalooza-layout-'+option)==='on';}catch(error){}
+        document.body.classList.toggle('layout-'+option,input.checked);
+        input.addEventListener('change',()=>{document.body.classList.toggle('layout-'+option,input.checked);try{localStorage.setItem('entrepalooza-layout-'+option,input.checked?'on':'off');document.getElementById('layout-status').textContent='Layout saved in this browser.';}catch(error){document.getElementById('layout-status').textContent='Layout changed for this tab; browser saving is unavailable.';}});
+      });
+      const PRIVACY_SHIELD_KEY='entrepalooza-privacy-shield-v1';
+      const shieldButton=document.getElementById('privacy-shield-toggle');
+      const shieldStatus=document.getElementById('privacy-shield-status');
+      const privatePermissions={participation:'No',evaluation:'No',recording:'No','story-use':'Private','follow-up':'No'};
+      function applyPrivacyShield(locked,persist){
+        Object.entries(privatePermissions).forEach(([key,value])=>{document.getElementById('permission-'+key).value=value;});
+        shieldButton.setAttribute('aria-pressed',String(locked));
+        shieldStatus.hidden=!locked;
+        shieldStatus.textContent=locked?'Your entries are saved strictly to this device browser. Nothing is sent away.':'';
+        if(persist){
+          try{localStorage.setItem(PRIVACY_SHIELD_KEY,JSON.stringify({locked,permissions:privatePermissions}));}
+          catch(error){shieldStatus.hidden=false;shieldStatus.textContent='All permissions are private in this tab. This browser could not save your Privacy Shield setting.';}
+        }
+      }
+      shieldButton.addEventListener('click',()=>applyPrivacyShield(shieldButton.getAttribute('aria-pressed')!=='true',true));
+      let shieldLocked=false;
+      try{shieldLocked=JSON.parse(localStorage.getItem(PRIVACY_SHIELD_KEY)||'null')?.locked===true;}catch(error){}
+      applyPrivacyShield(shieldLocked,false);
+
 
     })();
   </script>
