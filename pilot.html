@@ -977,6 +977,13 @@
       #module-1 .activity-group{padding:16px 12px;}
     }
 
+
+#module-1 .week-node-plotter{margin:28px 0;padding:24px;border:1px solid #cddbd3;border-radius:20px;background:#f6f8f3;}
+.week-node-tools{display:flex;flex-wrap:wrap;gap:16px;align-items:end;margin:20px 0;}.week-node-tools label{flex:1 1 160px;font-weight:650;}.week-node-tools input,.week-node-tools select{display:block;width:100%;margin-top:8px;box-sizing:border-box;}
+#week-node-map{display:block;width:100%;height:auto;touch-action:manipulation;}.week-node-background{fill:#fffdf8;stroke:#dce2dc;stroke-width:2;}[data-week-node]{cursor:pointer;}[data-week-node] rect{fill:#e5eee7;stroke:#3e6963;stroke-width:2;}[data-week-node][data-kind="online"] rect{fill:#efe9f6;stroke:#7052a2;}[data-week-node] text{font-size:22px;fill:#263b39;font-weight:650;pointer-events:none;}[data-week-node]:focus rect{stroke:#263b39;stroke-width:5;}#week-node-status{font-size:13px;line-height:1.6;}
+@media(max-width:640px){#module-1 .week-node-plotter{padding:16px;}#week-node-map{min-height:220px;}.week-node-tools{gap:12px;}}
+
+.week-map-legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:12px;font-size:13px;color:#3e6963;}.week-map-legend span:last-child{color:#7052a2;}#week-node-map [data-week-node]:hover rect{stroke-width:4;fill:#d8e8dd;}#week-node-map [data-week-node][data-kind="online"]:hover rect{fill:#e7def1;}
 </style>
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -2737,12 +2744,41 @@ You Matters</summary><div class="fold-copy"><p>Caring intensely about something 
       document.getElementById('m3-use-selected').addEventListener('click',()=>copySelectedEvidence([['m2-handoff-cue','m3-entry-cue'],['m2-handoff-limit','m3-entry-limit'],['m2-handoff-action','m3-entry-action'],['m2-handoff-evidence','m3-entry-evidence'],['m2-handoff-question','m3-entry-question']],'m3-import-status'));
 
 
+      function renderWeekNodes(){
+        const svg=document.getElementById('week-node-map');if(!svg)return;
+        svg.querySelectorAll('[data-week-node]').forEach(node=>node.remove());
+        const empty=svg.querySelector('#week-map-empty');if(empty)empty.style.display=[...document.querySelectorAll('.life-canvas-grid [data-canvas-name]')].some(input=>input.value.trim())?'none':'';
+        const ns='http://www.w3.org/2000/svg';
+        document.querySelectorAll('.life-canvas-grid [data-canvas-card]').forEach((card,index)=>{
+          const name=card.querySelector('[data-canvas-name]').value.trim();if(!name)return;
+          if(!card.dataset.nodeX){card.dataset.nodeX=150+(index%3)*250;card.dataset.nodeY=75+(Math.floor(index/3)%4)*90;}
+          const g=document.createElementNS(ns,'g');g.dataset.weekNode='';g.dataset.kind=card.dataset.canvasKind;g.dataset.id=card.dataset.canvasId;
+          g.setAttribute('transform','translate('+card.dataset.nodeX+' '+card.dataset.nodeY+')');g.setAttribute('tabindex','0');g.setAttribute('role','button');g.setAttribute('aria-label',name+'. Enter to edit; arrow keys to move.');
+          const rect=document.createElementNS(ns,'rect');rect.setAttribute('x','-100');rect.setAttribute('y','-30');rect.setAttribute('width','200');rect.setAttribute('height','60');rect.setAttribute('rx','24');
+          const text=document.createElementNS(ns,'text');text.setAttribute('text-anchor','middle');text.setAttribute('dy','.35em');text.textContent=name.length>18?name.slice(0,17)+'…':name;
+          const title=document.createElementNS(ns,'title');title.textContent=name;g.append(title,rect,text);svg.append(g);
+        });
+      }
+      function initializeWeekNodes(){
+        const section=document.createElement('section');section.className='week-node-plotter';section.setAttribute('aria-labelledby','week-node-title');
+        section.innerHTML='<h4 id="week-node-title">Plot Your Week</h4><p>Your week, in your own words. Give a place or activity a name, then tap an open spot to place it. There is no right layout.</p><div class="week-node-tools"><label for="week-node-label">Place or activity<input id="week-node-label" maxlength="120" placeholder="Home, Work, Phone Research…"></label><label for="week-node-kind">Type<select id="week-node-kind"><option value="place">Place</option><option value="online">Online activity</option></select></label><button type="button" class="button" id="week-node-add">Add to map</button></div><svg id="week-node-map" viewBox="0 0 800 420" role="group" aria-label="Your week map. Click empty space to place a label. Use Add to map as a keyboard alternative."><defs><pattern id="week-map-dots" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="16" cy="16" r="1.5" fill="#dce5dc" /></pattern></defs><rect class="week-node-background" width="800" height="420" rx="22" /><rect width="800" height="420" rx="22" fill="url(#week-map-dots)" /><text id="week-map-empty" x="400" y="210" text-anchor="middle" fill="#53695e" font-size="28">A little space for your week</text></svg><div class="week-map-legend"><span>● Places</span><span>● Online activities</span></div><p id="week-node-status" role="status" aria-live="polite">Each node connects to a card below for notes and energy markers. Select a node to edit. Keyboard: Add to map places a node; arrow keys move a focused node. This is optional and stays with your browser-saving choices.</p>';
+        document.getElementById('canvas-grid-place').closest('.life-canvas-section').before(section);
+        const svg=document.getElementById('week-node-map'),label=document.getElementById('week-node-label');
+        function add(x,y){const name=label.value.trim();if(!name){document.getElementById('week-node-status').textContent='Add a label first, or leave the map blank.';label.focus();return;}const card=addCanvasCard(document.getElementById('week-node-kind').value,{name,x,y});saveLifeCanvas();label.value='';document.getElementById('week-node-status').textContent='Added '+name+'. Its card is ready below.';return card;}
+        document.getElementById('week-node-add').addEventListener('click',()=>{const count=svg.querySelectorAll('[data-week-node]').length;add(150+(count%3)*250,75+(Math.floor(count/3)%4)*90);});
+        function cardFor(node){return [...document.querySelectorAll('.life-canvas-grid [data-canvas-card]')].find(card=>card.dataset.canvasKind===node.dataset.kind&&card.dataset.canvasId===node.dataset.id);}
+        function edit(node){const card=cardFor(node);card?.querySelector('[data-canvas-name]').focus();card?.scrollIntoView({behavior:'auto',block:'center'});}
+        svg.addEventListener('click',event=>{const node=event.target.closest('[data-week-node]');if(node){edit(node);return;}const point=new DOMPoint(event.clientX,event.clientY).matrixTransform(svg.getScreenCTM().inverse());add(point.x,point.y);});
+        svg.addEventListener('keydown',event=>{const node=event.target.closest('[data-week-node]');if(!node)return;if(event.key==='Enter'||event.key===' '){event.preventDefault();edit(node);return;}const delta={ArrowLeft:[-20,0],ArrowRight:[20,0],ArrowUp:[0,-20],ArrowDown:[0,20]}[event.key];if(!delta)return;event.preventDefault();event.stopPropagation();const card=cardFor(node);card.dataset.nodeX=Math.max(100,Math.min(700,Number(card.dataset.nodeX)+delta[0]));card.dataset.nodeY=Math.max(40,Math.min(380,Number(card.dataset.nodeY)+delta[1]));const kind=node.dataset.kind,id=node.dataset.id;saveLifeCanvas();[...svg.querySelectorAll('[data-week-node]')].find(n=>n.dataset.kind===kind&&n.dataset.id===id)?.focus();});
+      }
+
       function canvasStatus(message){document.getElementById('canvas-save-status').textContent=message;}
       function addCanvasCard(kind,data={},focus=false){
         const grid=document.getElementById('canvas-grid-'+kind),template=document.getElementById('canvas-template-'+kind);
         const index=Number.isInteger(data.id)?data.id:[...grid.children].reduce((max,c)=>Math.max(max,Number(c.dataset.canvasId)+1),0);
         const card=template.content.firstElementChild.cloneNode(true);
         card.dataset.canvasId=index;card.dataset.canvasKind=kind;
+        if(Number.isFinite(data.x)&&Number.isFinite(data.y)){card.dataset.nodeX=Math.max(100,Math.min(700,data.x));card.dataset.nodeY=Math.max(40,Math.min(380,data.y));}
         card.querySelectorAll('[id],[for]').forEach(el=>['id','for'].forEach(attr=>{
           const value=el.getAttribute(attr);if(value)el.setAttribute(attr,value.replace(/-0$/, '-'+index));
         }));
@@ -2753,13 +2789,15 @@ You Matters</summary><div class="fold-copy"><p>Caring intensely about something 
         card.appendChild(remove);grid.appendChild(card);syncLifeCanvas();
         if(focus)input.focus();return card;
       }
-      function collectLifeCanvas(){return {version:1,cards:[...document.querySelectorAll('.life-canvas-grid [data-canvas-card]')].map(card=>({id:Number(card.dataset.canvasId),kind:card.dataset.canvasKind,name:card.querySelector('[data-canvas-name]').value,notes:card.querySelector('textarea').value,badges:[...card.querySelectorAll('[data-badge][aria-pressed="true"]')].map(b=>Number(b.dataset.badge))}))};}
+      function collectLifeCanvas(){return {version:1,cards:[...document.querySelectorAll('.life-canvas-grid [data-canvas-card]')].map(card=>({id:Number(card.dataset.canvasId),kind:card.dataset.canvasKind,x:Number(card.dataset.nodeX)||null,y:Number(card.dataset.nodeY)||null,name:card.querySelector('[data-canvas-name]').value,notes:card.querySelector('textarea').value,badges:[...card.querySelectorAll('[data-badge][aria-pressed="true"]')].map(b=>Number(b.dataset.badge))}))};}
       function applyLifeCanvas(data){
         if(data?.version!==1||!Array.isArray(data.cards))return;
         ['place','online'].forEach(kind=>document.getElementById('canvas-grid-'+kind).replaceChildren());
         data.cards.filter(c=>c&&['place','online'].includes(c.kind)).forEach(c=>addCanvasCard(c.kind,c));
+        renderWeekNodes();
       }
       function saveLifeCanvas(){
+        renderWeekNodes();
         if(!lifeCanvasSaving)return;
         try{localStorage.setItem(LIFE_CANVAS_KEY,JSON.stringify(collectLifeCanvas()));canvasStatus('Canvas saved in this browser. No card answers were sent.');}
         catch(error){canvasStatus('Browser saving is unavailable. Keep this tab open or download your workbook.');}
@@ -2806,6 +2844,7 @@ You Matters</summary><div class="fold-copy"><p>Caring intensely about something 
       }
       document.addEventListener('input',e=>{if(e.target.matches('[data-canvas-name]'))syncLifeCanvas();});
       initializeLifeCanvas();
+      initializeWeekNodes();
       syncLifeCanvas();
 
       addQuickCheckins();
@@ -2891,6 +2930,7 @@ You Matters</summary><div class="fold-copy"><p>Caring intensely about something 
       });
       restoreExperimentCard();
       restoreLifeCanvas();
+      renderWeekNodes();
       document.getElementById('baseline-continue').addEventListener('click',()=>{enterWorkbook();showLesson(document.getElementById('module-1'),0,true);});
       document.getElementById('open-profile-settings').addEventListener('click',event=>{event.preventDefault();const settings=document.getElementById('profile-settings');settings.open=true;settings.querySelector('summary').focus();});
       ['larger-text','more-space'].forEach(option=>{
