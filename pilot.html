@@ -991,6 +991,8 @@
 #module-1 .canvas-card .canvas-marker-symbol{flex:0 0 24px;font-size:22px;text-align:center;}
 #module-1 .canvas-card .canvas-marker-label{position:static;width:auto;height:auto;overflow:visible;clip-path:none;white-space:normal;font-size:14px;font-weight:650;}
 #module-1 .canvas-card .activity-group legend{font-size:14px;line-height:1.5;padding-bottom:10px;}
+
+.week-map-details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:20px;}.week-map-detail{min-width:0;padding:18px;border:1px solid #d5dfd5;border-radius:14px;background:#fffdf8;}.week-map-detail h5{margin:0 0 10px;font-size:15px;line-height:1.5;}.week-map-detail p{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:1.7;}.week-map-detail button{min-height:44px;font-size:12px;}.week-map-detail-empty{grid-column:1/-1;font-size:13px;color:#53695e;}@media(max-width:640px){.week-map-details{grid-template-columns:1fr;}}
 </style>
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -2751,7 +2753,16 @@ You Matters</summary><div class="fold-copy"><p>Caring intensely about something 
       document.getElementById('m3-use-selected').addEventListener('click',()=>copySelectedEvidence([['m2-handoff-cue','m3-entry-cue'],['m2-handoff-limit','m3-entry-limit'],['m2-handoff-action','m3-entry-action'],['m2-handoff-evidence','m3-entry-evidence'],['m2-handoff-question','m3-entry-question']],'m3-import-status'));
 
 
+      function lifeMapReflectionIds(){return ['m1-map-symbols','m1-map-missing','m1-map-barriers','m1-map-threads','a-m1-thread','m1-map-because','a-m1-unknown','m1-map-next'];}
+      function renderWeekMapDetails(){
+        const host=document.getElementById('week-map-details');if(!host)return;host.replaceChildren();
+        function add(title,text,target){if(!text.trim())return;const article=document.createElement('article');article.className='week-map-detail';const h=document.createElement('h5');h.textContent=title;const p=document.createElement('p');p.textContent=text;const button=document.createElement('button');button.type='button';button.className='button';button.textContent='Edit';button.addEventListener('click',()=>{target.focus();target.scrollIntoView({block:'center',behavior:'auto'});});article.append(h,p,button);host.append(article);}
+        document.querySelectorAll('.life-canvas-grid [data-canvas-card]').forEach(card=>{const input=card.querySelector('[data-canvas-name]'),notes=card.querySelector('textarea'),markers=[...card.querySelectorAll('[data-badge][aria-pressed="true"]')].map(b=>b.getAttribute('aria-label'));const name=input.value.trim()||(card.dataset.canvasKind==='place'?'Unnamed place':'Unnamed activity');const text=[notes.value.trim(),markers.length?'Energy markers: '+markers.join('; '):''].filter(Boolean).join('\n');add(name,text,notes);});
+        lifeMapReflectionIds().forEach(id=>{const input=document.getElementById(id);if(input)add(input.labels[0]?.textContent||id,input.value,input);});
+        if(!host.children.length){const p=document.createElement('p');p.className='week-map-detail-empty';p.textContent='Notes, energy markers, blank spaces, barriers, and threads will appear here as you add them below.';host.append(p);}
+      }
       function renderWeekNodes(){
+        renderWeekMapDetails();
         const svg=document.getElementById('week-node-map');if(!svg)return;
         svg.querySelectorAll('[data-week-node]').forEach(node=>node.remove());
         const empty=svg.querySelector('#week-map-empty');if(empty)empty.style.display=[...document.querySelectorAll('.life-canvas-grid [data-canvas-name]')].some(input=>input.value.trim())?'none':'';
@@ -2768,7 +2779,8 @@ You Matters</summary><div class="fold-copy"><p>Caring intensely about something 
       }
       function initializeWeekNodes(){
         const section=document.createElement('section');section.className='week-node-plotter';section.setAttribute('aria-labelledby','week-node-title');
-        section.innerHTML='<h4 id="week-node-title">Plot Your Week</h4><p>Your week, in your own words. Give a place or activity a name, then tap an open spot to place it. There is no right layout.</p><div class="week-node-tools"><label for="week-node-label">Place or activity<input id="week-node-label" maxlength="120" placeholder="Home, Work, Phone Research…"></label><label for="week-node-kind">Type<select id="week-node-kind"><option value="place">Place</option><option value="online">Online activity</option></select></label><button type="button" class="button" id="week-node-add">Add to map</button></div><svg id="week-node-map" viewBox="0 0 800 420" role="group" aria-label="Your week map. Click empty space to place a label. Use Add to map as a keyboard alternative."><defs><pattern id="week-map-dots" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="16" cy="16" r="1.5" fill="#dce5dc" /></pattern></defs><rect class="week-node-background" width="800" height="420" rx="22" /><rect width="800" height="420" rx="22" fill="url(#week-map-dots)" /><text id="week-map-empty" x="400" y="210" text-anchor="middle" fill="#53695e" font-size="28">A little space for your week</text></svg><div class="week-map-legend"><span>● Places</span><span>● Online activities</span></div><p id="week-node-status" role="status" aria-live="polite">Each node connects to a card below for notes and energy markers. Select a node to edit. Keyboard: Add to map places a node; arrow keys move a focused node. This is optional and stays with your browser-saving choices.</p>';
+        section.innerHTML='<h4 id="week-node-title">Plot Your Week</h4><p>Your week, in your own words. Give a place or activity a name, then tap an open spot to place it. There is no right layout.</p><div class="week-node-tools"><label for="week-node-label">Place or activity<input id="week-node-label" maxlength="120" placeholder="Home, Work, Phone Research…"></label><label for="week-node-kind">Type<select id="week-node-kind"><option value="place">Place</option><option value="online">Online activity</option></select></label><button type="button" class="button" id="week-node-add">Add to map</button></div><svg id="week-node-map" viewBox="0 0 800 420" role="group" aria-label="Your week map. Click empty space to place a label. Use Add to map as a keyboard alternative."><defs><pattern id="week-map-dots" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="16" cy="16" r="1.5" fill="#dce5dc" /></pattern></defs><rect class="week-node-background" width="800" height="420" rx="22" /><rect width="800" height="420" rx="22" fill="url(#week-map-dots)" /><text id="week-map-empty" x="400" y="210" text-anchor="middle" fill="#53695e" font-size="28">A little space for your week</text></svg><div class="week-map-legend"><span>● Places</span><span>● Online activities</span></div><p id="week-node-status" role="status" aria-live="polite">Place and activity names appear as nodes. Your notes, markers, blank spaces, barriers, and threads appear in the map details below. Select a node to edit. Keyboard: Add to map places a node; arrow keys move a focused node. This is optional and stays with your browser-saving choices.</p>';
+        const details=document.createElement('div');details.id='week-map-details';details.className='week-map-details';section.append(details);
         document.getElementById('canvas-grid-place').closest('.life-canvas-section').before(section);
         const svg=document.getElementById('week-node-map'),label=document.getElementById('week-node-label');
         function add(x,y){const name=label.value.trim();if(!name){document.getElementById('week-node-status').textContent='Add a label first, or leave the map blank.';label.focus();return;}const card=addCanvasCard(document.getElementById('week-node-kind').value,{name,x,y});saveLifeCanvas();label.value='';document.getElementById('week-node-status').textContent='Added '+name+'. Its card is ready below.';return card;}
@@ -2796,9 +2808,10 @@ You Matters</summary><div class="fold-copy"><p>Caring intensely about something 
         card.appendChild(remove);grid.appendChild(card);syncLifeCanvas();
         if(focus)input.focus();return card;
       }
-      function collectLifeCanvas(){return {version:1,cards:[...document.querySelectorAll('.life-canvas-grid [data-canvas-card]')].map(card=>({id:Number(card.dataset.canvasId),kind:card.dataset.canvasKind,x:Number(card.dataset.nodeX)||null,y:Number(card.dataset.nodeY)||null,name:card.querySelector('[data-canvas-name]').value,notes:card.querySelector('textarea').value,badges:[...card.querySelectorAll('[data-badge][aria-pressed="true"]')].map(b=>Number(b.dataset.badge))}))};}
+      function collectLifeCanvas(){return {version:1,reflections:Object.fromEntries(lifeMapReflectionIds().map(id=>[id,document.getElementById(id).value])),cards:[...document.querySelectorAll('.life-canvas-grid [data-canvas-card]')].map(card=>({id:Number(card.dataset.canvasId),kind:card.dataset.canvasKind,x:Number(card.dataset.nodeX)||null,y:Number(card.dataset.nodeY)||null,name:card.querySelector('[data-canvas-name]').value,notes:card.querySelector('textarea').value,badges:[...card.querySelectorAll('[data-badge][aria-pressed="true"]')].map(b=>Number(b.dataset.badge))}))};}
       function applyLifeCanvas(data){
         if(data?.version!==1||!Array.isArray(data.cards))return;
+        if(data.reflections&&typeof data.reflections==='object')lifeMapReflectionIds().forEach(id=>{if(typeof data.reflections[id]==='string')document.getElementById(id).value=data.reflections[id];});
         ['place','online'].forEach(kind=>document.getElementById('canvas-grid-'+kind).replaceChildren());
         data.cards.filter(c=>c&&['place','online'].includes(c.kind)).forEach(c=>addCanvasCard(c.kind,c));
         renderWeekNodes();
@@ -2811,7 +2824,7 @@ You Matters</summary><div class="fold-copy"><p>Caring intensely about something 
       }
       function initializeLifeCanvas(){
         addCanvasCard('place');addCanvasCard('online');
-        document.addEventListener('input',event=>{if(event.target.closest('.life-canvas-grid'))saveLifeCanvas();});
+        document.addEventListener('input',event=>{if(event.target.closest('.life-canvas-grid')||lifeMapReflectionIds().includes(event.target.id))saveLifeCanvas();});
         document.addEventListener('click',event=>{
           const add=event.target.closest('[data-canvas-add]');
           if(add){addCanvasCard(add.dataset.canvasAdd,{},true);saveLifeCanvas();return;}
@@ -2825,9 +2838,9 @@ You Matters</summary><div class="fold-copy"><p>Caring intensely about something 
           if(lifeCanvasSaving)saveLifeCanvas();else canvasStatus('Automatic canvas saving is off. Current cards remain in this tab; manually saved workbook copies are separate.');
         });
         document.getElementById('canvas-erase').addEventListener('click',()=>{
-          applyLifeCanvas({version:1,cards:[]});
+          applyLifeCanvas({version:1,cards:[],reflections:Object.fromEntries(lifeMapReflectionIds().map(id=>[id,'']))});
           try{localStorage.removeItem(LIFE_CANVAS_KEY);const raw=localStorage.getItem(WORKBOOK_STORAGE_KEY);if(raw){const saved=JSON.parse(raw);delete saved.lifeCanvas;
-            Object.keys(saved.fields||{}).filter(id=>/^m1-(place|online)-/.test(id)).forEach(id=>delete saved.fields[id]);
+            Object.keys(saved.fields||{}).filter(id=>/^m1-(place|online)-/.test(id)||lifeMapReflectionIds().includes(id)).forEach(id=>delete saved.fields[id]);
             Object.keys(saved.pressed||{}).filter(key=>key.startsWith('module-1|0|')).forEach(key=>delete saved.pressed[key]);
             localStorage.setItem(WORKBOOK_STORAGE_KEY,JSON.stringify(saved));}
             canvasStatus('Canvas and saved card copy erased. Downloaded files and Journal copies are separate.');}
