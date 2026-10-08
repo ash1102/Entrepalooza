@@ -984,6 +984,13 @@
 @media(max-width:640px){#module-1 .week-node-plotter{padding:16px;}#week-node-map{min-height:220px;}.week-node-tools{gap:12px;}}
 
 .week-map-legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:12px;font-size:13px;color:#3e6963;}.week-map-legend span:last-child{color:#7052a2;}#week-node-map [data-week-node]:hover rect{stroke-width:4;fill:#d8e8dd;}#week-node-map [data-week-node][data-kind="online"]:hover rect{fill:#e7def1;}
+
+/* Keep the existing marker meanings visible on every Life Map card. */
+#module-1 .canvas-card .activity-choice-row{display:grid;grid-template-columns:1fr;gap:8px;}
+#module-1 .canvas-card .activity-choice{display:flex;align-items:center;justify-content:flex-start;gap:12px;width:100%;min-height:48px;padding:12px 14px;border-radius:12px;text-align:left;white-space:normal;line-height:1.45;}
+#module-1 .canvas-card .canvas-marker-symbol{flex:0 0 24px;font-size:22px;text-align:center;}
+#module-1 .canvas-card .canvas-marker-label{position:static;width:auto;height:auto;overflow:visible;clip-path:none;white-space:normal;font-size:14px;font-weight:650;}
+#module-1 .canvas-card .activity-group legend{font-size:14px;line-height:1.5;padding-bottom:10px;}
 </style>
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
