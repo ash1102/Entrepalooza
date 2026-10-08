@@ -1094,7 +1094,7 @@
         <nav class="lesson-tabs" aria-label="Module 0 · Enter with Agency sequence"><button class="lesson-tab" type="button" data-lesson-goto="0" aria-current="step">1</button><button class="lesson-tab" type="button" data-lesson-goto="1" >2</button><button class="lesson-tab" type="button" data-lesson-goto="2" >3</button><button class="lesson-tab" type="button" data-lesson-goto="3" >4</button><button class="lesson-tab" type="button" data-lesson-goto="4" >5</button></nav>
         <div class="lesson-stage"><article class="lesson-card is-lesson-active m1-pdf reading-inline" data-lesson-index="0" data-loop="notice">
 <div class="lesson-meta"><strong>Part 1 of 5</strong><span>·</span><span>Continue</span></div>
-<section class="baseline-card" aria-labelledby="baseline-title"><p class="eyebrow">Continue</p><h3 id="baseline-title" tabindex="-1">The Baseline</h3><ul><li>This is a private space to notice what holds your attention.</li><li>There are no business quotas, income promises, or required paths here.</li></ul><button type="button" class="button button-primary" id="baseline-continue">Understood. Let's Map the Week</button></section>
+<section class="baseline-card" aria-labelledby="baseline-title"><p class="eyebrow">Continue</p><h3 id="baseline-title" tabindex="-1">The Baseline</h3><ul><li>This is a private space to notice what holds your attention.</li><li>There are no business quotas, income promises, or required paths here.</li></ul><button type="button" class="button button-primary" id="baseline-continue">Understood. Let's Continue</button></section>
 <div class="lesson-controls"><button class="button" type="button" data-lesson-prev>← Cover</button></div></article><article class="lesson-card" data-lesson-index="1" data-loop="notice">
     <div class="lesson-meta"><strong>Part 2 of 5</strong><span>·</span><span>Activity</span></div>
     <h3 tabindex="-1">Your choices, privacy, and permission</h3><p class="lesson-purpose">Practice the rights before anyone asks you for personal information.</p>
@@ -2931,7 +2931,7 @@ You Matters</summary><div class="fold-copy"><p>Caring intensely about something 
       restoreExperimentCard();
       restoreLifeCanvas();
       renderWeekNodes();
-      document.getElementById('baseline-continue').addEventListener('click',()=>{enterWorkbook();showLesson(document.getElementById('module-1'),0,true);});
+      document.getElementById('baseline-continue').addEventListener('click',()=>{showLesson(document.getElementById('module-0'),1,true);});
       document.getElementById('open-profile-settings').addEventListener('click',event=>{event.preventDefault();const settings=document.getElementById('profile-settings');settings.open=true;settings.querySelector('summary').focus();});
       ['larger-text','more-space'].forEach(option=>{
         const input=document.getElementById('layout-'+option);
